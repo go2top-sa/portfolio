@@ -7,7 +7,7 @@
 <meta name="description" content="ملف أعمال حنين الزكري: الخبرات والمؤهلات والأنظمة والمنتجات والمشاريع">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600&display=swap">
 <style>
 /* Layout: a living 3D landscape (go2top hills + Tuwaiq) fills the window; identity rail and one content panel float above it as frosted glass. Single light look by design. */
 :root{
@@ -193,6 +193,29 @@ body[data-section="home"] .next{border-top-color:transparent}
 .lightbox img{max-width:min(1100px,100%);max-height:78vh;border-radius:14px;box-shadow:0 30px 80px -20px rgba(62,48,92,.45);background:#fff}
 .lightbox p{margin:0;font-family:var(--f-ui);font-size:14px;color:var(--ink);background:rgba(255,255,255,.8);padding:6px 14px;border-radius:999px}
 .lb-close{all:unset;cursor:pointer;position:absolute;top:max(14px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px;color:var(--lav-deep);box-shadow:var(--shadow)}
+
+/* ---------- language toggle + English (LTR) ---------- */
+.lang{all:unset;cursor:pointer;margin-inline-start:auto;font-family:var(--f-ui);font-size:12.5px;font-weight:600;color:var(--lav-deep);background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:999px;padding:4px 12px;transition:background .2s}
+.lang:hover{background:#fff}
+.lang:focus-visible{outline:2px solid var(--lav);outline-offset:2px}
+.lang[lang="en"]{font-family:"Lora",Georgia,serif}
+html[dir="ltr"]{--f-display:"Lora",Georgia,serif;--f-body:"Lora",Georgia,serif;--f-ui:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif}
+html[dir="ltr"] body{direction:ltr;font-size:17.5px;line-height:1.7}
+html[dir="ltr"] .lang[lang="ar"]{font-family:"Sakkal Majalla","Noto Naskh Arabic",serif;font-size:15px}
+html[dir="ltr"] .id .en{font-family:"Sakkal Majalla","Noto Naskh Arabic",serif;direction:rtl;text-align:left;font-size:19px}
+html[dir="ltr"] nav.rail button:hover{transform:translateX(3px)}
+html[dir="ltr"] .hl .go{left:auto;right:16px}
+html[dir="ltr"] .tl .yr{text-align:right}
+html[dir="ltr"] .tl .dot::before{right:auto;left:12px}
+html[dir="ltr"] .tl .dot::after{right:auto;left:6px}
+html[dir="ltr"] .filters button small{margin-right:0;margin-left:5px}
+html[dir="ltr"] th,html[dir="ltr"] td{text-align:left}
+html[dir="ltr"] .copy{margin-right:0;margin-left:6px}
+html[dir="ltr"] .scene-hint{left:auto;right:max(22px,env(safe-area-inset-right,0px))}
+html[dir="ltr"] .lb-close{left:auto;right:max(16px,env(safe-area-inset-right,0px))}
+html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
+@keyframes enter-ltr{from{opacity:.25;transform:rotateY(9deg) translateZ(-60px) translateX(24px)}to{opacity:1;transform:none}}
+@media (max-width:900px){html[dir="ltr"] .tl .yr{text-align:left}.id{position:relative}.id .mark{display:block;margin:0}.id .mark svg,.id .mark .chip{display:none}.lang{position:absolute;top:14px;inset-inline-end:16px}.chip{white-space:normal;line-height:1.35;max-width:100%}}
 </style>
 </head>
 <body>
@@ -204,6 +227,7 @@ body[data-section="home"] .next{border-top-color:transparent}
       <div class="mark">
         <svg width="34" height="22" viewBox="0 0 34 22" aria-hidden="true"><path d="M1 21 L12 6 L17 11 L22 3 L33 21 Z" fill="#4E4173"/><path d="M22 3 L33 21 L24 21 L19 9 Z" fill="#B16D4C" opacity=".85"/></svg>
         <span class="chip">ملف الأعمال</span>
+        <button class="lang" id="langBtn" type="button" lang="en" aria-label="Switch to English">English</button>
       </div>
       <h1>حنين الزكري</h1>
       <div class="en">Haneen Al Zakari</div>
@@ -491,15 +515,389 @@ body[data-section="home"] .next{border-top-color:transparent}
   </main>
 </div>
 
+<template id="tpl-en-id">
+      <h1 class="latin-h">Haneen Al Zakari</h1>
+      <div class="en">حنين الزكري</div>
+      <div class="role"><b>Founder of go2top</b> · Human Resource Management · Institutional Development · Digital Transformation · Business Systems Design</div>
+</template>
+<template id="tpl-en-foot"><span>Riyadh, Saudi Arabia</span><span class="latin">hanin.al.zakari@gmail.com</span></template>
+<template id="tpl-en-main">
+<section class="panel" id="home" data-label="Profile">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Professional profile</div>
+      <p class="big">Founder of <em>go2top</em>, specializing in human resource management, institutional development, and business systems design. Through go2top I build digital administrative solutions and systems.</p>
+      <p>Eight years of supervision and operational leadership in the non-profit sector and eight years of university teaching, followed by entrepreneurship. I combine hands-on management experience with building systems myself: spotting the problem in the workplace, then designing, building, and documenting the solution.</p>
+      <p class="ui" style="color:var(--ink-soft)">Three fields: Human Resources · Digital Transformation · Quranic Studies</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Founder, go2top (in formation)</dd></div>
+      <div><dt>Highest qualification</dt><dd>Higher Diploma in Human Resource Management, King Saud University (GPA 4.85/5)</dd></div>
+      <div><dt>Top grade</dt><dd>99.33% with A+ in every course, Associate Diploma in Digital Transformation</dd></div>
+      <div><dt>Award</dt><dd>First place, Nawa Hackathon, Ministry of Education</dd></div>
+      <div><dt>City</dt><dd>Riyadh</dd></div>
+      <div><dt>Email</dt><dd><span class="latin" id="mail">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">Copy</button></dd></div>
+      <div><dt>LinkedIn</dt><dd><a class="latin" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">in/haneen-al-zakari</a></dd></div>
+      <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
+    </dl>
+  </div>
+  <div class="highlights">
+    <button class="hl award" data-go="awards" type="button"><span class="go">→</span><div class="k">Award</div><div class="t">First place, Nawa Hackathon</div><div class="d">An app that notifies parents when students arrive at and leave school. I built the full prototype and presented it to the judges.</div></button>
+    <button class="hl" data-go="systems" type="button"><span class="go">→</span><div class="k">System</div><div class="t">CTMS for cooperative training</div><div class="d">Grew out of 83 pain points I documented at the Ministry of Education; the idea reached the approval stage for an MVP. The system is built, with final completion remaining.</div></button>
+    <button class="hl" data-go="go2top" type="button"><span class="go">→</span><div class="k">Venture</div><div class="t">go2top</div><div class="d">A complete brand identity, a flagship diagnostic product (go2top Compass), and the Golden Series of 32 products.</div></button>
+    <button class="hl" data-go="institution" type="button"><span class="go">→</span><div class="k">Institutional project</div><div class="t">Founding an education and development association</div><div class="d">Institutional organization consultant and founding project manager: the plans, a document package across 12 domains, and the website and digital platform.</div></button>
+  </div>
+</section>
+
+<section class="panel" id="gallery" data-label="Work gallery" hidden>
+  <div class="eyebrow">Work gallery</div>
+  <h2>Selected work</h2>
+  <p class="lede">Screenshots of published platforms, designs, and verified certificates. Click any image to enlarge it.</p>
+  <div class="filters" id="galFilters" role="group" aria-label="Filter gallery"></div>
+  <div class="gallery" id="galGrid"></div>
+</section>
+
+<section class="panel" id="experience" data-label="Experience" hidden>
+  <div class="eyebrow">Work experience</div>
+  <h2>Operational leadership and university teaching</h2>
+  <p class="lede">Eight years of supervision and leadership in the non-profit sector and eight years of university teaching, partly overlapping. Most recent first.</p>
+  <div class="tl">
+    <div class="row lead"><div class="yr">2026</div><div class="dot"></div><div class="body"><h4>Founder, go2top</h4><div class="meta"><span class="chip">Entrepreneurship</span><span class="st plan">In formation</span></div><p>Building the brand, strategy, products, and systems. Holds the Saudi freelance work permit.</p></div></div>
+    <div class="row lead"><div class="yr">2025 → 2026</div><div class="dot"></div><div class="body"><h4>Institutional Organization Consultant and Founding Project Manager</h4><div class="meta"><span class="chip">Non-profit association</span><span class="chip">Independent contract</span></div><p>Strategic, timeline, and execution plans; founding, operating, and budget files; the website and digital platform.</p></div></div>
+    <div class="row"><div class="yr">1447 AH</div><div class="dot"></div><div class="body"><h4>Trainee, Human Resources Development</h4><div class="meta"><span class="chip">Ministry of Education, General Department of HR Development</span><span class="chip">Three and a half months</span></div><p>Documented 83 pain points in cooperative training management and proposed the CTMS idea, which reached the approval stage for an MVP. Planned the Nawa Hackathon and won its first place. Prepared templates for training needs assessment and program impact that were put into use.</p></div></div>
+    <div class="row"><div class="yr">1443 → 1444 AH</div><div class="dot"></div><div class="body"><h4>Volunteer, Curriculum Development</h4><div class="meta"><span class="chip">Volunteer</span></div><p>Preparing and developing curriculum content.</p></div></div>
+    <div class="row"><div class="yr">1433 → 1441 AH</div><div class="dot"></div><div class="body"><h4>University Teaching</h4><div class="meta"><span class="chip">Imam Mohammad Ibn Saud Islamic University</span></div><p>12 to 18 hours a week, with sections of 25 to 140 students across all eight levels. Remote teaching on Blackboard and Zoom during the pandemic year, and detailed statistical reports for every course and section each semester.</p></div></div>
+    <div class="row"><div class="yr">1434 → 1439 AH</div><div class="dot"></div><div class="body"><h4>Branch Manager, Women's Schools Supervision Office</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">North Riyadh</span></div><p>Nomination, selection, and job interviews; onboarding new employees; evaluating employee and school performance; leading initiatives; strategic and operational planning; preparing and monitoring budgets.</p></div></div>
+    <div class="row"><div class="yr">1433 → 1434 AH</div><div class="dot"></div><div class="body"><h4>School Principal, Women's School</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">Then promoted to branch manager</span></div><p>Turning work into plans with measurable results, and delivering prepared curricula.</p></div></div>
+    <div class="row"><div class="yr">1428 → 1430 AH</div><div class="dot"></div><div class="body"><h4>Educational Supervisor</h4><div class="meta"><span class="chip">Non-profit sector</span></div><p>Educational supervision and performance follow-up.</p></div></div>
+  </div>
+</section>
+
+<section class="panel" id="education" data-label="Education" hidden>
+  <div class="eyebrow">Academic qualifications</div>
+  <h2>An academic path joining management and technology</h2>
+  <p class="lede">All GPAs are out of 5.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Qualification</th><th>Institution</th><th>Year</th><th>Status and grade</th></tr></thead>
+    <tbody>
+      <tr><td>Digital Transformation Leaders Fellowship</td><td>Prince Musaid bin Abdulrahman University</td><td class="n">1448 AH</td><td><span class="st built">Completed</span> certificate being issued</td></tr>
+      <tr><td>Intermediate Diploma in Computer Science and Data Analysis</td><td>King Faisal University</td><td class="n">1448 AH</td><td><span class="st study">In progress</span></td></tr>
+      <tr><td>Higher Diploma in Human Resource Management</td><td>King Saud University</td><td class="n">2026</td><td><span class="st built">Completed</span> 4.85</td></tr>
+      <tr><td>Associate Diploma in Digital Transformation</td><td>AlMaarefa University</td><td class="n">1447 AH</td><td><span class="st built">Completed</span> 99.33% with A+ in every course</td></tr>
+      <tr><td>Master's (coursework year)</td><td>Imam Mohammad Ibn Saud Islamic University</td><td class="n">1440 AH</td><td><span class="st built">Coursework year completed</span> 4.56</td></tr>
+      <tr><td>Bachelor of Usul al-Din</td><td>Imam Mohammad Ibn Saud Islamic University</td><td class="n">1427 AH</td><td><span class="st built">Completed</span></td></tr>
+      <tr><td>Ijazah in the Seven Quranic Readings</td><td>Ijazah program</td><td class="n"></td><td><span class="st study">In progress</span></td></tr>
+    </tbody>
+  </table></div>
+  <h3>Intermediate Diploma in Computer Science and Data Analysis</h3>
+  <p>An applied academic program combining computer science, programming, data analysis, artificial intelligence, and software solution development. It builds technical knowledge and analytical skills, and the use of data in designing business systems, supporting digital transformation, and decision-making.</p>
+  <p class="ui" style="color:var(--ink-soft)">First-semester courses: Computing Fundamentals · Introduction to Programming with Python · Innovation and Entrepreneurship in IT · Communication Skills · English Language</p>
+  <h3>Supporting indicators</h3>
+  <ul class="plain">
+    <li>General Aptitude Test for university graduates: score of 78 (August 2026).</li>
+    <li>Two academic recommendations from the Competencies Center for Development and Training at King Saud University.</li>
+    <li>The fellowship graduation project was a team project submitted to the National Dams Authority.</li>
+  </ul>
+</section>
+
+<section class="panel" id="certificates" data-label="Certificates" hidden>
+  <div class="eyebrow">Certificates and professional courses</div>
+  <h2>Training in technology, management, and data</h2>
+  <p class="lede">Two verified Cisco certificates, a four-course Microsoft specialization on Coursera, ten in-person courses and two workshops at Al-Masar Professional Training Center, and two completed exam-preparation programs awaiting the exam.</p>
+  <div class="filters" id="certFilters" role="group" aria-label="Filter certificates"></div>
+  <div class="grid" id="certGrid"></div>
+  <p class="note">Courses named after a professional certification (PMP, GRCP, Lean Six Sigma) are course-completion certificates and are listed with their hours. The PMP course meets the 35 contact-hour requirement for the PMP exam.</p>
+</section>
+
+<section class="panel" id="awards" data-label="Awards" hidden>
+  <div class="eyebrow">Awards and recognition</div>
+  <h2>First place, Nawa Hackathon</h2>
+  <p class="lede">A hackathon organized by the General Department of Human Resources Development at the Ministry of Education (1447 AH), with two separate recognitions.</p>
+  <div class="grid">
+    <div class="card" style="border-color:var(--gold)"><span class="st" style="color:#8C6A10">First place</span><h4>Parent notification app</h4><p>An app that automatically notifies parents when a student arrives at school and leaves. A team of 6 guided by an expert lead from the ministry; I built the full prototype and presented it to the judges.</p></div>
+    <div class="card"><span class="st built">Recognition</span><h4>Planning and delivery</h4><p>I planned the hackathon under its first name, "Mini Jam", and the department ran it after renaming it "Nawa".</p></div>
+    <div class="card"><span class="st built">Recognition</span><h4>Team win</h4><p>Recognition for winning the same hackathon as part of the team.</p></div>
+    <div class="card"><span class="st built">Distinction</span><h4>Rhetoric, literature, and composition</h4><p>First place in Arabic rhetoric, literature, and composition competitions.</p></div>
+    <div class="card"><span class="st built">Academic distinction</span><h4>99.33% grade</h4><p>With A+ in every course of the Associate Diploma in Digital Transformation.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="go2top" data-label="go2top" hidden>
+  <div class="eyebrow">go2top</div>
+  <h2>A venture in formation, designed and built</h2>
+  <p class="lede">go2top is designed as a parent organization with ten arms, a complete visual identity, a designed diagnostic product, and the structure and frameworks of 25 enterprise systems.</p>
+  <div class="stat-row">
+    <div class="stat"><b>10</b><span>organizational arms</span></div>
+    <div class="stat"><b>25</b><span>systems structured with frameworks</span></div>
+    <div class="stat"><b>32</b><span>products in the Golden Series</span></div>
+    <div class="stat"><b>127</b><span>documented assets</span></div>
+  </div>
+  <p class="note">go2top is in its founding stage and has not started selling; the work here is design and build.</p>
+  <div class="subtabs" role="tablist" id="g2tTabs">
+    <button role="tab" aria-selected="true" data-sub="g-id" type="button">Identity</button>
+    <button role="tab" aria-selected="false" data-sub="g-st" type="button">Strategy and structure</button>
+    <button role="tab" aria-selected="false" data-sub="g-bo" type="button">go2top Compass</button>
+    <button role="tab" aria-selected="false" data-sub="g-is" type="button">ISPS portfolio</button>
+    <button role="tab" aria-selected="false" data-sub="g-bc" type="button">Business case</button>
+    <button role="tab" aria-selected="false" data-sub="g-hq" type="button">HQ and prototypes</button>
+  </div>
+  <div data-subpanel="g-id"><ul class="plain">
+    <li>A complete identity system: a Tuwaiq mountain logo in a geometric frame, a 39-file logo package, an official 8-color palette, and the Cairo, Tajawal, and Sakkal Majalla typefaces.</li>
+    <li>Positioning on five pillars: diagnosis, design, system, confidentiality, and results.</li>
+    <li>A brand roadmap document, and a visual specification for the isometric "go2top Procedures" interface.</li>
+  </ul></div>
+  <div data-subpanel="g-st" hidden><ul class="plain">
+    <li>An architecture of ten official arms named "go2top + role", including institutional excellence, governance, solo business, digital transformation leadership, and human capital.</li>
+    <li>A catalog of ten systems: <span class="latin">SoloOS · ClientFlow · ProjectFlow · CashControl · DocControl · DecisionRoom · PeopleCore · CTMS · ExcellenceOS · Digital Readiness</span>.</li>
+    <li>Edition-based pricing (Ready · Configured · Custom enterprise) with annual support.</li>
+    <li>A strategic financial model with a 3 to 5 year roadmap, and an Excel financial model with an executive dashboard.</li>
+    <li>A competitive analysis of the Saudi market that defined the differentiators: native Arabic RTL and Saudi compliance (ZATCA, PDPL, SDAIA).</li>
+    <li>A "one human + a fleet of AI agents" operating model with a comprehensive reference prompt for the organization.</li>
+    <li>The G2T-OS internal operating system (design): a nine-sheet engineering foundation file, an interactive screen prototype, and a process map across nine domains.</li>
+  </ul></div>
+  <div data-subpanel="g-bo" hidden>
+    <p>The flagship product: a methodology for diagnosing digital transformation readiness and institutional excellence.</p>
+    <div class="grid">
+      <div class="card"><h4>8 axes × 5 indicators</h4><p>Five maturity levels and a heat map.</p></div>
+      <div class="card"><h4>Four-layer outputs</h4><p>Maturity score → gap register → initiative portfolio → 90-day and 12-month implementation roadmap.</p></div>
+      <div class="card"><h4>"Decision page" generator</h4><p>Derives the page automatically from the results of the eight axes, in the client's branding.</p></div>
+      <div class="card"><h4>go2top delivery gate</h4><p>7 critical gates and 8 weighted axes, an 85/100 delivery line, and a numbered decision stamp.</p></div>
+    </div>
+  </div>
+  <div data-subpanel="g-is" hidden><ul class="plain">
+    <li>Structure and frameworks for 25 enterprise systems in a five-layer architecture: users → ISPS gateway → systems → data → compliance (NCA, PDPL, ZATCA, DGA, ISO 27001).</li>
+    <li>A feasibility study and business case in a 163-slide deck, and six priced market packages.</li>
+    <li>A bilingual investor deck prepared for the Misk Launchpad accelerator.</li>
+    <li>An executive document for each system: executive summary, pain points, risks, value, scope, and integrations.</li>
+  </ul></div>
+  <div data-subpanel="g-bc" hidden><ul class="plain">
+    <li>A 13-chapter executive reference: positioning, pricing, a no-capital business model, platform architecture, and a 90-day plan.</li>
+    <li>go2top asset inventory: 127 documented assets in a verification workbook.</li>
+    <li>A failure-prevention plan: a pre-mortem of eight causes, two numeric decision gates, and an early-warning board.</li>
+    <li>A commercial validation log (seven-sheet Excel): hypotheses and experiments, interviews scored by signal strength, an offer tracker, and unit economics.</li>
+    <li>A four-level consulting maturity model that matches a client's state to the right solution: Power Apps → ISPS portfolio → integrated suite.</li>
+  </ul></div>
+  <div data-subpanel="g-hq" hidden><ul class="plain">
+    <li>A conceptual architectural design for the headquarters: a functional and space program for the ten arms, and three master-plan alternatives with an objective comparison.</li>
+    <li>A customer journey board (A3) with eight stages, and an interactive map of five sector tracks.</li>
+    <li>Seven interactive WebGL concept prototypes: the living readiness mountain, before and after transformation, the flowing process map, the go2top guide, the HQ on Riyadh time with live sunlight, the Golden Series viewer, and the rendered Tuwaiq scene.</li>
+    <li>The digital twin HQ: numbered rooms for the arms and a consolidated executive dashboard (version 14).</li>
+  </ul></div>
+</section>
+
+<section class="panel" id="systems" data-label="Systems and apps" hidden>
+  <div class="eyebrow">Systems and applications</div>
+  <h2>Systems I built myself</h2>
+  <p class="lede">Systems, apps, and tools that are built, published, or designed, managed in the go2top-sa organization on GitHub. Each shows its actual status.</p>
+  <div class="filters" id="sysFilters" role="group" aria-label="Filter by status"></div>
+  <div class="grid" id="sysGrid"></div>
+  <h3>Engineering standards I apply to every app</h3>
+  <ul class="plain">
+    <li>The v9 architecture: no inline onclick, custom confirmation dialogs, and event delegation.</li>
+    <li>Supabase RLS security, tying every record to its owner.</li>
+    <li>GitHub Actions workflows to keep servers active.</li>
+    <li>A standard format for lectures and courses as a multi-page HTML file.</li>
+  </ul>
+</section>
+
+<section class="panel" id="products" data-label="Products" hidden>
+  <div class="eyebrow">Digital products | go2top</div>
+  <h2>The Golden Series</h2>
+  <p class="lede">A free guide and 31 products built in Excel, with Google Sheets and interactive app editions and English versions in progress. Sales have not started.</p>
+  <div class="series" id="series"></div>
+  <h3>Series structure</h3>
+  <ul class="plain">
+    <li>A governing charter (v3) for the three formats, the two languages, product names, and store sections.</li>
+    <li>A navigation sidebar on every sheet and a dashboard with KPI cards and brand-colored charts; update v2.1 covered 62 Arabic and English files.</li>
+    <li>An activation system on Cloudflare Pages: signed codes, a 3-device limit, and 29 passed tests.</li>
+  </ul>
+  <h3>Professional planners</h3>
+  <div class="grid">
+    <div class="card"><h4>HR Professional Planner 2027</h4><p>Strategic planning, recruitment, talent management, KPIs, initiatives, and HR analytics.</p><div class="bottom"><span class="chip">Interactive PDF</span></div></div>
+    <div class="card"><h4>Lawyer's Legal Planner 2027</h4><p>Case tracking across nine specialties, hearings, fees, powers of attorney, and a legal risk register.</p><div class="bottom"><span class="chip">163 fillable pages</span></div></div>
+    <div class="card"><h4>Digital Transformation Specialist Planner</h4><p>OKRs, competency self-assessment, project portfolio, risk register, and quarterly review.</p><div class="bottom"><span class="chip">16 A4 pages</span></div></div>
+    <div class="card"><h4>Self-Development Planner 365</h4><p>Daily tracking for building habits and improving quality of life.</p><div class="bottom"><span class="chip">PDF</span></div></div>
+  </div>
+</section>
+
+<section class="panel" id="institution" data-label="Institutional project" hidden>
+  <div class="eyebrow">Institutional project | since August 2025</div>
+  <h2>Founding an education and development association</h2>
+  <p class="lede">Haneen Al Zakari led the founding of a non-profit association under an independent contract, as institutional organization consultant and founding project manager, owning the methodology, planning decisions, and quality controls.</p>
+  <div class="grid">
+    <div class="card"><h4>Institutional plans</h4><p>Strategic, timeline, and execution plans, and a 100-day plan: the code of ethics, securing financial resources, member recruitment, and the marketing file.</p></div>
+    <div class="card"><h4>Funding plan</h4><p>Prepared and submitted to a grant-making body.</p></div>
+    <div class="card"><h4>Founding document package</h4><p>Third edition across 12 domains, including 16 policies and bylaws, operations, budgets, measurement and control, and approval and closing.</p></div>
+    <div class="card"><img class="thumb" src="assets/shot-association.jpg" alt="Home page of the association website" data-zoom loading="lazy"><h4>Website and digital platform</h4><p>An academy and a store; interfaces for visitors, beneficiaries, and administration; staff sign-in with roles and permissions; and an Arabic and English switch.</p><div class="bottom"><span class="st pub">Published, pending handover</span><a class="go" href="https://go2top-sa.github.io/qinwan-site/" target="_blank" rel="noopener">Visit site →</a></div></div>
+  </div>
+  <h3>Edition history</h3>
+  <p class="ui">Draft edition 0 (December 2025) → first edition (January and February 2026) → second edition (May 2026) → third edition (November 2026)</p>
+</section>
+
+<section class="panel" id="academic" data-label="Academic projects" hidden>
+  <div class="eyebrow">Academic and applied projects</div>
+  <h2>Applications in digital transformation and AI</h2>
+  <p class="lede">Six applied projects completed as academic requirements, chief among them a digital transformation integration strategy for Al-Birr Charitable Society with a published prototype.</p>
+  <div class="grid">
+    <div class="card"><img class="thumb" src="assets/shot-albr.jpg" alt="Dashboard of the interactive model for the Al-Birr strategy" data-zoom loading="lazy"><h4>Digital transformation integration strategy for Al-Birr Charitable Society, Riyadh</h4><p>Strategic analysis and a proposed solution with the "Change Makers" team: eight phases and 15 initiatives, a 43-slide deck, and an Excel analysis of 16 sheets and 26 charts on 500 records. TOGAF, ADKAR, SROI, and PDPL frameworks.</p><div class="bottom"><span class="chip">AlMaarefa University</span><a class="go" href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">Interactive model →</a></div></div>
+    <div class="card"><h4>Digital Transformation Leaders Fellowship graduation project</h4><p>Team work for the National Dams Authority: the strategic plan, a readiness report with a six-axis framework and 15 initiatives, and the final presentation, with ADKAR, a risk register, and a business impact analysis.</p><div class="bottom"><span class="chip">Prince Musaid bin Abdulrahman University</span></div></div>
+    <div class="card"><h4>Graduation project DT-2605</h4><p>An integrated concept for the "Digital Future Company" case linking advanced digital transformation, cybersecurity, and AI.</p><div class="bottom"><span class="chip">AlMaarefa University</span></div></div>
+    <div class="card"><img class="thumb" src="assets/shot-madar.jpg" alt="Main interface of the MADAR AI prototype" data-zoom loading="lazy"><h4>MADAR AI</h4><p>An interactive prototype of an intelligent digital twin for tourism with eight functional screens.</p><div class="bottom"><span class="chip">AI course</span><a class="go" href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">Prototype →</a></div></div>
+    <div class="card"><h4>Digital transformation initiative for the Ministry of Tourism</h4><p>Initiative design and a case study report: the problem, the digital solution, the AI engine, and the impact.</p><div class="bottom"><span class="chip">Workshop</span></div></div>
+    <div class="card"><h4>Vision 2030 dashboard</h4><p>An Excel KPI dashboard with the "Change Makers" team.</p><div class="bottom"><span class="chip">AlMaarefa University</span></div></div>
+  </div>
+  <h3>Knowledge and documentation work</h3>
+  <ul class="plain">
+    <li>The unified reference for the Digital Transformation Leaders Fellowship: 68 files merged into one searchable reference of more than 1,000 pages with navigation bookmarks.</li>
+    <li>The CTMS business case, and an analytical pain register linking each pain to its root cause, impact, solution, indicator, and owner.</li>
+    <li>A comprehensive academic reference on ERP systems: their mechanisms, governance, and applications.</li>
+    <li>The integrated academic researcher system (version 2.2), supporting the research cycle through publication and defense, within a research focus on HR digital transformation and institutional excellence.</li>
+    <li>A twelve-month career transition map with an 18-competency matrix referenced to SFIA, and a self-assessment tool for CIPD requirements.</li>
+  </ul>
+</section>
+
+<section class="panel" id="skills" data-label="Skills" hidden>
+  <div class="eyebrow">Skills and tools</div>
+  <h2>Management experience and building skill</h2>
+  <p class="lede">Management and leadership skills practiced over eight years, and applied technical skills in building administrative systems.</p>
+  <div class="skills" id="skillsGrid"></div>
+</section>
+
+<section class="panel" id="contact" data-label="Contact" hidden>
+  <div class="eyebrow">Contact</div>
+  <h2>Get in touch</h2>
+  <dl class="facts" style="max-width:640px">
+    <div><dt>Email</dt><dd><span class="latin">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">Copy</button></dd></div>
+    <div><dt>LinkedIn</dt><dd><a class="latin" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">linkedin.com/in/haneen-al-zakari</a></dd></div>
+    <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
+    <div><dt>City</dt><dd>Riyadh, Saudi Arabia</dd></div>
+  </dl>
+  <h3>Public links</h3>
+  <ul class="plain">
+    <li><a href="https://go2top-sa.github.io/qinwan-site/" target="_blank" rel="noopener">Education and development association website</a></li>
+    <li><a href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">Al-Birr Society digital transformation strategy (interactive model)</a></li>
+    <li><a href="https://go2top-sa.github.io/the-english-ladder/" target="_blank" rel="noopener">The English Ladder: English conversation training</a></li>
+    <li><a href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">MADAR AI</a></li>
+  </ul>
+</section>
+</template>
+<script>
+window.PORTFOLIO_EN={
+  title:'Haneen Al Zakari | Portfolio',
+  ui:{chip:'Portfolio',rail:'Portfolio sections',verify:'Verify →',open:'Open →',visit:'Visit →',prev:'Previous: ',next:'Next: ',nextArrow:' →',copy:'Copy',copied:'Copied',close:'Close',shotOf:'Screenshot of ',all:'All'},
+  certs:[
+    {g:'cisco',n:'Cyber Threat Management',o:'Cisco Networking Academy',d:'August 2026',h:'16 hours',s:'Completed, Credly badge',u:'https://www.credly.com/badges/5f8925d8-4be5-44cf-92fe-37bbb3946dd6'},
+    {g:'cisco',n:'Introduction to Cybersecurity',o:'Cisco Networking Academy',d:'June 2026',h:'6 hours',s:'Completed, Credly badge',u:'https://www.credly.com/badges/f0d22726-0780-46af-8238-f0105a8453fc'},
+    {g:'ms',n:'Microsoft Power Platform Fundamentals PL-900 Exam Prep',o:'Microsoft on Coursera',d:'March 2026',h:'4-course specialization',s:'Completed',u:'https://coursera.org/verify/specialization/C91MQ6M1RB9F'},
+    {g:'ms',n:'Introduction to Microsoft Power Platform',o:'Microsoft on Coursera',d:'December 2025',h:'Course',s:'Completed',u:'https://coursera.org/verify/3JE4ZXWE18XW'},
+    {g:'ms',n:'Use Power Platform for Custom & Automated Solutions',o:'Microsoft on Coursera',d:'January 2026',h:'Course',s:'Completed',u:'https://coursera.org/verify/WO3819NWVZP6'},
+    {g:'ms',n:'Power BI & Power Virtual Agents',o:'Microsoft on Coursera',d:'February 2026',h:'Course',s:'Completed',u:'https://coursera.org/verify/R5VRTSUHRJ7R'},
+    {g:'ms',n:'The PL-900 Practice Exam',o:'Microsoft on Coursera',d:'March 2026',h:'Course',s:'Completed',u:'https://coursera.org/verify/YRLX6S2EPBG0'},
+    {g:'masar',n:'Programming and Business Skills Using Python',o:'Al-Masar Professional Training Center',d:'April 2026',h:'60 hours',s:'Completed'},
+    {g:'masar',n:'Project Management Professional (PMP) course',o:'Al-Masar Center, accredited by TVTC',d:'July 2026',h:'35 hours',s:'Completed'},
+    {g:'masar',n:'Data Analysis and Reporting with Power BI',o:'Al-Masar Center, accredited by TVTC',d:'April 2026',h:'35 hours',s:'Completed'},
+    {g:'masar',n:'Data Analysis Using Microsoft Excel',o:'Al-Masar Center, accredited by TVTC',d:'April 2026',h:'30 hours',s:'Completed'},
+    {g:'masar',n:'AI Applications in Business',o:'Al-Masar Center, accredited by TVTC',d:'March 2026',h:'30 hours',s:'Completed'},
+    {g:'masar',n:'Governance, Risk and Compliance (GRCP) course',o:'Al-Masar Professional Training Center',d:'September 2026',h:'25 hours',s:'Completed'},
+    {g:'masar',n:'Lean Six Sigma Yellow Belt course',o:'Al-Masar Professional Training Center',d:'September 2026',h:'16 hours',s:'Completed'},
+    {g:'masar',n:'Tableau course',o:'Al-Masar Professional Training Center',d:'2026',h:'12 hours',s:'Completed'},
+    {g:'masar',n:'Data Analysis and Business Intelligence',o:'Al-Masar Center, accredited by TVTC',d:'March 2026',h:'10 hours',s:'Completed'},
+    {g:'masar',n:'Google Looker Studio course',o:'Al-Masar Professional Training Center',d:'2026',h:'10 hours',s:'Completed'},
+    {g:'masar',n:'Power Apps and Power Automate workshops',o:'Al-Masar Professional Training Center',d:'February 2026',h:'One day each',s:'Completed'},
+    {g:'prep',n:'PMP exam preparation',o:'PMI',d:'',h:'35 contact hours met',s:'Booking and exam remaining',st:'study'},
+    {g:'prep',n:'PL-900 exam preparation',o:'Microsoft',d:'',h:'Specialization completed',s:'Booking and exam remaining',st:'study'},
+    {g:'prep',n:'ITIL 4 Foundation exam preparation',o:'AXELOS',d:'',h:'Preparation completed',s:'Booking and exam remaining',st:'study'},
+    {g:'other',n:'Freelance Work Permit',o:'Saudi Freelance Platform',d:'',h:'',s:'Issued'},
+    {g:'other',n:'Build Your Smart MVP masterclass',o:'',d:'',h:'',s:'Attended; its method applied to go2top'}
+  ],
+  certGroups:[['all','All'],['cisco','Cisco'],['ms','Microsoft'],['masar','Al-Masar Center'],['prep','Awaiting exam'],['other','Other']],
+  sys:[
+    {n:'CTMS Portal',v:'v9',d:'A cooperative training management system that grew out of 83 pain points I documented during my Ministry of Education traineeship, used as a case study with a PMBOK project charter.',t:['HTML','v9 architecture'],s:'built',sl:'Built, final completion remaining'},
+    {n:'CTMS design on Power Platform',d:'An implementation architecture: 30 SharePoint lists, 6 Power Apps, 12 Power Automate flows, 3 Power BI dashboards, and a Power Pages portal.',t:['Power Platform'],s:'design',sl:'Designed'},
+    {n:'Education and development association website and platform',d:'An official website and a platform with an academy and a store; interfaces for visitors, beneficiaries, and administration; role-based sign-in.',t:['HTML','Supabase','GitHub Pages'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/qinwan-site/',img:'assets/shot-association.jpg'},
+    {n:'The English Ladder',d:'Step-by-step English conversation training, A1 to C1: 24 lessons with mastery gates, grammar compared with Arabic, and an exam simulator.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/the-english-ladder/',img:'assets/shot-ladder.jpg'},
+    {n:'Baheth (The Researcher)',d:'Organizing a thesis; the second version of the "Thesis Companion" idea.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/baheth/',img:'assets/shot-baheth.jpg'},
+    {n:'Thesis Companion',d:'A research companion for graduate students: a PRISMA workflow, RIS and BibTeX import, and email-code sign-in.',t:['Supabase','RLS'],s:'built',sl:'Built'},
+    {n:'Diploma platform by go2top',v:'v0.1',d:'A study platform for computer science diploma students: 4 levels, 266 chapters, and 2,266 questions.',t:['HTML','Supabase'],s:'built',sl:'Ready to publish'},
+    {n:'Digital twin HQ',v:'v14',d:'A digital twin of the conceptual go2top headquarters: numbered rooms for the arms and a consolidated executive dashboard.',t:['HTML','GitHub Pages'],s:'built',sl:'Built'},
+    {n:'My Journey to the Top',d:'A personal achievement journey app.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
+    {n:'TraceR',d:'A personal achievement tracker.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
+    {n:'Nabd',d:'A daily task organizer.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
+    {n:'focus',d:'A focus and productivity app.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
+    {n:'go2top Solo',v:'v8',d:'A business management app for freelancers.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'go2top website',d:'A 7-page website with interactive diagnostic tools and Arabic navigation.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'Product showcase website',d:'A page for each system, a cart, a checkout page, calculated VAT, and an automatic order number.',t:['HTML'],s:'built',sl:'Ready to publish'},
+    {n:'Digital maturity index and governance readiness scale',d:'Two interactive diagnostic tools.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'CEO dashboard',d:'An executive KPI dashboard.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'CRM system',d:'Customer relationship management with 788 formulas and 17 VBA procedures.',t:['Excel xlsm','VBA'],s:'built',sl:'Built'},
+    {n:'Golden Series activation system',d:'Signed activation codes, a protection gate for paid products, and a 3-device limit; passed 29 tests.',t:['Cloudflare Pages','KV'],s:'built',sl:'Built and tested'},
+    {n:'Lisanan',d:'A language training program: self-diagnosis, six stages, a five-part session, and timed conversation drills.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'My Daily',d:'Organizing the day\'s events and achievements.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'Fellowship exam review tool',d:'145 questions across 14 exams, with review and self-test modes and a mistakes tab.',t:['HTML'],s:'built',sl:'Built'},
+    {n:'HASSIL AI',d:'A B2B system for managing receivables and accelerating collection through automation, with human approval before sending.',t:['Power Apps','Power Automate','Dataverse','Power BI'],s:'design',sl:'Design stage'},
+    {n:'Power Pages template',d:'A CSS theme and a home page template.',t:['Power Pages'],s:'design',sl:'Designed'},
+    {n:'go2top unified platform',d:'A sales and services platform: sign-in, requests, a client space, and a team work inbox.',t:['GitHub'],s:'plan',sl:'Planning stage'}
+  ],
+  sysGroups:[['all','All'],['pub','Published'],['built','Built'],['design','Designed'],['plan','Planning']],
+  series:['Golden Series guide','Study and excellence','Job search','Career achievement','Personal performance','Budget and wealth','Travel','Home maintenance','Tidying and organizing','Fitness','Content','Business and projects','Offers and store','Building an MVP','Professional projects','Personal development','Teacher\'s record','Quran and worship','Enterprise digital transformation','Innovation and digital products','Strategic and operational planning','Lifetime legacy box','English vocabulary','Thesis','Founding a business','ERP selection kit','Faculty member','Research output and promotion','HR and labor law','Business analyst and information systems','Social relations','Major events'],
+  skills:[
+    ['Human resources and management',['Nomination, selection, and interviews','Onboarding','Performance evaluation','Training needs and program impact measurement','Strategic and operational planning','Preparing and monitoring budgets','Leading initiatives']],
+    ['Project management',['PMI and PMBOK','Project charters','Trello','Notion','Microsoft Planner']],
+    ['Digital transformation and institutional excellence',['Maturity diagnosis','ADKAR change management','TOGAF and SROI (academic application)','Saudi compliance: PDPL, NCA, ZATCA, DGA']],
+    ['Microsoft Power Platform',['Power Apps','Power Automate','Power BI','SharePoint','Dataverse','Power Pages']],
+    ['Building applications',['HTML/CSS/JavaScript','Supabase and RLS','GitHub Pages and Actions','Cloudflare Pages','Excel VBA','Google Apps Script']],
+    ['Data and analysis',['Advanced Excel','Power BI','Tableau','Looker Studio','Python','Google Colab']],
+    ['Artificial intelligence',['Claude','ChatGPT','Gemini','Microsoft Copilot','NotebookLM','n8n']],
+    ['Design and work environments',['Figma','Canva','Adobe tools','Google Workspace','Microsoft 365','Blackboard']],
+    ['Language and communication',['Arabic: rhetoric and professional and research writing','Poetry, prose, and fiction','Public speaking and persuasion','English: intermediate level']],
+    ['Islamic studies',['Usul al-Din','The Quran and its sciences','Quranic recitation (Iqra\')']]
+  ],
+  gal:[
+    {g:'web',src:'assets/shot-association.jpg',t:'Education and development association website and platform',d:'Published',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-albr.jpg',t:'Dashboard: Al-Birr Society digital transformation strategy',d:'Published interactive model',u:'https://go2top-sa.github.io/albr-digital-transformation/'},
+    {g:'web',src:'assets/shot-ladder.jpg',t:'The English Ladder: English conversation training',d:'Published',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-baheth.jpg',t:'Baheth: thesis organization dashboard',d:'Published',u:'https://go2top-sa.github.io/baheth/'},
+    {g:'web',src:'assets/shot-madar.jpg',t:'MADAR AI: an intelligent digital twin for tourism',d:'Published prototype',u:'https://go2top-sa.github.io/madar/'},
+    {g:'design',src:'assets/design-cover.jpg',t:'LinkedIn cover in the go2top identity',d:'Design'},
+    {g:'design',src:'assets/deck-1.jpg',t:'Portfolio deck: cover',d:'41-slide presentation (Arabic)'},
+    {g:'design',src:'assets/deck-7.jpg',t:'Career path on a timeline',d:'Presentation (Arabic)'},
+    {g:'design',src:'assets/deck-19.jpg',t:'go2top: overview',d:'Presentation (Arabic)'},
+    {g:'design',src:'assets/deck-23.jpg',t:'The five-layer ISPS portfolio',d:'Presentation (Arabic)'},
+    {g:'design',src:'assets/deck-27.jpg',t:'CTMS case study',d:'Presentation (Arabic)'},
+    {g:'cert',src:'assets/cert-cisco-ctm.jpg',t:'Cyber Threat Management',d:'Cisco Networking Academy · August 2026'},
+    {g:'cert',src:'assets/cert-cisco-intro.jpg',t:'Introduction to Cybersecurity',d:'Cisco Networking Academy · June 2026'},
+    {g:'cert',src:'assets/cert-ms-1.jpg',t:'PL-900 Exam Prep (specialization)',d:'Microsoft on Coursera · March 2026'},
+    {g:'cert',src:'assets/cert-ms-4.jpg',t:'Introduction to Microsoft Power Platform',d:'Microsoft on Coursera · December 2025'},
+    {g:'cert',src:'assets/cert-ms-5.jpg',t:'Use Power Platform for Custom & Automated Solutions',d:'Microsoft on Coursera · January 2026'},
+    {g:'cert',src:'assets/cert-ms-2.jpg',t:'Power BI & Power Virtual Agents',d:'Microsoft on Coursera · February 2026'},
+    {g:'cert',src:'assets/cert-ms-3.jpg',t:'The PL-900 Practice Exam',d:'Microsoft on Coursera · March 2026'}
+  ],
+  galGroups:[['all','All'],['web','Published platforms'],['design','Designs'],['cert','Certificates']]
+};
+</script>
+
 <script>
 (function(){
   var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-  var panels=$$('.panel'); var rail=$('#rail'); var main=$('#main');
+  var main=$('#main'); var P=window.PORTFOLIO_EN;
+  var EN=/^en(-|$)/.test(location.hash.slice(1));
+  var T={verify:'التحقق ←',open:'فتح ←',visit:'زيارة ←',prev:'السابق: ',next:'التالي: ',nextArrow:' ←',copy:'نسخ',copied:'نُسخ',close:'إغلاق',shotOf:'لقطة من '};
+  if(EN){
+    document.documentElement.lang='en'; document.documentElement.dir='ltr'; document.title=P.title;
+    var idb=$('.side .id'); $$('h1,.en,.role',idb).forEach(function(n){n.remove()}); idb.insertAdjacentHTML('beforeend',$('#tpl-en-id').innerHTML);
+    $('.side .chip').textContent=P.ui.chip; $('.side .foot').innerHTML=$('#tpl-en-foot').innerHTML;
+    $('#rail').setAttribute('aria-label',P.ui.rail);
+    var lbtn=$('#langBtn'); lbtn.textContent='العربية'; lbtn.lang='ar'; lbtn.setAttribute('aria-label','التبديل إلى العربية');
+    main.innerHTML=$('#tpl-en-main').innerHTML; T=P.ui;
+  }
+  function idOf(h){return EN?h.replace(/^en-?/,''):h}
+  function hashOf(id){return EN?(id==='home'?'en':'en-'+id):id}
+  var panels=$$('.panel'); var rail=$('#rail');
   var counts={certificates:0,systems:0};
   /* ---------- data ---------- */
   var certs=[
     {g:'cisco',n:'Cyber Threat Management',o:'Cisco Networking Academy',d:'أغسطس 2026',h:'16 ساعة',s:'مكتملة، بادج Credly',u:'https://www.credly.com/badges/5f8925d8-4be5-44cf-92fe-37bbb3946dd6'},
-    {g:'cisco',n:'Introduction to Cybersecurity',o:'Cisco Networking Academy',d:'يونيو 2026',h:'6 ساعات',s:'مكتملة'},
+    {g:'cisco',n:'Introduction to Cybersecurity',o:'Cisco Networking Academy',d:'يونيو 2026',h:'6 ساعات',s:'مكتملة، بادج Credly',u:'https://www.credly.com/badges/f0d22726-0780-46af-8238-f0105a8453fc'},
     {g:'ms',n:'Microsoft Power Platform Fundamentals PL-900 Exam Prep',o:'Microsoft عبر Coursera',d:'مارس 2026',h:'تخصص من 4 دورات',s:'مكتمل',u:'https://coursera.org/verify/specialization/C91MQ6M1RB9F'},
     {g:'ms',n:'Introduction to Microsoft Power Platform',o:'Microsoft عبر Coursera',d:'ديسمبر 2025',h:'دورة',s:'مكتملة',u:'https://coursera.org/verify/3JE4ZXWE18XW'},
     {g:'ms',n:'Use Power Platform for Custom & Automated Solutions',o:'Microsoft عبر Coursera',d:'يناير 2026',h:'دورة',s:'مكتملة',u:'https://coursera.org/verify/WO3819NWVZP6'},
@@ -564,12 +962,13 @@ body[data-section="home"] .next{border-top-color:transparent}
     ['اللغة والتواصل',['العربية: بلاغة وصياغة مهنية وبحثية','الشعر والنثر والقصة','الإلقاء والإقناع','الإنجليزية: مستوى متوسط']],
     ['العلوم الشرعية',['أصول الدين','القرآن وعلومه','الإقراء']]
   ];
+  if(EN){certs=P.certs;certGroups=P.certGroups;sys=P.sys;sysGroups=P.sysGroups;series=P.series;skills=P.skills;}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   /* ---------- certificates ---------- */
   function renderCerts(g){
     $('#certGrid').innerHTML=certs.filter(function(c){return g==='all'||c.g===g}).map(function(c){
       var latin=/^[A-Za-z]/.test(c.n);
-      return '<div class="card"><span class="st '+(c.st||'built')+'">'+esc(c.s)+'</span><h4'+(latin?' class="latin" style="text-align:right"':'')+'>'+esc(c.n)+'</h4><p>'+esc(c.o)+'</p><div class="bottom"><span class="tech">'+(c.h?'<span class="chip">'+esc(c.h)+'</span>':'')+(c.d?'<span class="chip">'+esc(c.d)+'</span>':'')+'</span>'+(c.u?'<a class="go" href="'+c.u+'" target="_blank" rel="noopener">التحقق ←</a>':'')+'</div></div>';
+      return '<div class="card"><span class="st '+(c.st||'built')+'">'+esc(c.s)+'</span><h4'+(latin&&!EN?' class="latin" style="text-align:right"':'')+'>'+esc(c.n)+'</h4><p>'+esc(c.o)+'</p><div class="bottom"><span class="tech">'+(c.h?'<span class="chip">'+esc(c.h)+'</span>':'')+(c.d?'<span class="chip">'+esc(c.d)+'</span>':'')+'</span>'+(c.u?'<a class="go" href="'+c.u+'" target="_blank" rel="noopener">'+T.verify+'</a>':'')+'</div></div>';
     }).join('');
   }
   function filters(box,groups,data,key,render){
@@ -580,7 +979,7 @@ body[data-section="home"] .next{border-top-color:transparent}
   filters($('#certFilters'),certGroups,certs,'g',renderCerts);
   function renderSys(g){
     $('#sysGrid').innerHTML=sys.filter(function(s){return g==='all'||s.s===g}).map(function(s){
-      return '<div class="card">'+(s.img?'<img class="thumb" src="'+s.img+'" alt="لقطة من '+esc(s.n)+'" data-zoom loading="lazy">':'')+'<span class="st '+s.s+'">'+esc(s.sl)+(s.v?' · <span class="latin">'+s.v+'</span>':'')+'</span><h4>'+esc(s.n)+'</h4><p>'+esc(s.d)+'</p><div class="bottom"><span class="tech">'+s.t.map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('')+'</span>'+(s.u?'<a class="go" href="'+s.u+'" target="_blank" rel="noopener">فتح ←</a>':'')+'</div></div>';
+      return '<div class="card">'+(s.img?'<img class="thumb" src="'+s.img+'" alt="'+T.shotOf+esc(s.n)+'" data-zoom loading="lazy">':'')+'<span class="st '+s.s+'">'+esc(s.sl)+(s.v?' · <span class="latin">'+s.v+'</span>':'')+'</span><h4>'+esc(s.n)+'</h4><p>'+esc(s.d)+'</p><div class="bottom"><span class="tech">'+s.t.map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('')+'</span>'+(s.u?'<a class="go" href="'+s.u+'" target="_blank" rel="noopener">'+T.open+'</a>':'')+'</div></div>';
     }).join('');
   }
   filters($('#sysFilters'),sysGroups,sys,'s',renderSys);
@@ -608,14 +1007,16 @@ body[data-section="home"] .next{border-top-color:transparent}
     {g:'cert',src:'assets/cert-ms-2.jpg',t:'Power BI & Power Virtual Agents',d:'Microsoft عبر Coursera · فبراير 2026'},
     {g:'cert',src:'assets/cert-ms-3.jpg',t:'The PL-900 Practice Exam',d:'Microsoft عبر Coursera · مارس 2026'}
   ];
+  var galGroups=[['all','الكل'],['web','منصات منشورة'],['design','تصاميم'],['cert','شهادات']];
+  if(EN){gal=P.gal;galGroups=P.galGroups;}
   function renderGal(g){
     $('#galGrid').innerHTML=gal.filter(function(x){return g==='all'||x.g===g}).map(function(x){
-      return '<figure class="card shot"><img src="'+x.src+'" alt="'+esc(x.t)+'" data-zoom loading="lazy"><figcaption><b>'+esc(x.t)+'</b><span>'+esc(x.d)+'</span>'+(x.u?'<a class="go" href="'+x.u+'" target="_blank" rel="noopener">زيارة ←</a>':'')+'</figcaption></figure>';
+      return '<figure class="card shot"><img src="'+x.src+'" alt="'+esc(x.t)+'" data-zoom loading="lazy"><figcaption><b>'+esc(x.t)+'</b><span>'+esc(x.d)+'</span>'+(x.u?'<a class="go" href="'+x.u+'" target="_blank" rel="noopener">'+T.visit+'</a>':'')+'</figcaption></figure>';
     }).join('');
   }
-  filters($('#galFilters'),[['all','الكل'],['web','منصات منشورة'],['design','تصاميم'],['cert','شهادات']],gal,'g',renderGal);
+  filters($('#galFilters'),galGroups,gal,'g',renderGal);
   counts.gallery=gal.length;
-  var lb=document.createElement('div'); lb.className='lightbox'; lb.hidden=true; lb.innerHTML='<button type="button" class="lb-close" aria-label="إغلاق">×</button><img alt=""><p></p>'; document.body.appendChild(lb);
+  var lb=document.createElement('div'); lb.className='lightbox'; lb.hidden=true; lb.innerHTML='<button type="button" class="lb-close" aria-label="'+T.close+'">×</button><img alt=""><p></p>'; document.body.appendChild(lb);
   document.addEventListener('click',function(e){
     var im=e.target.closest('img[data-zoom]'); if(im){lb.querySelector('img').src=im.src; lb.querySelector('img').alt=im.alt; lb.querySelector('p').textContent=im.alt; lb.hidden=false; return;}
     if(e.target===lb||e.target.closest('.lb-close')) lb.hidden=true;
@@ -627,7 +1028,7 @@ body[data-section="home"] .next{border-top-color:transparent}
   panels.forEach(function(p,i){
     var nx=document.createElement('div');nx.className='next';
     var prev=panels[i-1],next=panels[i+1];
-    nx.innerHTML=(prev?'<button type="button" data-go="'+prev.id+'">السابق: '+prev.dataset.label+'</button>':'<span></span>')+(next?'<button type="button" data-go="'+next.id+'">التالي: '+next.dataset.label+' ←</button>':'<span></span>');
+    nx.innerHTML=(prev?'<button type="button" data-go="'+prev.id+'">'+T.prev+prev.dataset.label+'</button>':'<span></span>')+(next?'<button type="button" data-go="'+next.id+'">'+T.next+next.dataset.label+T.nextArrow+'</button>':'<span></span>');
     p.appendChild(nx);
   });
   function show(id){
@@ -638,14 +1039,16 @@ body[data-section="home"] .next{border-top-color:transparent}
     main.scrollTop=0; if(window.innerWidth<860)window.scrollTo(0,0);
   }
   document.addEventListener('click',function(e){
-    var g=e.target.closest('[data-go]'); if(g){e.preventDefault(); if(location.hash!=='#'+g.dataset.go){location.hash=g.dataset.go}else{show(g.dataset.go)} return;}
-    var c=e.target.closest('[data-copy]'); if(c){var t=c.dataset.copy; var done=function(){c.textContent='نُسخ';setTimeout(function(){c.textContent='نسخ'},1500)};
+    var g=e.target.closest('[data-go]'); if(g){e.preventDefault(); var hh=hashOf(g.dataset.go); if(location.hash!=='#'+hh){location.hash=hh}else{show(g.dataset.go)} return;}
+    var c=e.target.closest('[data-copy]'); if(c){var t=c.dataset.copy; var done=function(){c.textContent=T.copied;setTimeout(function(){c.textContent=T.copy},1500)};
       try{navigator.clipboard.writeText(t).then(done,function(){sel(c)})}catch(_){sel(c)} return;}
     var s=e.target.closest('[data-sub]'); if(s){var box=s.parentNode; $$('button',box).forEach(function(b){b.setAttribute('aria-selected',b===s)}); $$('[data-subpanel]',box.parentNode).forEach(function(p){p.hidden=p.dataset.subpanel!==s.dataset.sub});}
   });
   function sel(c){var span=c.previousElementSibling;var r=document.createRange();r.selectNodeContents(span);var w=getSelection();w.removeAllRanges();w.addRange(r)}
-  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
-  show(location.hash.slice(1)||'home');
+  function current(){var p=panels.filter(function(x){return !x.hidden})[0];return p?p.id:'home'}
+  $('#langBtn').addEventListener('click',function(){var id=current(); var h=EN?id:(id==='home'?'en':'en-'+id); location.hash=h;});
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1); if(/^en(-|$)/.test(h)!==EN){location.reload();return;} show(idOf(h)||'home')});
+  show(idOf(location.hash.slice(1))||'home');
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
