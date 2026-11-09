@@ -79,6 +79,7 @@ button,select{font-family:inherit;font-size:inherit;color:inherit}
 .map{display:flex;justify-content:center}.map svg{width:100%;max-width:520px;height:auto}
 .map text{font-family:var(--font)}
 
+.more{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
 .empty{display:grid;place-items:center;height:100%;color:var(--muted);font-size:13px;text-align:center;padding:20px}
 .drop{position:fixed;inset:0;background:rgba(243,238,230,.93);display:none;align-items:center;justify-content:center;z-index:50}
 .drop.on{display:flex}.drop div{border:3px dashed var(--lav);border-radius:24px;padding:50px 60px;background:#fff;color:var(--lav-d);font-size:22px;font-weight:800}
@@ -184,6 +185,13 @@ const FIELDS={
  att:{l:'نسبة الحضور',k:['نسبة الحضور','الحضور','الانضباط','attendance','attendance rate']}
 };
 const FMAP={};Object.entries(FIELDS).forEach(([f,o])=>o.k.forEach(k=>FMAP[nk(k)]=f));
+/* Fuzzy header recognition: exact name first, then keyword rules (order matters) */
+const FRULES=[['att',/حضور|انضباط|attend/],['exit',/انتهاء|ترك العمل|مغادر|استقال|exit|termin|leav|resign|end date/],['hire',/تعيين|مباشر|التحاق|hire|join|start date|doj/],['nat',/جنسيه|nation|citizen/],['gender',/جنس|gender|sex|^النوع$/],['rating',/تقييم|اداء|rating|perform|appraisal|kpi/],['salary',/راتب|رواتب|تكلف|اجر|مرتب|salary|wage|cost|compens|gross|^pay/],['status',/حاله|status/],['dept',/اداره|قسم|dept|department|division|section/],['city',/مدينه|موقع|فرع|منطقه|city|location|branch|region/],['name',/اسم|name/],['id',/رقم|^id$|^id |employee id| id$|code|كود|emp no|staff no|^no$|^#$/]];
+const NOT_ID=/جوال|هاتف|phone|mobile|iban|هويه|اقامه|iqama|national|passport|جواز|بنك|bank|حساب|account/;
+function fieldOf(h){const k=nk(h);if(!k)return null;if(FMAP[k])return[FMAP[k],3];
+ for(const[f,re]of FRULES){if(!re.test(k))continue;if(f==='id'&&NOT_ID.test(k))return null;
+  return[f,f==='salary'&&/اجمالي|total|gross|تكلف/.test(k)?2:1]}return null}
+const TOTAL_RE=/^(ال)?(اجمالي|مجموع)( العام| الكلي)?$|^(grand )?totals?$|^sub ?total$|^sum$/;
 const MALE=new Set(['ذكر','m','male','رجل','man']),FEM=new Set(['انثي','f','female','امراه','woman','انثي ']);
 function parseNum(v){if(v==null||v==='')return null;if(typeof v==='number')return isFinite(v)?v:null;let s=toLatin(v).replace(/[٬,\s]/g,'').replace('٫','.').replace(/ر\.?س|sar|%|ريال/gi,'');const n=parseFloat(s);return isFinite(n)?n:null}
 function parseDate(v,st){if(v==null||v==='')return null;
@@ -193,36 +201,51 @@ function parseDate(v,st){if(v==null||v==='')return null;
  if(m=s.match(/^(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})/)){y=+m[1];mo=+m[2];d=+m[3]}
  else if(m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/)){d=+m[1];mo=+m[2];y=+m[3]}
  else{const t=new Date(s);if(!isNaN(t)){st.dateConv++;return t}st.badDate++;return null}
- if(y<1600){st.hijri++;return null}
  if(mo>12&&d<=12){[mo,d]=[d,mo]}
+ if(mo<1||mo>12||d<1||d>31){st.badDate++;return null}
+ if(y<1600){if(y<1300||y>1500||d>30){st.badDate++;return null}st.hijri++;return hijri(y,mo,d)}
+ if(y<1950||y>2100){st.badDate++;return null}
  const t=new Date(y,mo-1,d);if(isNaN(t)){st.badDate++;return null}st.dateConv++;return t}
+/* Hijri (tabular) to Gregorian, accurate to about one day */
+function hijri(y,m,d){const jd=d+Math.ceil(29.5*(m-1))+(y-1)*354+Math.floor((3+11*y)/30)+1948439.5-1;const u=new Date((jd-2440587.5)*864e5);return new Date(u.getUTCFullYear(),u.getUTCMonth(),u.getUTCDate())}
 
 /* ---------- Cleaning pipeline ---------- */
 function clean(raw,headers){
- const st={rows:raw.length,empty:0,trim:0,gender:0,nat:0,dateConv:0,badDate:0,hijri:0,num:0,dup:0,missing:0,scaled:false,statusFix:0};
- const map={},unm=[];headers.forEach((h,i)=>{const f=FMAP[nk(h)];if(f&&!(f in map))map[f]=i;else if(String(h).trim())unm.push(String(h).trim())});
- const out=[],seen=new Set();
+ const st={rows:raw.length,empty:0,trim:0,gender:0,nat:0,dateConv:0,badDate:0,hijri:0,num:0,dup:0,dupId:0,missing:0,scaled:false,statusFix:0,total:0,junk:0,range:0,future:0,deptMerge:0};
+ const map={},pri={},unm=[];headers.forEach((h,i)=>{const r=fieldOf(h);if(r&&(!(r[0] in map)||r[1]>pri[r[0]])){if(r[0] in map)unm.push(String(headers[map[r[0]]]).trim());map[r[0]]=i;pri[r[0]]=r[1]}else if(String(h).trim())unm.push(String(h).trim())});
+ const out=[],seen=new Set(),seenId=new Set(),canon=new Map();
+ const canonDept=v=>{const k=nk(v);if(!canon.has(k))canon.set(k,v);else if(canon.get(k)!==v)st.deptMerge++;return canon.get(k)};
  raw.forEach(r=>{
   if(!r||r.every(c=>c==null||String(c).trim()===''))
    {st.empty++;return}
+  if(r.some(c=>typeof c==='string'&&TOTAL_RE.test(nk(c)))){st.total++;return}
   const g=f=>{if(!(f in map))return null;let v=r[map[f]];if(typeof v==='string'){const t=v.replace(/\s+/g,' ').trim();if(t!==v)st.trim++;v=t;if(v==='')v=null}return v};
+  if((('id' in map)||('name' in map))&&g('id')==null&&g('name')==null){st.junk++;return}
   const e={id:g('id'),name:g('name')||'غير مسمّى',dept:g('dept')||'غير محدد',city:g('city')||'غير محدد'};
-  e.id=e.id==null?null:toLatin(e.id);e.dept=String(e.dept);e.city=String(e.city);
+  e.id=e.id==null?null:toLatin(e.id);e.dept=e.dept==='غير محدد'?e.dept:canonDept(String(e.dept));e.city=String(e.city);
   let gv=g('gender');if(gv!=null){const k=nk(gv);if(MALE.has(k)){if(gv!=='ذكر')st.gender++;e.gender='ذكر'}else if(FEM.has(k)||k==='انثي'){if(gv!=='أنثى')st.gender++;e.gender='أنثى'}else e.gender=null}else e.gender=null;
   let nv=g('nat');if(nv!=null){const k=nk(nv);const s=/سعود|saudi|ksa/.test(k);const val=s?'سعودي':'غير سعودي';if(String(nv)!=='سعودي'&&s)st.nat++;e.nat=val;e.natRaw=String(nv)}else e.nat=null;
   e.hire=parseDate(g('hire'),st);e.exit=parseDate(g('exit'),st);
+  if(e.hire&&e.exit&&e.exit<e.hire){e.exit=null;st.badDate++}
   ['salary','rating','att'].forEach(f=>{const v=g(f);if(typeof v==='string'&&v!=='')st.num++;e[f]=parseNum(v)});
+  if(e.salary!=null&&e.salary<=0){if(e.salary<0)st.range++;e.salary=null}
   const sv=nk(g('status')||'');let s='نشط';
-  if(/منتهي|مستقيل|متوقف|terminat|resign|left|exit|inactive/.test(sv))s='منتهي';else if(/تجربه|probation/.test(sv))s='تجربة';
+  if(/منتهي|مستقيل|متوقف|مفصول|terminat|resign|left|exit|inactive|former/.test(sv))s='منتهي';else if(/تجربه|probation/.test(sv))s='تجربة';
   if(e.exit&&e.exit<=TODAY&&s!=='منتهي'){s='منتهي';st.statusFix++}
-  if(s!=='منتهي'&&!sv&&e.hire&&(TODAY-e.hire)/864e5<90)s='تجربة';
+  if(s!=='منتهي'&&e.hire&&e.hire>TODAY){s='قادم';st.future++}
+  else if(s!=='منتهي'&&!sv&&e.hire&&(TODAY-e.hire)/864e5<90)s='تجربة';
   e.status=s;
-  if(!e.gender||!e.nat||e.dept==='غير محدد'||!e.hire)st.missing++;
-  const key=e.id?'i'+e.id:'n'+nk(e.name)+'|'+nk(e.dept)+'|'+(e.hire?+e.hire:'');
-  if(seen.has(key)){st.dup++;return}seen.add(key);out.push(e)});
- const rs=out.map(e=>e.rating).filter(v=>v!=null);
- if(rs.length&&Math.max(...rs)<=5){st.scaled=true;out.forEach(e=>{if(e.rating!=null)e.rating=e.rating*20})}
- out.forEach(e=>{if(e.att!=null&&e.att<=1)e.att*=100});
+  if((('gender' in map)&&!e.gender)||(('nat' in map)&&!e.nat)||(('dept' in map)&&e.dept==='غير محدد')||(('hire' in map)&&!e.hire))st.missing++;
+  const key=e.id?'i'+e.id+'|'+nk(e.name):'n'+nk(e.name)+'|'+nk(e.dept)+'|'+(e.hire?+e.hire:'');
+  if(seen.has(key)){st.dup++;return}seen.add(key);
+  if(e.id){if(seenId.has(e.id))st.dupId++;seenId.add(e.id)}
+  out.push(e)});
+ const rs=out.map(e=>e.rating).filter(v=>v!=null&&v>=0);
+ const rmax=rs.length?Math.max(...rs):0,rf=rmax<=5?20:rmax<=10?10:1;
+ if(rs.length&&rf>1){st.scaled=true;out.forEach(e=>{if(e.rating!=null)e.rating=e.rating*rf})}
+ out.forEach(e=>{if(e.rating!=null&&(e.rating<0||e.rating>100)){e.rating=null;st.range++}
+  if(e.att!=null&&e.att>=0&&e.att<=1)e.att*=100;
+  if(e.att!=null&&(e.att<0||e.att>100)){e.att=null;st.range++}});
  const comp={};Object.keys(FIELDS).forEach(f=>{if(!(f in map)){comp[f]=null;return}
   const has=out.filter(e=>{const v=f==='name'?(e.name!=='غير مسمّى'):f==='dept'||f==='city'?e[f]!=='غير محدد':f==='status'?true:e[f]!=null;return v}).length;comp[f]=out.length?has/out.length:0});
  return{rows:out,st,map,unm,comp}}
@@ -266,11 +289,16 @@ const f1=n=>(Math.round(n*10)/10).toLocaleString('en-US');
 const sar=n=>n>=1e6?f1(n/1e6)+' مليون ر.س':n>=1e3?Math.round(n/1e3).toLocaleString('en-US')+' ألف ر.س':Math.round(n).toLocaleString('en-US')+' ر.س';
 const sarK=n=>n>=1e6?f1(n/1e6)+'<small>مليون</small>':Math.round(n/1e3).toLocaleString('en-US')+'<small>ألف ر.س</small>';
 function group(arr,k){const m=new Map();arr.forEach(e=>{const g=e[k];if(!m.has(g))m.set(g,[]);m.get(g).push(e)});return m}
-const empOn=(e,d)=>e.hire&&e.hire<=d&&(!e.exit||e.exit>d);
-const isAct=e=>e.status!=='منتهي';
+const empOn=(e,d)=>(!e.hire||e.hire<=d)&&(!e.exit||e.exit>d)&&!(e.status==='منتهي'&&!e.exit);
+const empOnS=(e,d)=>e.hire&&e.hire<=d&&(!e.exit||e.exit>d);
+const isAct=e=>e.status==='نشط'||e.status==='تجربة';
+const has=f=>DATA&&(f in DATA.map);
+const TOPN=12;
 
 function load(headers,rows,att,source,file){
- const c=clean(rows,headers);DATA={...c,att,source,file,at:new Date()};
+ const c=clean(rows,headers);
+ if(att){const cm=new Map(c.rows.map(e=>[nk(e.dept),e.dept]));att.rows=att.rows.filter(r=>r.dept&&r.v.some(v=>v!=null)).map(r=>({...r,dept:cm.get(nk(r.dept))||r.dept,v:r.v.map(v=>v!=null&&(v<0||v>100)?null:v)}));if(!att.rows.length)att=null}
+ DATA={...c,att,source,file,at:new Date()};
  const ds=[...new Set(c.rows.map(e=>e.dept))].sort((a,b)=>a.localeCompare(b,'ar'));
  $('#dept').innerHTML='<option value="">كل الإدارات</option>'+ds.map(d=>`<option>${esc(d)}</option>`).join('');
  const live=source==='file';
@@ -281,9 +309,18 @@ function load(headers,rows,att,source,file){
  if(fixed)q.push(['g',`🧹 ${fixed} قيمة موحّدة`]);
  if(st.dup)q.push(['g',`♻ ${st.dup} مكرر محذوف`]);
  if(st.empty)q.push(['g',`🗑 ${st.empty} صف فارغ`]);
- if(st.hijri)q.push(['r',`⚠ ${st.hijri} تاريخ هجري`]);
- if(st.badDate)q.push(['r',`⚠ ${st.badDate} تاريخ غير مقروء`]);
+ if(st.total)q.push(['g',`🗑 ${st.total} صف إجمالي مستبعد`]);
+ if(st.junk)q.push(['g',`🗑 ${st.junk} صف بلا اسم أو رقم`]);
+ if(st.deptMerge)q.push(['g',`🔗 ${st.deptMerge} اسم إدارة موحّد`]);
+ if(st.hijri)q.push(['g',`📅 ${st.hijri} تاريخ هجري محوّل`]);
+ if(st.scaled)q.push(['g','📏 التقييم محوّل إلى 100']);
+ if(st.badDate)q.push(['r',`⚠ ${st.badDate} تاريخ غير صالح`]);
+ if(st.range)q.push(['r',`⚠ ${st.range} قيمة خارج المدى مستبعدة`]);
+ if(st.dupId)q.push(['r',`⚠ ${st.dupId} رقم وظيفي مكرر لأسماء مختلفة`]);
+ if(st.future)q.push(['y',`🕒 ${st.future} تعيين مستقبلي خارج العدد`]);
  if(st.missing)q.push(['y',`⚠ ${st.missing} سجل ناقص`]);
+ const miss=['gender','nat','hire','salary','rating'].filter(f=>!(f in c.map)).map(f=>FIELDS[f].l);
+ if(miss.length&&c.rows.length)q.push(['y',`➕ أعمدة غير موجودة: ${miss.join('، ')}`]);
  if(c.unm.length)q.push(['',`${c.unm.length} عمود غير مستخدم`]);
  $('#qchips').innerHTML=q.map(([k,t])=>`<span class="chip ${k}">${t}</span>`).join('');
  const hj=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'long',year:'numeric'}).format(DATA.at);
@@ -293,10 +330,13 @@ function load(headers,rows,att,source,file){
 const rowsF=()=>{const d=$('#dept').value;return DATA.rows.filter(e=>!d||e.dept===d)};
 
 /* ---------- Charts ---------- */
-function mk(id,cfg){const el=document.getElementById(id);if(!el||!window.Chart)return;charts[id]=new Chart(el,cfg)}
+function mk(id,cfg){const el=document.getElementById(id);if(!el||!window.Chart)return;if(el.hidden){el.hidden=false;el.parentElement.querySelectorAll('.empty').forEach(x=>x.remove())}charts[id]=new Chart(el,cfg)}
+const cut=(s,n=24)=>{s=String(s);return s.length>n?s.slice(0,n-1)+'…':s};
+const topN=(rows,n=TOPN)=>rows.length>n?{rows:rows.slice(0,n),more:rows.length-n}:{rows,more:0};
+function note(id,t){const el=document.getElementById(id);if(!el)return;const c=el.closest('.card');let x=c.querySelector('.more');if(!t){if(x)x.remove();return}if(!x){x=document.createElement('div');x.className='more';c.appendChild(x)}x.textContent=t}
 function none(id,msg){const el=document.getElementById(id);if(el)el.parentElement.innerHTML=`<div class="empty">${msg}</div><canvas id="${id}" hidden></canvas>`}
 const gY={grid:{color:'#EFE8DC'},border:{display:false}},nG={grid:{display:false},border:{color:C.line}};
-function hbar(id,labels,data,colors,o={}){mk(id,{type:'bar',data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:6,maxBarThickness:20}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>o.fmt?o.fmt(c.raw):c.raw}}},scales:{x:{...gY,reverse:true,min:o.min??0,max:o.max,ticks:{precision:0,callback:v=>o.tick?o.tick(v):v}},y:{...nG,position:'right'}}},plugins:o.plugins||[]})}
+function hbar(id,labels,data,colors,o={}){mk(id,{type:'bar',data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:6,maxBarThickness:20}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>o.fmt?o.fmt(c.raw):c.raw}}},scales:{x:{...gY,reverse:true,min:o.min??0,max:o.max,ticks:{precision:0,callback:v=>o.tick?o.tick(v):v}},y:{...nG,position:'right',ticks:{callback(v){return cut(this.getLabelForValue(v))}}}}},plugins:o.plugins||[]})}
 function donut(id,labels,data,colors,center,sub){mk(id,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:colors,borderColor:'#fff',borderWidth:3}]},options:{maintainAspectRatio:false,cutout:'66%',plugins:{legend:{position:'bottom'}}},plugins:[{id:'c',afterDraw(ch){const{ctx,chartArea:a}=ch,x=(a.left+a.right)/2,y=(a.top+a.bottom)/2;ctx.save();ctx.textAlign='center';ctx.fillStyle=C.char;ctx.font=`800 26px ${FONT}`;ctx.fillText(center,x,y+5);ctx.fillStyle=C.muted;ctx.font=`13px ${FONT}`;ctx.fillText(sub,x,y+24);ctx.restore()}}]})}
 const avgLine=v=>({id:'avg',afterDraw(ch){const x=ch.scales.x.getPixelForValue(v),{ctx,chartArea:a}=ch;ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle=C.terra;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,a.top);ctx.lineTo(x,a.bottom);ctx.stroke();ctx.restore()}});
 
@@ -315,29 +355,33 @@ function metrics(){
  if(DATA.att)attRows=DATA.att.rows.filter(r=>!d||r.dept===d).map(r=>{const v=r.v.filter(x=>x!=null);return{dept:r.dept,v:r.v,avg:v.length?v.reduce((s,x)=>s+x,0)/v.length:null}});
  else{const g=[...group(act.filter(e=>e.att!=null),'dept')];if(g.length)attRows=g.map(([dp,a])=>{const av=a.reduce((s,e)=>s+e.att,0)/a.length;return{dept:dp,v:[av],avg:av}})}
  const attV=attRows&&attRows.filter(r=>r.avg!=null);const attAvg=attV&&attV.length?attV.reduce((s,r)=>s+r.avg,0)/attV.length:null;
- return{all,act,natK:natK.length,sa,gK:gK.length,fe,cost,cost0,hc0,exY,turn,rt,avgR,attRows,attAvg,prob:act.filter(e=>e.status==='تجربة').length}}
+ const hasTurn=has('exit')||has('status'),hireOK=all.length?all.filter(e=>e.hire).length/all.length>=.7:false;
+ return{all,act,natK:natK.length,sa,gK:gK.length,fe,cost,cost0,hc0,exY,turn,rt,avgR,attRows,attAvg,hasTurn,hireOK,deltaOK:hasTurn&&hireOK,prob:act.filter(e=>e.status==='تجربة').length}}
 
 function decide(m){
  const clamp=v=>Math.max(0,Math.min(100,v)),parts=[];
  if(m.natK)parts.push(clamp(pct(m.sa,m.natK)));
  if(m.attAvg!=null)parts.push(clamp((m.attAvg-75)/23*100));
  if(m.avgR!=null)parts.push(clamp((m.avgR-60)/32*100));
- parts.push(clamp(100-m.turn*4));
- const score=Math.round(parts.reduce((a,b)=>a+b,0)/parts.length);
+ if(m.hasTurn&&m.hireOK)parts.push(clamp(100-m.turn*4));
+ const need=[['الجنسية',m.natK>0],['التقييم',m.avgR!=null],['الحضور',m.attAvg!=null],['تاريخ التعيين والانتهاء',m.hasTurn&&m.hireOK]],lack=need.filter(x=>!x[1]).map(x=>x[0]);
+ const score=!lack.length&&m.act.length&&parts.length===4?Math.round(parts.reduce((a,b)=>a+b,0)/parts.length):null;
+ const real=dp=>dp&&dp!=='غير محدد';
  const A=[],d=$('#dept').value;
  if(m.natK){const avg=pct(m.sa,m.natK);
-  const g=[...group(m.act.filter(e=>e.nat),'dept')].filter(([,a])=>a.length>=2).map(([dp,a])=>[dp,pct(a.filter(e=>e.nat==='سعودي').length,a.length)]).sort((a,b)=>a[1]-b[1]);
+  const g=[...group(m.act.filter(e=>e.nat),'dept')].filter(([dp,a])=>a.length>=2&&real(dp)).map(([dp,a])=>[dp,pct(a.filter(e=>e.nat==='سعودي').length,a.length)]).sort((a,b)=>a[1]-b[1]);
   if(!d&&g.length&&avg-g[0][1]>15)A.push({s:avg-g[0][1],i:'🎯',c:C.sage,t:`رفع التوطين في ${g[0][0]}`,h:`${f1(g[0][1])}% مقابل متوسط ${f1(avg)}%`});
   else if(d&&avg<60)A.push({s:60-avg,i:'🎯',c:C.sage,t:'رفع التوطين',h:`${f1(avg)}% حاليًا`})}
- if(m.attRows){const w=m.attRows.filter(r=>r.avg!=null).sort((a,b)=>a.avg-b.avg)[0];if(w&&w.avg<90)A.push({s:(90-w.avg)*2,i:'⏱',c:C.camel,t:`ضبط الحضور في ${w.dept}`,h:`متوسط ${f1(w.avg)}%`})}
+ if(m.attRows){const w=m.attRows.filter(r=>r.avg!=null&&real(r.dept)).sort((a,b)=>a.avg-b.avg)[0];if(w&&w.avg<90)A.push({s:(90-w.avg)*2,i:'⏱',c:C.camel,t:`ضبط الحضور في ${w.dept}`,h:`متوسط ${f1(w.avg)}%`})}
  if(m.rt.length){const low=m.rt.filter(e=>e.rating<70).length;if(low)A.push({s:pct(low,m.rt.length),i:'📈',c:C.lav,t:'خطط تحسين أداء',h:`${low} موظف أقل من 70`})}
- if(m.turn>8)A.push({s:m.turn*2,i:'🔁',c:C.terra,t:'خفض معدل الدوران',h:`${f1(m.turn)}% منذ بداية ${CY}`});
+ if(m.hasTurn&&m.hireOK&&m.turn>8)A.push({s:m.turn*2,i:'🔁',c:C.terra,t:'خفض معدل الدوران',h:`${f1(m.turn)}% منذ بداية ${CY}`});
  if(m.prob)A.push({s:6,i:'✅',c:C.gold,t:'حسم قرارات التثبيت',h:`${m.prob} في فترة التجربة`});
- if(!d&&m.cost){const g=[...group(m.act,'dept')].map(([dp,a])=>[dp,a.reduce((s,e)=>s+(e.salary||0),0)]).sort((a,b)=>b[1]-a[1]);const sh=pct(g[0][1],m.cost);if(sh>30)A.push({s:sh-25,i:'💰',c:C.gold,t:`مراجعة تكلفة ${g[0][0]}`,h:`${f1(sh)}% من الإجمالي`})}
+ if(!d&&m.cost){const g=[...group(m.act,'dept')].filter(([dp])=>real(dp)).map(([dp,a])=>[dp,a.reduce((s,e)=>s+(e.salary||0),0),a.length]).sort((a,b)=>b[1]-a[1]);const sh=g.length>=3?pct(g[0][1],m.cost):0,hs=pct(g.length?g[0][2]:0,m.act.length);if(sh>30&&sh>hs+10)A.push({s:sh-25,i:'💰',c:C.gold,t:`مراجعة تكلفة ${g[0][0]}`,h:`${f1(sh)}% من الإجمالي`})}
  A.sort((a,b)=>b.s-a.s);
- const lvl=score>=80?['ممتاز',C.sage]:score>=65?['جيد',C.gold]:['يحتاج تدخل',C.terra];
- const head=A.length?`الأولوية: ${A[0].t}`:'المؤشرات مستقرة: حافظ على المستوى الحالي';
- return{score,lvl,head,acts:A.slice(0,3)}}
+ const lvl=score==null?['بيانات غير كافية',C.muted]:score>=80?['ممتاز',C.sage]:score>=65?['جيد',C.gold]:['يحتاج تدخل',C.terra];
+ const head=!m.act.length?'لا يوجد موظفون على رأس العمل في الملف':A.length?`الأولوية: ${A[0].t}`:score==null?'أكمل بيانات الملف لحساب درجة الصحة':'المؤشرات مستقرة: حافظ على المستوى الحالي';
+ const acts=score==null&&m.act.length?[...A.slice(0,2),{i:'➕',c:C.camel,t:'أكمل بيانات الدرجة',h:`ينقص: ${lack.join('، ')}`}]:A.slice(0,3);
+ return{score,lvl,head,acts,lack}}
 
 /* ---------- Map ---------- */
 const CITIES={};[['الرياض','riyadh',46.72,24.71],['جدة','jeddah',39.19,21.49],['مكة المكرمة','makkah',39.83,21.42],['مكة','mecca',39.83,21.42],['المدينة المنورة','madinah',39.61,24.47],['المدينة','medina',39.61,24.47],['الدمام','dammam',50.1,26.43],['الخبر','khobar',50.21,26.28],['الظهران','dhahran',50.11,26.29],['الجبيل','jubail',49.66,27.01],['الأحساء','ahsa',49.59,25.38],['الهفوف','hofuf',49.59,25.38],['أبها','abha',42.51,18.22],['خميس مشيط','khamis mushait',42.73,18.3],['تبوك','tabuk',36.57,28.38],['حائل','hail',41.69,27.52],['بريدة','buraidah',43.97,26.33],['القصيم','qassim',43.97,26.33],['عنيزة','unaizah',43.99,26.08],['الطائف','taif',40.42,21.27],['جازان','jazan',42.55,16.89],['جيزان','jizan',42.55,16.89],['نجران','najran',44.13,17.49],['الباحة','baha',41.47,20.01],['عرعر','arar',41.04,30.98],['سكاكا','sakaka',40.21,29.97],['الجوف','jouf',40.21,29.97],['ينبع','yanbu',38.06,24.09],['حفر الباطن','hafar al batin',45.97,28.43],['القطيف','qatif',50.0,26.56],['الخرج','kharj',47.31,24.15],['العلا','alula',37.92,26.61],['نيوم','neom',35.3,27.9]].forEach(([a,e,x,y])=>{CITIES[nk(a)]=[x,y,a];CITIES[nk(e)]=[x,y,a];CITIES[nk('al '+e)]=[x,y,a]});
@@ -356,20 +400,20 @@ const LBL={'جدة':'w','مكة المكرمة':'e','الخبر':'e','الدما
 function lbl(n,x,y,r){const p=LBL[n]||'s';const[tx,ty,a]=p==='w'?[x-r-4,y+4,'end']:p==='e'?[x+r+4,y+4,'start']:p==='n'?[x,y-r-5,'middle']:[x,y+r+13,'middle'];return`<text x="${tx}" y="${ty}" font-size="11" font-weight="800" fill="${C.char}" text-anchor="${a}" paint-order="stroke" stroke="#fff" stroke-width="3">${n}</text>`}
 /* ---------- Render ---------- */
 function render(){if(!DATA)return;Object.values(charts).forEach(c=>c.destroy());charts={};
- const m=metrics(),dc=decide(m);
+ const m=metrics(),dc=decide(m);window.__hr={m,dc};
  // decision
- $('#dec').style.setProperty('--dc',dc.lvl[1]);$('#hs').textContent=dc.score;$('#hs').style.color=dc.lvl[1];$('#hl').textContent=dc.lvl[0];$('#hl').style.color=dc.lvl[1];
- mk('cGauge',{type:'doughnut',data:{datasets:[{data:[dc.score,100-dc.score],backgroundColor:[dc.lvl[1],'#EFE8DC'],borderWidth:0}]},options:{maintainAspectRatio:false,rotation:-90,circumference:180,cutout:'74%',plugins:{legend:{display:false},tooltip:{enabled:false}},events:[]}});
+ $('#dec').style.setProperty('--dc',dc.lvl[1]);$('#hs').textContent=dc.score??'';$('#hs').style.color=dc.lvl[1];$('#hl').textContent=dc.lvl[0];$('#hl').style.color=dc.lvl[1];
+ mk('cGauge',{type:'doughnut',data:{datasets:[{data:dc.score==null?[0,100]:[dc.score,100-dc.score],backgroundColor:[dc.lvl[1],'#EFE8DC'],borderWidth:0}]},options:{maintainAspectRatio:false,rotation:-90,circumference:180,cutout:'74%',plugins:{legend:{display:false},tooltip:{enabled:false}},events:[]}});
  $('#vd').textContent=dc.head;
- $('#acts').innerHTML=dc.acts.map(a=>`<div class="act"><i style="background:${a.c}22">${a.i}</i><div><b>${esc(a.t)}</b><small>${esc(a.h)}</small></div></div>`).join('')||'<div class="act"><i style="background:#7D816722">✓</i><div><b>لا إجراءات عاجلة</b><small>كل المؤشرات ضمن المستهدف</small></div></div>';
+ $('#acts').innerHTML=dc.acts.map(a=>`<div class="act"><i style="background:${a.c}22">${a.i}</i><div><b>${esc(a.t)}</b><small>${esc(a.h)}</small></div></div>`).join('')||(dc.score==null||!m.act.length?'<div class="act"><i style="background:#C7A16B22">➕</i><div><b>أكمل بيانات الملف</b><small>نزّل القالب لمعرفة الأعمدة المطلوبة</small></div></div>':'<div class="act"><i style="background:#7D816722">✓</i><div><b>لا إجراءات عاجلة</b><small>كل المؤشرات ضمن المستهدف</small></div></div>');
  // KPIs
- const dHC=m.act.length-m.hc0,dCost=m.cost0?pct(m.cost-m.cost0,m.cost0):0;
- const K=[['إجمالي الموظفين',m.act.length,`${dHC>=0?'↑':'↓'} ${Math.abs(dHC)} منذ يناير`,dHC>=0?'up':'dn','👥',C.lav],
+ const dHC=m.act.length-m.hc0,dCost=m.cost0?pct(m.cost-m.cost0,m.cost0):0,NA='<small>غير متاح</small>';
+ const K=[['إجمالي الموظفين',m.act.length,m.deltaOK?`${dHC>=0?'↑':'↓'} ${Math.abs(dHC)} منذ يناير`:(m.all.length-m.act.length?`${m.all.length-m.act.length} خارج العدد`:'كلهم على رأس العمل'),m.deltaOK?(dHC>=0?'up':'dn'):'nt','👥',C.lav],
   ['في فترة التجربة',m.prob,`${m.act.length-m.prob} مثبّت`,'nt','🕒',C.camel],
-  ['نسبة التوطين',m.natK?f1(pct(m.sa,m.natK))+'%':'<small>غير متاح</small>',`${m.sa} سعودي`,'up','📍',C.sage],
-  ['نسبة الإناث',m.gK?f1(pct(m.fe,m.gK))+'%':'<small>غير متاح</small>',`${m.fe} من ${m.gK}`,'nt','👩',C.lavL],
-  ['التكلفة الشهرية',m.cost?sarK(m.cost):'<small>غير متاح</small>',`${dCost>=0?'↑':'↓'} ${f1(Math.abs(dCost))}% منذ يناير`,dCost>5?'dn':'nt','💰',C.gold],
-  ['معدل الدوران',f1(m.turn)+'%',`${m.exY} مغادرة في ${CY}`,m.turn>8?'dn':'up','🔁',C.terra]];
+  ['نسبة التوطين',m.natK?f1(pct(m.sa,m.natK))+'%':NA,m.natK?`${m.sa} سعودي من ${m.natK}`:'أضف عمود الجنسية','nt','📍',C.sage],
+  ['نسبة الإناث',m.gK?f1(pct(m.fe,m.gK))+'%':NA,m.gK?`${m.fe} من ${m.gK}`:'أضف عمود الجنس','nt','👩',C.lavL],
+  ['التكلفة الشهرية',m.cost?sarK(m.cost):NA,!m.cost?'أضف عمود الراتب':m.deltaOK&&m.cost0?`${dCost>=0?'↑':'↓'} ${f1(Math.abs(dCost))}% منذ يناير`:`متوسط ${sar(m.cost/Math.max(1,m.act.filter(e=>e.salary!=null).length))}`,m.deltaOK&&dCost>5?'dn':'nt','💰',C.gold],
+  ['معدل الدوران',m.hasTurn&&m.deltaOK?f1(m.turn)+'%':NA,m.hasTurn&&m.deltaOK?`${m.exY} مغادرة في ${CY}`:(m.hasTurn?'أضف تاريخ التعيين':'أضف تاريخ الانتهاء أو الحالة'),m.hasTurn&&m.deltaOK?(m.turn>8?'dn':'up'):'nt','🔁',C.terra]];
  $('#kpis').innerHTML=K.map(([l,v,d,cl,ic,c])=>`<div class="card kpi"><div class="ic" style="background:${c}22">${ic}</div><div><div class="l">${l}</div><div class="v">${v}</div><div class="d ${cl}">${d}</div></div></div>`).join('');
  // donuts
  if(m.gK)donut('cGender',['إناث','ذكور'],[m.fe,m.gK-m.fe],[C.camel,C.lav],f1(pct(m.fe,m.gK))+'%','إناث');else none('cGender','عمود الجنس غير موجود');
@@ -377,39 +421,45 @@ function render(){if(!DATA)return;Object.values(charts).forEach(c=>c.destroy());
  // growth
  const hs=m.all.filter(e=>e.hire);
  if(hs.length){const y0=Math.max(Math.min(...hs.map(e=>e.hire.getFullYear())),CY-7),ys=[];for(let y=y0;y<=CY;y++)ys.push(y);
-  mk('cGrowth',{data:{labels:ys,datasets:[{type:'line',label:'الإجمالي',data:ys.map(y=>m.all.filter(e=>empOn(e,y===CY?TODAY:new Date(y,11,31))).length),borderColor:C.lavD,backgroundColor:C.lavD,tension:.3,pointRadius:4,yAxisID:'y1'},{type:'bar',label:'تعيينات',data:ys.map(y=>hs.filter(e=>e.hire.getFullYear()===y).length),backgroundColor:C.sage,borderRadius:5},{type:'bar',label:'مغادرات',data:ys.map(y=>m.all.filter(e=>e.exit&&e.exit.getFullYear()===y).length),backgroundColor:C.terra,borderRadius:5}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'top',align:'end'}},scales:{x:nG,y:{...gY,beginAtZero:true,ticks:{precision:0}},y1:{position:'right',beginAtZero:true,grid:{display:false},ticks:{precision:0}}}}})}
- else none('cGrowth','عمود تاريخ التعيين غير موجود');
+  mk('cGrowth',{data:{labels:ys,datasets:[{type:'line',label:'الإجمالي',data:ys.map(y=>m.all.filter(e=>empOnS(e,y===CY?TODAY:new Date(y,11,31))).length),borderColor:C.lavD,backgroundColor:C.lavD,tension:.3,pointRadius:4,yAxisID:'y1'},{type:'bar',label:'تعيينات',data:ys.map(y=>hs.filter(e=>e.hire.getFullYear()===y).length),backgroundColor:C.sage,borderRadius:5},{type:'bar',label:'مغادرات',data:ys.map(y=>m.all.filter(e=>e.exit&&e.exit.getFullYear()===y).length),backgroundColor:C.terra,borderRadius:5}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'top',align:'end'}},scales:{x:nG,y:{...gY,beginAtZero:true,ticks:{precision:0}},y1:{position:'right',beginAtZero:true,grid:{display:false},ticks:{precision:0}}}}})}
+ else none('cGrowth',has('hire')?'تواريخ التعيين غير مقروءة':'عمود تاريخ التعيين غير موجود');
  // dept
- const gd=[...group(m.act,'dept')].map(([d,a])=>[d,a.length,a.filter(e=>e.status==='تجربة').length]).sort((a,b)=>b[1]-a[1]);
- mk('cDept',{type:'bar',data:{labels:gd.map(x=>x[0]),datasets:[{label:'مثبّت',data:gd.map(x=>x[1]-x[2]),backgroundColor:C.lav,borderRadius:4,stack:'s'},{label:'تجربة',data:gd.map(x=>x[2]),backgroundColor:C.camel,borderRadius:4,stack:'s'}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{x:{...gY,reverse:true,stacked:true,ticks:{precision:0}},y:{...nG,position:'right',stacked:true}}}});
+ const gdA=[...group(m.act,'dept')].map(([d,a])=>[d,a.length,a.filter(e=>e.status==='تجربة').length]).sort((a,b)=>b[1]-a[1]),gdT=topN(gdA),gd=gdT.rows;
+ note('cDept',gdT.more?`أكبر ${TOPN} إدارة | ${gdT.more} إدارة أخرى متاحة من قائمة الإدارات`:'');
+ if(!gd.length)none('cDept','لا يوجد موظفون على رأس العمل');else mk('cDept',{type:'bar',data:{labels:gd.map(x=>x[0]),datasets:[{label:'مثبّت',data:gd.map(x=>x[1]-x[2]),backgroundColor:C.lav,borderRadius:4,stack:'s'},{label:'تجربة',data:gd.map(x=>x[2]),backgroundColor:C.camel,borderRadius:4,stack:'s'}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{x:{...gY,reverse:true,stacked:true,ticks:{precision:0}},y:{...nG,position:'right',stacked:true,ticks:{callback(v){return cut(this.getLabelForValue(v))}}}}}});
  // rating
  if(m.rt.length){const B=[['ممتاز',e=>e.rating>=90,C.gold,'90+'],['يفوق',e=>e.rating>=80&&e.rating<90,C.sage,'80-89'],['يلبي',e=>e.rating>=70&&e.rating<80,C.lav,'70-79'],['تحسين',e=>e.rating<70,C.terra,'أقل من 70']];
   mk('cRating',{type:'bar',data:{labels:B.map(b=>b[0]),datasets:[{data:B.map(b=>m.rt.filter(b[1]).length),backgroundColor:B.map(b=>b[2]),borderRadius:8}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:c=>B[c[0].dataIndex][0]+' ('+B[c[0].dataIndex][3]+')',label:c=>c.raw+' موظف'}}},scales:{x:nG,y:{...gY,beginAtZero:true,ticks:{precision:0}}}}})}
- else none('cRating','عمود التقييم غير موجود');
+ else none('cRating',has('rating')?'لا توجد تقييمات صالحة':'عمود التقييم غير موجود');
  // saudi by dept
  const kn=m.act.filter(e=>e.nat);
- if(kn.length){const avg=pct(m.sa,m.natK),g=[...group(kn,'dept')].map(([d,a])=>[d,pct(a.filter(e=>e.nat==='سعودي').length,a.length)]).sort((a,b)=>b[1]-a[1]);
+ if(kn.length){const avg=pct(m.sa,m.natK),gA=[...group(kn,'dept')].map(([d,a])=>[d,pct(a.filter(e=>e.nat==='سعودي').length,a.length)]).sort((a,b)=>a[1]-b[1]),gT=topN(gA),g=gT.rows.reverse();
+  note('cSaudiDept',gT.more?`أقل ${TOPN} إدارة توطينًا من ${gA.length}`:'');
   hbar('cSaudiDept',g.map(x=>x[0]),g.map(x=>Math.round(x[1])),g.map(x=>x[1]>=avg?C.sage:C.terra),{max:100,tick:v=>v+'%',fmt:v=>v+'%',plugins:[avgLine(avg)]})}
- else none('cSaudiDept','عمود الجنسية غير موجود');
+ else{note('cSaudiDept','');none('cSaudiDept','عمود الجنسية غير موجود')}
  // cost line
- if(m.all.some(e=>e.salary!=null)){const ms=MONTHS.slice(0,TODAY.getMonth()+1);
+ const ms=MONTHS.slice(0,TODAY.getMonth()+1),cl=ms.map((_,i)=>{const d=i===TODAY.getMonth()?TODAY:new Date(CY,i+1,0);return m.all.filter(e=>empOn(e,d)).reduce((a,e)=>a+(e.salary||0),0)});
+ if(cl.some(v=>v>0)){
   mk('cCost',{type:'line',data:{labels:ms,datasets:[{data:ms.map((_,i)=>{const d=i===TODAY.getMonth()?TODAY:new Date(CY,i+1,0);return m.all.filter(e=>empOn(e,d)).reduce((a,e)=>a+(e.salary||0),0)}),borderColor:C.gold,backgroundColor:'rgba(200,153,26,.13)',fill:true,tension:.3,pointRadius:4,pointBackgroundColor:C.gold}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>sar(c.raw)}}},scales:{x:nG,y:{...gY,beginAtZero:true,ticks:{callback:v=>Math.round(v/1000)+'K'}}}}})}
- else none('cCost','عمود التكلفة غير موجود');
+ else none('cCost',has('salary')?'لا توجد رواتب صالحة':'عمود التكلفة غير موجود');
  // tenure
  const cnt=[0,0,0,0];m.act.forEach(e=>{if(!e.hire)return;const y=(TODAY-e.hire)/(365.25*864e5);cnt[y<1?0:y<3?1:y<=5?2:3]++});
- hbar('cTenure',['أقل من سنة','1-2 سنة','3-5 سنوات','+5 سنوات'],cnt,[C.lavL,C.lav,C.lavD,C.gold]);
+ if(cnt.some(x=>x))hbar('cTenure',['أقل من سنة','1-2 سنة','3-5 سنوات','+5 سنوات'],cnt,[C.lavL,C.lav,C.lavD,C.gold]);else none('cTenure',has('hire')?'تواريخ التعيين غير مقروءة':'عمود تاريخ التعيين غير موجود');
  // top
  const medal=[C.gold,'#A9A39A',C.terra,C.lavL,C.lavL];
- $('#top').innerHTML=m.rt.length?m.rt.slice().sort((a,b)=>b.rating-a.rating).slice(0,5).map((e,i)=>`<div class="row"><span class="rk" style="background:${medal[i]}">${i+1}</span><div class="nm"><b>${esc(e.name)}</b><small>${esc(e.dept)}</small></div><span class="sc">${f1(e.rating)}</span></div>`).join(''):'<div class="empty">عمود التقييم غير موجود</div>';
+ $('#top').innerHTML=m.rt.length?m.rt.slice().sort((a,b)=>b.rating-a.rating).slice(0,5).map((e,i)=>`<div class="row"><span class="rk" style="background:${medal[i]}">${i+1}</span><div class="nm"><b>${esc(e.name)}</b><small>${esc(e.dept)}</small></div><span class="sc">${f1(e.rating)}</span></div>`).join(''):`<div class="empty">${has('rating')?'لا توجد تقييمات صالحة':'عمود التقييم غير موجود'}</div>`;
  // heatmap
- if(m.attRows&&m.attRows.length){const months=DATA.att?DATA.att.months:['المتوسط'];
+ $('#hm').parentElement.querySelectorAll('.more').forEach(x=>x.remove());
+ if(m.attRows&&m.attRows.length){const months=DATA.att?DATA.att.months:['المتوسط'];const hmAll=m.attRows.slice().sort((a,b)=>(a.avg??999)-(b.avg??999)),hmT=topN(hmAll,15),hmRows=DATA.att?(hmT.more?hmT.rows:m.attRows):hmT.rows;
   const col=v=>v==null?['#F3EEE6',C.muted]:v>=97?['#61654E','#fff']:v>=93?['#7D8167','#fff']:v>=90?['#C9CDB5',C.char]:v>=85?['#E4CFA6',C.char]:v>=80?['#C7A16B','#fff']:['#B16D4C','#fff'];
-  $('#hm').innerHTML=`<table><thead><tr><th></th>${months.map(x=>`<th>${esc(x)}</th>`).join('')}${DATA.att?'<th>المتوسط</th>':''}</tr></thead><tbody>${m.attRows.map(r=>`<tr><th class="dp">${esc(r.dept)}</th>${r.v.map(v=>{const[b,t]=col(v);return`<td style="background:${b};color:${t}">${v==null?'':Math.round(v)+'%'}</td>`}).join('')}${DATA.att?`<td style="background:#fff;border:1.5px solid ${col(r.avg)[0]};color:${C.char}">${r.avg==null?'':f1(r.avg)+'%'}</td>`:''}</tr>`).join('')}</tbody></table>`}
+  $('#hm').innerHTML=`<table><thead><tr><th></th>${months.map(x=>`<th>${esc(x)}</th>`).join('')}${DATA.att?'<th>المتوسط</th>':''}</tr></thead><tbody>${hmRows.map(r=>`<tr><th class="dp" title="${esc(r.dept)}">${esc(cut(r.dept,30))}</th>${r.v.map(v=>{const[b,t]=col(v);return`<td style="background:${b};color:${t}">${v==null?'':Math.round(v)+'%'}</td>`}).join('')}${DATA.att?`<td style="background:#fff;border:1.5px solid ${col(r.avg)[0]};color:${C.char}">${r.avg==null?'':f1(r.avg)+'%'}</td>`:''}</tr>`).join('')}</tbody></table>${hmT.more?`<div class="more">أدنى 15 إدارة انضباطًا من ${hmAll.length}</div>`:''}`}
  else $('#hm').innerHTML='<div class="empty">أضف عمود «نسبة الحضور» أو ورقة «الحضور» في ملفك</div>';
  // treemap
- const items=[...group(m.act,'dept')].map(([d,a])=>({d,v:a.reduce((s,e)=>s+(e.salary||0),0)})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v).map((x,i)=>({...x,c:SERIES[i%SERIES.length]}));
- if(items.length){$('#tm').innerHTML=squarify(items,0,0,100,100).map(b=>{const dark=[C.camelL,C.sageL,C.lavL,C.camel].includes(b.c);const sm=b.w*b.h<140;return`<div style="right:${b.x}%;top:${b.y}%;width:${b.w}%;height:${b.h}%;background:${b.c};color:${dark?C.char:'#fff'}" title="${esc(b.d)}: ${sar(b.v)}"><b>${esc(b.d)}</b>${sm?'':`<span>${sar(b.v)}</span>`}<span>${f1(pct(b.v,m.cost))}%</span></div>`}).join('')}
- else $('#tm').innerHTML='<div class="empty">عمود التكلفة غير موجود</div>';
+ let it0=[...group(m.act,'dept')].map(([d,a])=>({d,v:a.reduce((s,e)=>s+(e.salary||0),0)})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);
+ if(it0.length>20){const rest=it0.slice(19);it0=[...it0.slice(0,19),{d:`أخرى (${rest.length} إدارة)`,v:rest.reduce((s,x)=>s+x.v,0)}]}
+ const items=it0.map((x,i)=>({...x,c:SERIES[i%SERIES.length]}));
+ if(items.length){$('#tm').innerHTML=squarify(items,0,0,100,100).map(b=>{const dark=[C.camelL,C.sageL,C.lavL,C.camel].includes(b.c);const sm=b.w*b.h<140;return`<div style="right:${b.x}%;top:${b.y}%;width:${b.w}%;height:${b.h}%;background:${b.c};color:${dark?C.char:'#fff'}" title="${esc(b.d)}: ${sar(b.v)}"><b>${esc(cut(b.d,sm?14:30))}</b>${sm?'':`<span>${sar(b.v)}</span>`}<span>${f1(pct(b.v,m.cost))}%</span></div>`}).join('')}
+ else $('#tm').innerHTML=`<div class="empty">${has('salary')?'لا توجد تكلفة للموظفين على رأس العمل':'عمود التكلفة غير موجود'}</div>`;
  drawMap(m.act)}
 
 function squarify(items,x,y,w,h){const out=[];let rest=items.slice();
@@ -430,8 +480,8 @@ function handle(f){if(!f)return;if(!window.XLSX)return toast('تعذّر تحم�
  const rd=new FileReader();rd.onload=ev=>setTimeout(()=>{try{
   const wb=XLSX.read(ev.target.result,{type:'array',cellDates:true});let best=null;
   wb.SheetNames.forEach(n=>{if(/حضور|انضباط|attendance/i.test(n))return;const a=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:null,raw:true});
-   for(let i=0;i<Math.min(10,a.length);i++){const sc=(a[i]||[]).filter(h=>FMAP[nk(h)]).length;if(!best||sc>best.sc)best={sc,hd:a[i],rows:a.slice(i+1)}}});
-  if(!best||best.sc<2){toast('لم تُعرف أعمدة الموظفين. نزّل القالب واتبع أسماء أعمدته');return}
+   for(let i=0;i<Math.min(15,a.length);i++){const fs=new Set();(a[i]||[]).forEach(h=>{if(typeof h!=='string')return;const r=fieldOf(h);if(r)fs.add(r[0])});const sc=fs.size+(fs.has('name')||fs.has('id')?1:0);if(!best||sc>best.sc)best={sc,hd:a[i],rows:a.slice(i+1)}}});
+  if(!best||best.sc<3){const hd=best&&best.hd?best.hd.filter(h=>h!=null&&String(h).trim()).slice(0,6).join('، '):'';toast(hd?`لم تُعرف أعمدة الموظفين (${hd}). نزّل القالب واتبع أسماء أعمدته`:'الملف فارغ أو لا يحتوي جدول موظفين');return}
   load(best.hd.map(h=>h??''),best.rows,readAttendance(wb),'file',f.name);window.scrollTo({top:0,behavior:'smooth'});toast(`✓ تم تحليل ${DATA.rows.length} موظف`)
  }catch(err){console.error(err);toast('تعذّرت قراءة الملف، تأكد أنه غير محمي بكلمة مرور')}finally{$('#loading').classList.remove('on');$('#file').value=''}},30);
  rd.readAsArrayBuffer(f)}

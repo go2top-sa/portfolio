@@ -1,0 +1,168 @@
+{
+ "__sample__": {
+  "accepted": true,
+  "score": 68,
+  "level": "جيد",
+  "head": "الأولوية: رفع التوطين في تقنية المعلومات",
+  "acts": [
+   "رفع التوطين في تقنية المعلومات",
+   "خطط تحسين أداء",
+   "خفض معدل الدوران"
+  ],
+  "costLine": "↓ 0.9% منذ يناير"
+ },
+ "01_english.xlsx": {
+  "accepted": true,
+  "score": 40,
+  "level": "يحتاج تدخل",
+  "head": "الأولوية: خطط تحسين أداء",
+  "acts": [
+   "خطط تحسين أداء",
+   "خفض معدل الدوران",
+   "رفع التوطين في IT"
+  ],
+  "costLine": "↓ 14.4% منذ يناير"
+ },
+ "02_minimal.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "03_titlerows.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "الأولوية: رفع التوطين في ب",
+  "acts": [
+   "رفع التوطين في ب",
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "04_hijri.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "05_allexit.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "لا يوجد موظفون على رأس العمل في الملف",
+  "acts": [],
+  "costLine": null
+ },
+ "06_single.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "07_big.xlsx": {
+  "accepted": true,
+  "score": 60,
+  "level": "يحتاج تدخل",
+  "head": "الأولوية: خطط تحسين أداء",
+  "acts": [
+   "خطط تحسين أداء",
+   "ضبط الحضور في إدارة 14"
+  ],
+  "costLine": "↑ 0% منذ يناير"
+ },
+ "08_weird.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "09_headers_only.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "لا يوجد موظفون على رأس العمل في الملف",
+  "acts": [],
+  "costLine": null
+ },
+ "10_unknown_headers.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "11_bom.csv": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "12_empty.xlsx": {
+  "accepted": false,
+  "score": 68,
+  "level": "جيد",
+  "head": "الأولوية: رفع التوطين في تقنية المعلومات",
+  "acts": [
+   "رفع التوطين في تقنية المعلومات",
+   "خطط تحسين أداء",
+   "خفض معدل الدوران"
+  ],
+  "costLine": "↓ 0.9% منذ يناير"
+ },
+ "13_longnames.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "الأولوية: خطط تحسين أداء",
+  "acts": [
+   "خطط تحسين أداء",
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "14_attsheet.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "الأولوية: ضبط الحضور في IT",
+  "acts": [
+   "ضبط الحضور في IT",
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ },
+ "15_dupids.xlsx": {
+  "accepted": true,
+  "score": null,
+  "level": "بيانات غير كافية",
+  "head": "أكمل بيانات الملف لحساب درجة الصحة",
+  "acts": [
+   "أكمل بيانات الدرجة"
+  ],
+  "costLine": null
+ }
+}
