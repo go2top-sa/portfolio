@@ -78,6 +78,20 @@ ul.plain li::marker{color:var(--lav)}
 .facts div:last-child{border-bottom:0}
 .facts dt{color:var(--ink-soft)}
 .facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.adv{display:flex;gap:22px;align-items:center;margin:4px 0 20px;padding:16px;border-radius:var(--r);background:rgba(255,255,255,.66);border:1px solid var(--glass-edge)}.adv video{width:230px;max-width:46%;aspect-ratio:9/16;border-radius:14px;background:#000;flex:none}.adv b{display:block;font-family:var(--f-display);font-size:24px;color:var(--lav-deep);margin-bottom:6px}.adv p{margin:0;font-family:var(--f-ui);font-size:14px;line-height:1.8;color:var(--ink-soft)}
+.proof{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin-top:12px;align-items:start}.proof img{width:100%;max-height:340px;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;background:#fff}.proof video{width:100%;max-height:340px;border-radius:12px;border:1px solid var(--line);background:#000}.pts{margin:6px 0 0;font-size:15px}.pts li{margin:4px 0}
+.numbers{margin-top:22px}.numbers .sch{margin-bottom:10px}.numbers .sch b{font-family:var(--f-display);font-size:24px;color:var(--lav-deep)}
+.showcase{margin-top:22px}
+.showcase .sch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.showcase .sch b{font-family:var(--f-display);font-size:24px;color:var(--lav-deep)}
+.showcase .sch button{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:13px;color:var(--lav)}
+.scg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sc{all:unset;cursor:pointer;box-sizing:border-box;display:block;border-radius:var(--r);overflow:hidden;background:rgba(255,255,255,.72);border:1px solid var(--glass-edge);box-shadow:var(--shadow);transition:transform .25s}
+.sc:hover,.sc:focus-visible{transform:translateY(-3px)}
+.sc img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.sc span{display:block;padding:9px 12px 11px;font-family:var(--f-ui);font-size:13px;line-height:1.5;color:var(--ink)}
+@media (max-width:1200px){.scg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.facts dd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.facts dd .latin{white-space:nowrap;font-size:13px}}
 .highlights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:26px}
 .hl{all:unset;position:relative;cursor:pointer;box-sizing:border-box;display:block;border-radius:var(--r);padding:18px 18px 20px;background:rgba(255,255,255,.66);border:1px solid var(--glass-edge);box-shadow:0 10px 30px -16px rgba(62,48,92,.3)}
 .hl .k{font-family:var(--f-ui);font-size:11.5px;color:var(--olive);font-weight:600}
@@ -97,8 +111,17 @@ ul.plain li::marker{color:var(--lav)}
 .tl .body{position:relative;margin-bottom:14px;min-width:0;padding:14px 18px;border-radius:var(--r);background:rgba(255,255,255,.62);border:1px solid var(--glass-edge)}
 .tl .body h4{font-family:var(--f-display);font-size:23px;margin:0;font-weight:700;line-height:1.35}
 .tl .body .meta{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 6px}
-.tl .body p{font-size:17px;color:var(--ink-soft);margin:0}
+.tl .body p{font-size:17px;color:var(--ink-soft);margin:0}.tl .body ul.pts{color:var(--ink-soft);font-size:16px;padding-inline-start:20px;margin:8px 0 0}
 /* grids */
+.layers{display:grid;gap:8px;margin:4px 0 6px}
+.layer{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.7);border:1px solid rgba(78,65,115,.14)}
+.layer b{font-family:var(--f-display);font-size:17px;color:#4E4173}
+.layer span{font-size:14.5px;line-height:1.6}
+.layer.hub{background:rgba(200,153,26,.10);border-color:rgba(200,153,26,.35)}
+.syscodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.syscodes .chip{font-family:var(--f-latin,inherit)}
+@media(max-width:640px){.layer{grid-template-columns:1fr;gap:4px}}
+[data-f] small{unicode-bidi:isolate}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .card{position:relative;border-radius:var(--r);padding:18px 18px;background:rgba(255,255,255,.66);border:1px solid var(--glass-edge);box-shadow:0 10px 30px -18px rgba(62,48,92,.3);display:flex;flex-direction:column;gap:6px;min-width:0}
 .card h4{margin:0;font-family:var(--f-display);font-size:21px;font-weight:700;line-height:1.35}
@@ -245,13 +268,13 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
     <div>
       <div class="eyebrow">النبذة المهنية</div>
       <p class="big">مؤسِّسة <em>go2top</em>، متخصصة في إدارة الموارد البشرية والتطوير المؤسسي وتصميم نظم الأعمال. أعمل عبر go2top على بناء حلول وأنظمة إدارية رقمية.</p>
-      <p>ثماني سنوات في الإشراف والقيادة التشغيلية بالقطاع غير الربحي، وثماني سنوات في التدريس الجامعي، ثم ريادة الأعمال. أجمع بين الخبرة الإدارية الميدانية وبناء الأنظمة بنفسي: من رصد المشكلة في بيئة العمل، إلى تصميم الحل وبنائه وتوثيقه.</p>
+      <p>تسع سنوات في الإشراف والعمل الإداري والقيادة التشغيلية، وثماني سنوات في التدريس الجامعي، ثم ريادة الأعمال. أجمع بين الخبرة الإدارية الميدانية وبناء الأنظمة بنفسي: أرصد المشكلة في بيئة العمل، ثم أصمم الحل وأبنيه وأوثّقه.</p>
       <p class="ui" style="color:var(--ink-soft)">المجالات الثلاثة: الموارد البشرية · التحول الرقمي · القرآن وعلومه</p>
     </div>
     <dl class="facts">
-      <div><dt>الصفة</dt><dd>مؤسِّسة go2top | إلى القمة (قيد التأسيس)</dd></div>
+      <div><dt>الصفة</dt><dd>مؤسِّسة go2top | إلى القمة</dd></div>
       <div><dt>أعلى مؤهل</dt><dd>الدبلوم العالي في الموارد البشرية، جامعة الملك سعود (4.85 من 5)</dd></div>
-      <div><dt>أعلى معدل</dt><dd>99.33% بتقدير A+ في جميع المقررات، الدبلوم المشارك في التحول الرقمي</dd></div>
+      <div><dt>الزمالة</dt><dd>زمالة قادة التحول الرقمي، تقدير ممتاز (97%)</dd></div><div><dt>أعلى معدل</dt><dd>99.33% بتقدير A+ في جميع المقررات، الدبلوم المشارك في التحول الرقمي</dd></div>
       <div><dt>الجائزة</dt><dd>المركز الأول، هاكاثون «نواة»، وزارة التعليم</dd></div>
       <div><dt>المدينة</dt><dd>الرياض</dd></div>
       <div><dt>البريد</dt><dd><span class="latin" id="mail">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">نسخ</button></dd></div>
@@ -262,9 +285,25 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="highlights">
     <button class="hl award" data-go="awards" type="button"><span class="go">←</span><div class="k">جائزة</div><div class="t">المركز الأول في هاكاثون «نواة»</div><div class="d">تطبيق إشعارات أولياء الأمور بوصول الطالب ومغادرته. أنشأتُ النموذج الأولي كاملًا وقدّمت العرض للمقيّمين.</div></button>
     <button class="hl" data-go="systems" type="button"><span class="go">←</span><div class="k">نظام</div><div class="t">CTMS لإدارة التدريب التعاوني</div><div class="d">نشأ من 83 نقطة ألم رصدتها في وزارة التعليم، وبلغت فكرته مرحلة الموافقات لإعداد MVP. النظام مبني وبقي القليل لإتمامه.</div></button>
-    <button class="hl" data-go="go2top" type="button"><span class="go">←</span><div class="k">مؤسسة</div><div class="t">go2top | إلى القمة</div><div class="d">هوية مكتملة، ومنتج تشخيصي رئيسي «بوصلة go2top»، والسلسلة الذهبية من 32 منتجًا.</div></button>
-    <button class="hl" data-go="institution" type="button"><span class="go">←</span><div class="k">مشروع مؤسسي</div><div class="t">تأسيس جمعية تنموية تعليمية</div><div class="d">مستشار تنظيم مؤسسي ومدير مشروع التأسيس: الخطط، وحزمة وثائق من 12 مجالًا، والموقع والمنصة الرقمية.</div></button>
+    <button class="hl" data-go="go2top" type="button"><span class="go">←</span><div class="k">مؤسسة</div><div class="t">go2top | إلى القمة</div><div class="d">ممكّن التحول الرقمي والتميّز المؤسسي، ومنظومة ISPS من 25 نظامًا مؤسسيًا متكاملًا.</div></button>
+    <button class="hl" data-go="institution" type="button"><span class="go">←</span><div class="k">مشروع مؤسسي</div><div class="t">إدارة مشروع تأسيس جمعية تنموية تعليمية</div><div class="d">مستشار تنظيم مؤسسي ومدير مشروع التأسيس: الخطط، وحزمة وثائق من 12 مجالًا، والموقع والمنصة الرقمية.</div></button>
   </div>
+    <div class="numbers"><div class="sch"><b>بالأرقام</b></div><div class="stat-row">
+    <div class="stat"><b>13</b><span>سنة خبرة عملية في القيادة والإدارة والتدريس الجامعي وتأسيس الأعمال</span></div>
+    <div class="stat"><b>9</b><span>سنوات في الإشراف والعمل الإداري والقيادي</span></div>
+    <div class="stat"><b>83</b><span>نقطة ألم رصدتها، فصارت فكرة CTMS التي بلغت مرحلة الـMVP</span></div>
+    <div class="stat"><b>17</b><span>نظامًا وأداة بنيتها، 9 منها منشورة للزيارة</span></div>
+    <div class="stat"><b>+285</b><span>ساعة تدريب احترافي موثقة</span></div>
+    <div class="stat"><b>23</b><span>شهادة ودورة احترافية</span></div>
+    <div class="stat"><b>97%</b><span>تقدير الزمالة، و99.33% في الدبلوم المشارك</span></div>
+    <div class="stat"><b>8</b><span>سنوات في التدريس الجامعي، لقرابة 13,000 طالبة من مختلف التخصصات</span></div>
+  </div></div>
+<div class="showcase"><div class="sch"><b>من أعمالي</b><button type="button" data-go="gallery">معرض الأعمال كاملًا ←</button></div><div class="scg">
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-association.jpg" alt="" loading="lazy"><span>موقع جمعية تنموية تعليمية ومنصتها</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-albr-maturity.jpg" alt="" loading="lazy"><span>تصور أولي لاستراتيجية تحول رقمي (مشروع أكاديمي)</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/fellowship-adkar.jpg" alt="" loading="lazy"><span>مشروع تخرج الزمالة: الجاهزية وقيادة التغيير</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-ladder-conversation.jpg" alt="" loading="lazy"><span>سُلّم: منصة تدريب المحادثة الإنجليزية</span></button>
+  </div></div>
 </section>
 
 
@@ -272,7 +311,8 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="gallery" data-label="معرض الأعمال" hidden>
   <div class="eyebrow">معرض الأعمال</div>
   <h2>نماذج من الأعمال</h2>
-  <p class="lede">لقطات من منصات منشورة، وتصاميم، وشهادات موثقة. اضغطي على أي صورة لتكبيرها.</p>
+  <p class="lede">لقطات من منصات منشورة، وتصاميم، وشهادات موثقة. تُكبَّر أي صورة بالضغط عليها.</p>
+  <p class="note">المعروض هنا هو الأحدث، وتسبقه أعمال وتكريمات ودورات كثيرة خلال سنوات العمل القيادي والأكاديمي.</p>
   <div class="filters" id="galFilters" role="group" aria-label="تصفية المعرض"></div>
   <div class="gallery" id="galGrid"></div>
 </section>
@@ -281,16 +321,16 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="experience" data-label="الخبرات" hidden>
   <div class="eyebrow">الخبرات العملية</div>
   <h2>القيادة التشغيلية والتدريس الجامعي</h2>
-  <p class="lede">ثماني سنوات في الإشراف والقيادة بالقطاع غير الربحي، وثماني سنوات في التدريس الجامعي تداخل بعضها زمنيًا. الترتيب من الأحدث.</p>
+  <p class="lede">تسع سنوات في الإشراف والعمل الإداري والقيادة، وثماني سنوات في التدريس الجامعي تداخل بعضها زمنيًا. الترتيب من الأحدث.</p>
   <div class="tl">
-    <div class="row lead"><div class="yr">2026</div><div class="dot"></div><div class="body"><h4>مؤسِّسة go2top</h4><div class="meta"><span class="chip">ريادة أعمال</span><span class="st plan">قيد التأسيس</span></div><p>بناء الهوية والاستراتيجية والمنتجات والأنظمة. حاصلة على وثيقة العمل الحر السعودية.</p></div></div>
+    <div class="row lead"><div class="yr">2026</div><div class="dot"></div><div class="body"><h4>مؤسِّسة go2top</h4><div class="meta"><span class="chip">ريادة أعمال</span></div><p>مؤسسة سعودية متخصصة في تمكين التحول الرقمي والتميّز المؤسسي، وتطوير الأعمال ورأس المال البشري، وتصميم الحلول الرقمية والأنظمة التشغيلية لتعزيز الكفاءة والأداء المؤسسي. حاصلة على وثيقة العمل الحر السعودية.</p></div></div>
     <div class="row lead"><div class="yr">2025 ← 2026</div><div class="dot"></div><div class="body"><h4>مستشار تنظيم مؤسسي ومدير مشروع التأسيس</h4><div class="meta"><span class="chip">جمعية في القطاع غير الربحي</span><span class="chip">عقد مستقل</span></div><p>الخطة الاستراتيجية والزمنية والتنفيذية، وملفات التأسيس والتشغيل والموازنات، والموقع والمنصة الرقمية.</p></div></div>
-    <div class="row"><div class="yr">1447هـ</div><div class="dot"></div><div class="body"><h4>متدربة في تطوير الموارد البشرية</h4><div class="meta"><span class="chip">وزارة التعليم، الإدارة العامة لتطوير الموارد البشرية</span><span class="chip">ثلاثة أشهر ونصف</span></div><p>رصد 83 نقطة ألم في إدارة التدريب التعاوني، وتقديم فكرة CTMS التي بلغت مرحلة الموافقات لإعداد MVP. التخطيط لهاكاثون «نواة» والفوز بمركزه الأول. إعداد نماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.</p></div></div>
-    <div class="row"><div class="yr">1443 ← 1444هـ</div><div class="dot"></div><div class="body"><h4>متطوعة في تطوير المناهج</h4><div class="meta"><span class="chip">تطوعي</span></div><p>إعداد محتوى المناهج وتطويره.</p></div></div>
-    <div class="row"><div class="yr">1433 ← 1441هـ</div><div class="dot"></div><div class="body"><h4>تدريس جامعي</h4><div class="meta"><span class="chip">جامعة الإمام محمد بن سعود الإسلامية</span></div><p>12 إلى 18 ساعة أسبوعيًا، بشعب يتراوح عددها بين 25 و140 طالبة عبر المستويات الثمانية. التدريس عن بعد عبر Blackboard وZoom في عام الجائحة، وتقارير إحصائية مفصلة لكل مقرر وشعبة نهاية كل فصل.</p></div></div>
-    <div class="row"><div class="yr">1434 ← 1439هـ</div><div class="dot"></div><div class="body"><h4>مديرة فرع مكتب إشراف على مدارس نسائية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span><span class="chip">شمال الرياض</span></div><p>الترشيح والاختيار وإجراء المقابلات الوظيفية، وتهيئة الموظفات الجدد، وتقييم أداء الموظفات والمدارس، وقيادة المبادرات، والتخطيط الاستراتيجي والتنفيذي، وإعداد الموازنات ومتابعتها.</p></div></div>
-    <div class="row"><div class="yr">1433 ← 1434هـ</div><div class="dot"></div><div class="body"><h4>مديرة مدرسة نسائية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span><span class="chip">رُقّيت بعدها لإدارة الفرع</span></div><p>تحويل العمل إلى خطط تنتج نتائج قابلة للقياس، وتنفيذ مناهج تعليمية معدّة.</p></div></div>
-    <div class="row"><div class="yr">1428 ← 1430هـ</div><div class="dot"></div><div class="body"><h4>مشرفة تعليمية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span></div><p>الإشراف التعليمي ومتابعة الأداء.</p></div></div>
+    <div class="row"><div class="yr">1447هـ</div><div class="dot"></div><div class="body"><h4>متدربة في تطوير الموارد البشرية</h4><div class="meta"><span class="chip">وزارة التعليم، الإدارة العامة لتطوير الموارد البشرية</span><span class="chip">ثلاثة أشهر ونصف</span></div><ul class="pts"><li>رصد 83 نقطة ألم في إدارة التدريب التعاوني، وتقديم فكرة CTMS التي بلغت مرحلة الموافقات لإعداد MVP.</li><li>إعداد هاكاثون «Mini Jam» الأولي وتخطيطه، وهو الذي نُفّذ لاحقًا باسم «نواة»، والفوز بمركزه الأول، مع تكريمين مستقلين.</li><li>إدارة مبادرة «من التدريب إلى التمكين» منذ اليوم الأول، والتخطيط والتنفيذ الكامل لبرنامج «مشروع متدرب» لمشاريع المتدربين.</li><li>تقارير أسبوعية ولوحات عرض للقيادات، وأدلة إرشادية ونماذج تشغيلية ونماذج مقابلات واستبانات.</li><li>إعداد نماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.</li></ul></div></div>
+    <div class="row"><div class="yr">1443 ← 1444هـ</div><div class="dot"></div><div class="body"><h4>عمل إداري تطوعي في تطوير المناهج</h4><div class="meta"><span class="chip">تطوعي</span></div><ul class="pts"><li>تطوير محتوى تعليمي ومناهج وبرامج تدريبية ومبادرات، ومتابعة جودتها.</li><li>مراجعة الأدلة التعليمية المساندة للفرق التعليمية والإدارية وتحديثها.</li></ul></div></div>
+    <div class="row"><div class="yr">1433 ← 1441هـ</div><div class="dot"></div><div class="body"><h4>تدريس جامعي</h4><div class="meta"><span class="chip">جامعة الإمام محمد بن سعود الإسلامية</span></div><ul class="pts"><li>تدريس مقرر جامعي مشترك لطالبات المستويات الثمانية من مختلف الأقسام، على مدى 16 فصلًا دراسيًا، بعبء 12 إلى 18 ساعة أسبوعيًا، وتضم الشعبة الواحدة بين 25 و140 طالبة.</li><li>تدريس قرابة 13,000 طالبة من مختلف التخصصات خلال المدة.</li><li>إعداد المحتوى العلمي وبناء الاختبارات.</li><li>تقويم أداء الطالبات ومتابعة تقدمهن، والإسهام في الإرشاد الأكاديمي.</li><li>دعم مهارات البحث والتحليل والتعلم النشط.</li><li>توظيف التقنيات التعليمية في عرض المحتوى وتنظيم العملية التعليمية، والتدريس عن بعد عبر Blackboard وZoom في عام الجائحة.</li><li>إعداد تقارير إحصائية مفصلة لكل مقرر وشعبة نهاية كل فصل.</li><li>الإشراف على العملية التعليمية وعضوية لجنة التحكيم في مسابقة «تاج الإمام» بعمادة التعلم الإلكتروني والتعليم عن بعد، أربعة مواسم متتالية منذ 2014.</li><li>عضوية لجنة تقييم مستوى المعلمات بالإسكان الجامعي (2014).</li></ul></div></div>
+    <div class="row"><div class="yr">1434 ← 1439هـ</div><div class="dot"></div><div class="body"><h4>مديرة فرع مكتب إشراف على مدارس نسائية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span><span class="chip">شمال الرياض</span></div><ul class="pts"><li>قيادة فرق الإشراف، ومتابعة أداء المدارس وقياداتها.</li><li>الترشيح والاختيار وإجراء المقابلات الوظيفية، وتهيئة الموظفات الجدد.</li><li>تقييم أداء الموظفات والمدارس، وتحليل مؤشرات الأداء.</li><li>التخطيط الاستراتيجي والتشغيلي، وقيادة المبادرات.</li><li>إعداد الموازنات ومتابعتها.</li><li>رفع التقارير الدورية والتوصيات التطويرية إلى الإدارة، وتحسين إجراءات العمل.</li></ul></div></div>
+    <div class="row"><div class="yr">1433 ← 1434هـ</div><div class="dot"></div><div class="body"><h4>مديرة مدرسة نسائية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span><span class="chip">رُقّيت بعدها لإدارة الفرع</span></div><ul class="pts"><li>إدارة المدرسة إداريًا وتعليميًا، والإشراف على مواردها البشرية.</li><li>إعداد الخطط التشغيلية ومؤشرات الأداء ومتابعتها، فصار العمل يسير بخطط تنتج نتائج قابلة للقياس.</li><li>إعداد منهج تعليمي تفصيلي متكامل على أربع سنوات، وتنفيذ مناهج تعليمية سبق إعدادها.</li><li>الترقية لإدارة فرع الإشراف بعد عام من إدارة المدرسة.</li></ul></div></div>
+    <div class="row"><div class="yr">1428 ← 1430هـ</div><div class="dot"></div><div class="body"><h4>مشرفة تعليمية</h4><div class="meta"><span class="chip">القطاع غير الربحي</span></div><ul class="pts"><li>متابعة أداء المدارس وجودة البرامج التعليمية.</li><li>متابعة الأداء التربوي وتقديم الدعم الفني للمعلمات.</li><li>تطوير البرامج التعليمية وإعداد التقارير التطويرية.</li></ul></div></div>
   </div>
 </section>
 
@@ -298,7 +338,7 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="education" data-label="المؤهلات" hidden>
   <div class="eyebrow">المؤهلات الأكاديمية</div>
   <h2>مسار أكاديمي يجمع الإدارة والتقنية</h2>
-  <p class="lede">المعدلات كلها من 5.</p>
+  <p class="lede">المعدلات من 5، إلا ما ذُكر نسبةً مئوية.</p>
   <div class="tbl"><table>
     <thead><tr><th>المؤهل</th><th>الجهة</th><th>السنة</th><th>الحالة والمعدل</th></tr></thead>
     <tbody>
@@ -327,6 +367,7 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="eyebrow">الشهادات والدورات الاحترافية</div>
   <h2>تأهيل في التقنية والإدارة والبيانات</h2>
   <p class="lede">شهادتان موثقتان من Cisco، وتخصص Microsoft عبر Coursera من أربع دورات، وعشر دورات حضورية وورشتان من مركز المسار الاحترافي للتدريب، وبرنامجا إعداد مكتملان بانتظار الاختبار.</p>
+  <p class="note">المعروض هنا هو الأحدث، وتسبقه أعمال وتكريمات ودورات كثيرة خلال سنوات العمل القيادي والأكاديمي.</p>
   <div class="filters" id="certFilters" role="group" aria-label="تصفية الشهادات"></div>
   <div class="grid" id="certGrid"></div>
   <p class="note">الدورات التي تحمل اسم شهادة مهنية (PMP، GRCP، Lean Six Sigma) شهادات إتمام دورة، وتُكتب بعدد ساعاتها. دورة PMP تستوفي شرط 35 ساعة تعليمية لاختبار PMP.</p>
@@ -337,77 +378,102 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="eyebrow">الجوائز والتكريمات</div>
   <h2>المركز الأول في هاكاثون «نواة»</h2>
   <p class="lede">هاكاثون نظمته الإدارة العامة لتطوير الموارد البشرية في وزارة التعليم (1447هـ)، مع تكريمين منفصلين.</p>
+  <p class="note">المعروض هنا هو الأحدث، وتسبقه أعمال وتكريمات ودورات كثيرة خلال سنوات العمل القيادي والأكاديمي.</p>
   <div class="grid">
-    <div class="card" style="border-color:var(--gold)"><span class="st" style="color:#8C6A10">المركز الأول</span><h4>تطبيق إشعارات أولياء الأمور</h4><p>تطبيق يرسل إشعارات تلقائية لأولياء الأمور عند وصول الطالب إلى المدرسة ومغادرته. فريق من 6 أعضاء بتوجيه قائد خبير من الوزارة؛ أنشأتُ النموذج الأولي كاملًا وقدّمت العرض للمقيّمين.</p></div>
-    <div class="card"><span class="st built">تكريم</span><h4>التخطيط والتنفيذ</h4><p>خططتُ للهاكاثون باسمه الأول «Mini Jam»، ونفذته الإدارة بعد تغيير مسماه إلى «نواة».</p></div>
-    <div class="card"><span class="st built">تكريم</span><h4>الفوز مشاركةً</h4><p>تكريم الفوز في الهاكاثون نفسه ضمن الفريق.</p></div>
-    <div class="card"><span class="st built">تفوق</span><h4>البلاغة والأدب وحسن الصياغة</h4><p>المركز الأول في مسابقات البلاغة والأدب وحسن الصياغة باللغة العربية.</p></div>
-    <div class="card"><span class="st built">تفوق أكاديمي</span><h4>معدل 99.33%</h4><p>بتقدير A+ في جميع مقررات الدبلوم المشارك في التحول الرقمي.</p></div>
+    <div class="card" style="border-color:var(--gold);grid-column:1/-1"><span class="st" style="color:#8C6A10">المركز الأول</span><h4>تطبيق إشعارات أولياء الأمور</h4><p>تطبيق يرسل إشعارات تلقائية لأولياء الأمور عند وصول الطالب إلى المدرسة ومغادرته. فريق من 6 أعضاء بتوجيه قائد خبير من الوزارة؛ أنشأتُ النموذج الأولي كاملًا وقدّمت العرض للمقيّمين. فاز الفريق «مسار الإبداعي 9» بالمركز الأول.</p><div class="proof"><img src="assets/hackathon-first-place.jpg" alt="أمام شاشة إعلان الفائز بالمركز الأول: فريق مسار الإبداعي 9" data-zoom loading="lazy"><video src="assets/hackathon-pitch.mp4" poster="assets/hackathon-pitch-poster.jpg" controls playsinline preload="none" aria-label="عرض النموذج الأولي للمقيّمين"></video></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">تكريم</span><h4>الفوز بالمركز الأول</h4><p>كُرّمتُ على الفوز بالمركز الأول في الهاكاثون نفسه، تكريمًا مستقلًا عن تكريم الإعداد والتخطيط.</p></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">تكريم</span><h4>إعداد الهاكاثون وتخطيطه</h4><p>أعددتُ الهاكاثون الأولي «Mini Jam» وخططتُ له، ثم سُلّم لفريق استكمل تنفيذه باسم «نواة». وكُرّمتُ على الإعداد والتخطيط. صُمّم برنامجًا تدريبيًا تطبيقيًا لـ64 متدربًا من مختلف التخصصات في 8 فرق، على ثلاثة أيام بخبراء داعمين: يوم إثراء، ويوم إنتاج للنموذج الأولي، ثم التحكيم وتكريم أفضل 3 فرق.</p><div class="proof"><img src="assets/minijam-program.jpg" alt="شريحة برنامج هاكاثون تمكين Mini Jam بمؤشراته وآلية تنفيذه" data-zoom loading="lazy"><img src="assets/minijam-planning.jpg" alt="لوحة برنامج مشروع متدرب ومخطط توزيع المسارين: 16 مشروعًا و64 متدربًا في Mini Jam" data-zoom loading="lazy"></div></div>
+    </div>
+  <h3>الإشادات المكتوبة</h3>
+  <div class="grid">
+    <div class="card" style="grid-column:1/-1"><span class="st built">إشادة من الإدارة</span><h4>«قمتي بأخذ هذا المشروع على عاتقك وقبلتي بالتحدي، ووفيتي»</h4><p>من رسالة الأستاذ عبدالعزيز محبوب العوفي، مساعد مدير إدارة تنمية الموارد البشرية في الإدارة العامة لتطوير الموارد البشرية بوزارة التعليم. ذكر فيها أن بناء الهاكاثون يتولاه عادةً فريق كامل من المختصين تتجاوز خبراتهم عشر سنوات، بقيادة خبير قاد هاكاثونات عديدة.</p><div class="proof"><img src="assets/award-email-mobile.jpg" alt="رسالة الإشادة كما وردت في بريد وزارة التعليم" data-zoom loading="lazy"><img src="assets/award-email-desktop.jpg" alt="رسالة الإشادة في بريد وزارة التعليم على الحاسوب" data-zoom loading="lazy"></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">إشادة المشرفة الأكاديمية</span><h4>«عادةً أقرأ التقرير النهائي مرة واحدة فقط، لكن جودة تقريرك دفعتني لإعادته مرارًا»</h4><p>من رسالة د. ندى بنت فهد بن دهمش، أستاذ مشارك في اللغويات التطبيقية بجامعة الملك سعود والمشرفة الأكاديمية على التدريب الميداني، تعقيبًا على التقرير النهائي للتدريب في وزارة التعليم (15 ديسمبر 2025). طلبت الاحتفاظ به نموذجًا يُسترشد به مستقبلًا.</p><div class="proof"><img src="assets/award-supervisor-email.jpg" alt="رسالة المشرفة الأكاديمية د. ندى بن دهمش" data-zoom loading="lazy"><img src="assets/trainee-honor.jpg" alt="من التكريم في وزارة التعليم" data-zoom loading="lazy"></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">إشادة المشرفة الميدانية</span><h4>«مستوى الشغف الذي كان يرافق أعمالك لا تفيه كلمة شكر»</h4><p>من رسالة د. شريفة شعلان القرني، المشرفة الميدانية على التدريب في الإدارة العامة لتطوير الموارد البشرية بوزارة التعليم. أشارت فيها إلى الإبداع والدعم والأفكار الرائدة، وإلى مواصلة العمل معًا فريقًا واحدًا.</p><img class="thumb" src="assets/award-field-supervisor-email.jpg" alt="رسالة المشرفة الميدانية د. شريفة القرني" data-zoom loading="lazy" style="margin-top:10px;object-fit:contain;background:#fff"></div>
+    </div>
+  <h3>الشكر والتفوق</h3>
+  <div class="grid">
+    <div class="card"><span class="st built">شهادة شكر</span><h4>اللقاء التعريفي لمرشحي برنامج تمهير</h4><p>شهادة شكر وتقدير من إدارة تنمية الموارد البشرية بوزارة التعليم على المشاركة المتميزة في اللقاء التعريفي لمرشحي برنامج تمهير في ديوان الوزارة، المنفذ في 1 ديسمبر 2025.</p><img class="thumb" src="assets/award-tamheer-thanks.jpg" alt="شهادة الشكر من إدارة تنمية الموارد البشرية بوزارة التعليم" data-zoom loading="lazy" style="margin-top:10px"></div>
+    <div class="card"><span class="st built">تفوق</span><h4>البلاغة والأدب وحسن الصياغة</h4><p>المركز الأول في مسابقة مدرسية في البلاغة والأدب وحسن الصياغة باللغة العربية.</p></div>
+    <div class="card"><span class="st built">تفوق أكاديمي</span><h4>التفوق في أربعة برامج</h4><ul class="plain pts"><li>زمالة قادة التحول الرقمي: تقدير ممتاز (97%)</li><li>الدبلوم المشارك في التحول الرقمي: 99.33% بتقدير A+ في جميع المقررات</li><li>الدبلوم العالي في الموارد البشرية: 4.85 من 5</li><li>السنة المنهجية للماجستير: 4.56 من 5</li></ul></div>
   </div>
 </section>
 
 <!-- ============ GO2TOP ============ -->
 <section class="panel" id="go2top" data-label="go2top" hidden>
   <div class="eyebrow">go2top | إلى القمة</div>
-  <h2>مؤسسة قيد التأسيس، مصممة ومبنية</h2>
-  <p class="lede">صُمّمت go2top مؤسسةً أمًّا بعشرة أذرع، بهوية بصرية مكتملة، ومنتج تشخيصي مصمم، وهيكلة وأطر 25 نظامًا مؤسسيًا.</p>
+  <h2>ممكّن التحول الرقمي والتميّز المؤسسي</h2>
+  <p class="lede">مؤسسة سعودية متخصصة في تمكين التحول الرقمي والتميّز المؤسسي، وتطوير الأعمال ورأس المال البشري، وتصميم الحلول الرقمية والأنظمة التشغيلية لتعزيز الكفاءة والأداء المؤسسي. ترتكز أعمالها على التخطيط والتحليل والتصميم والتطوير، مع الاهتمام بجودة المخرجات، وكفاءة الأداء، واستدامة الأثر.</p>
+  <dl class="facts" style="max-width:560px;margin-bottom:16px">
+    <div><dt>المقر</dt><dd>الرياض، المملكة العربية السعودية</dd></div>
+    <div><dt>المؤسِّسة</dt><dd>حنين الزكري</dd></div>
+    <div><dt>المرحلة الحالية</dt><dd>البناء والتأسيس</dd></div>
+  </dl>
   <div class="stat-row">
-    <div class="stat"><b>10</b><span>أذرع مؤسسية</span></div>
-    <div class="stat"><b>25</b><span>نظامًا بهيكلتها وأطرها</span></div>
-    <div class="stat"><b>32</b><span>منتجًا في السلسلة الذهبية</span></div>
-    <div class="stat"><b>127</b><span>أصلًا موثقًا</span></div>
+    <div class="stat"><b>10</b><span>مجالات أعمال: 7 رئيسية و3 مساندة</span></div>
+    <div class="stat"><b>25</b><span>نظامًا مؤسسيًا في منظومة ISPS</span></div>
+    <div class="stat"><b>5</b><span>طبقات معمارية متكاملة</span></div>
+    <div class="stat"><b>6</b><span>حزم سوقية حسب القطاع والحاجة</span></div>
   </div>
-  <p class="note">go2top في مرحلة التأسيس ولم تبدأ البيع بعد؛ الأعمال هنا تصميم وبناء.</p>
   <div class="subtabs" role="tablist" id="g2tTabs">
-    <button role="tab" aria-selected="true" data-sub="g-id" type="button">الهوية</button>
-    <button role="tab" aria-selected="false" data-sub="g-st" type="button">الاستراتيجية والبنية</button>
-    <button role="tab" aria-selected="false" data-sub="g-bo" type="button">بوصلة go2top</button>
+    <button role="tab" aria-selected="true" data-sub="g-ac" type="button">مجالات الأعمال والتوجهات المستقبلية</button>
     <button role="tab" aria-selected="false" data-sub="g-is" type="button">منظومة ISPS</button>
-    <button role="tab" aria-selected="false" data-sub="g-bc" type="button">حالة العمل</button>
-    <button role="tab" aria-selected="false" data-sub="g-hq" type="button">المقر والنماذج</button>
+    <button role="tab" aria-selected="false" data-sub="g-sy" type="button">الأنظمة الـ25</button>
+    <button role="tab" aria-selected="false" data-sub="g-pk" type="button">الحزم السوقية</button>
   </div>
-  <div data-subpanel="g-id"><ul class="plain">
-    <li>نظام هوية مكتمل: شعار جبل طويق بإطار هندسي، وحزمة شعار من 39 ملفًا، ولوحة رسمية من 8 ألوان، وخطوط Cairo وTajawal وSakkal Majalla.</li>
-    <li>تموضع بخمس ركائز: التشخيص، والتصميم، والنظام، والسرية، والنتائج.</li>
-    <li>وثيقة خارطة طريق العلامة، ومواصفة بصرية لواجهة «إجراءات go2top» بالرسم الأيزومتري.</li>
-  </ul></div>
-  <div data-subpanel="g-st" hidden><ul class="plain">
-    <li>معمارية عشرة أذرع رسمية بأسماء «go2top + الدور»، منها التميز المؤسسي، والحوكمة، والأعمال الفردية، وقيادة التحول الرقمي، ورأس المال البشري.</li>
-    <li>كتالوج عشرة أنظمة: <span class="latin">SoloOS · ClientFlow · ProjectFlow · CashControl · DocControl · DecisionRoom · PeopleCore · CTMS · ExcellenceOS · Digital Readiness</span>.</li>
-    <li>تسعير حسب الإصدار (Ready · Configured · مؤسسي مخصص) مع دعم سنوي.</li>
-    <li>نموذج مالي استراتيجي بخارطة 3 إلى 5 سنوات، ونموذج Excel مالي بلوحة قيادة تنفيذية.</li>
-    <li>تحليل تنافسي للسوق السعودي حدّد ميزات التفرد: العربية الأصيلة RTL، والامتثال السعودي (ZATCA، PDPL، SDAIA).</li>
-    <li>نموذج تشغيل «إنسان واحد + أسطول وكلاء ذكاء اصطناعي» مع برومبت مرجعي شامل للمؤسسة.</li>
-    <li>نظام التشغيل الداخلي G2T-OS (تصميم): ملف أساس هندسي بتسع أوراق، ونموذج أولي تفاعلي للشاشات، وخريطة عمليات بتسعة مجالات.</li>
-  </ul></div>
-  <div data-subpanel="g-bo" hidden>
-    <p>المنتج الرئيسي: منهجية تشخيص جاهزية التحول الرقمي والتميز المؤسسي.</p>
+
+  <div data-subpanel="g-ac">
+    <p>تتنوع مجالات أعمال go2top ضمن منظومة مؤسسية تشمل تطوير الأعمال، والتحول الرقمي، والتميز المؤسسي، وتنمية رأس المال البشري، وتصميم الحلول والمنتجات الرقمية.</p>
+    <h3>أولًا: مجالات الأعمال الرئيسية</h3>
+    <div class="grid"><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">01</span><h4 style="margin-top:8px">go2top الأعمال الفردية</h4><p>تطوير الأعمال والمشروعات الفردية، وتصميم نماذج الأعمال، وتحسين الإجراءات، وتقديم الحلول المهنية والتشغيلية.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">02</span><h4 style="margin-top:8px">go2top قيادة التحول الرقمي</h4><p>تخطيط مبادرات التحول الرقمي، وتحليل الاحتياجات، وإعادة هندسة العمليات، وإدارة التغيير المؤسسي.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">03</span><h4 style="margin-top:8px">go2top التميز المؤسسي والحوكمة</h4><p>التخطيط الاستراتيجي، والتطوير التنظيمي، وبناء الأطر والسياسات والإجراءات، وإدارة الأداء ومؤشراته.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">04</span><h4 style="margin-top:8px">go2top رأس المال البشري</h4><p>تطوير ممارسات الموارد البشرية، وتخطيط القوى العاملة، وإدارة الكفاءات، وتحليلات الموارد البشرية.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">05</span><h4 style="margin-top:8px">go2top أنظمة التشغيل</h4><p>تصميم نظم العمل الإدارية والتشغيلية، وتوثيق الإجراءات، وتطوير أدوات المتابعة والرقابة وقياس الأداء.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">06</span><h4 style="margin-top:8px">go2top المنتجات</h4><p>تصميم وتطوير المنتجات الرقمية والمهنية، والقوالب الإدارية، ولوحات المؤشرات، والأدوات المساندة للأعمال.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">07</span><h4 style="margin-top:8px">go2top الاستثمار والاحتضان</h4><p>تطوير المبادرات والمشروعات الريادية، ودراسة فرص الاستثمار، وتصميم نماذج الاحتضان والنمو.</p></div></div>
+    <h3>ثانيًا: المجالات المساندة</h3>
+    <div class="grid"><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">08</span><h4 style="margin-top:8px">go2top الحلول الرقمية</h4><p>تصميم وتطوير المواقع والمنصات والأنظمة الرقمية، وتكامل التطبيقات، وأتمتة العمليات.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">09</span><h4 style="margin-top:8px">go2top الابتكار والتطوير</h4><p>البحث والتطوير، وتحليل الفرص، وتصميم الحلول المبتكرة، وتطوير النماذج الأولية.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">10</span><h4 style="margin-top:8px">go2top الأكاديمية</h4><p>تطوير المحتوى التعليمي والمهني، وتصميم البرامج التدريبية، وإعداد الأدلة والحقائب المعرفية.</p></div></div>
+    <h3>ثالثًا: الحالة المؤسسية</h3>
+    <p>تعمل go2top حاليًا على استكمال متطلبات التأسيس، وتطوير نموذج أعمالها، وبناء محفظة الخدمات والمنتجات، وإعداد النظم والأدوات اللازمة للتشغيل. وتُعرض المجالات السابقة بوصفها الهيكل المستهدف لأعمال المؤسسة، مع التمييز بين الأنشطة الجاري تطويرها والتوجهات المستقبلية.</p>
+  </div>
+
+  <div data-subpanel="g-is" hidden>
+    <p><b>ISPS</b> <span class="latin">(Integrated Smart Platform Systems)</span>: منظومة المنصات المؤسسية الذكية المتكاملة. تجمع أنظمة الجهة في منصة واحدة بهوية دخول موحدة وقاموس بيانات مشترك، فيتحول كل نظام إلى جزء من صورة مؤسسية واحدة يقرأ منها صاحب القرار حالة الجهة كاملة.</p>
+    <div class="card" style="margin:14px 0"><img class="thumb" src="assets/isps-hall.jpg" alt="معرض منظومة ISPS: خريطة ترابط المشاريع" data-zoom loading="lazy"><h4>معرض منظومة ISPS: 25 مشروعًا مؤسسيًا</h4><p>خريطة ترابط تفاعلية، وجناح لكل مشروع فيه المشكلة التي يعالجها، ووحداته، وشاشة توضيحية لكل دور، وتكاملاته مع بقية المنظومة.</p><div class="bottom"><span class="chip">هيكلة وأطر مكتملة</span><a class="go" href="isps/index.html" target="_blank" rel="noopener">دخول المعرض ←</a></div></div>
+    <div class="layers">
+      <div class="layer"><b>1. المستخدمون</b><span>الموظفون والقياديون والعملاء والمستفيدون والشركاء، كلٌّ بدوره وصلاحياته.</span></div>
+      <div class="layer hub"><b>2. بوابة ISPS</b><span>بوابة الربط <span class="latin">API Gateway</span>، والدخول الموحد <span class="latin">SSO</span>، وقاموس البيانات، ومركز القيادة التنفيذي.</span></div>
+      <div class="layer"><b>3. الأنظمة</b><span>24 نظامًا تخصصيًا تتبادل البيانات عبر البوابة، تدعمها طبقة تمكين مشتركة <span class="latin">(IAMS · WFMS · CSMS)</span> للهوية والصلاحيات وسير العمل والأتمتة.</span></div>
+      <div class="layer"><b>4. البيانات</b><span><span class="latin">SharePoint</span> و<span class="latin">Azure SQL</span> و<span class="latin">Power BI</span>، باستضافة سحابية داخل المملكة <span class="latin">(STC Cloud KSA)</span>.</span></div>
+      <div class="layer"><b>5. الامتثال</b><span>الهيئة الوطنية للأمن السيبراني <span class="latin">NCA</span>، ونظام حماية البيانات الشخصية <span class="latin">PDPL</span>، وهيئة الزكاة والضريبة والجمارك <span class="latin">ZATCA</span>، وهيئة الحكومة الرقمية <span class="latin">DGA</span>، ومعيار <span class="latin">ISO 27001</span>.</span></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><h4>تكامل بين الأنظمة</h4><p>المبادرات الاستراتيجية في SEMS تتحول إلى مشاريع في POMS، ورواتب HRMS تُعالَج في EFPMS، ووثائق السياسات في EDRMS يستهلكها GRCMS للتدقيق والامتثال.</p></div>
+      <div class="card"><h4>وثيقة لكل نظام</h4><p>لكل نظام هيكلة وإطار تنفيذي: الملخص التنفيذي، ومحاور الألم، والمخاطر، والقيمة، والنطاق، والتكاملات، وأداة <span class="latin">Power Platform</span> المقابلة.</p></div>
+      <div class="card"><h4>CTMS النواة التشغيلية</h4><p>نظام إدارة التدريب التعاوني والكفاءات، نشأ من 83 نقطة ألم رُصدت ميدانيًا، ولا يوجد له منافس عربي. دراسة جدواه: عائد 220% خلال 24 شهرًا، واسترداد خلال 8 إلى 14 شهرًا، وتنفيذ في 16 أسبوعًا.</p></div>
+      <div class="card"><h4>NDTMS للقطاع غير الربحي</h4><p>نظام تحول رقمي مصمم لمتطلبات الجمعيات: الحوكمة، والإفصاح للمانحين، والتقارير التنظيمية، وهي فجوة لا يغطيها حل عربي متخصص.</p></div>
+    </div>
+    <p class="note">دراسة جدوى وحالة عمل للمنظومة في عرض من 163 شريحة، وعرض استثماري ثنائي اللغة.</p>
+  </div>
+
+  <div data-subpanel="g-sy" hidden>
+    <p>24 نظامًا تخصصيًا تجمعها المظلة ISPS، موزعة على ستة مجالات:</p>
     <div class="grid">
-      <div class="card"><h4>8 محاور × 5 مؤشرات</h4><p>بخمسة مستويات نضج، وخريطة حرارية.</p></div>
-      <div class="card"><h4>مخرجات بأربع طبقات</h4><p>نتيجة النضج ← سجل الفجوات ← محفظة المبادرات ← خارطة تنفيذ 90 يومًا و12 شهرًا.</p></div>
-      <div class="card"><h4>مولّد «صفحة القرار»</h4><p>يشتق الصفحة تلقائيًا من نتائج المحاور الثمانية بهوية المؤسسة.</p></div>
-      <div class="card"><h4>بوابة تسليم go2top</h4><p>7 بوابات حرجة و8 محاور موزونة، وخط تسليم 85 من 100، وختم قرار مرقّم.</p></div>
+      <div class="card"><h4>رأس المال البشري والتعلم</h4><p>إدارة التدريب التعاوني والكفاءات، والموارد البشرية، والتعلم الإلكتروني، والمعرفة المؤسسية.</p><div class="syscodes"><span class="chip latin">CTMS</span><span class="chip latin">HRMS</span><span class="chip latin">ELMS</span><span class="chip latin">KNMS</span></div></div>
+      <div class="card"><h4>العمليات والموارد</h4><p>المشاريع والعمليات، والمالية والمشتريات والعقود، وسلسلة الإمداد، والأصول والمرافق، وخدمات تقنية المعلومات.</p><div class="syscodes"><span class="chip latin">POMS</span><span class="chip latin">EFPMS</span><span class="chip latin">SCMS</span><span class="chip latin">ASMS</span><span class="chip latin">ITMS</span></div></div>
+      <div class="card"><h4>العملاء والتواصل</h4><p>علاقات العملاء والمستفيدين، والتسويق والتواصل المؤسسي، والاتصالات والمراسلات.</p><div class="syscodes"><span class="chip latin">CRMS</span><span class="chip latin">MKMS</span><span class="chip latin">CCMS</span></div></div>
+      <div class="card"><h4>الاستراتيجية والقرار</h4><p>الاستراتيجية المؤسسية، ودعم القرار، ومؤشرات الأداء، والذكاء الاصطناعي والبيانات.</p><div class="syscodes"><span class="chip latin">SEMS</span><span class="chip latin">ODMS</span><span class="chip latin">KPMS</span><span class="chip latin">DAIS</span></div></div>
+      <div class="card"><h4>التحول الرقمي</h4><p>التحول الرقمي للجهات الحكومية والخاصة، والتحول الرقمي للقطاع غير الربحي.</p><div class="syscodes"><span class="chip latin">DTMS</span><span class="chip latin">NDTMS</span></div></div>
+      <div class="card"><h4>الحوكمة والامتثال والاستمرارية</h4><p>الحوكمة والمخاطر والامتثال، والجودة والتحسين المستمر، واستمرارية الأعمال، والوثائق والسجلات، والشؤون القانونية والتنظيمية، وسير العمل والأتمتة.</p><div class="syscodes"><span class="chip latin">GRCMS</span><span class="chip latin">IQMS</span><span class="chip latin">BCMS</span><span class="chip latin">EDRMS</span><span class="chip latin">LRMS</span><span class="chip latin">WFMS</span></div></div>
     </div>
   </div>
-  <div data-subpanel="g-is" hidden><ul class="plain">
-    <li>بناء هيكلة وأطر 25 نظامًا مؤسسيًا ضمن معمارية بخمس طبقات: المستخدمون ← بوابة ISPS ← الأنظمة ← البيانات ← الامتثال (NCA، PDPL، ZATCA، DGA، ISO 27001).</li>
-    <li>دراسة جدوى وحالة عمل في عرض من 163 شريحة، وست حزم سوقية مسعّرة.</li>
-    <li>عرض استثماري ثنائي اللغة أُعدّ للتقديم على مسرّعة Misk Launchpad.</li>
-    <li>وثيقة تنفيذية لكل نظام: الملخص التنفيذي، ومحاور الألم، والمخاطر، والقيمة، والنطاق، والتكاملات.</li>
-  </ul></div>
-  <div data-subpanel="g-bc" hidden><ul class="plain">
-    <li>مرجع تنفيذي من 13 فصلًا: التموضع، والتسعير، ونموذج عمل بلا رأس مال، ومعمارية المنصة، وخطة 90 يومًا.</li>
-    <li>جرد أصول go2top: 127 أصلًا موثقًا في مصنف تحقق.</li>
-    <li>خطة منع الفشل: تحليل ما قبل الفشل لثمانية أسباب، وبوابتا قرار رقميتان، ولوحة إنذار مبكر.</li>
-    <li>سجل التحقق التجاري (Excel بسبع أوراق): الفرضيات والتجارب، والمقابلات بمقياس قوة الإشارة، ومتتبع العروض، واقتصاد الوحدة.</li>
-    <li>نموذج نضج استشاري بأربعة مستويات يربط حالة الجهة بالحل المناسب: Power Apps ← منظومة ISPS ← المنظومة المتكاملة.</li>
-  </ul></div>
-  <div data-subpanel="g-hq" hidden><ul class="plain">
-    <li>تصميم معماري مفاهيمي للمقر: برنامج وظيفي ومساحي للأذرع العشرة، وثلاثة بدائل للمخطط العام مع مقارنة موضوعية.</li>
-    <li>لوحة رحلة العميل (A3) بثماني مراحل، ومخطط تفاعلي بخمسة مسارات قطاعية.</li>
-    <li>سبعة نماذج تصورية تفاعلية بتقنية WebGL: جبل الجاهزية الحي، وقبل التحول وبعده، وخريطة العمليات المتدفقة، ومرشد go2top، والمقر بتوقيت الرياض بإضاءة شمسية حية، وعارض السلسلة الذهبية، ومشهد طويق المصوّر.</li>
-    <li>المقر الرقمي التوأم: غرف مرقمة للأذرع ولوحة قيادة تنفيذية مجمعة (الإصدار 14).</li>
-  </ul></div>
+
+  <div data-subpanel="g-pk" hidden>
+    <p>تُقدَّم المنظومة في ست حزم تبدأ بما تحتاجه الجهة أولًا، وتتوسع معها.</p>
+    <div class="grid">
+      <div class="card"><h4>الأساس الحكومي</h4><p>للجهات الحكومية في بداية الرقمنة، والامتثال أولًا: ODMS وHRMS وEDRMS وGRCMS وCTMS.</p></div>
+      <div class="card"><h4>محرك التشغيل</h4><p>للجهات التي تريد ضبط عملياتها اليومية ومواردها.</p></div>
+      <div class="card"><h4>رأس المال البشري</h4><p>للجهات التي تبدأ بالموظف: التوظيف والتدريب والتعلم والكفاءات.</p></div>
+      <div class="card"><h4>القطاع غير الربحي</h4><p>للجمعيات والمؤسسات الأهلية، بالحوكمة والإفصاح والتحول الرقمي القطاعي.</p></div>
+      <div class="card"><h4>المؤسسة الذكية</h4><p>للجهات التي تريد القرار المبني على البيانات والتحليل والتنبؤ.</p></div>
+      <div class="card"><h4>المنظومة الكاملة</h4><p>الأنظمة كلها تحت مظلة ISPS ومركز قيادة واحد.</p></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ============ SYSTEMS ============ -->
@@ -428,10 +494,17 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 
 <!-- ============ PRODUCTS ============ -->
 <section class="panel" id="products" data-label="المنتجات" hidden>
+  <img src="assets/golden-banner.jpg" alt="" style="display:block;width:100%;aspect-ratio:1100/220;object-fit:cover;object-position:center 70%;border-radius:var(--r);margin:0 0 18px;border:1px solid var(--glass-edge)">
+
   <div class="eyebrow">المنتجات الرقمية | go2top</div>
   <h2>السلسلة الذهبية</h2>
-  <p class="lede">دليل مجاني و31 منتجًا مبنية بصيغة Excel، تُستكمل لها صيغتا Google Sheets والتطبيق التفاعلي والنسخ الإنجليزية. لم يبدأ البيع بعد.</p>
-  <div class="series" id="series"></div>
+  <p class="lede">دليل مجاني و31 منتجًا بثلاث صيغ: Excel وGoogle Sheets والتطبيق التفاعلي، وهي جاهزة للبيع.</p>
+    <div class="scg" style="grid-template-columns:repeat(2,minmax(0,1fr));margin:6px 0 18px">
+    <button class="sc" type="button" data-go="gallery"><img src="assets/golden-04-performance.jpg" alt="" loading="lazy"><span>مدير الأداء الشخصي: الصفحة الرئيسية</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/golden-student-dashboard.jpg" alt="" loading="lazy"><span>لوحة التفوق الدراسي</span></button>
+  </div>
+  <div class="adv"><video src="assets/ad-golden-guide.mp4" poster="assets/ad-golden-guide-poster.jpg" controls playsinline preload="none"></video><div><b>إعلان دليل السلسلة الذهبية</b><p>إعلان عمودي مدته 18 ثانية بمقاس 1080×1920، لتيك توك وريلز وشورتس. واحد من 32 إعلانًا أُعدّت لمنتجات السلسلة كلها، بهوية go2top وموسيقى أصلية.</p></div></div>
+<div class="series" id="series"></div>
   <h3>بنية السلسلة</h3>
   <ul class="plain">
     <li>دستور حاكم (v3) للصيغ الثلاث واللغتين وأسماء المنتجات وأقسام المتجر.</li>
@@ -450,8 +523,8 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <!-- ============ INSTITUTION ============ -->
 <section class="panel" id="institution" data-label="المشروع المؤسسي" hidden>
   <div class="eyebrow">مشروع مؤسسي | منذ أغسطس 2025</div>
-  <h2>تأسيس جمعية تنموية تعليمية</h2>
-  <p class="lede">تولّت حنين الزكري تأسيس جمعية في القطاع غير الربحي بعقد مستقل، بدور مستشار تنظيم مؤسسي ومدير مشروع التأسيس، صاحبة المنهجية والقرارات التخطيطية وضوابط الجودة.</p>
+  <h2>إدارة مشروع تأسيس جمعية تنموية تعليمية</h2>
+  <p class="lede">جمعية في القطاع غير الربحي، بعقد مستقل، بدور مستشار تنظيم مؤسسي ومدير مشروع التأسيس، صاحبة المنهجية والقرارات التخطيطية وضوابط الجودة.</p>
   <div class="grid">
     <div class="card"><h4>الخطط المؤسسية</h4><p>الخطة الاستراتيجية والزمنية والتنفيذية، وخطة المئة يوم: الميثاق الأخلاقي، وتأمين الموارد المالية، وضم الأعضاء، والملف التسويقي.</p></div>
     <div class="card"><h4>خطة تمويل</h4><p>أُعدّت وقُدّمت لجهة مانحة.</p></div>
@@ -466,10 +539,10 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="academic" data-label="المشاريع الأكاديمية" hidden>
   <div class="eyebrow">المشاريع الأكاديمية والتطبيقية</div>
   <h2>تطبيقات في التحول الرقمي والذكاء الاصطناعي</h2>
-  <p class="lede">ستة مشاريع تطبيقية أُنجزت ضمن متطلبات أكاديمية، أبرزها استراتيجية تكامل التحول الرقمي لجمعية البر الأهلية بنموذج أولي منشور.</p>
+  <p class="lede">ستة مشاريع تطبيقية أُنجزت ضمن متطلبات أكاديمية، أبرزها تصور أولي لاستراتيجية تكامل التحول الرقمي لجمعية البر الأهلية، بنموذج تفاعلي منشور.</p>
   <div class="grid">
-    <div class="card"><img class="thumb" src="assets/shot-albr.jpg" alt="لوحة القيادة في النموذج التفاعلي لاستراتيجية جمعية البر" data-zoom loading="lazy"><h4>استراتيجية تكامل التحول الرقمي لجمعية البر الأهلية بالرياض</h4><p>تحليل استراتيجي ومقترح حل بفريق «صناع التغيير»: ثماني مراحل و15 مبادرة، وعرض من 43 شريحة، وتحليل Excel بـ16 ورقة و26 رسمًا على 500 سجل. أطر TOGAF وADKAR وSROI وPDPL.</p><div class="bottom"><span class="chip">جامعة المعرفة</span><a class="go" href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">النموذج التفاعلي ←</a></div></div>
-    <div class="card"><h4>مشروع تخرج زمالة قادة التحول الرقمي</h4><p>عمل جماعي لجهة وطنية ضمن فريق من أربعة أعضاء، بدور مسؤولة الجاهزية وقيادة التغيير: الخطة الاستراتيجية، وتقرير الجاهزية بإطار من ستة محاور و15 مبادرة، والعرض النهائي، مع ADKAR وسجل المخاطر وتحليل أثر الأعمال.</p><div class="bottom"><span class="chip">جامعة الأمير مساعد بن عبدالرحمن</span></div></div>
+    <div class="card"><img class="thumb" src="assets/shot-albr.jpg" alt="لوحة القيادة في النموذج التفاعلي لاستراتيجية جمعية البر" data-zoom loading="lazy"><h4>استراتيجية تكامل التحول الرقمي لجمعية البر الأهلية بالرياض</h4><p><b>تصور أولي</b> لتطبيق مفردات مقرر التحول الرقمي على جهة حقيقية، أعدّه فريق «صناع التغيير» مشروعًا أكاديميًا اعتمادًا على البيانات المنشورة للجمعية: سبعة أنظمة منفصلة في سبعة فروع تتوحد في طبقة تكامل على Power Platform ومستودع Dataverse واحد. ثماني مراحل و15 مبادرة، وموازنة 239,800 ريال على 30 شهرًا، وعائد اجتماعي مستهدف 3.5:1، ونضج رقمي مستهدف 3.8 من 5 مقابل 1.8 اليوم. عرض من 43 شريحة، وتحليل Excel بـ16 ورقة و26 رسمًا على 500 سجل. أطر TOGAF وADKAR وSROI وPDPL.</p><div class="bottom"><span class="chip">جامعة المعرفة</span><a class="go" href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">النموذج التفاعلي ←</a></div></div>
+    <div class="card"><img class="thumb" src="assets/fellowship-cover.jpg" alt="غلاف العرض الختامي لمشروع تخرج الزمالة" data-zoom loading="lazy"><h4>مشروع تخرج زمالة قادة التحول الرقمي</h4><p>عمل جماعي لجهة وطنية ضمن فريق من أربعة أعضاء، بدور مسؤولة الجاهزية وقيادة التغيير: الخطة الاستراتيجية، وتقرير الجاهزية بإطار من ستة محاور و15 مبادرة، والعرض النهائي، مع ADKAR وسجل المخاطر وتحليل أثر الأعمال.</p><div class="bottom"><span class="chip">جامعة الأمير مساعد بن عبدالرحمن</span></div></div>
     <div class="card"><h4>مشروع التخرج DT-2605</h4><p>تصور متكامل لحالة «شركة المستقبل الرقمية» يربط التحول الرقمي المتقدم والأمن السيبراني والذكاء الاصطناعي.</p><div class="bottom"><span class="chip">جامعة المعرفة</span></div></div>
     <div class="card"><img class="thumb" src="assets/shot-madar.jpg" alt="الواجهة الرئيسية لنموذج MADAR AI" data-zoom loading="lazy"><h4>MADAR AI</h4><p>نموذج أولي تفاعلي لتوأم رقمي ذكي للسياحة بثماني شاشات وظيفية.</p><div class="bottom"><span class="chip">مقرر الذكاء الاصطناعي</span><a class="go" href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">النموذج ←</a></div></div>
     <div class="card"><h4>مبادرة تحول رقمي لوزارة السياحة</h4><p>تصميم مبادرة، وتقرير دراسة حالة: المشكلة، والحل الرقمي، ومحرك الذكاء الاصطناعي، والأثر.</p><div class="bottom"><span class="chip">ورشة عمل</span></div></div>
@@ -489,7 +562,7 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="skills" data-label="المهارات" hidden>
   <div class="eyebrow">المهارات والأدوات</div>
   <h2>خبرة إدارية ومهارة بناء</h2>
-  <p class="lede">مهارات إدارية وقيادية مارستها ثماني سنوات، ومهارات تقنية تطبيقية في بناء الأنظمة الإدارية.</p>
+  <p class="lede">مهارات إدارية وقيادية مارستها تسع سنوات، ومهارات تقنية تطبيقية في بناء الأنظمة الإدارية.</p>
   <div class="skills" id="skillsGrid"></div>
 </section>
 
@@ -527,14 +600,14 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
     <div>
       <div class="eyebrow">Professional profile</div>
       <p class="big">Founder of <em>go2top</em>, specializing in human resource management, institutional development, and business systems design. Through go2top I build digital administrative solutions and systems.</p>
-      <p>Eight years of supervision and operational leadership in the non-profit sector and eight years of university teaching, followed by entrepreneurship. I combine hands-on management experience with building systems myself: spotting the problem in the workplace, then designing, building, and documenting the solution.</p>
+      <p>Nine years of supervision, administrative work, and operational leadership, and eight years of university teaching, followed by entrepreneurship. I combine hands-on management experience with building systems myself: spotting the problem in the workplace, then designing, building, and documenting the solution.</p>
       <p class="ui" style="color:var(--ink-soft)">Three fields: Human Resources · Digital Transformation · Quranic Studies</p>
     </div>
     <dl class="facts">
-      <div><dt>Role</dt><dd>Founder, go2top (in formation)</dd></div>
+      <div><dt>Role</dt><dd>Founder, go2top</dd></div>
       <div><dt>Highest qualification</dt><dd>Higher Diploma in Human Resource Management, King Saud University (GPA 4.85/5)</dd></div>
       <div><dt>Top grade</dt><dd>99.33% with A+ in every course, Associate Diploma in Digital Transformation</dd></div>
-      <div><dt>Award</dt><dd>First place, Nawat Hackathon, Ministry of Education</dd></div>
+      <div><dt>Fellowship</dt><dd>Digital Transformation Leaders Fellowship, Excellent (97%)</dd></div><div><dt>Award</dt><dd>First place, Nawat Hackathon, Ministry of Education</dd></div>
       <div><dt>City</dt><dd>Riyadh</dd></div>
       <div><dt>Email</dt><dd><span class="latin" id="mail">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">Copy</button></dd></div>
       <div><dt>LinkedIn</dt><dd><a class="latin" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">in/haneen-al-zakari</a></dd></div>
@@ -544,15 +617,32 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="highlights">
     <button class="hl award" data-go="awards" type="button"><span class="go">→</span><div class="k">Award</div><div class="t">First place, Nawat Hackathon</div><div class="d">An app that notifies parents when students arrive at and leave school. I built the full prototype and presented it to the judges.</div></button>
     <button class="hl" data-go="systems" type="button"><span class="go">→</span><div class="k">System</div><div class="t">CTMS for cooperative training</div><div class="d">Grew out of 83 pain points I documented at the Ministry of Education; the idea reached the approval stage for an MVP. The system is built, with final completion remaining.</div></button>
-    <button class="hl" data-go="go2top" type="button"><span class="go">→</span><div class="k">Venture</div><div class="t">go2top</div><div class="d">A complete brand identity, a flagship diagnostic product (go2top Compass), and the Golden Series of 32 products.</div></button>
-    <button class="hl" data-go="institution" type="button"><span class="go">→</span><div class="k">Institutional project</div><div class="t">Founding an education and development association</div><div class="d">Institutional organization consultant and founding project manager: the plans, a document package across 12 domains, and the website and digital platform.</div></button>
+    <button class="hl" data-go="go2top" type="button"><span class="go">→</span><div class="k">Venture</div><div class="t">go2top</div><div class="d">Enabling digital transformation and institutional excellence, and the ISPS suite of 25 integrated enterprise systems.</div></button>
+    <button class="hl" data-go="institution" type="button"><span class="go">→</span><div class="k">Institutional project</div><div class="t">Managing the founding project of an education and development association</div><div class="d">Institutional organization consultant and founding project manager: the plans, a document package across 12 domains, and the website and digital platform.</div></button>
   </div>
+    <div class="numbers"><div class="sch"><b>By the numbers</b></div><div class="stat-row">
+    <div class="stat"><b>13</b><span>years of work experience across leadership, administration, university teaching, and business founding</span></div>
+    <div class="stat"><b>9</b><span>years in supervision, administrative work, and leadership</span></div>
+    <div class="stat"><b>83</b><span>pain points identified, which became the CTMS idea that reached the MVP stage</span></div>
+    <div class="stat"><b>17</b><span>systems and tools built, 9 of them published</span></div>
+    <div class="stat"><b>285+</b><span>hours of documented professional training</span></div>
+    <div class="stat"><b>23</b><span>certificates and professional courses</span></div>
+    <div class="stat"><b>97%</b><span>fellowship grade, and 99.33% in the associate diploma</span></div>
+    <div class="stat"><b>8</b><span>years of university teaching, to about 13,000 students across disciplines</span></div>
+  </div></div>
+<div class="showcase"><div class="sch"><b>Selected work</b><button type="button" data-go="gallery">Full gallery →</button></div><div class="scg">
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-association.jpg" alt="" loading="lazy"><span>Education and development association website and platform</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-albr-maturity.jpg" alt="" loading="lazy"><span>Initial concept for a digital transformation strategy (academic project)</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/fellowship-adkar.jpg" alt="" loading="lazy"><span>Fellowship capstone: readiness and change leadership</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/shot-ladder-conversation.jpg" alt="" loading="lazy"><span>The English Ladder: conversation training platform</span></button>
+  </div></div>
 </section>
 
 <section class="panel" id="gallery" data-label="Work gallery" hidden>
   <div class="eyebrow">Work gallery</div>
   <h2>Selected work</h2>
   <p class="lede">Screenshots of published platforms, designs, and verified certificates. Click any image to enlarge it.</p>
+  <p class="note">What is shown here is the most recent; many earlier works, recognitions, and courses precede it across my years in leadership and academic roles.</p>
   <div class="filters" id="galFilters" role="group" aria-label="Filter gallery"></div>
   <div class="gallery" id="galGrid"></div>
 </section>
@@ -560,23 +650,23 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="experience" data-label="Experience" hidden>
   <div class="eyebrow">Work experience</div>
   <h2>Operational leadership and university teaching</h2>
-  <p class="lede">Eight years of supervision and leadership in the non-profit sector and eight years of university teaching, partly overlapping. Most recent first.</p>
+  <p class="lede">Nine years of supervision, administrative work, and leadership, and eight years of university teaching, partly overlapping. Most recent first.</p>
   <div class="tl">
-    <div class="row lead"><div class="yr">2026</div><div class="dot"></div><div class="body"><h4>Founder, go2top</h4><div class="meta"><span class="chip">Entrepreneurship</span><span class="st plan">In formation</span></div><p>Building the brand, strategy, products, and systems. Holds the Saudi freelance work permit.</p></div></div>
+    <div class="row lead"><div class="yr">2026</div><div class="dot"></div><div class="body"><h4>Founder, go2top</h4><div class="meta"><span class="chip">Entrepreneurship</span></div><p>A Saudi organization specializing in enabling digital transformation and institutional excellence, developing businesses and human capital, and designing digital solutions and operating systems that raise institutional efficiency and performance. Holds the Saudi freelance work permit.</p></div></div>
     <div class="row lead"><div class="yr">2025 → 2026</div><div class="dot"></div><div class="body"><h4>Institutional Organization Consultant and Founding Project Manager</h4><div class="meta"><span class="chip">Non-profit association</span><span class="chip">Independent contract</span></div><p>Strategic, timeline, and execution plans; founding, operating, and budget files; the website and digital platform.</p></div></div>
-    <div class="row"><div class="yr">1447 AH</div><div class="dot"></div><div class="body"><h4>Trainee, Human Resources Development</h4><div class="meta"><span class="chip">Ministry of Education, General Department of HR Development</span><span class="chip">Three and a half months</span></div><p>Documented 83 pain points in cooperative training management and proposed the CTMS idea, which reached the approval stage for an MVP. Planned the Nawat Hackathon and won its first place. Prepared templates for training needs assessment and program impact that were put into use.</p></div></div>
-    <div class="row"><div class="yr">1443 → 1444 AH</div><div class="dot"></div><div class="body"><h4>Volunteer, Curriculum Development</h4><div class="meta"><span class="chip">Volunteer</span></div><p>Preparing and developing curriculum content.</p></div></div>
-    <div class="row"><div class="yr">1433 → 1441 AH</div><div class="dot"></div><div class="body"><h4>University Teaching</h4><div class="meta"><span class="chip">Imam Mohammad Ibn Saud Islamic University</span></div><p>12 to 18 hours a week, with sections of 25 to 140 students across all eight levels. Remote teaching on Blackboard and Zoom during the pandemic year, and detailed statistical reports for every course and section each semester.</p></div></div>
-    <div class="row"><div class="yr">1434 → 1439 AH</div><div class="dot"></div><div class="body"><h4>Branch Manager, Women's Schools Supervision Office</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">North Riyadh</span></div><p>Nomination, selection, and job interviews; onboarding new employees; evaluating employee and school performance; leading initiatives; strategic and operational planning; preparing and monitoring budgets.</p></div></div>
-    <div class="row"><div class="yr">1433 → 1434 AH</div><div class="dot"></div><div class="body"><h4>School Principal, Women's School</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">Then promoted to branch manager</span></div><p>Turning work into plans with measurable results, and delivering prepared curricula.</p></div></div>
-    <div class="row"><div class="yr">1428 → 1430 AH</div><div class="dot"></div><div class="body"><h4>Educational Supervisor</h4><div class="meta"><span class="chip">Non-profit sector</span></div><p>Educational supervision and performance follow-up.</p></div></div>
+    <div class="row"><div class="yr">1447 AH</div><div class="dot"></div><div class="body"><h4>Trainee, Human Resources Development</h4><div class="meta"><span class="chip">Ministry of Education, General Department of HR Development</span><span class="chip">Three and a half months</span></div><ul class="pts"><li>Documented 83 pain points in cooperative training management and proposed the CTMS idea, which reached the approval stage for an MVP.</li><li>Prepared and planned the initial "Mini Jam" hackathon, later delivered as "Nawat", and won its first place, with two separate recognitions.</li><li>Managed the "From Training to Empowerment" initiative from day one, and fully planned and delivered the "Trainee Project" program for trainees' own projects.</li><li>Weekly reports and dashboards for leadership, plus guides, operational templates, interview forms, and surveys.</li><li>Prepared templates for training needs assessment and program impact that were put into use.</li></ul></div></div>
+    <div class="row"><div class="yr">1443 → 1444 AH</div><div class="dot"></div><div class="body"><h4>Volunteer Administrative Role, Curriculum Development</h4><div class="meta"><span class="chip">Volunteer</span></div><ul class="pts"><li>Developing educational content, curricula, training programs, and initiatives, and monitoring their quality.</li><li>Reviewing and updating educational guides that support teaching and administrative teams.</li></ul></div></div>
+    <div class="row"><div class="yr">1433 → 1441 AH</div><div class="dot"></div><div class="body"><h4>University Teaching</h4><div class="meta"><span class="chip">Imam Mohammad Ibn Saud Islamic University</span></div><ul class="pts"><li>Teaching a shared university course to students across all eight levels and different departments over 16 semesters, at 12 to 18 hours a week, with each section holding 25 to 140 students.</li><li>About 13,000 students across disciplines over the period.</li><li>Preparing course content and building exams.</li><li>Assessing student performance, tracking their progress, and contributing to academic advising.</li><li>Supporting research, analysis, and active learning skills.</li><li>Using educational technology to present content and organize teaching, including remote teaching on Blackboard and Zoom during the pandemic year.</li><li>Detailed statistical reports for every course and section at the end of each semester.</li><li>Supervising the educational process and serving on the judging committee of the "Taj Al-Imam" competition at the Deanship of E-Learning and Distance Education, four consecutive seasons from 2014.</li><li>Member of the teacher level assessment committee at the university housing (2014).</li></ul></div></div>
+    <div class="row"><div class="yr">1434 → 1439 AH</div><div class="dot"></div><div class="body"><h4>Branch Manager, Women's Schools Supervision Office</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">North Riyadh</span></div><ul class="pts"><li>Leading supervision teams and monitoring the performance of schools and their leaders.</li><li>Nomination, selection, and job interviews, and onboarding new employees.</li><li>Evaluating employee and school performance and analyzing performance indicators.</li><li>Strategic and operational planning, and leading initiatives.</li><li>Preparing and monitoring budgets.</li><li>Submitting periodic reports and improvement recommendations to management, and improving work procedures.</li></ul></div></div>
+    <div class="row"><div class="yr">1433 → 1434 AH</div><div class="dot"></div><div class="body"><h4>School Principal, Women's School</h4><div class="meta"><span class="chip">Non-profit sector</span><span class="chip">Then promoted to branch manager</span></div><ul class="pts"><li>Running the school administratively and educationally, and overseeing its human resources.</li><li>Preparing and monitoring operational plans and performance indicators, so work ran on plans with measurable results.</li><li>Preparing a detailed, integrated four-year curriculum, and delivering previously prepared curricula.</li><li>Promoted to branch manager after one year as principal.</li></ul></div></div>
+    <div class="row"><div class="yr">1428 → 1430 AH</div><div class="dot"></div><div class="body"><h4>Educational Supervisor</h4><div class="meta"><span class="chip">Non-profit sector</span></div><ul class="pts"><li>Monitoring school performance and the quality of educational programs.</li><li>Following up educational performance and providing technical support to teachers.</li><li>Developing educational programs and preparing improvement reports.</li></ul></div></div>
   </div>
 </section>
 
 <section class="panel" id="education" data-label="Education" hidden>
   <div class="eyebrow">Academic qualifications</div>
   <h2>An academic path joining management and technology</h2>
-  <p class="lede">All GPAs are out of 5.</p>
+  <p class="lede">GPAs are out of 5 unless given as a percentage.</p>
   <div class="tbl"><table>
     <thead><tr><th>Qualification</th><th>Institution</th><th>Year</th><th>Status and grade</th></tr></thead>
     <tbody>
@@ -604,6 +694,7 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="eyebrow">Certificates and professional courses</div>
   <h2>Training in technology, management, and data</h2>
   <p class="lede">Two verified Cisco certificates, a four-course Microsoft specialization on Coursera, ten in-person courses and two workshops at Al-Masar Professional Training Center, and two completed exam-preparation programs awaiting the exam.</p>
+  <p class="note">What is shown here is the most recent; many earlier works, recognitions, and courses precede it across my years in leadership and academic roles.</p>
   <div class="filters" id="certFilters" role="group" aria-label="Filter certificates"></div>
   <div class="grid" id="certGrid"></div>
   <p class="note">Courses named after a professional certification (PMP, GRCP, Lean Six Sigma) are course-completion certificates and are listed with their hours. The PMP course meets the 35 contact-hour requirement for the PMP exam.</p>
@@ -613,76 +704,101 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
   <div class="eyebrow">Awards and recognition</div>
   <h2>First place, Nawat Hackathon</h2>
   <p class="lede">A hackathon organized by the General Department of Human Resources Development at the Ministry of Education (1447 AH), with two separate recognitions.</p>
+  <p class="note">What is shown here is the most recent; many earlier works, recognitions, and courses precede it across my years in leadership and academic roles.</p>
   <div class="grid">
-    <div class="card" style="border-color:var(--gold)"><span class="st" style="color:#8C6A10">First place</span><h4>Parent notification app</h4><p>An app that automatically notifies parents when a student arrives at school and leaves. A team of 6 guided by an expert lead from the ministry; I built the full prototype and presented it to the judges.</p></div>
-    <div class="card"><span class="st built">Recognition</span><h4>Planning and delivery</h4><p>I planned the hackathon under its first name, "Mini Jam", and the department ran it after renaming it "Nawat".</p></div>
-    <div class="card"><span class="st built">Recognition</span><h4>Team win</h4><p>Recognition for winning the same hackathon as part of the team.</p></div>
-    <div class="card"><span class="st built">Distinction</span><h4>Rhetoric, literature, and composition</h4><p>First place in Arabic rhetoric, literature, and composition competitions.</p></div>
-    <div class="card"><span class="st built">Academic distinction</span><h4>99.33% grade</h4><p>With A+ in every course of the Associate Diploma in Digital Transformation.</p></div>
+    <div class="card" style="border-color:var(--gold);grid-column:1/-1"><span class="st" style="color:#8C6A10">First place</span><h4>Parent notification app</h4><p>An app that automatically notifies parents when a student arrives at school and leaves. A team of 6 guided by an expert lead from the ministry; I built the full prototype and presented it to the judges. The team, "Masar Al-Ibdaei 9", won first place.</p><div class="proof"><img src="assets/hackathon-first-place.jpg" alt="In front of the first-place announcement: Masar Al-Ibdaei 9 team" data-zoom loading="lazy"><video src="assets/hackathon-pitch.mp4" poster="assets/hackathon-pitch-poster.jpg" controls playsinline preload="none" aria-label="Presenting the prototype to the judges"></video></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">Recognition</span><h4>First-place win</h4><p>I was recognized for winning first place in the same hackathon, separately from the preparation and planning recognition.</p></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">Recognition</span><h4>Preparing and planning the hackathon</h4><p>I prepared and planned the initial "Mini Jam" hackathon, which was then handed to a team that completed its delivery under the name "Nawat". I was recognized for the preparation and planning. It was designed as an applied training program for 64 trainees from different specializations in 8 teams, over three days with supporting experts: an enrichment day, a prototype production day, then judging and recognition of the top 3 teams.</p><div class="proof"><img src="assets/minijam-program.jpg" alt="Mini Jam hackathon program slide with its indicators and delivery plan (Arabic)" data-zoom loading="lazy"><img src="assets/minijam-planning.jpg" alt="Trainee Project program board and the two-track plan: 16 projects and 64 Mini Jam trainees" data-zoom loading="lazy"></div></div>
+    </div>
+  <h3>Written commendations</h3>
+  <div class="grid">
+    <div class="card" style="grid-column:1/-1"><span class="st built">Commendation from the department</span><h4>"You took this project on your shoulders, accepted the challenge, and delivered"</h4><p>From a message by Mr. Abdulaziz Mahboub Al-Oufi, Assistant Director of HR Development at the General Department of Human Resources Development, Ministry of Education (translated from Arabic). He noted that building a hackathon is usually the work of a full team of specialists with more than ten years of experience, led by an expert who has run many hackathons.</p><div class="proof"><img src="assets/award-email-mobile.jpg" alt="The commendation message in the Ministry of Education email (Arabic)" data-zoom loading="lazy"><img src="assets/award-email-desktop.jpg" alt="The commendation message on a desktop (Arabic)" data-zoom loading="lazy"></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">Commendation from the academic supervisor</span><h4>"I usually read a final report only once, but the quality of yours made me reread it repeatedly"</h4><p>From a message by Dr. Nada bint Fahad Bin Dahmash, Associate Professor of Applied Linguistics at King Saud University and academic supervisor of the field training, on the final report of the Ministry of Education traineeship (15 December 2025, translated from Arabic). She asked to keep it as a model for future reference.</p><div class="proof"><img src="assets/award-supervisor-email.jpg" alt="Message from the academic supervisor, Dr. Nada Bin Dahmash (Arabic)" data-zoom loading="lazy"><img src="assets/trainee-honor.jpg" alt="From the recognition at the Ministry of Education" data-zoom loading="lazy"></div></div>
+    <div class="card" style="grid-column:1/-1"><span class="st built">Commendation from the field supervisor</span><h4>"The passion that accompanied your work is beyond words of thanks"</h4><p>From a message by Dr. Sharefah Shalaan Al Qarni, field supervisor of the traineeship at the General Department of HR Development, Ministry of Education (translated from Arabic). She noted the creativity, support, and pioneering ideas, and that the team would continue working together.</p><img class="thumb" src="assets/award-field-supervisor-email.jpg" alt="Message from the field supervisor, Dr. Sharefah Al Qarni (Arabic)" data-zoom loading="lazy" style="margin-top:10px;object-fit:contain;background:#fff"></div>
+    </div>
+  <h3>Thanks and distinction</h3>
+  <div class="grid">
+    <div class="card"><span class="st built">Certificate of appreciation</span><h4>Tamheer nominees orientation meeting</h4><p>A certificate of thanks and appreciation from the HR Development Department at the Ministry of Education for distinguished participation in the orientation meeting for Tamheer program nominees at the ministry headquarters, held on 1 December 2025.</p><img class="thumb" src="assets/award-tamheer-thanks.jpg" alt="Certificate of appreciation from the Ministry of Education (Arabic)" data-zoom loading="lazy" style="margin-top:10px"></div>
+    <div class="card"><span class="st built">Distinction</span><h4>Rhetoric, literature, and composition</h4><p>First place in a school competition in Arabic rhetoric, literature, and composition.</p></div>
+    <div class="card"><span class="st built">Academic distinction</span><h4>Distinction across four programs</h4><ul class="plain pts"><li>Digital Transformation Leaders Fellowship: Excellent (97%)</li><li>Associate Diploma in Digital Transformation: 99.33%, A+ in every course</li><li>Higher Diploma in Human Resources: 4.85 out of 5</li><li>Master's coursework year: 4.56 out of 5</li></ul></div>
   </div>
 </section>
 
 <section class="panel" id="go2top" data-label="go2top" hidden>
   <div class="eyebrow">go2top</div>
-  <h2>A venture in formation, designed and built</h2>
-  <p class="lede">go2top is designed as a parent organization with ten arms, a complete visual identity, a designed diagnostic product, and the structure and frameworks of 25 enterprise systems.</p>
+  <h2>Enabling digital transformation and institutional excellence</h2>
+  <p class="lede">A Saudi organization specializing in enabling digital transformation and institutional excellence, developing businesses and human capital, and designing digital solutions and operating systems that raise institutional efficiency and performance. Its work rests on planning, analysis, design, and development, with attention to output quality, performance efficiency, and lasting impact.</p>
+  <dl class="facts" style="max-width:560px;margin-bottom:16px">
+    <div><dt>Location</dt><dd>Riyadh, Saudi Arabia</dd></div>
+    <div><dt>Founder</dt><dd>Haneen Al Zakari</dd></div>
+    <div><dt>Current stage</dt><dd>Building and founding</dd></div>
+  </dl>
   <div class="stat-row">
-    <div class="stat"><b>10</b><span>organizational arms</span></div>
-    <div class="stat"><b>25</b><span>systems structured with frameworks</span></div>
-    <div class="stat"><b>32</b><span>products in the Golden Series</span></div>
-    <div class="stat"><b>127</b><span>documented assets</span></div>
+    <div class="stat"><b>10</b><span>business areas: 7 core and 3 supporting</span></div>
+    <div class="stat"><b>25</b><span>enterprise systems in the ISPS suite</span></div>
+    <div class="stat"><b>5</b><span>integrated architecture layers</span></div>
+    <div class="stat"><b>6</b><span>market packages by sector and need</span></div>
   </div>
-  <p class="note">go2top is in its founding stage and has not started selling; the work here is design and build.</p>
   <div class="subtabs" role="tablist" id="g2tTabs">
-    <button role="tab" aria-selected="true" data-sub="g-id" type="button">Identity</button>
-    <button role="tab" aria-selected="false" data-sub="g-st" type="button">Strategy and structure</button>
-    <button role="tab" aria-selected="false" data-sub="g-bo" type="button">go2top Compass</button>
-    <button role="tab" aria-selected="false" data-sub="g-is" type="button">ISPS portfolio</button>
-    <button role="tab" aria-selected="false" data-sub="g-bc" type="button">Business case</button>
-    <button role="tab" aria-selected="false" data-sub="g-hq" type="button">HQ and prototypes</button>
+    <button role="tab" aria-selected="true" data-sub="g-ac" type="button">Business areas and future directions</button>
+    <button role="tab" aria-selected="false" data-sub="g-is" type="button">ISPS suite</button>
+    <button role="tab" aria-selected="false" data-sub="g-sy" type="button">The 25 systems</button>
+    <button role="tab" aria-selected="false" data-sub="g-pk" type="button">Market packages</button>
   </div>
-  <div data-subpanel="g-id"><ul class="plain">
-    <li>A complete identity system: a Tuwaiq mountain logo in a geometric frame, a 39-file logo package, an official 8-color palette, and the Cairo, Tajawal, and Sakkal Majalla typefaces.</li>
-    <li>Positioning on five pillars: diagnosis, design, system, confidentiality, and results.</li>
-    <li>A brand roadmap document, and a visual specification for the isometric "go2top Procedures" interface.</li>
-  </ul></div>
-  <div data-subpanel="g-st" hidden><ul class="plain">
-    <li>An architecture of ten official arms named "go2top + role", including institutional excellence, governance, solo business, digital transformation leadership, and human capital.</li>
-    <li>A catalog of ten systems: <span class="latin">SoloOS · ClientFlow · ProjectFlow · CashControl · DocControl · DecisionRoom · PeopleCore · CTMS · ExcellenceOS · Digital Readiness</span>.</li>
-    <li>Edition-based pricing (Ready · Configured · Custom enterprise) with annual support.</li>
-    <li>A strategic financial model with a 3 to 5 year roadmap, and an Excel financial model with an executive dashboard.</li>
-    <li>A competitive analysis of the Saudi market that defined the differentiators: native Arabic RTL and Saudi compliance (ZATCA, PDPL, SDAIA).</li>
-    <li>A "one human + a fleet of AI agents" operating model with a comprehensive reference prompt for the organization.</li>
-    <li>The G2T-OS internal operating system (design): a nine-sheet engineering foundation file, an interactive screen prototype, and a process map across nine domains.</li>
-  </ul></div>
-  <div data-subpanel="g-bo" hidden>
-    <p>The flagship product: a methodology for diagnosing digital transformation readiness and institutional excellence.</p>
+
+  <div data-subpanel="g-ac">
+    <p>go2top's areas of work form an institutional system covering business development, digital transformation, institutional excellence, human capital development, and the design of digital solutions and products.</p>
+    <h3>First: core business areas</h3>
+    <div class="grid"><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">01</span><h4 style="margin-top:8px">go2top Solo Business</h4><p>Developing individual businesses and ventures, designing business models, improving procedures, and providing professional and operational solutions.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">02</span><h4 style="margin-top:8px">go2top Digital Transformation Leadership</h4><p>Planning digital transformation initiatives, analyzing needs, re-engineering processes, and managing institutional change.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">03</span><h4 style="margin-top:8px">go2top Institutional Excellence and Governance</h4><p>Strategic planning, organizational development, building frameworks, policies, and procedures, and managing performance and its indicators.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">04</span><h4 style="margin-top:8px">go2top Human Capital</h4><p>Developing HR practices, workforce planning, competency management, and HR analytics.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">05</span><h4 style="margin-top:8px">go2top Operating Systems</h4><p>Designing administrative and operational work systems, documenting procedures, and developing monitoring, control, and performance measurement tools.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">06</span><h4 style="margin-top:8px">go2top Products</h4><p>Designing and developing digital and professional products, administrative templates, dashboards, and business support tools.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">07</span><h4 style="margin-top:8px">go2top Investment and Incubation</h4><p>Developing entrepreneurial initiatives and ventures, studying investment opportunities, and designing incubation and growth models.</p></div></div>
+    <h3>Second: supporting areas</h3>
+    <div class="grid"><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">08</span><h4 style="margin-top:8px">go2top Digital Solutions</h4><p>Designing and developing websites, platforms, and digital systems, application integration, and process automation.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">09</span><h4 style="margin-top:8px">go2top Innovation and Development</h4><p>Research and development, opportunity analysis, designing innovative solutions, and developing prototypes.</p></div><div class="card"><span class="chip latin" style="justify-self:start;width:fit-content">10</span><h4 style="margin-top:8px">go2top Academy</h4><p>Developing educational and professional content, designing training programs, and preparing guides and knowledge kits.</p></div></div>
+    <h3>Third: institutional status</h3>
+    <p>go2top is currently completing its founding requirements, developing its business model, building its portfolio of services and products, and preparing the systems and tools needed for operation. The areas above are presented as the organization's target business structure, distinguishing between activities under development and future directions.</p>
+  </div>
+
+  <div data-subpanel="g-is" hidden>
+    <p><b>ISPS</b> (Integrated Smart Platform Systems) brings an organization's systems into one platform with a single sign-on and a shared data dictionary, so every system becomes part of one institutional picture that decision makers can read as a whole.</p>
+    <div class="card" style="margin:14px 0"><img class="thumb" src="assets/isps-hall.jpg" alt="ISPS exhibition: project network map" data-zoom loading="lazy"><h4>ISPS exhibition: 25 enterprise projects</h4><p>An interactive network map and a wing for every project: the problem it solves, its modules, an illustrative screen per role, and its links to the rest of the suite (Arabic).</p><div class="bottom"><span class="chip">Structure and frameworks complete</span><a class="go" href="isps/index.html" target="_blank" rel="noopener">Enter the exhibition</a></div></div>
+    <div class="layers">
+      <div class="layer"><b>1. Users</b><span>Employees, leaders, clients, beneficiaries, and partners, each with their own role and permissions.</span></div>
+      <div class="layer hub"><b>2. ISPS gateway</b><span>API gateway, single sign-on (SSO), data dictionary, and an executive command center.</span></div>
+      <div class="layer"><b>3. Systems</b><span>24 specialized systems exchanging data through the gateway, supported by a shared enablement layer (IAMS · WFMS · CSMS) for identity, permissions, workflow, and automation.</span></div>
+      <div class="layer"><b>4. Data</b><span>SharePoint, Azure SQL, and Power BI, hosted in-Kingdom (STC Cloud KSA).</span></div>
+      <div class="layer"><b>5. Compliance</b><span>NCA cybersecurity controls, PDPL personal data protection, ZATCA, the Digital Government Authority (DGA), and ISO 27001.</span></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><h4>Integrated systems</h4><p>Strategic initiatives in SEMS become projects in POMS, HRMS payroll is processed in EFPMS, and policy documents in EDRMS feed GRCMS audits and compliance.</p></div>
+      <div class="card"><h4>A document for every system</h4><p>Each system has its structure and implementation framework: executive summary, pain areas, risks, value, scope, integrations, and the matching Power Platform tool.</p></div>
+      <div class="card"><h4>CTMS, the operational core</h4><p>A cooperative training and competency management system that grew out of 83 pain points observed in the field, with no Arabic competitor. Feasibility: 220% ROI within 24 months, payback in 8 to 14 months, and delivery in 16 weeks.</p></div>
+      <div class="card"><h4>NDTMS for the non-profit sector</h4><p>A digital transformation system designed for associations: governance, donor disclosure, and regulatory reporting, a gap no specialized Arabic solution covers.</p></div>
+    </div>
+    <p class="note">A feasibility study and business case for the suite in a 163-slide deck, and a bilingual investment pitch.</p>
+  </div>
+
+  <div data-subpanel="g-sy" hidden>
+    <p>24 specialized systems under the ISPS umbrella, across six domains:</p>
     <div class="grid">
-      <div class="card"><h4>8 axes × 5 indicators</h4><p>Five maturity levels and a heat map.</p></div>
-      <div class="card"><h4>Four-layer outputs</h4><p>Maturity score → gap register → initiative portfolio → 90-day and 12-month implementation roadmap.</p></div>
-      <div class="card"><h4>"Decision page" generator</h4><p>Derives the page automatically from the results of the eight axes, in the client's branding.</p></div>
-      <div class="card"><h4>go2top delivery gate</h4><p>7 critical gates and 8 weighted axes, an 85/100 delivery line, and a numbered decision stamp.</p></div>
+      <div class="card"><h4>Human capital and learning</h4><p>Cooperative training and competencies, human resources, e-learning, and institutional knowledge.</p><div class="syscodes"><span class="chip latin">CTMS</span><span class="chip latin">HRMS</span><span class="chip latin">ELMS</span><span class="chip latin">KNMS</span></div></div>
+      <div class="card"><h4>Operations and resources</h4><p>Projects and operations, finance, procurement and contracts, supply chain, assets and facilities, and IT services.</p><div class="syscodes"><span class="chip latin">POMS</span><span class="chip latin">EFPMS</span><span class="chip latin">SCMS</span><span class="chip latin">ASMS</span><span class="chip latin">ITMS</span></div></div>
+      <div class="card"><h4>Clients and communication</h4><p>Client and beneficiary relations, marketing and institutional communication, and correspondence.</p><div class="syscodes"><span class="chip latin">CRMS</span><span class="chip latin">MKMS</span><span class="chip latin">CCMS</span></div></div>
+      <div class="card"><h4>Strategy and decisions</h4><p>Institutional strategy, decision support, performance indicators, and AI and data.</p><div class="syscodes"><span class="chip latin">SEMS</span><span class="chip latin">ODMS</span><span class="chip latin">KPMS</span><span class="chip latin">DAIS</span></div></div>
+      <div class="card"><h4>Digital transformation</h4><p>Digital transformation for government and private entities, and for the non-profit sector.</p><div class="syscodes"><span class="chip latin">DTMS</span><span class="chip latin">NDTMS</span></div></div>
+      <div class="card"><h4>Governance, compliance, and continuity</h4><p>Governance, risk and compliance, quality and continuous improvement, business continuity, documents and records, legal and regulatory affairs, and workflow automation.</p><div class="syscodes"><span class="chip latin">GRCMS</span><span class="chip latin">IQMS</span><span class="chip latin">BCMS</span><span class="chip latin">EDRMS</span><span class="chip latin">LRMS</span><span class="chip latin">WFMS</span></div></div>
     </div>
   </div>
-  <div data-subpanel="g-is" hidden><ul class="plain">
-    <li>Structure and frameworks for 25 enterprise systems in a five-layer architecture: users → ISPS gateway → systems → data → compliance (NCA, PDPL, ZATCA, DGA, ISO 27001).</li>
-    <li>A feasibility study and business case in a 163-slide deck, and six priced market packages.</li>
-    <li>A bilingual investor deck prepared for the Misk Launchpad accelerator.</li>
-    <li>An executive document for each system: executive summary, pain points, risks, value, scope, and integrations.</li>
-  </ul></div>
-  <div data-subpanel="g-bc" hidden><ul class="plain">
-    <li>A 13-chapter executive reference: positioning, pricing, a no-capital business model, platform architecture, and a 90-day plan.</li>
-    <li>go2top asset inventory: 127 documented assets in a verification workbook.</li>
-    <li>A failure-prevention plan: a pre-mortem of eight causes, two numeric decision gates, and an early-warning board.</li>
-    <li>A commercial validation log (seven-sheet Excel): hypotheses and experiments, interviews scored by signal strength, an offer tracker, and unit economics.</li>
-    <li>A four-level consulting maturity model that matches a client's state to the right solution: Power Apps → ISPS portfolio → integrated suite.</li>
-  </ul></div>
-  <div data-subpanel="g-hq" hidden><ul class="plain">
-    <li>A conceptual architectural design for the headquarters: a functional and space program for the ten arms, and three master-plan alternatives with an objective comparison.</li>
-    <li>A customer journey board (A3) with eight stages, and an interactive map of five sector tracks.</li>
-    <li>Seven interactive WebGL concept prototypes: the living readiness mountain, before and after transformation, the flowing process map, the go2top guide, the HQ on Riyadh time with live sunlight, the Golden Series viewer, and the rendered Tuwaiq scene.</li>
-    <li>The digital twin HQ: numbered rooms for the arms and a consolidated executive dashboard (version 14).</li>
-  </ul></div>
+
+  <div data-subpanel="g-pk" hidden>
+    <p>The suite is offered in six packages that start with what an organization needs first and grow with it.</p>
+    <div class="grid">
+      <div class="card"><h4>Government Core</h4><p>For government entities early in digitization, compliance first: ODMS, HRMS, EDRMS, GRCMS, and CTMS.</p></div>
+      <div class="card"><h4>Operations Engine</h4><p>For organizations that want to control daily operations and resources.</p></div>
+      <div class="card"><h4>Human Capital</h4><p>For organizations that start with people: hiring, training, learning, and competencies.</p></div>
+      <div class="card"><h4>Non-profit Sector</h4><p>For associations and civil organizations, with governance, disclosure, and sector-specific transformation.</p></div>
+      <div class="card"><h4>Smart Enterprise</h4><p>For organizations that want data-driven decisions, analytics, and forecasting.</p></div>
+      <div class="card"><h4>Complete Suite</h4><p>Every system under the ISPS umbrella with a single command center.</p></div>
+    </div>
+  </div>
+
 </section>
 
 <section class="panel" id="systems" data-label="Systems and apps" hidden>
@@ -701,10 +817,17 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 </section>
 
 <section class="panel" id="products" data-label="Products" hidden>
+  <img src="assets/golden-banner.jpg" alt="" style="display:block;width:100%;aspect-ratio:1100/220;object-fit:cover;object-position:center 70%;border-radius:var(--r);margin:0 0 18px;border:1px solid var(--glass-edge)">
+
   <div class="eyebrow">Digital products | go2top</div>
   <h2>The Golden Series</h2>
-  <p class="lede">A free guide and 31 products built in Excel, with Google Sheets and interactive app editions and English versions in progress. Sales have not started.</p>
-  <div class="series" id="series"></div>
+  <p class="lede">A free guide and 31 products in three formats: Excel, Google Sheets, and an interactive app, all ready for sale.</p>
+    <div class="scg" style="grid-template-columns:repeat(2,minmax(0,1fr));margin:6px 0 18px">
+    <button class="sc" type="button" data-go="gallery"><img src="assets/golden-04-performance.jpg" alt="" loading="lazy"><span>Personal Performance Manager: home page</span></button>
+    <button class="sc" type="button" data-go="gallery"><img src="assets/golden-student-dashboard.jpg" alt="" loading="lazy"><span>Study Excellence dashboard</span></button>
+  </div>
+  <div class="adv"><video src="assets/ad-golden-guide.mp4" poster="assets/ad-golden-guide-poster.jpg" controls playsinline preload="none"></video><div><b>Golden Series guide ad</b><p>An 18-second vertical ad at 1080×1920 for TikTok, Reels, and Shorts (Arabic). One of 32 ads produced for every product in the series, in the go2top identity with original music.</p></div></div>
+<div class="series" id="series"></div>
   <h3>Series structure</h3>
   <ul class="plain">
     <li>A governing charter (v3) for the three formats, the two languages, product names, and store sections.</li>
@@ -722,8 +845,8 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 
 <section class="panel" id="institution" data-label="Institutional project" hidden>
   <div class="eyebrow">Institutional project | since August 2025</div>
-  <h2>Founding an education and development association</h2>
-  <p class="lede">Haneen Al Zakari led the founding of a non-profit association under an independent contract, as institutional organization consultant and founding project manager, owning the methodology, planning decisions, and quality controls.</p>
+  <h2>Managing the founding project of an education and development association</h2>
+  <p class="lede">A non-profit association, under an independent contract, as institutional organization consultant and founding project manager, owning the methodology, planning decisions, and quality controls.</p>
   <div class="grid">
     <div class="card"><h4>Institutional plans</h4><p>Strategic, timeline, and execution plans, and a 100-day plan: the code of ethics, securing financial resources, member recruitment, and the marketing file.</p></div>
     <div class="card"><h4>Funding plan</h4><p>Prepared and submitted to a grant-making body.</p></div>
@@ -737,10 +860,10 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="academic" data-label="Academic projects" hidden>
   <div class="eyebrow">Academic and applied projects</div>
   <h2>Applications in digital transformation and AI</h2>
-  <p class="lede">Six applied projects completed as academic requirements, chief among them a digital transformation integration strategy for Al-Birr Charitable Society with a published prototype.</p>
+  <p class="lede">Six applied projects completed as academic requirements, chief among them an initial concept for a digital transformation integration strategy for Al-Birr Charitable Society, with a published interactive model.</p>
   <div class="grid">
-    <div class="card"><img class="thumb" src="assets/shot-albr.jpg" alt="Dashboard of the interactive model for the Al-Birr strategy" data-zoom loading="lazy"><h4>Digital transformation integration strategy for Al-Birr Charitable Society, Riyadh</h4><p>Strategic analysis and a proposed solution with the "Change Makers" team: eight phases and 15 initiatives, a 43-slide deck, and an Excel analysis of 16 sheets and 26 charts on 500 records. TOGAF, ADKAR, SROI, and PDPL frameworks.</p><div class="bottom"><span class="chip">AlMaarefa University</span><a class="go" href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">Interactive model →</a></div></div>
-    <div class="card"><h4>Digital Transformation Leaders Fellowship graduation project</h4><p>Team work for a national entity in a four-member team, as Readiness &amp; Change Leadership Lead: the strategic plan, a readiness report with a six-axis framework and 15 initiatives, and the final presentation, with ADKAR, a risk register, and a business impact analysis.</p><div class="bottom"><span class="chip">Prince Musaid bin Abdulrahman University</span></div></div>
+    <div class="card"><img class="thumb" src="assets/shot-albr.jpg" alt="Dashboard of the interactive model for the Al-Birr strategy" data-zoom loading="lazy"><h4>Digital transformation integration strategy for Al-Birr Charitable Society, Riyadh</h4><p><b>An initial concept</b> applying the digital transformation course content to a real organization, prepared by the "Change Makers" team as an academic project based on the society's published data: seven separate systems across seven branches unified through an integration layer on Power Platform and a single Dataverse store; eight phases and 15 initiatives, a budget of SAR 239,800 over 30 months, a target social return of 3.5:1, and a target digital maturity of 3.8 out of 5 against 1.8 today; a 43-slide deck, and an Excel analysis of 16 sheets and 26 charts on 500 records. TOGAF, ADKAR, SROI, and PDPL frameworks.</p><div class="bottom"><span class="chip">AlMaarefa University</span><a class="go" href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">Interactive model →</a></div></div>
+    <div class="card"><img class="thumb" src="assets/fellowship-cover.jpg" alt="Cover of the fellowship capstone final presentation" data-zoom loading="lazy"><h4>Digital Transformation Leaders Fellowship graduation project</h4><p>Team work for a national entity in a four-member team, as Readiness &amp; Change Leadership Lead: the strategic plan, a readiness report with a six-axis framework and 15 initiatives, and the final presentation, with ADKAR, a risk register, and a business impact analysis.</p><div class="bottom"><span class="chip">Prince Musaid bin Abdulrahman University</span></div></div>
     <div class="card"><h4>Graduation project DT-2605</h4><p>An integrated concept for the "Digital Future Company" case linking advanced digital transformation, cybersecurity, and AI.</p><div class="bottom"><span class="chip">AlMaarefa University</span></div></div>
     <div class="card"><img class="thumb" src="assets/shot-madar.jpg" alt="Main interface of the MADAR AI prototype" data-zoom loading="lazy"><h4>MADAR AI</h4><p>An interactive prototype of an intelligent digital twin for tourism with eight functional screens.</p><div class="bottom"><span class="chip">AI course</span><a class="go" href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">Prototype →</a></div></div>
     <div class="card"><h4>Digital transformation initiative for the Ministry of Tourism</h4><p>Initiative design and a case study report: the problem, the digital solution, the AI engine, and the impact.</p><div class="bottom"><span class="chip">Workshop</span></div></div>
@@ -759,7 +882,7 @@ html[dir="ltr"] .panel.enter{animation-name:enter-ltr}
 <section class="panel" id="skills" data-label="Skills" hidden>
   <div class="eyebrow">Skills and tools</div>
   <h2>Management experience and building skill</h2>
-  <p class="lede">Management and leadership skills practiced over eight years, and applied technical skills in building administrative systems.</p>
+  <p class="lede">Management and leadership skills practiced over nine years, and applied technical skills in building administrative systems.</p>
   <div class="skills" id="skillsGrid"></div>
 </section>
 
@@ -812,33 +935,25 @@ window.PORTFOLIO_EN={
   ],
   certGroups:[['all','All'],['cisco','Cisco'],['ms','Microsoft'],['masar','Al-Masar Center'],['prep','Awaiting exam'],['other','Other']],
   sys:[
-    {n:'CTMS Portal',v:'v9',d:'A cooperative training management system that grew out of 83 pain points I documented during my Ministry of Education traineeship, used as a case study with a PMBOK project charter.',t:['HTML','v9 architecture'],s:'built',sl:'Built, final completion remaining'},
-    {n:'CTMS design on Power Platform',d:'An implementation architecture: 30 SharePoint lists, 6 Power Apps, 12 Power Automate flows, 3 Power BI dashboards, and a Power Pages portal.',t:['Power Platform'],s:'design',sl:'Designed'},
-    {n:'Education and development association website and platform',d:'An official website and a platform with an academy and a store; interfaces for visitors, beneficiaries, and administration; role-based sign-in.',t:['HTML','Supabase','GitHub Pages'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/qinwan-site/',img:'assets/shot-association.jpg'},
-    {n:'The English Ladder',d:'Step-by-step English conversation training, A1 to C1: 24 lessons with mastery gates, grammar compared with Arabic, and an exam simulator.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/the-english-ladder/',img:'assets/shot-ladder.jpg'},
-    {n:'Baheth (The Researcher)',d:'Organizing a thesis; the second version of the "Thesis Companion" idea.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/baheth/',img:'assets/shot-baheth.jpg'},
-    {n:'Thesis Companion',d:'A research companion for graduate students: a PRISMA workflow, RIS and BibTeX import, and email-code sign-in.',t:['Supabase','RLS'],s:'built',sl:'Built'},
-    {n:'Diploma platform by go2top',v:'v0.1',d:'A study platform for computer science diploma students: 4 levels, 266 chapters, and 2,266 questions.',t:['HTML','Supabase'],s:'built',sl:'Ready to publish'},
-    {n:'Digital twin HQ',v:'v14',d:'A digital twin of the conceptual go2top headquarters: numbered rooms for the arms and a consolidated executive dashboard.',t:['HTML','GitHub Pages'],s:'built',sl:'Built'},
-    {n:'My Journey to the Top',d:'A personal achievement journey app.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
-    {n:'TraceR',d:'A personal achievement tracker.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
-    {n:'Nabd',d:'A daily task organizer.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
-    {n:'focus',d:'A focus and productivity app.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
-    {n:'go2top Solo',v:'v8',d:'A business management app for freelancers.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'go2top website',d:'A 7-page website with interactive diagnostic tools and Arabic navigation.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'Product showcase website',d:'A page for each system, a cart, a checkout page, calculated VAT, and an automatic order number.',t:['HTML'],s:'built',sl:'Ready to publish'},
-    {n:'Digital maturity index and governance readiness scale',d:'Two interactive diagnostic tools.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'CEO dashboard',d:'An executive KPI dashboard.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'CRM system',d:'Customer relationship management with 788 formulas and 17 VBA procedures.',t:['Excel xlsm','VBA'],s:'built',sl:'Built'},
-    {n:'Golden Series activation system',d:'Signed activation codes, a protection gate for paid products, and a 3-device limit; passed 29 tests.',t:['Cloudflare Pages','KV'],s:'built',sl:'Built and tested'},
-    {n:'Lisanan',d:'A language training program: self-diagnosis, six stages, a five-part session, and timed conversation drills.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'My Daily',d:'Organizing the day\'s events and achievements.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'Fellowship exam review tool',d:'145 questions across 14 exams, with review and self-test modes and a mistakes tab.',t:['HTML'],s:'built',sl:'Built'},
-    {n:'HASSIL AI',d:'A B2B system for managing receivables and accelerating collection through automation, with human approval before sending.',t:['Power Apps','Power Automate','Dataverse','Power BI'],s:'design',sl:'Design stage'},
-    {n:'Power Pages template',d:'A CSS theme and a home page template.',t:['Power Pages'],s:'design',sl:'Designed'},
-    {n:'go2top unified platform',d:'A sales and services platform: sign-in, requests, a client space, and a team work inbox.',t:['GitHub'],s:'plan',sl:'Planning stage'}
+    {c:'ent',n:'Digital twin HQ',v:'v14',d:'The internal go2top operating platform: an executive dashboard with indicators across departments, a leave approval workflow and employee directory, an external portal for four groups (client, partner, visitor, trainee) where a partner follows its project phases, and an AI diagnostic agent named Basira. Screens use sample data.',t:['HTML','GitHub Pages'],s:'built',sl:'In development',img:'assets/twin-executive.jpg'},
+    {c:'ent',n:'CTMS Portal',v:'v9',d:'A cooperative training management system that grew out of 83 pain points I documented during my Ministry of Education traineeship. A unified portal with six portals (trainee, supervisor, coordinator, management, data entry, and system administrator) and the design concept linking the management, supervisor, and trainee dashboards. Used as a case study with a PMBOK project charter.',t:['HTML','v9 architecture','Figma'],s:'built',sl:'Built, final completion remaining',u:'https://mark-emblem-41581904.figma.site',img:'assets/ctms-portal.jpg'},
+    {c:'ent',n:'CTMS design on Power Platform',d:'An implementation architecture: 30 SharePoint lists, 6 Power Apps, 12 Power Automate flows, 3 Power BI dashboards, and a Power Pages portal.',t:['Power Platform'],s:'design',sl:'Designed',img:'assets/ctms-architecture.jpg'},
+    {c:'ent',n:'Digital maturity index and governance readiness scale',d:'Two interactive diagnostic tools.',t:['HTML'],s:'built',sl:'Built'},
+    {c:'ent',n:'CRM system',d:'Customer relationship management with 788 formulas and 17 VBA procedures.',t:['Excel xlsm','VBA'],s:'built',sl:'Built'},
+    {c:'ent',n:'CEO dashboard',d:'An executive KPI dashboard.',t:['HTML'],s:'built',sl:'Built'},
+    {c:'web',n:'Education and development association website and platform',d:'An official website and a platform with an academy and a store; interfaces for visitors, beneficiaries, and administration; role-based sign-in.',t:['HTML','Supabase','GitHub Pages'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/qinwan-site/',img:'assets/shot-association.jpg'},
+    {c:'web',n:'CV websites',d:'Three CV websites targeted by field: human resources, digital transformation, and the Quran and its sciences, with print and PDF export.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/My-CV/hr/',img:'assets/shot-cv-hr.jpg'},
+    {c:'edu',n:'The English Ladder',d:'Step-by-step English conversation training, A1 to C1: 24 lessons with mastery gates, grammar compared with Arabic, and an exam simulator.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/the-english-ladder/',img:'assets/shot-ladder.jpg'},
+    {c:'edu',n:'Baheth (The Researcher)',d:'Organizing a thesis; the second version of the "Thesis Companion" idea.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/baheth/',img:'assets/shot-baheth.jpg'},
+    {c:'edu',n:'Diploma platform by go2top',v:'v0.1',d:'A study platform for computer science diploma students: 4 levels, 266 chapters, and 2,266 questions.',t:['HTML','Supabase'],s:'built',sl:'Ready to publish'},
+    {c:'edu',n:'Thesis Companion',d:'A research companion for graduate students: a PRISMA workflow, RIS and BibTeX import, and email-code sign-in.',t:['Supabase','RLS'],s:'built',sl:'Built'},
+    {c:'prod',n:'My Journey to the Top',d:'A personal achievement journey app for girls, with a six-station map.',t:['Supabase','RLS','Google OAuth'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/journey-of-life/',img:'assets/shot-journey.jpg'},
+    {c:'prod',n:'My Daily',d:'Organizing the day\'s events and achievements.',t:['HTML'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/My-Daily/',img:'assets/shot-my-daily.jpg'},
+    {c:'prod',n:'focus',d:'A focus and productivity app.',t:['Supabase','RLS','Google OAuth'],s:'pub',sl:'Published',u:'https://go2top-sa.github.io/focus/',img:'assets/shot-focus.jpg'},
+    {c:'prod',n:'TraceR',d:'A personal achievement tracker.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'},
+    {c:'prod',n:'Nabd',d:'A daily task organizer.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'Built'}
   ],
-  sysGroups:[['all','All'],['pub','Published'],['built','Built'],['design','Designed'],['plan','Planning']],
+  sysGroups:[['all','All'],['ent','Enterprise systems'],['web','Websites and platforms'],['edu','Learning and research'],['prod','Productivity apps']],
   series:['Golden Series guide','Study and excellence','Job search','Career achievement','Personal performance','Budget and wealth','Travel','Home maintenance','Tidying and organizing','Fitness','Content','Business and projects','Offers and store','Building an MVP','Professional projects','Personal development','Teacher\'s record','Quran and worship','Enterprise digital transformation','Innovation and digital products','Strategic and operational planning','Lifetime legacy box','English vocabulary','Thesis','Founding a business','ERP selection kit','Faculty member','Research output and promotion','HR and labor law','Business analyst and information systems','Social relations','Major events'],
   skills:[
     ['Human resources and management',['Nomination, selection, and interviews','Onboarding','Performance evaluation','Training needs and program impact measurement','Strategic and operational planning','Preparing and monitoring budgets','Leading initiatives']],
@@ -853,17 +968,62 @@ window.PORTFOLIO_EN={
     ['Islamic studies',['Usul al-Din','The Quran and its sciences','Quranic recitation (Iqra\')']]
   ],
   gal:[
-    {g:'web',src:'assets/shot-association.jpg',t:'Education and development association website and platform',d:'Published',u:'https://go2top-sa.github.io/qinwan-site/'},
-    {g:'web',src:'assets/shot-albr.jpg',t:'Dashboard: Al-Birr Society digital transformation strategy',d:'Published interactive model',u:'https://go2top-sa.github.io/albr-digital-transformation/'},
-    {g:'web',src:'assets/shot-ladder.jpg',t:'The English Ladder: English conversation training',d:'Published',u:'https://go2top-sa.github.io/the-english-ladder/'},
-    {g:'web',src:'assets/shot-baheth.jpg',t:'Baheth: thesis organization dashboard',d:'Published',u:'https://go2top-sa.github.io/baheth/'},
-    {g:'web',src:'assets/shot-madar.jpg',t:'MADAR AI: an intelligent digital twin for tourism',d:'Published prototype',u:'https://go2top-sa.github.io/madar/'},
+    {g:'twin',src:'assets/twin-process-map.jpg',t:'go2top process map: the operational twin',d:'Service delivery flow with coded steps, each with its performer (automated or human), tool, and monthly cost, decision points, and flow simulation across nine domains (Arabic); in development'},
+    {g:'twin',src:'assets/isps-hall.jpg',t:'ISPS exhibition: the projects hall',d:'Interactive network map of the 25 projects across six domains (Arabic)'},
+    {g:'twin',src:'assets/isps-wall.jpg',t:'ISPS exhibition: the exhibit wall',d:'A card per project with its problem, modules, indicators, and status (Arabic); illustrative figures'},
+    {g:'twin',src:'assets/isps-exhibit.jpg',t:'ISPS exhibition: a project wing',d:'Problem, solution, and an illustrative system screen that changes by role (Arabic)'},
+    {g:'twin',src:'assets/twin-executive.jpg',t:'Digital HQ: founder executive dashboard',d:'Indicators across departments, project progress, and task status (Arabic); in development, sample data'},
+    {g:'twin',src:'assets/twin-partner.jpg',t:'Digital HQ: partner portal',d:'Shared project progress, phases, dues, and requests (Arabic); in development, sample data'},
+    {g:'twin',src:'assets/twin-portal.jpg',t:'Digital HQ: external portal',d:'Sign-in by role: client, partner, visitor, trainee (Arabic); in development, sample data'},
+    {g:'twin',src:'assets/twin-hr.jpg',t:'Digital HQ: human resources',d:'Leave approval workflow and employee directory (Arabic); in development, sample data'},
+    {g:'twin',src:'assets/twin-basira.jpg',t:'Digital HQ: Basira diagnostic agent',d:'Institutional diagnosis starting from the organization data and challenges (Arabic); in development, sample data'},
+    {g:'twin',src:'assets/twin-academy.jpg',t:'Digital HQ: trainee dashboard in the go2top Academy',d:'Courses, overall progress, certificates, and resume learning (Arabic); in development, sample data'},
+    {g:'design',src:'assets/brand-board.jpg',t:'go2top identity: print and digital applications',d:'Stationery, cards, gifts, website, and social account; an applied identity concept (Arabic)'},
+    {g:'design',src:'assets/brand-services.jpg',t:'Services and products identity',d:'Service coding system, icons, digital product covers, and pricing cards and packages (Arabic)'},
+    {g:'design',src:'assets/brand-letterhead.jpg',t:'go2top letterhead',d:'Official correspondence paper with contact details (Arabic)'},
     {g:'design',src:'assets/design-cover.jpg',t:'LinkedIn cover in the go2top identity',d:'Design'},
     {g:'design',src:'assets/deck-1.jpg',t:'Portfolio deck: cover',d:'41-slide presentation (Arabic)'},
-    {g:'design',src:'assets/deck-7.jpg',t:'Career path on a timeline',d:'Presentation (Arabic)'},
-    {g:'design',src:'assets/deck-19.jpg',t:'go2top: overview',d:'Presentation (Arabic)'},
-    {g:'design',src:'assets/deck-23.jpg',t:'The five-layer ISPS portfolio',d:'Presentation (Arabic)'},
-    {g:'design',src:'assets/deck-27.jpg',t:'CTMS case study',d:'Presentation (Arabic)'},
+    {g:'web',src:'assets/shot-association.jpg',t:'Education and development association website and platform',d:'Published',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-association-academy.jpg',t:'Association academy: courses and enrollment',d:'Published',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-association-impact.jpg',t:'Impact and governance page of the association website',d:'Published',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-ladder.jpg',t:'The English Ladder: English conversation training',d:'Published',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-ladder-conversation.jpg',t:'The English Ladder: professional conversation coach',d:'Published',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-ladder-progress.jpg',t:'The English Ladder: progress across six levels',d:'Published',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-baheth.jpg',t:'Baheth: thesis organization dashboard',d:'Published',u:'https://go2top-sa.github.io/baheth/'},
+    {g:'web',src:'assets/shot-journey.jpg',t:'My Journey to the Top: a six-station journey map for girls',d:'Published',u:'https://go2top-sa.github.io/journey-of-life/'},
+    {g:'web',src:'assets/shot-my-daily.jpg',t:'My Daily: day, appointments, and achievements',d:'Published',u:'https://go2top-sa.github.io/My-Daily/'},
+    {g:'web',src:'assets/shot-focus.jpg',t:'Focus organizer: timer and priority matrix',d:'Published',u:'https://go2top-sa.github.io/focus/'},
+    {g:'web',src:'assets/shot-cv-hr.jpg',t:'CV website: human resources edition',d:'Published',u:'https://go2top-sa.github.io/My-CV/hr/'},
+    {g:'web',src:'assets/shot-madar.jpg',t:'MADAR AI: an intelligent digital twin for tourism',d:'Published prototype',u:'https://go2top-sa.github.io/madar/'},
+    {g:'web',src:'assets/shot-albr-maturity.jpg',t:'Digital maturity index in the Al-Birr model',d:'Published interactive model',u:'https://go2top-sa.github.io/albr-digital-transformation/'},
+    {g:'ctms',src:'assets/ctms-portal.jpg',t:'CTMS unified portal: six portals by role',d:'Interactive prototype (Arabic)',u:'https://mark-emblem-41581904.figma.site'},
+    {g:'ctms',src:'assets/ctms-mobile.jpg',t:'CTMS mobile app: attendance with location, and voice task logging',d:'Trainee screens (Arabic)'},
+    {g:'ctms',src:'assets/ctms-architecture.jpg',t:'CTMS architecture on Power Platform',d:'Excel and Power Query, Power Apps, Power Automate, SharePoint, and Power BI (Arabic)'},
+    {g:'ctms',src:'assets/ctms-admin-dashboard.jpg',t:'CTMS management dashboard',d:'Designed the concept linking the supervisor file, the trainee file, and system administration; sample data (Arabic)'},
+    {g:'ctms',src:'assets/ctms-supervisor-dashboard.jpg',t:'CTMS supervisor dashboard',d:'Designed the concept linking the supervisor file, the trainee file, and system administration; sample data (Arabic)'},
+    {g:'ctms',src:'assets/ctms-trainee-dashboard.jpg',t:'CTMS trainee dashboard',d:'Designed the concept linking the supervisor file, the trainee file, and system administration; sample data (Arabic)'},
+    {g:'ctms',src:'assets/ctms-report-cover.jpg',t:'Printed CTMS project report',d:'Trainee project in the "Trainee Project: from training to empowerment" program, Ministry of Education (Arabic)'},
+    {g:'academic',src:'assets/fellowship-cover.jpg',t:'Fellowship capstone: final presentation cover',d:'Team project, Excellent (97%) (Arabic)'},
+    {g:'academic',src:'assets/fellowship-pillars.jpg',t:'Vision, mission, and digital pillars',d:'Fellowship capstone (Arabic)'},
+    {g:'academic',src:'assets/fellowship-adkar.jpg',t:'Where change stalls: ADKAR barrier per group',d:'Fellowship capstone: readiness and change leadership (Arabic)'},
+    {g:'academic',src:'assets/fellowship-budget.jpg',t:'Unified budget in two scenarios',d:'Fellowship capstone (Arabic)'},
+    {g:'academic',src:'assets/albr-deck-2.jpg',t:'Executive summary of the Al-Birr strategy',d:'Initial concept in an academic project, Change Makers team, AlMaarefa University (Arabic)'},
+    {g:'academic',src:'assets/albr-deck-6.jpg',t:'Transformation diagram: current and target state',d:'Initial concept in an academic project, Change Makers team, AlMaarefa University (Arabic)'},
+    {g:'academic',src:'assets/albr-deck-11.jpg',t:'Map of the 15 digital initiatives',d:'Initial concept in an academic project, Change Makers team, AlMaarefa University (Arabic)'},
+    {g:'academic',src:'assets/albr-deck-12.jpg',t:'Five-layer technical architecture',d:'Initial concept in an academic project, Change Makers team, AlMaarefa University (Arabic)'},
+    {g:'academic',src:'assets/albr-deck-22.jpg',t:'Key performance indicators',d:'Initial concept in an academic project, Change Makers team, AlMaarefa University (Arabic)'},
+    {g:'academic',src:'assets/albr-beneficiaries-dashboard.jpg',t:'Beneficiary data analytics dashboard, Al-Birr Charitable Society in Riyadh',d:'Excel dashboard with ten indicators and seventeen charts, including a map of districts and branches, on 500 hypothetical records, with the "Change Makers" team (Arabic)'},
+    {g:'golden',src:'assets/golden-00-dashboard.jpg',t:'Golden Series guide: series dashboard',d:'31 systems across 482 sheets, with a guide that suggests the best fit for each user (Arabic)'},
+    {g:'golden',src:'assets/golden-04-performance.jpg',t:'Golden Series 04: Personal Performance Manager',d:'Excel workbook in the go2top identity: life dashboard, yearly goals, weekly and daily plans, habits (Arabic)'},
+    {g:'golden',src:'assets/golden-04-dashboard.jpg',t:'Golden Series 04: Life dashboard',d:'Six cards summarizing the day, week, habits, balance, and yearly goals (Arabic)'},
+    {g:'golden',src:'assets/golden-student-dashboard.jpg',t:'Golden Series: Study Excellence dashboard',d:'Excel workbook in the go2top identity: projected GPA, courses, exams, deliverables, and smart alerts (Arabic)'},
+    {g:'recog',src:'assets/hackathon-first-place.jpg',t:'First place, Nawat Hackathon: Masar Al-Ibdaei 9 team',d:'Ministry of Education, 1447 AH'},
+    {g:'recog',src:'assets/award-email-mobile.jpg',t:'Commendation for preparing the hackathon',d:'General Department of HR Development, Ministry of Education (Arabic)'},
+    {g:'recog',src:'assets/award-supervisor-email.jpg',t:'Commendation from the academic supervisor on the final report',d:'King Saud University · 15 December 2025 (Arabic)'},
+    {g:'recog',src:'assets/award-field-supervisor-email.jpg',t:'Commendation from the field supervisor',d:'General Department of HR Development, Ministry of Education (Arabic)'},
+    {g:'recog',src:'assets/trainee-honor.jpg',t:'Recognition at the Ministry of Education',d:'General Department of HR Development'},
+    {g:'recog',src:'assets/award-tamheer-thanks.jpg',t:'Certificate of appreciation: Tamheer nominees orientation',d:'HR Development Department, Ministry of Education · 1 December 2025 (Arabic)'},
+    {g:'recog',src:'assets/trainee-badge.jpg',t:'Trainee badge, Ministry of Education',d:'Field training, 1447 AH'},
     {g:'cert',src:'assets/cert-cisco-ctm.jpg',t:'Cyber Threat Management',d:'Cisco Networking Academy · August 2026'},
     {g:'cert',src:'assets/cert-cisco-intro.jpg',t:'Introduction to Cybersecurity',d:'Cisco Networking Academy · June 2026'},
     {g:'cert',src:'assets/cert-ms-1.jpg',t:'PL-900 Exam Prep (specialization)',d:'Microsoft on Coursera · March 2026'},
@@ -872,7 +1032,7 @@ window.PORTFOLIO_EN={
     {g:'cert',src:'assets/cert-ms-2.jpg',t:'Power BI & Power Virtual Agents',d:'Microsoft on Coursera · February 2026'},
     {g:'cert',src:'assets/cert-ms-3.jpg',t:'The PL-900 Practice Exam',d:'Microsoft on Coursera · March 2026'}
   ],
-  galGroups:[['all','All'],['web','Published platforms'],['design','Designs'],['cert','Certificates']]
+  galGroups:[['all','All'],['twin','go2top systems'],['design','go2top identity'],['web','Published platforms'],['ctms','CTMS'],['academic','Academic projects'],['golden','Digital products'],['recog','Recognition and commendations'],['cert','Course certificates']]
 };
 </script>
 
@@ -922,33 +1082,25 @@ window.PORTFOLIO_EN={
   ];
   var certGroups=[['all','الكل'],['cisco','Cisco'],['ms','Microsoft'],['masar','مركز المسار'],['prep','بانتظار الاختبار'],['other','أخرى']];
   var sys=[
-    {n:'CTMS Portal',v:'v9',d:'نظام إدارة التدريب التعاوني، نشأ من 83 نقطة ألم رصدتها خلال التدريب في وزارة التعليم، واستُخدم دراسة حالة بميثاق مشروع وفق PMBOK.',t:['HTML','معمارية v9'],s:'built',sl:'مبني، بقي القليل لإتمامه'},
-    {n:'تصميم CTMS على Power Platform',d:'معمارية تنفيذية: 30 قائمة SharePoint، و6 تطبيقات Power Apps، و12 تدفق Power Automate، و3 لوحات Power BI، وبوابة Power Pages.',t:['Power Platform'],s:'design',sl:'مصمم'},
-    {n:'موقع الجمعية التنموية التعليمية ومنصتها',d:'موقع رسمي ومنصة بأكاديمية ومتجر، وواجهات للزوار والمستفيدين والإدارة، ودخول بأدوار وصلاحيات.',t:['HTML','Supabase','GitHub Pages'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/qinwan-site/',img:'assets/shot-association.jpg'},
-    {n:'سُلّم (The English Ladder)',d:'تدريب تدريجي على المحادثة الإنجليزية A1 ← C1: 24 درسًا ببوابات إتقان، وقواعد بمقارنة عربية، ومحاكي اختبار.',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/',img:'assets/shot-ladder.jpg'},
-    {n:'منصة الباحث',d:'تنظيم الرسالة العلمية، الإصدار الثاني لفكرة «رفيق الرسالة».',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/baheth/',img:'assets/shot-baheth.jpg'},
-    {n:'رفيق الرسالة',d:'رفيق بحثي لطلاب الدراسات العليا: مسار PRISMA، واستيراد RIS وBibTeX، ودخول برمز البريد.',t:['Supabase','RLS'],s:'built',sl:'مبني'},
-    {n:'منصة الدبلوم by go2top',v:'v0.1',d:'منصة دراسية لطلاب دبلوم علوم الحاسب: 4 مستويات، و266 فصلًا، و2,266 سؤالًا.',t:['HTML','Supabase'],s:'built',sl:'جاهز للرفع'},
-    {n:'المقر الرقمي التوأم',v:'v14',d:'توأم رقمي لمقر go2top المفاهيمي: غرف مرقمة للأذرع، ولوحة قيادة تنفيذية مجمعة.',t:['HTML','GitHub Pages'],s:'built',sl:'مبني'},
-    {n:'رحلتي إلى القمة',d:'تطبيق شخصي لرحلة الإنجاز.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'},
-    {n:'TraceR',d:'متتبع الإنجازات الشخصية.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'},
-    {n:'نبض',d:'منظّم يومي للمهام.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'},
-    {n:'focus',d:'تطبيق تركيز وإنتاجية.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'},
-    {n:'go2top Solo',v:'v8',d:'تطبيق إدارة أعمال المستقلين.',t:['HTML'],s:'built',sl:'مبني'},
-    {n:'موقع go2top',d:'موقع من 7 صفحات بأدوات تشخيص تفاعلية وتنقل عربي.',t:['HTML'],s:'built',sl:'مبني'},
-    {n:'موقع عرض المنتجات',d:'صفحة لكل نظام، وسلة، وصفحة دفع، وضريبة قيمة مضافة محسوبة، ورقم طلب آلي.',t:['HTML'],s:'built',sl:'جاهز للنشر'},
-    {n:'مؤشر النضج الرقمي ومقياس جاهزية الحوكمة',d:'أداتا تشخيص تفاعليتان.',t:['HTML'],s:'built',sl:'مبنيتان'},
-    {n:'لوحة قيادة الرئيس التنفيذي',d:'لوحة مؤشرات تنفيذية.',t:['HTML'],s:'built',sl:'مبنية'},
-    {n:'نظام CRM',d:'إدارة علاقات العملاء بـ788 معادلة و17 إجراء VBA.',t:['Excel xlsm','VBA'],s:'built',sl:'مبني'},
-    {n:'نظام تفعيل منتجات السلسلة الذهبية',d:'أكواد تفعيل موقّعة، وبوابة حماية للمنتجات المدفوعة، وحد 3 أجهزة؛ اجتاز 29 اختبارًا.',t:['Cloudflare Pages','KV'],s:'built',sl:'مبني ومختبر'},
-    {n:'لسانان',d:'برنامج تدريب لغوي: تشخيص ذاتي، وست مراحل، وجلسة خماسية، وتمارين محادثة مؤقتة.',t:['HTML'],s:'built',sl:'مبني'},
-    {n:'My Daily',d:'تنظيم أحداث اليوم والإنجاز.',t:['HTML'],s:'built',sl:'مبني'},
-    {n:'أداة مراجعة اختبارات الزمالة',d:'145 سؤالًا عبر 14 اختبارًا، بوضعي المراجعة والاختبار الذاتي، وتبويب الأخطاء.',t:['HTML'],s:'built',sl:'مبنية'},
-    {n:'HASSIL AI (حصّل AI)',d:'نظام B2B لإدارة الذمم المدينة وتسريع التحصيل بالأتمتة، مع اعتماد بشري قبل الإرسال.',t:['Power Apps','Power Automate','Dataverse','Power BI'],s:'design',sl:'مرحلة التصميم'},
-    {n:'قالب Power Pages',d:'سمة CSS وقالب صفحة رئيسية.',t:['Power Pages'],s:'design',sl:'مصمم'},
-    {n:'منصة go2top الموحدة',d:'منصة للمبيعات والخدمات: دخول، وطلبات، ومساحة عميل، وصندوق عمل للفريق.',t:['GitHub'],s:'plan',sl:'مرحلة التخطيط'}
+    {c:'ent',n:'المقر الرقمي التوأم',v:'v14',d:'منصة التشغيل الداخلية لـ go2top: لوحة تنفيذية بمؤشرات عبر الإدارات، ومسار موافقة على الإجازات ودليل الموظفين، وبوابة خارجية لأربع فئات (عميل، وشريك، وزائر، ومتدرب) تتابع فيها الجهة الشريكة مراحل مشروعها، ووكيل تشخيص ذكي باسم «بصيرة». الصور ببيانات تجريبية.',t:['HTML','GitHub Pages'],s:'built',sl:'قيد التطوير',img:'assets/twin-executive.jpg'},
+    {c:'ent',n:'CTMS Portal',v:'v9',d:'نظام إدارة التدريب التعاوني، نشأ من 83 نقطة ألم رصدتها خلال التدريب في وزارة التعليم. بوابة موحدة بست بوابات: المتدرب، والمشرف، والمنسق، والإدارة، ومدخل البيانات، ومسؤول النظام، وتصميم فكرة الترابط بين لوحات الإدارة والمشرف والمتدرب. واستُخدم دراسة حالة بميثاق مشروع وفق PMBOK.',t:['HTML','معمارية v9','Figma'],s:'built',sl:'مبني، بقي القليل لإتمامه',u:'https://mark-emblem-41581904.figma.site',img:'assets/ctms-portal.jpg'},
+    {c:'ent',n:'تصميم CTMS على Power Platform',d:'معمارية تنفيذية: 30 قائمة SharePoint، و6 تطبيقات Power Apps، و12 تدفق Power Automate، و3 لوحات Power BI، وبوابة Power Pages.',t:['Power Platform'],s:'design',sl:'مصمم',img:'assets/ctms-architecture.jpg'},
+    {c:'ent',n:'مؤشر النضج الرقمي ومقياس جاهزية الحوكمة',d:'أداتا تشخيص تفاعليتان.',t:['HTML'],s:'built',sl:'مبنيتان'},
+    {c:'ent',n:'نظام CRM',d:'إدارة علاقات العملاء بـ788 معادلة و17 إجراء VBA.',t:['Excel xlsm','VBA'],s:'built',sl:'مبني'},
+    {c:'ent',n:'لوحة قيادة الرئيس التنفيذي',d:'لوحة مؤشرات تنفيذية.',t:['HTML'],s:'built',sl:'مبنية'},
+    {c:'web',n:'موقع الجمعية التنموية التعليمية ومنصتها',d:'موقع رسمي ومنصة بأكاديمية ومتجر، وواجهات للزوار والمستفيدين والإدارة، ودخول بأدوار وصلاحيات.',t:['HTML','Supabase','GitHub Pages'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/qinwan-site/',img:'assets/shot-association.jpg'},
+    {c:'web',n:'مواقع السيرة الذاتية',d:'ثلاثة مواقع للسيرة الذاتية موجهة بحسب المجال: الموارد البشرية، والتحول الرقمي، والقرآن وعلومه، مع طباعة وحفظ PDF.',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/My-CV/hr/',img:'assets/shot-cv-hr.jpg'},
+    {c:'edu',n:'سُلّم (The English Ladder)',d:'تدريب تدريجي على المحادثة الإنجليزية A1 ← C1: 24 درسًا ببوابات إتقان، وقواعد بمقارنة عربية، ومحاكي اختبار.',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/',img:'assets/shot-ladder.jpg'},
+    {c:'edu',n:'منصة الباحث',d:'تنظيم الرسالة العلمية، الإصدار الثاني لفكرة «رفيق الرسالة».',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/baheth/',img:'assets/shot-baheth.jpg'},
+    {c:'edu',n:'منصة الدبلوم by go2top',v:'v0.1',d:'منصة دراسية لطلاب دبلوم علوم الحاسب: 4 مستويات، و266 فصلًا، و2,266 سؤالًا.',t:['HTML','Supabase'],s:'built',sl:'جاهز للرفع'},
+    {c:'edu',n:'رفيق الرسالة',d:'رفيق بحثي لطلاب الدراسات العليا: مسار PRISMA، واستيراد RIS وBibTeX، ودخول برمز البريد.',t:['Supabase','RLS'],s:'built',sl:'مبني'},
+    {c:'prod',n:'رحلتي إلى القمة',d:'تطبيق لرحلة الإنجاز الشخصي موجّه للفتيات، بخريطة من ست محطات.',t:['Supabase','RLS','Google OAuth'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/journey-of-life/',img:'assets/shot-journey.jpg'},
+    {c:'prod',n:'My Daily',d:'تنظيم أحداث اليوم والإنجاز.',t:['HTML'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/My-Daily/',img:'assets/shot-my-daily.jpg'},
+    {c:'prod',n:'focus',d:'تطبيق تركيز وإنتاجية.',t:['Supabase','RLS','Google OAuth'],s:'pub',sl:'منشور',u:'https://go2top-sa.github.io/focus/',img:'assets/shot-focus.jpg'},
+    {c:'prod',n:'TraceR',d:'متتبع الإنجازات الشخصية.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'},
+    {c:'prod',n:'نبض',d:'منظّم يومي للمهام.',t:['Supabase','RLS','Google OAuth'],s:'built',sl:'مبني'}
   ];
-  var sysGroups=[['all','الكل'],['pub','منشور'],['built','مبني'],['design','مصمم'],['plan','تخطيط']];
+  var sysGroups=[['all','الكل'],['ent','أنظمة مؤسسية'],['web','مواقع ومنصات'],['edu','منصات التعلم والبحث'],['prod','تطبيقات الإنتاجية']];
   var series=['دليل السلسلة الذهبية','الدراسة والتفوق','البحث الوظيفي','الإنجاز الوظيفي','الأداء الشخصي','الميزانية والثروة','السفر','الصيانة المنزلية','الترتيب والتنظيم','اللياقة','المحتوى','الأعمال والمشاريع','العروض والمتجر','بناء MVP','المشاريع الاحترافي','التطوير الشخصي','سجل المعلم','القرآن والعبادات','التحول الرقمي المؤسسي','الابتكار والمنتجات الرقمية','التخطيط الاستراتيجي والتنفيذي','صندوق إرث العمر','كلمات الإنجليزية','الرسالة العلمية','تأسيس المنشأة','حقيبة اختيار ERP','عضو هيئة التدريس','الإنتاج البحثي والترقية','الموارد البشرية ونظام العمل','محلل الأعمال ونظم المعلومات','العلاقات الاجتماعية','الفعاليات الكبرى'];
   var skills=[
     ['الموارد البشرية والإدارة',['الترشيح والاختيار والمقابلات','التهيئة','تقييم الأداء','قياس الاحتياج التدريبي وأثر البرامج','التخطيط الاستراتيجي والتنفيذي','إعداد الموازنات ومتابعتها','قيادة المبادرات']],
@@ -972,33 +1124,78 @@ window.PORTFOLIO_EN={
     }).join('');
   }
   function filters(box,groups,data,key,render){
-    box.innerHTML=groups.map(function(x,i){var n=x[0]==='all'?data.length:data.filter(function(d){return d[key]===x[0]}).length;return '<button type="button" aria-pressed="'+(i===0)+'" data-f="'+x[0]+'">'+x[1]+'<small>'+n+'</small></button>'}).join('');
+    box.innerHTML=groups.map(function(x,i){var n=x[0]==='all'?data.length:data.filter(function(d){return d[key]===x[0]}).length;return '<button type="button" aria-pressed="'+(i===0)+'" data-f="'+x[0]+'"><bdi>'+x[1]+'</bdi> <small>'+n+'</small></button>'}).join('');
     box.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;$$('button',box).forEach(function(x){x.setAttribute('aria-pressed',x===b)});render(b.dataset.f)});
     render('all');
   }
   filters($('#certFilters'),certGroups,certs,'g',renderCerts);
   function renderSys(g){
-    $('#sysGrid').innerHTML=sys.filter(function(s){return g==='all'||s.s===g}).map(function(s){
+    $('#sysGrid').innerHTML=sys.filter(function(s){return g==='all'||s.c===g}).map(function(s){
       return '<div class="card">'+(s.img?'<img class="thumb" src="'+s.img+'" alt="'+T.shotOf+esc(s.n)+'" data-zoom loading="lazy">':'')+'<span class="st '+s.s+'">'+esc(s.sl)+(s.v?' · <span class="latin">'+s.v+'</span>':'')+'</span><h4>'+esc(s.n)+'</h4><p>'+esc(s.d)+'</p><div class="bottom"><span class="tech">'+s.t.map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('')+'</span>'+(s.u?'<a class="go" href="'+s.u+'" target="_blank" rel="noopener">'+T.open+'</a>':'')+'</div></div>';
     }).join('');
   }
-  filters($('#sysFilters'),sysGroups,sys,'s',renderSys);
+  filters($('#sysFilters'),sysGroups,sys,'c',renderSys);
   $('#series').innerHTML=series.map(function(s,i){return '<div><b>'+(i<10?'0':'')+i+'</b><span>'+esc(s)+'</span></div>'}).join('');
   $('#skillsGrid').innerHTML=skills.map(function(s){return '<div class="card"><h4>'+esc(s[0])+'</h4><div class="tags">'+s[1].map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join('')+'</div></div>'}).join('');
 
   /* ---------- gallery ---------- */
   var gal=[
-    {g:'web',src:'assets/shot-association.jpg',t:'موقع الجمعية التنموية التعليمية ومنصتها',d:'منشور',u:'https://go2top-sa.github.io/qinwan-site/'},
-    {g:'web',src:'assets/shot-albr.jpg',t:'لوحة القيادة: استراتيجية التحول الرقمي لجمعية البر',d:'نموذج تفاعلي منشور',u:'https://go2top-sa.github.io/albr-digital-transformation/'},
-    {g:'web',src:'assets/shot-ladder.jpg',t:'سُلّم: تدريب المحادثة الإنجليزية',d:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/'},
-    {g:'web',src:'assets/shot-baheth.jpg',t:'منصة الباحث: لوحة تنظيم الرسالة العلمية',d:'منشور',u:'https://go2top-sa.github.io/baheth/'},
-    {g:'web',src:'assets/shot-madar.jpg',t:'MADAR AI: توأم رقمي ذكي للسياحة',d:'نموذج أولي منشور',u:'https://go2top-sa.github.io/madar/'},
+    {g:'twin',src:'assets/twin-process-map.jpg',t:'خريطة عمليات go2top: التوأم التشغيلي',d:'مسار تنفيذ الخدمة بخطوات مرمّزة، لكل خطوة منفذها (آلي أو بشري) وأداتها وتكلفتها الشهرية، ونقاط قرار، ومحاكاة للتدفق عبر تسعة مجالات، قيد التطوير'},
+    {g:'twin',src:'assets/isps-hall.jpg',t:'معرض ISPS: قاعة المشاريع',d:'خريطة ترابط تفاعلية للمشاريع الخمسة والعشرين في ستة مجالات'},
+    {g:'twin',src:'assets/isps-wall.jpg',t:'معرض ISPS: جدار المشاريع',d:'بطاقة لكل مشروع فيها المشكلة والوحدات والمؤشرات والحالة، بأرقام توضيحية'},
+    {g:'twin',src:'assets/isps-exhibit.jpg',t:'معرض ISPS: جناح مشروع',d:'المشكلة والحل وشاشة نظام توضيحية تتغير بحسب الدور'},
+    {g:'twin',src:'assets/twin-executive.jpg',t:'المقر الرقمي: اللوحة التنفيذية للمؤسِّسة',d:'مؤشرات عبر الإدارات وتقدم المشاريع وحالة المهام، قيد التطوير ببيانات تجريبية'},
+    {g:'twin',src:'assets/twin-partner.jpg',t:'المقر الرقمي: بوابة الشريك',d:'تقدم المشروع المشترك ومراحله والمستحقات والطلبات، قيد التطوير ببيانات تجريبية'},
+    {g:'twin',src:'assets/twin-portal.jpg',t:'المقر الرقمي: البوابة الخارجية',d:'دخول بحسب الصفة: عميل، وشريك، وزائر، ومتدرب، قيد التطوير ببيانات تجريبية'},
+    {g:'twin',src:'assets/twin-hr.jpg',t:'المقر الرقمي: الموارد البشرية',d:'مسار موافقة على الإجازات ودليل الموظفين، قيد التطوير ببيانات تجريبية'},
+    {g:'twin',src:'assets/twin-basira.jpg',t:'المقر الرقمي: «بصيرة» وكيل التشخيص',d:'تشخيص مؤسسي يبدأ ببيانات الجهة وتحدياتها، قيد التطوير ببيانات تجريبية'},
+    {g:'twin',src:'assets/twin-academy.jpg',t:'المقر الرقمي: لوحة المتدرب في أكاديمية go2top',d:'الدورات والتقدم العام والشهادات ومتابعة التعلم، قيد التطوير ببيانات تجريبية'},
+    {g:'design',src:'assets/brand-board.jpg',t:'هوية go2top: التطبيقات المطبوعة والرقمية',d:'المطبوعات والبطاقات والهدايا والموقع وحساب التواصل، تصور تطبيقي للهوية'},
+    {g:'design',src:'assets/brand-services.jpg',t:'هوية الخدمات والمنتجات',d:'نظام ترميز الخدمات، وأيقوناتها، وأغلفة المنتجات الرقمية، وبطاقات الأسعار والباقات'},
+    {g:'design',src:'assets/brand-letterhead.jpg',t:'الورق الرسمي لـ go2top',d:'ورق المراسلات ببيانات التواصل الرسمية'},
     {g:'design',src:'assets/design-cover.jpg',t:'غلاف LinkedIn بهوية go2top',d:'تصميم'},
     {g:'design',src:'assets/deck-1.jpg',t:'ملف الأعمال: الغلاف',d:'عرض تقديمي من 41 شريحة'},
-    {g:'design',src:'assets/deck-7.jpg',t:'المسار المهني على خط زمني',d:'عرض تقديمي'},
-    {g:'design',src:'assets/deck-19.jpg',t:'go2top: نظرة عامة',d:'عرض تقديمي'},
-    {g:'design',src:'assets/deck-23.jpg',t:'منظومة ISPS بخمس طبقات',d:'عرض تقديمي'},
-    {g:'design',src:'assets/deck-27.jpg',t:'دراسة حالة CTMS',d:'عرض تقديمي'},
+    {g:'web',src:'assets/shot-association.jpg',t:'موقع الجمعية التنموية التعليمية ومنصتها',d:'منشور',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-association-academy.jpg',t:'أكاديمية الجمعية: الدورات والتسجيل',d:'منشور',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-association-impact.jpg',t:'صفحة الأثر والحوكمة في موقع الجمعية',d:'منشور',u:'https://go2top-sa.github.io/qinwan-site/'},
+    {g:'web',src:'assets/shot-ladder.jpg',t:'سُلّم: تدريب المحادثة الإنجليزية',d:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-ladder-conversation.jpg',t:'سُلّم: مدرب المحادثة بمواقف مهنية',d:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-ladder-progress.jpg',t:'سُلّم: لوحة التقدم والدرجات الست',d:'منشور',u:'https://go2top-sa.github.io/the-english-ladder/'},
+    {g:'web',src:'assets/shot-baheth.jpg',t:'منصة الباحث: لوحة تنظيم الرسالة العلمية',d:'منشور',u:'https://go2top-sa.github.io/baheth/'},
+    {g:'web',src:'assets/shot-journey.jpg',t:'رحلتي إلى القمة: خريطة الرحلة بست محطات للفتيات',d:'منشور',u:'https://go2top-sa.github.io/journey-of-life/'},
+    {g:'web',src:'assets/shot-my-daily.jpg',t:'My Daily: يومي ومواعيدي وإنجازي',d:'منشور',u:'https://go2top-sa.github.io/My-Daily/'},
+    {g:'web',src:'assets/shot-focus.jpg',t:'منظّم التشتت والتركيز: مؤقت ومصفوفة أولويات',d:'منشور',u:'https://go2top-sa.github.io/focus/'},
+    {g:'web',src:'assets/shot-cv-hr.jpg',t:'موقع السيرة الذاتية: نسخة الموارد البشرية',d:'منشور',u:'https://go2top-sa.github.io/My-CV/hr/'},
+    {g:'web',src:'assets/shot-madar.jpg',t:'MADAR AI: توأم رقمي ذكي للسياحة',d:'نموذج أولي منشور',u:'https://go2top-sa.github.io/madar/'},
+    {g:'web',src:'assets/shot-albr-maturity.jpg',t:'مؤشر النضج الرقمي في نموذج جمعية البر',d:'نموذج تفاعلي منشور',u:'https://go2top-sa.github.io/albr-digital-transformation/'},
+    {g:'ctms',src:'assets/ctms-portal.jpg',t:'البوابة الموحدة لـCTMS: ست بوابات حسب الدور',d:'نموذج تفاعلي',u:'https://mark-emblem-41581904.figma.site'},
+    {g:'ctms',src:'assets/ctms-mobile.jpg',t:'تطبيق CTMS للجوال: الحضور بتحديد الموقع، وتسجيل المهام صوتيًا',d:'شاشات المتدرب'},
+    {g:'ctms',src:'assets/ctms-architecture.jpg',t:'معمارية CTMS على Power Platform',d:'Excel وPower Query، وPower Apps، وPower Automate، وSharePoint، وPower BI'},
+    {g:'ctms',src:'assets/ctms-admin-dashboard.jpg',t:'لوحة قيادة الإدارة في CTMS',d:'تصميم فكرة الترابط بين ملف المشرف وملف المتدرب وإدارة النظام، ببيانات تجريبية'},
+    {g:'ctms',src:'assets/ctms-supervisor-dashboard.jpg',t:'لوحة المشرف في CTMS',d:'تصميم فكرة الترابط بين ملف المشرف وملف المتدرب وإدارة النظام، ببيانات تجريبية'},
+    {g:'ctms',src:'assets/ctms-trainee-dashboard.jpg',t:'لوحة المتدرب في CTMS',d:'تصميم فكرة الترابط بين ملف المشرف وملف المتدرب وإدارة النظام، ببيانات تجريبية'},
+    {g:'ctms',src:'assets/ctms-report-cover.jpg',t:'تقرير مشروع CTMS المطبوع',d:'مشروع المتدربة ضمن برنامج «مشروع متدرب: من التدريب إلى التمكين»، وزارة التعليم'},
+    {g:'academic',src:'assets/fellowship-cover.jpg',t:'مشروع تخرج الزمالة: غلاف العرض الختامي',d:'عمل جماعي بتقدير ممتاز (97%)'},
+    {g:'academic',src:'assets/fellowship-pillars.jpg',t:'الرؤية والرسالة والركائز الرقمية',d:'مشروع تخرج الزمالة'},
+    {g:'academic',src:'assets/fellowship-adkar.jpg',t:'نقطة العائق لكل فئة متأثرة (ADKAR)',d:'مشروع تخرج الزمالة: الجاهزية وقيادة التغيير'},
+    {g:'academic',src:'assets/fellowship-budget.jpg',t:'الميزانية الموحدة في سيناريوهين',d:'مشروع تخرج الزمالة'},
+    {g:'academic',src:'assets/albr-deck-2.jpg',t:'الملخص التنفيذي لاستراتيجية جمعية البر',d:'تصور أولي في مشروع أكاديمي، فريق صناع التغيير، جامعة المعرفة'},
+    {g:'academic',src:'assets/albr-deck-6.jpg',t:'مخطط التحول: الوضع الحالي والحالة المستهدفة',d:'تصور أولي في مشروع أكاديمي، فريق صناع التغيير، جامعة المعرفة'},
+    {g:'academic',src:'assets/albr-deck-11.jpg',t:'خريطة المبادرات الرقمية الـ15',d:'تصور أولي في مشروع أكاديمي، فريق صناع التغيير، جامعة المعرفة'},
+    {g:'academic',src:'assets/albr-deck-12.jpg',t:'المعمارية التقنية بخمس طبقات',d:'تصور أولي في مشروع أكاديمي، فريق صناع التغيير، جامعة المعرفة'},
+    {g:'academic',src:'assets/albr-deck-22.jpg',t:'مؤشرات الأداء الرئيسية الـ12',d:'تصور أولي في مشروع أكاديمي، فريق صناع التغيير، جامعة المعرفة'},
+    {g:'academic',src:'assets/albr-beneficiaries-dashboard.jpg',t:'لوحة معلومات تحليل بيانات المستفيدين في جمعية البر الأهلية بالرياض',d:'لوحة Excel بعشرة مؤشرات وسبعة عشر رسمًا منها خريطة للأحياء والفروع، على 500 سجل افتراضي، بفريق «صناع التغيير»'},
+    {g:'golden',src:'assets/golden-00-dashboard.jpg',t:'دليل السلسلة الذهبية: لوحة السلسلة',d:'31 نظامًا في 482 ورقة، ومرشد يقترح الأنسب لكل مستخدم'},
+    {g:'golden',src:'assets/golden-04-performance.jpg',t:'السلسلة الذهبية 04: مدير الأداء الشخصي',d:'ملف Excel بهوية go2top: لوحة الحياة، وأهداف السنة، والأسبوع واليوم، والعادات'},
+    {g:'golden',src:'assets/golden-04-dashboard.jpg',t:'السلسلة الذهبية 04: لوحة الحياة',d:'ست بطاقات تلخص اليوم والأسبوع والعادات والتوازن وأهداف السنة'},
+    {g:'golden',src:'assets/golden-student-dashboard.jpg',t:'السلسلة الذهبية: لوحة التفوق الدراسي',d:'ملف Excel بهوية go2top: المعدل المتوقع، والمقررات، والاختبارات، والتسليمات، والتنبيهات الذكية'},
+    {g:'recog',src:'assets/hackathon-first-place.jpg',t:'المركز الأول في هاكاثون نواة: فريق مسار الإبداعي 9',d:'وزارة التعليم، 1447هـ'},
+    {g:'recog',src:'assets/award-email-mobile.jpg',t:'رسالة إشادة على إعداد الهاكاثون',d:'الإدارة العامة لتطوير الموارد البشرية، وزارة التعليم'},
+    {g:'recog',src:'assets/award-supervisor-email.jpg',t:'إشادة المشرفة الأكاديمية بالتقرير النهائي',d:'جامعة الملك سعود · 15 ديسمبر 2025'},
+    {g:'recog',src:'assets/award-field-supervisor-email.jpg',t:'إشادة المشرفة الميدانية',d:'الإدارة العامة لتطوير الموارد البشرية، وزارة التعليم'},
+    {g:'recog',src:'assets/trainee-honor.jpg',t:'من التكريم في وزارة التعليم',d:'الإدارة العامة لتطوير الموارد البشرية'},
+    {g:'recog',src:'assets/award-tamheer-thanks.jpg',t:'شهادة شكر: اللقاء التعريفي لمرشحي برنامج تمهير',d:'إدارة تنمية الموارد البشرية، وزارة التعليم · 1 ديسمبر 2025'},
+    {g:'recog',src:'assets/trainee-badge.jpg',t:'بطاقة متدربة في وزارة التعليم',d:'التدريب الميداني 1447هـ'},
     {g:'cert',src:'assets/cert-cisco-ctm.jpg',t:'Cyber Threat Management',d:'Cisco Networking Academy · أغسطس 2026'},
     {g:'cert',src:'assets/cert-cisco-intro.jpg',t:'Introduction to Cybersecurity',d:'Cisco Networking Academy · يونيو 2026'},
     {g:'cert',src:'assets/cert-ms-1.jpg',t:'PL-900 Exam Prep (تخصص)',d:'Microsoft عبر Coursera · مارس 2026'},
@@ -1007,7 +1204,7 @@ window.PORTFOLIO_EN={
     {g:'cert',src:'assets/cert-ms-2.jpg',t:'Power BI & Power Virtual Agents',d:'Microsoft عبر Coursera · فبراير 2026'},
     {g:'cert',src:'assets/cert-ms-3.jpg',t:'The PL-900 Practice Exam',d:'Microsoft عبر Coursera · مارس 2026'}
   ];
-  var galGroups=[['all','الكل'],['web','منصات منشورة'],['design','تصاميم'],['cert','شهادات']];
+  var galGroups=[['all','الكل'],['twin','أنظمة go2top'],['design','هوية go2top'],['web','منصات منشورة'],['ctms','CTMS'],['academic','مشاريع أكاديمية'],['golden','المنتجات الرقمية'],['recog','التكريمات والإشادات'],['cert','شهادات الدورات']];
   if(EN){gal=P.gal;galGroups=P.galGroups;}
   function renderGal(g){
     $('#galGrid').innerHTML=gal.filter(function(x){return g==='all'||x.g===g}).map(function(x){
