@@ -282,11 +282,99 @@ button.ach:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(62
 .cv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 @media (max-width:860px){.case,.ach-grid,.split,.cv-grid{grid-template-columns:1fr}.cases-grid{grid-template-columns:1fr}.ach b{font-size:28px}}
+
+/* ===== go2top formal theme ===== */
+:root{--cream:#F3EEE6;--paper:#FBF8F2;--ink:#302D2A;--ink-soft:#5A544D;--line:#DED5C6;--lav:#78658D;--lav-deep:#4E4173;--lav-tint:#EDE7F1;--olive:#61654E;--sage:#7D8167;--sage-tint:#E9ECDF;--camel:#C7A16B;--terra:#B16D4C;--gold:#C8991A;--gold-tint:#F4E9D6;--glass-edge:#E4DACA;
+  --f-display:"Sakkal Majalla","Cairo","Tajawal",serif;--f-body:"Sakkal Majalla","Tajawal","Cairo",sans-serif;--f-ui:"Tajawal","Cairo","Segoe UI",Tahoma,sans-serif;--railh:64px}
+html,body{height:auto}
+body{background:var(--cream);overflow-x:hidden;overflow-y:auto;font-size:20px}
+.shell{display:block;height:auto;max-width:1200px;margin:0 auto;padding:18px 20px 0;perspective:none}
+.side,.side.glass{background:var(--paper);border:1px solid var(--line);box-shadow:none;border-radius:20px 20px 0 0;-webkit-backdrop-filter:none;backdrop-filter:none;overflow:visible;border-bottom:0}
+.side .id{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;padding:20px 26px 16px}
+.side .id .mark{order:3;margin:0;margin-inline-start:auto;align-self:center}
+.side .id h1{font-size:40px;color:var(--lav-deep)}
+.side .id .en{font-size:17px;color:var(--sage);margin:0}
+.side .id .role{flex-basis:100%;font-size:14px;margin-top:4px;color:var(--ink-soft)}
+.side .foot{display:none}
+.side .chip{background:var(--gold-tint);color:#7A5C10;border:0}
+.lang{background:var(--lav-deep)!important;color:#fff!important;border:0!important}
+nav.rail{position:sticky;top:0;z-index:40;display:flex;gap:4px;overflow-x:auto;padding:8px;margin:0 0 18px;background:var(--lav-deep);border-radius:0 0 18px 18px;scrollbar-width:none;counter-reset:sec;box-shadow:0 14px 30px -22px rgba(48,45,42,.6)}
+nav.rail::-webkit-scrollbar{display:none}
+nav.rail button{flex:1 0 auto;justify-content:center;gap:8px;padding:11px 14px;border-radius:12px;font-size:15px;font-weight:600;color:#EDE7F1;white-space:nowrap}
+nav.rail button::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);font-family:var(--f-latin);font-size:12px;opacity:.7}
+nav.rail button:hover{background:rgba(255,255,255,.12);transform:none}
+nav.rail button[aria-current="true"]{background:var(--paper);color:var(--lav-deep);box-shadow:inset 0 -3px 0 var(--gold)}
+.prog{position:sticky;top:var(--railh);z-index:39;height:3px;margin:-18px 8px 18px;background:transparent}
+.prog i{display:block;height:100%;width:0;background:var(--gold);border-radius:3px;transition:width .5s ease}
+main,body[data-section="home"] main{background:var(--paper)!important;border:1px solid var(--line)!important;border-radius:20px;box-shadow:0 18px 40px -32px rgba(48,45,42,.45)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;overflow:visible;min-height:62vh;transform-style:flat}
+.panel{max-width:none;scroll-margin-top:calc(var(--railh) + 16px)}
+.panel:not([hidden]){animation:panelIn .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel:not([hidden]){animation:none}}
+.panel h2{color:var(--lav-deep);font-size:36px;line-height:1.35}
+.panel h2::after{content:"";display:block;width:56px;height:3px;background:var(--gold);border-radius:3px;margin-top:10px}
+.panel h3{color:var(--lav-deep)}
+.eyebrow{background:var(--sage-tint);color:var(--olive);border:0}
+.card,.hl,.ach,.case .cs,.facts,.tbl,.split .card,.stat,.tl .body,.cases-grid .hl{background:#fff!important;border:1px solid var(--line)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.hl,.ach,button.ach,.card{transition:border-color .2s,transform .2s,box-shadow .2s}
+.hl:hover,button.ach:hover{border-color:var(--lav)!important;transform:translateY(-2px);box-shadow:0 12px 24px -18px rgba(78,65,115,.55)!important}
+.hl .go{color:var(--gold)}
+.hl.award{background:var(--gold-tint)!important;border-color:#E7D4AE!important}
+.tilt{transform:none!important}.tilt::after{display:none!important}
+.hero{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px}
+.hero > div:first-child,body[data-section="home"] .hero > div:first-child{background:none!important;padding:0!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.hero .big{font-size:clamp(23px,2.1vw,29px);line-height:1.8;color:var(--ink);margin:14px 0 18px;padding-inline-start:16px;border-inline-start:4px solid var(--gold);text-wrap:pretty}
+.hero .big{text-align:start!important}
+.hero p{text-align:justify;text-justify:inter-word;line-height:1.95;margin:0 0 12px}
+.facts div{font-size:14px}
+.facts dt{color:var(--lav)}
+.gtabs{position:sticky;top:calc(var(--railh) + 6px);z-index:30;display:flex;width:auto;max-width:none;gap:6px;padding:8px;margin:0 0 22px;background:var(--lav-tint);border:1px solid #D9CFE3;border-radius:14px;box-shadow:0 10px 20px -18px rgba(78,65,115,.6)}
+.gtabs::before{content:attr(data-cap);align-self:center;font-family:var(--f-ui);font-size:12.5px;color:var(--lav);padding:0 8px 0 4px;white-space:nowrap}
+.gtabs button{font-size:16px;font-weight:600;padding:10px 18px;color:var(--lav-deep);border:1px solid transparent}
+.gtabs button:hover{background:#fff}
+.gtabs button[aria-selected="true"]{background:var(--lav-deep);color:#fff;box-shadow:none}
+.gtabs button[aria-selected="true"] small{background:rgba(255,255,255,.2);color:#fff}
+.crumb button{background:var(--lav-tint);border-color:#D9CFE3}
+.next{border-top:1px solid var(--line)}
+.next button{font-size:15px;padding:11px 20px;background:#fff;border:1px solid var(--line)}
+.next button:last-child{background:var(--lav-deep);color:#fff;border-color:var(--lav-deep)}
+.next button:hover{border-color:var(--lav)}
+.journey{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;margin:26px 0 8px;padding:18px 10px 14px;background:#fff;border:1px solid var(--line);border-radius:18px;position:relative}
+.journey::before{content:"";position:absolute;top:40px;inset-inline:6%;height:2px;background:linear-gradient(90deg,var(--sage),var(--lav),var(--terra))}
+.journey button{all:unset;cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-family:var(--f-ui);font-size:13px;color:var(--ink);padding:0 4px}
+.journey b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--paper);border:2px solid var(--lav);color:var(--lav-deep);font-family:var(--f-latin);font-size:15px;transition:all .2s}
+.journey button:hover b,.journey button:focus-visible b{background:var(--lav-deep);color:#fff;transform:scale(1.08)}
+.journey button[data-here] b{background:var(--gold);border-color:var(--gold);color:#fff}
+.ach b{color:var(--lav-deep)}
+.ach .chip,.chip{background:var(--sage-tint);color:var(--olive);border-color:transparent}
+.st.pub{background:#E9F1E4;color:#3F5A33}
+tr.key td{background:var(--gold-tint)}
+.tbl th{background:var(--lav-tint);color:var(--lav-deep)}
+h4.sub{margin:18px 0 6px;font-size:19px;color:var(--lav-deep)}
+.ijaza li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.land{margin-top:40px;position:relative}
+.land svg{display:block;width:100%;height:160px}
+.land p{position:absolute;bottom:12px;inset-inline:0;text-align:center;margin:0;font-family:var(--f-ui);font-size:13px;color:#fff}
+@media (max-width:860px){
+  .shell{padding:0}
+  .side,.side.glass{border-radius:0;border-inline:0}
+  .side .id{padding:14px 16px 10px}
+  .side .id h1{font-size:32px}
+  nav.rail{border-radius:0;padding:6px}
+  nav.rail button{flex:0 0 auto;font-size:14px;padding:10px 12px}
+  main,body[data-section="home"] main{border-radius:0;border-inline:0!important}
+  .hero{grid-template-columns:1fr}
+  .hero p{text-align:start}
+  .journey{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}
+  .journey::before{display:none}
+  .gtabs{overflow-x:auto;flex-wrap:nowrap}
+  .gtabs::before{display:none}
+  .gtabs button{flex:0 0 auto;font-size:15px;padding:9px 14px}
+}
 </style>
 </head>
 <body>
 
-<canvas id="scene" aria-hidden="true"></canvas>
 <div class="shell">
   <aside class="side glass">
     <div class="id">
@@ -312,12 +400,6 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <p class="big">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة <em>go2top</em>.</p>
       <p>تمتد خبرتي المهنية لأكثر من عشر سنوات في القيادة والإشراف والتعليم الجامعي؛ فقد تولّيت إدارة مدرسة نسائية، ثم رُقّيت إلى قيادة أحد فروع الإشراف السبعة التي كانت تتولى آنذاك الإشراف على المدارس النسائية الخيرية في مدينة الرياض، بنطاق إشرافي شمل نحو 32 مدرسة.</p>
       <p>جمعت أدواري القيادية بين التخطيط الاستراتيجي والتشغيلي، وإدارة الموارد البشرية والعمليات والموازنات، ومتابعة الأداء وتحسين الإجراءات، وقيادة المبادرات وإدارة التغيير التنظيمي.</p>
-      <div class="quick">
-        <button type="button" data-go="experience">الخبرات القيادية ←</button>
-        <button type="button" data-go="achievements">النطاق والإنجازات ←</button>
-        <button type="button" data-go="cases">دراسات الحالة ←</button>
-        <button type="button" data-go="cvs">السير الذاتية ←</button>
-      </div>
     </div>
     <dl class="facts">
       <div><dt>الصفة</dt><dd>مؤسِّسة go2top | إلى القمة</dd></div>
@@ -331,6 +413,7 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
     </dl>
   </div>
+  <div class="journey" aria-label="أقسام الملف"></div>
   <div class="sch ev"><b>أبرز الأدلة</b><button type="button" data-go="cases">دراسات الحالة كاملة ←</button></div>
   <div class="highlights">
     <button class="hl" data-go="case-leadership" type="button"><span class="go">←</span><div class="k">المسار القيادي</div><div class="t">إدارة مدرسة، ثم قيادة فرع إشراف</div><div class="d">ترقية بعد عام إلى قيادة أحد فروع الإشراف السبعة في الرياض، بنطاق نحو 32 مدرسة.</div></button>
@@ -343,13 +426,14 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 <section class="panel" id="experience" data-group="exp" data-glabel="الخبرات" data-label="الخبرات" hidden>
   <div class="eyebrow">الخبرات العملية</div>
   <h2>الخبرات القيادية والمهنية</h2>
-  <p class="lede">تسع سنوات في الإشراف والعمل الإداري والقيادة، وثماني سنوات في التدريس الجامعي تداخل بعضها زمنيًا. الترتيب من الأحدث.</p>
+  <p class="lede">تسع سنوات في الإشراف والعمل الإداري والقيادة، وثماني سنوات في التدريس الجامعي تداخل بعضها زمنيًا، وخبرة تطبيقية في التقنية والتحول الرقمي تظهر في الأنظمة التي صممتها وبنيتها. الترتيب من الأحدث.</p>
   <h3 style="margin-top:4px">مجالات الممارسة</h3>
   <div class="grid practice">
     <div class="card"><h4>القيادة الإدارية</h4><p>إدارة مدرسة، ثم قيادة فرع إشراف بنطاق نحو 32 مدرسة: قيادة فرق الإشراف، ومتابعة أداء المدارس وقياداتها، ورفع التقارير والتوصيات للإدارة.</p></div>
     <div class="card"><h4>الموارد البشرية</h4><p>الترشيح والاختيار والمقابلات الوظيفية، وتهيئة الموظفات الجديدات، وتقييم الأداء، والتدريب وتنمية القدرات. ونماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.</p></div>
     <div class="card"><h4>التخطيط والموازنات</h4><p>التخطيط الاستراتيجي والتشغيلي، ومؤشرات الأداء ومتابعتها، وإعداد الموازنات ومتابعتها، وتحسين إجراءات العمل.</p></div>
     <div class="card"><h4>المبادرات وإدارة التغيير</h4><p>قيادة المبادرات وإدارة التغيير التنظيمي، وإدارة مشروع تأسيس مؤسسي، ودور مسؤولة الجاهزية وقيادة التغيير في مشروع تخرج الزمالة.</p></div>
+    <div class="card"><h4>التقنية والتحول الرقمي</h4><p>تصميم أنظمة إدارية رقمية وبناؤها على Power Platform وتقنيات الويب، وأتمتة الإجراءات ولوحات المؤشرات: CTMS، ومنظومة ISPS، والمنصة الرقمية للجمعية، مع زمالة قادة التحول الرقمي والدبلوم المشارك فيه.</p></div>
     <div class="card"><h4>التعليم الجامعي</h4><p>ثماني سنوات في تدريس مقرر جامعي مشترك، بإجمالي تقديري يقارب 13 ألف تسجيل في المقررات، مع إعداد المحتوى وبناء الاختبارات والتقارير الإحصائية.</p></div>
   </div>
   <h3>المسار الزمني</h3>
@@ -374,8 +458,8 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 
 <section class="panel" id="achievements" data-group="ach" data-glabel="النطاق والإنجازات" data-label="النطاق والإنجازات" hidden>
   <div class="eyebrow">نطاق المسؤوليات والإنجازات</div>
-  <h2>أرقام موثقة، ولكل رقم مدلوله</h2>
-  <p class="lede">كل رقم معه نوعه: نطاق مسؤولية، أو مخرجات سُلّمت، أو نتيجة تحققت، ومعه مصدره وحدوده.</p>
+  <h2>ما أدرتُه، وما سلّمتُه، وما تحقق</h2>
+  <p class="lede">أذكر مع كل رقم نوعه وحدوده، ليُقرأ في سياقه.</p>
   <h3>نطاق المسؤولية</h3>
   <div class="ach-grid">
     <div class="ach"><b>32</b><div><h4>مدرسة تقريبًا في نطاق الفرع</h4><p>قيادة أحد فروع الإشراف على المدارس النسائية الخيرية في الرياض، 1434 ← 1439هـ.</p><span class="chip">نطاق مسؤولية</span></div></div>
@@ -410,7 +494,7 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 
 <section class="panel" id="cases" data-group="cases" data-glabel="دراسات الحالة" data-label="دراسات الحالة" hidden>
   <div class="eyebrow">المشروعات ودراسات الحالة</div>
-  <h2>ست دراسات حالة</h2>
+  <h2>من أبرز دراسات الحالة</h2>
   <p class="lede">لكل حالة المشكلة، ودوري فيها، والإجراءات، والمخرجات، وحالة التنفيذ. الصور مختارة، ولا تكشف بيانات جهات أو جوهر منتجات غير منشورة.</p>
   <div class="highlights cases-grid">
     <button class="hl" data-go="case-leadership" type="button"><span class="go">←</span><div class="k">القيادة والتخطيط وإدارة التغيير · 1433 ← 1439هـ</div><div class="t">إدارة مدرسة وفرع إشراف</div><div class="d">قيادة فرع بنطاق نحو 32 مدرسة: التخطيط، والموارد البشرية، والموازنات، ومتابعة الأداء.</div><span class="st built">منجزة</span></button>
@@ -647,14 +731,23 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <tr><td>زمالة قادة التحول الرقمي</td><td>جامعة الأمير مساعد بن عبدالرحمن</td><td class="n">1448هـ</td><td><span class="st built">مكتملة</span> تقدير ممتاز (97%)</td></tr>
       <tr><td>الدبلوم المتوسط في علوم الحاسب وتحليل البيانات</td><td>جامعة الملك فيصل</td><td class="n">1448هـ</td><td><span class="st study">قيد الدراسة</span></td></tr>
       <tr><td>الدبلوم المشارك في التحول الرقمي</td><td>جامعة المعرفة</td><td class="n">1447هـ</td><td><span class="st built">مكتمل</span> 99.33% بتقدير A+ في جميع المقررات</td></tr>
-      <tr><td>الماجستير (السنة المنهجية)</td><td>جامعة الإمام محمد بن سعود الإسلامية</td><td class="n">1440هـ</td><td><span class="st built">السنة المنهجية مكتملة</span> 4.56</td></tr>
       <tr><td>البكالوريوس في أصول الدين</td><td>جامعة الإمام محمد بن سعود الإسلامية</td><td class="n">1427هـ</td><td><span class="st built">مكتمل</span></td></tr>
-      <tr><td>الإقراء بالقراءات السبع</td><td>مسار إقراء</td><td class="n"></td><td><span class="st study">قيد الدراسة</span></td></tr>
     </tbody>
   </table></div>
-  <h3>الدبلوم المتوسط في علوم الحاسب وتحليل البيانات</h3>
-  <p>برنامج أكاديمي تطبيقي يجمع بين علوم الحاسب والبرمجة وتحليل البيانات والذكاء الاصطناعي وتطوير الحلول البرمجية. يعزز المعرفة التقنية والمهارات التحليلية وتوظيف البيانات في تصميم نظم الأعمال ودعم التحول الرقمي واتخاذ القرار.</p>
-  <p class="ui" style="color:var(--ink-soft)">مقررات الفصل الأول: أساسيات الحوسبة · مقدمة في البرمجة بلغة Python · الابتكار وريادة الأعمال في تقنية المعلومات · مهارات الاتصال · اللغة الإنجليزية</p>
+  <h3>القرآن وعلومه</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>المؤهل</th><th>الجهة</th><th>السنة</th><th>الحالة والمعدل</th></tr></thead>
+    <tbody>
+      <tr><td>السنة المنهجية في ماجستير القرآن وعلومه</td><td>جامعة الإمام محمد بن سعود الإسلامية</td><td class="n">1440هـ</td><td><span class="st built">مكتملة</span> 4.56</td></tr>
+      <tr><td>الدبلوم العالي في إعداد معلمات القرآن الكريم</td><td>جامعة الإمام محمد بن سعود الإسلامية، بالتعاون مع معهد في القطاع غير الربحي</td><td class="n">1428هـ</td><td><span class="st built">مكتمل</span> 4.58 (ممتاز)</td></tr>
+    </tbody>
+  </table></div>
+  <h4 class="sub">الإجازات في القراءات</h4>
+  <ul class="plain ijaza">
+    <li>إجازة بقراءة الإمام عاصم براوييه حفص وشعبة، بسند متصل <span class="st built">مكتملة 1437هـ</span></li>
+    <li>إجازة بقراءة الإمام الكسائي براوييه أبو الحارث والدوري، بسند متصل <span class="st study">قيد الإتمام</span></li>
+    <li>إجازة بقراءة الإمام ابن عامر براوييه هشام وابن ذكوان، بسند متصل <span class="st study">قيد الإتمام</span></li>
+  </ul>
   <h3>مؤشرات داعمة</h3>
   <ul class="plain">
     <li>اختبار القدرات العامة للجامعيين: 78 درجة (أغسطس 2026).</li>
@@ -837,17 +930,11 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
     <div><dt>السير الذاتية</dt><dd><button class="linkbtn" type="button" data-go="cvs">أربع نسخ متخصصة ←</button></dd></div>
     <div><dt>المدينة</dt><dd>الرياض، المملكة العربية السعودية</dd></div>
   </dl>
-  <h3>روابط عامة</h3>
-  <ul class="plain">
-    <li><a href="https://go2top-sa.github.io/qinwan-site/" target="_blank" rel="noopener">موقع الجمعية التنموية التعليمية</a></li>
-    <li><a href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">استراتيجية التحول الرقمي لجمعية البر (نموذج تفاعلي)</a></li>
-    <li><a href="https://go2top-sa.github.io/the-english-ladder/" target="_blank" rel="noopener">سُلّم: تدريب المحادثة الإنجليزية</a></li>
-    <li><a href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">MADAR AI</a></li>
-  </ul>
 </section>
 
   </main>
 </div>
+<div class="land" aria-hidden="true"><svg viewBox="0 0 1440 220" preserveAspectRatio="none"><path d="M0 220V120Q180 70 360 105T720 92T1080 112T1440 84V220Z" fill="#A796BE" opacity=".55"/><path d="M0 220V150Q240 100 520 140T980 128T1440 140V220Z" fill="#C7A16B" opacity=".55"/><path d="M640 220V160Q900 110 1180 150T1440 132V220Z" fill="#B16D4C" opacity=".75"/><path d="M0 220V176Q260 140 560 172T1100 178T1440 170V220Z" fill="#7D8167"/></svg><p>حنين الزكري · ملف الأعمال</p></div>
 
 <template id="tpl-en-id">
       <h1 class="latin-h">Haneen Al Zakari</h1>
@@ -863,12 +950,6 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <p class="big">Specialist in human resource management, institutional development, digital transformation, and business systems design, building digital administrative solutions and systems, and founder of <em>go2top</em>.</p>
       <p>My professional experience spans more than ten years across organizational leadership, educational supervision, and university teaching. I served as a school principal before being promoted to lead one of seven supervisory branches that, at the time, oversaw nonprofit girls’ schools across Riyadh. My branch’s supervisory scope covered approximately 32 schools.</p>
       <p>Throughout my leadership roles, my responsibilities encompassed strategic and operational planning, human resources management, operations and budget management, performance monitoring, process improvement, initiative leadership, and organizational change management.</p>
-      <div class="quick">
-        <button type="button" data-go="experience">Leadership experience →</button>
-        <button type="button" data-go="achievements">Scope and achievements →</button>
-        <button type="button" data-go="cases">Case studies →</button>
-        <button type="button" data-go="cvs">CVs →</button>
-      </div>
     </div>
     <dl class="facts">
       <div><dt>Role</dt><dd>Founder, go2top</dd></div>
@@ -882,6 +963,7 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
     </dl>
   </div>
+  <div class="journey" aria-label="Portfolio sections"></div>
   <div class="sch ev"><b>Key evidence</b><button type="button" data-go="cases">All case studies →</button></div>
   <div class="highlights">
     <button class="hl" data-go="case-leadership" type="button"><span class="go">→</span><div class="k">Leadership path</div><div class="t">School principal, then supervisory branch lead</div><div class="d">Promoted after one year to lead one of seven supervisory branches in Riyadh, covering about 32 schools.</div></button>
@@ -894,13 +976,14 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 <section class="panel" id="experience" data-group="exp" data-glabel="Experience" data-label="Experience" hidden>
   <div class="eyebrow">Work experience</div>
   <h2>Leadership and professional experience</h2>
-  <p class="lede">Nine years of supervision, administrative work, and leadership, and eight years of university teaching, partly overlapping. Most recent first.</p>
+  <p class="lede">Nine years of supervision, administrative work, and leadership, and eight years of university teaching, partly overlapping, alongside hands-on work in technology and digital transformation seen in the systems I designed and built. Most recent first.</p>
   <h3 style="margin-top:4px">Areas of practice</h3>
   <div class="grid practice">
     <div class="card"><h4>Organizational leadership</h4><p>School principal, then lead of a supervisory branch covering about 32 schools: leading supervision teams, monitoring schools and their leaders, and reporting recommendations to management.</p></div>
     <div class="card"><h4>Human resources</h4><p>Recruitment, selection, and interviews; onboarding new employees; performance evaluation; training and staff development. Training needs and program impact templates I prepared were put into use.</p></div>
     <div class="card"><h4>Planning and budgets</h4><p>Strategic and operational planning, performance indicators and follow-up, preparing and monitoring budgets, and improving work procedures.</p></div>
     <div class="card"><h4>Initiatives and change</h4><p>Leading initiatives and organizational change, managing an institutional establishment project, and the readiness and change leadership role in the fellowship capstone.</p></div>
+    <div class="card"><h4>Technology and digital transformation</h4><p>Designing and building digital management systems on Power Platform and web technologies, process automation, and dashboards: CTMS, the ISPS suite, and the association’s digital platform, backed by the Digital Transformation Leaders Fellowship and the associate diploma.</p></div>
     <div class="card"><h4>University teaching</h4><p>Eight years teaching a shared university course, with an estimated total of nearly 13,000 course enrollments, plus course content, exams, and statistical reports.</p></div>
   </div>
   <h3>Timeline</h3>
@@ -925,8 +1008,8 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 
 <section class="panel" id="achievements" data-group="ach" data-glabel="Scope and achievements" data-label="Scope and achievements" hidden>
   <div class="eyebrow">Scope of responsibility and achievements</div>
-  <h2>Documented numbers, each with its meaning</h2>
-  <p class="lede">Every number states its type: scope of responsibility, delivered outputs, or achieved results, along with its source and limits.</p>
+  <h2>What I led, what I delivered, and what was achieved</h2>
+  <p class="lede">Each figure is shown with its type and limits, so it reads in context.</p>
   <h3>Scope of responsibility</h3>
   <div class="ach-grid">
     <div class="ach"><b>32</b><div><h4>schools, approximately, in the branch’s scope</h4><p>Leading one of the supervisory branches for nonprofit girls’ schools in Riyadh, 1434 → 1439 AH.</p><span class="chip">Scope</span></div></div>
@@ -961,7 +1044,7 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
 
 <section class="panel" id="cases" data-group="cases" data-glabel="Case studies" data-label="Case studies" hidden>
   <div class="eyebrow">Projects and case studies</div>
-  <h2>Six case studies</h2>
+  <h2>Selected case studies</h2>
   <p class="lede">Each one covers the problem, my role, the actions, the outputs, and the implementation status. Images are selected and reveal no client data or unpublished product details.</p>
   <div class="highlights cases-grid">
     <button class="hl" data-go="case-leadership" type="button"><span class="go">→</span><div class="k">Leadership, planning, and change · 1433 → 1439 AH</div><div class="t">Leading a school and a supervisory branch</div><div class="d">A branch covering about 32 schools: planning, human resources, budgets, and performance monitoring.</div><span class="st built">Completed</span></button>
@@ -1198,14 +1281,23 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
       <tr><td>Digital Transformation Leaders Fellowship</td><td>Prince Musaid bin Abdulrahman University</td><td class="n">1448 AH</td><td><span class="st built">Completed</span> Excellent (97%)</td></tr>
       <tr><td>Intermediate Diploma in Computer Science and Data Analysis</td><td>King Faisal University</td><td class="n">1448 AH</td><td><span class="st study">In progress</span></td></tr>
       <tr><td>Associate Diploma in Digital Transformation</td><td>AlMaarefa University</td><td class="n">1447 AH</td><td><span class="st built">Completed</span> 99.33% with A+ in every course</td></tr>
-      <tr><td>Master's (coursework year)</td><td>Imam Mohammad Ibn Saud Islamic University</td><td class="n">1440 AH</td><td><span class="st built">Coursework year completed</span> 4.56</td></tr>
       <tr><td>Bachelor of Usul al-Din</td><td>Imam Mohammad Ibn Saud Islamic University</td><td class="n">1427 AH</td><td><span class="st built">Completed</span></td></tr>
-      <tr><td>Ijazah in the Seven Quranic Readings</td><td>Ijazah program</td><td class="n"></td><td><span class="st study">In progress</span></td></tr>
     </tbody>
   </table></div>
-  <h3>Intermediate Diploma in Computer Science and Data Analysis</h3>
-  <p>An applied academic program combining computer science, programming, data analysis, artificial intelligence, and software solution development. It builds technical knowledge and analytical skills, and the use of data in designing business systems, supporting digital transformation, and decision-making.</p>
-  <p class="ui" style="color:var(--ink-soft)">First-semester courses: Computing Fundamentals · Introduction to Programming with Python · Innovation and Entrepreneurship in IT · Communication Skills · English Language</p>
+  <h3>Quranic studies</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Qualification</th><th>Institution</th><th>Year</th><th>Status and grade</th></tr></thead>
+    <tbody>
+      <tr><td>Master's coursework year in Quranic Studies</td><td>Imam Mohammad Ibn Saud Islamic University</td><td class="n">1440 AH</td><td><span class="st built">Completed</span> 4.56</td></tr>
+      <tr><td>Higher Diploma in Preparing Quran Teachers</td><td>Imam Mohammad Ibn Saud Islamic University, with a nonprofit institute</td><td class="n">1428 AH</td><td><span class="st built">Completed</span> 4.58 (Excellent)</td></tr>
+    </tbody>
+  </table></div>
+  <h4 class="sub">Ijazahs in Quranic recitation</h4>
+  <ul class="plain ijaza">
+    <li>Ijazah in the recitation of Imam Asim through Hafs and Shu’bah, with a connected chain <span class="st built">Completed 1437 AH</span></li>
+    <li>Ijazah in the recitation of Imam al-Kisa’i through Abu al-Harith and al-Duri, with a connected chain <span class="st study">In progress</span></li>
+    <li>Ijazah in the recitation of Imam Ibn Amir through Hisham and Ibn Dhakwan, with a connected chain <span class="st study">In progress</span></li>
+  </ul>
   <h3>Supporting indicators</h3>
   <ul class="plain">
     <li>General Aptitude Test for university graduates: score of 78 (August 2026).</li>
@@ -1388,13 +1480,6 @@ tr.key td{background:rgba(236,231,241,.7);font-weight:600}
     <div><dt>CVs</dt><dd><button class="linkbtn" type="button" data-go="cvs">Four specialized versions →</button></dd></div>
     <div><dt>City</dt><dd>Riyadh, Saudi Arabia</dd></div>
   </dl>
-  <h3>Public links</h3>
-  <ul class="plain">
-    <li><a href="https://go2top-sa.github.io/qinwan-site/" target="_blank" rel="noopener">Education and development association website</a></li>
-    <li><a href="https://go2top-sa.github.io/albr-digital-transformation/" target="_blank" rel="noopener">Al-Birr Society digital transformation strategy (interactive model)</a></li>
-    <li><a href="https://go2top-sa.github.io/the-english-ladder/" target="_blank" rel="noopener">The English Ladder: English conversation training</a></li>
-    <li><a href="https://go2top-sa.github.io/madar/" target="_blank" rel="noopener">MADAR AI</a></li>
-  </ul>
 </section>
 </template>
 <script>
@@ -1429,6 +1514,7 @@ window.PORTFOLIO_EN={
   certGroups:[['all','All'],['cisco','Cisco'],['ms','Microsoft'],['masar','Al-Masar Center'],['prep','Awaiting exam'],['other','Other']],
   sys:[
     {c:'ent',n:'Digital twin HQ',v:'v14',d:'The internal go2top operating platform: an executive dashboard with indicators across departments, a leave approval workflow and employee directory, an external portal for four groups (client, partner, visitor, trainee) where a partner follows its project phases, and an AI diagnostic agent named Basira. Screens use sample data.',t:['HTML','GitHub Pages'],s:'built',sl:'In development',img:'assets/twin-executive.jpg'},
+    {c:'web',n:'Student journey app (Nawat Hackathon)',v:'',d:'A development of the prototype that won first place with my team at the Nawat Hackathon: it tracks the student’s journey, confirms bus boarding and school entry by gate tap, Bluetooth, or location, and alerts parents to delays, route deviations, or leaving school at an unexpected time. An interactive simulation with real maps, Arabic interface.',t:['React','Leaflet','GitHub Pages'],s:'pub',sl:'Published, interactive simulation',u:'child-tracking/',img:'assets/nawat-app.jpg'},
     {c:'ent',n:'CTMS Portal',v:'v9',d:'A cooperative training management system that grew out of 83 operational challenges I documented during my Ministry of Education traineeship. A unified portal with six portals (trainee, supervisor, coordinator, management, data entry, and system administrator) and the design concept linking the management, supervisor, and trainee dashboards. Used as a case study with a PMBOK project charter.',t:['HTML','v9 architecture','Figma'],s:'built',sl:'Built, final completion remaining',u:'https://mark-emblem-41581904.figma.site',img:'assets/ctms-portal.jpg'},
     {c:'ent',n:'CTMS design on Power Platform',d:'An implementation architecture: 30 SharePoint lists, 6 Power Apps, 12 Power Automate flows, 3 Power BI dashboards, and a Power Pages portal.',t:['Power Platform'],s:'design',sl:'Designed',img:'assets/ctms-architecture.jpg'},
     {c:'ent',n:'Digital maturity index and governance readiness scale',d:'Two interactive diagnostic tools.',t:['HTML'],s:'built',sl:'Built'},
@@ -1581,6 +1667,7 @@ window.PORTFOLIO_EN={
   var certGroups=[['all','الكل'],['cisco','Cisco'],['ms','Microsoft'],['masar','مركز المسار'],['prep','بانتظار الاختبار'],['other','أخرى']];
   var sys=[
     {c:'ent',n:'المقر الرقمي التوأم',v:'v14',d:'منصة التشغيل الداخلية لـ go2top: لوحة تنفيذية بمؤشرات عبر الإدارات، ومسار موافقة على الإجازات ودليل الموظفين، وبوابة خارجية لأربع فئات (عميل، وشريك، وزائر، ومتدرب) تتابع فيها الجهة الشريكة مراحل مشروعها، ووكيل تشخيص ذكي باسم «بصيرة». الصور ببيانات تجريبية.',t:['HTML','GitHub Pages'],s:'built',sl:'قيد التطوير',img:'assets/twin-executive.jpg'},
+    {c:'web',n:'تطبيق رحلة الطالب (هاكاثون نواة)',v:'',d:'تطوير للنموذج الأولي الفائز بالمركز الأول ضمن الفريق في هاكاثون «نواة»: يتتبع رحلة الطالب، ويؤكد صعود الحافلة ودخول المدرسة بلمسة البوابة أو البلوتوث أو الموقع، وينبّه ولي الأمر عند التأخر أو الخروج عن المسار أو الخروج من المدرسة في غير وقته. محاكاة تفاعلية بخرائط حقيقية.',t:['React','Leaflet','GitHub Pages'],s:'pub',sl:'منشور، محاكاة تفاعلية',u:'child-tracking/',img:'assets/nawat-app.jpg'},
     {c:'ent',n:'CTMS Portal',v:'v9',d:'نظام إدارة التدريب التعاوني، نشأ من 83 تحديًا تشغيليًا رصدتها خلال التدريب في وزارة التعليم. بوابة موحدة بست بوابات: المتدرب، والمشرف، والمنسق، والإدارة، ومدخل البيانات، ومسؤول النظام، وتصميم فكرة الترابط بين لوحات الإدارة والمشرف والمتدرب. واستُخدم دراسة حالة بميثاق مشروع وفق PMBOK.',t:['HTML','معمارية v9','Figma'],s:'built',sl:'مبني، بقي القليل لإتمامه',u:'https://mark-emblem-41581904.figma.site',img:'assets/ctms-portal.jpg'},
     {c:'ent',n:'تصميم CTMS على Power Platform',d:'معمارية تنفيذية: 30 قائمة SharePoint، و6 تطبيقات Power Apps، و12 تدفق Power Automate، و3 لوحات Power BI، وبوابة Power Pages.',t:['Power Platform'],s:'design',sl:'مصمم',img:'assets/ctms-architecture.jpg'},
     {c:'ent',n:'مؤشر النضج الرقمي ومقياس جاهزية الحوكمة',d:'أداتا تشخيص تفاعليتان.',t:['HTML'],s:'built',sl:'مبنيتان'},
@@ -1773,7 +1860,6 @@ window.PORTFOLIO_EN={
   show(idOf(location.hash.slice(1))||'home');
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1879,5 +1965,42 @@ window.PORTFOLIO_EN={
 })();
 </script>
 
+
+<script>
+(function(){
+  var rail=document.getElementById('rail'), shell=document.querySelector('.shell'), main=document.getElementById('main');
+  if(!rail||!main)return;
+  var EN=document.documentElement.lang==='en'||/^#en/.test(location.hash);
+  shell.insertBefore(rail,main);
+  var prog=document.createElement('div'); prog.className='prog'; prog.innerHTML='<i></i>'; shell.insertBefore(prog,main);
+  function railH(){document.documentElement.style.setProperty('--railh',rail.offsetHeight+'px')}
+  railH(); window.addEventListener('resize',railH);
+  var cap=EN?'In this section':'في هذا القسم';
+  document.querySelectorAll('.gtabs').forEach(function(t){t.setAttribute('data-cap',cap)});
+  var groups=[].slice.call(rail.querySelectorAll('button'));
+  document.querySelectorAll('.journey').forEach(function(j){
+    j.innerHTML=groups.map(function(b,i){return '<button type="button" data-go="'+b.dataset.go+'"'+(i===0?' data-here':'')+'><b>'+String(i+1).padStart(2,'0')+'</b><span>'+b.textContent.replace(/^\d+/,'')+'</span></button>'}).join('');
+  });
+  function update(first){
+    var cur=main.querySelector('.panel:not([hidden])'); if(!cur)return;
+    var g=cur.dataset.group, i=groups.findIndex(function(b){return b.dataset.g===g});
+    prog.firstChild.style.width=((i+1)/groups.length*100)+'%';
+    document.body.dataset.section=cur.id;
+    var side=document.querySelector('.side'), top=side?side.offsetTop+side.offsetHeight:0;
+    if(first)window.scrollTo(0,0); else if(window.scrollY>top)window.scrollTo({top:top,behavior:'smooth'});
+  }
+  new MutationObserver(function(){update(false)}).observe(main,{subtree:true,attributes:true,attributeFilter:['hidden']});
+  update(true);
+  window.addEventListener('load',function(){setTimeout(function(){window.scrollTo(0,0)},0)});
+  document.addEventListener('keydown',function(e){
+    if(e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||'')))return;
+    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+    var cur=main.querySelector('.panel:not([hidden])'); if(!cur)return;
+    var nx=cur.querySelector('.next'); if(!nx)return; var kids=nx.children;
+    var forward=(e.key==='ArrowLeft')!==EN;
+    var b=forward?kids[kids.length-1]:kids[0]; if(b&&b.dataset&&b.dataset.go){e.preventDefault(); b.click();}
+  });
+})();
+</script>
 </body>
 </html>
