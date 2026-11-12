@@ -500,6 +500,44 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   .stops::before,.stops .bar{display:none}
   .sdetail{grid-template-columns:1fr}
 }
+
+/* footer */
+.land{display:none!important}
+.v2foot{position:relative;margin-top:46px;background:linear-gradient(var(--cream),#EFE7DC)}
+.v2foot .ft-in{max-width:1200px;margin:0 auto;padding:26px 22px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:2}
+.v2foot .ft-id{display:flex;align-items:center;gap:12px}
+.v2foot .ft-id b{display:block;font-family:var(--f-display);font-size:24px;color:var(--lav-deep)}
+.v2foot .ft-id span{display:block;font-family:var(--f-ui);font-size:12.5px;color:var(--ink-soft)}
+.v2foot .ft-links{display:flex;flex-wrap:wrap;gap:8px}
+.v2foot .ft-links a{font-family:var(--f-ui);font-size:13.5px;font-weight:600;color:var(--lav-deep);text-decoration:none;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--line)}
+.v2foot .ft-links a:hover{border-color:var(--lav)}
+.v2foot .ft-art{display:block;width:100%;height:220px;margin-top:-30px}
+.v2foot .ft-copy{position:absolute;bottom:10px;inset-inline:0;margin:0;text-align:center;font-family:var(--f-ui);font-size:12px;color:rgba(255,255,255,.92);letter-spacing:.02em}
+@media (max-width:860px){.v2foot .ft-art{height:150px;margin-top:0}.v2foot .ft-in{padding-top:20px}}
+/* guide */
+.helpbtn{all:unset;cursor:pointer;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--lav-deep);color:var(--lav-deep);font-family:var(--f-ui);font-weight:800;font-size:16px}
+.helpbtn:focus-visible{outline:3px solid var(--gold)}
+.guide{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(48,45,42,.35);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.guide.on{display:flex}
+.guide .box{width:min(560px,100%);background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:0 40px 80px -30px rgba(48,45,42,.6);padding:24px 26px 20px;animation:panelIn .35s ease}
+.guide .art{height:130px;border-radius:16px;background:linear-gradient(135deg,var(--lav-tint),#F6EFE6);display:grid;place-items:center;margin-bottom:16px;overflow:hidden}
+.guide h3{margin:0 0 6px;font-family:var(--f-display);font-size:26px;color:var(--lav-deep)}
+.guide p{margin:0;font-size:18px;line-height:1.85;color:var(--ink-soft)}
+.guide .dots{display:flex;gap:6px;justify-content:center;margin:16px 0 12px}
+.guide .dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:all .25s}
+.guide .dots i.on{width:22px;border-radius:8px;background:var(--gold)}
+.guide .acts{display:flex;justify-content:space-between;gap:10px}
+.guide .acts button{all:unset;cursor:pointer;font-family:var(--f-ui);font-weight:700;font-size:15px;padding:11px 20px;border-radius:12px;color:var(--lav-deep);border:1.5px solid var(--line)}
+.guide .acts button.pri{background:var(--lav-deep);border-color:var(--lav-deep);color:#fff}
+.guide .acts button:focus-visible{outline:3px solid var(--gold)}
+.guide .mini{display:flex;align-items:center;gap:0}
+.guide .mini i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid var(--lav);background:#fff;font-style:normal;font-family:Georgia,serif;font-size:12px;color:var(--lav-deep)}
+.guide .mini i.c{background:var(--gold);border-color:var(--gold);color:#fff;transform:scale(1.15)}
+.guide .mini s{display:block;width:22px;height:3px;background:var(--lav-l,#A796BE)}
+.guide .pill{font-family:var(--f-ui);font-size:14px;font-weight:700;padding:9px 16px;border-radius:12px;background:#fff;border:1.5px solid var(--line);color:var(--ink);margin:3px}
+.guide .pill.on{background:var(--lav-deep);color:#fff;border-color:var(--lav-deep)}
+.guide .bk{font-family:var(--f-ui);font-size:14px;font-weight:700;color:#fff;background:var(--lav-deep);padding:10px 18px;border-radius:999px}
+.guide .bk b{color:var(--gold)}
 @media (prefers-reduced-motion:reduce){.badge,.kicker i{animation:none!important}}
 </style>
 </head>
@@ -1067,7 +1105,48 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 
   </main>
 </div>
-<div class="land" aria-hidden="true"><svg viewBox="0 0 1440 220" preserveAspectRatio="none"><path d="M0 220V120Q180 70 360 105T720 92T1080 112T1440 84V220Z" fill="#A796BE" opacity=".55"/><path d="M0 220V150Q240 100 520 140T980 128T1440 140V220Z" fill="#C7A16B" opacity=".55"/><path d="M640 220V160Q900 110 1180 150T1440 132V220Z" fill="#B16D4C" opacity=".75"/><path d="M0 220V176Q260 140 560 172T1100 178T1440 170V220Z" fill="#7D8167"/></svg><p>حنين الزكري · ملف الأعمال</p></div>
+<footer class="v2foot" aria-label="تذييل">
+  <div class="ft-in">
+    <div class="ft-id">
+      <svg width="46" height="36" viewBox="0 0 46 36" aria-hidden="true"><path d="M2 32L16 12l9 20H2z" fill="#78658D" opacity=".85"/><path d="M25 32L33 16l11 16H25z" fill="#B16D4C" opacity=".6"/><path d="M2 32L14 8l7 12 5-9 8 14 8-5" stroke="#4E4173" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><b>حنين الزكري</b><span>القيادة والتميز المؤسسي · إدارة وتطوير الموارد البشرية · التخطيط الاستراتيجي والتحول الرقمي</span></div>
+    </div>
+    <div class="ft-links">
+      <a href="mailto:hanin.al.zakari@gmail.com" class="latin">hanin.al.zakari@gmail.com</a>
+      <a href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/go2top-sa" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <svg class="ft-art" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="fgL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9BEDA"/><stop offset="1" stop-color="#B3A4C8"/></linearGradient>
+      <linearGradient id="fgC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2CBA6"/><stop offset="1" stop-color="#CFAE7E"/></linearGradient>
+      <linearGradient id="fgT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98864"/><stop offset="1" stop-color="#B16D4C"/></linearGradient>
+      <linearGradient id="fgS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A8E73"/><stop offset="1" stop-color="#6E7259"/></linearGradient>
+      <linearGradient id="fgM" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4DCEC"/><stop offset="1" stop-color="#BFB2D2"/></linearGradient>
+      <radialGradient id="fgSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F4E9D6"/><stop offset="1" stop-color="#F4E9D6" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="420" cy="70" r="80" fill="url(#fgSun)"/>
+    <path d="M0 240 V150 C160 110 300 118 470 140 C640 162 760 120 980 112 C1160 106 1300 128 1440 118 V240 Z" fill="url(#fgL)" opacity=".85"/>
+    <path d="M470 176 L512 130 L548 112 L600 104 L690 98 L780 96 L856 100 L904 112 L944 134 L996 166 L1010 176 Z" fill="url(#fgM)"/>
+    <path d="M512 130 L548 112 L600 104 L690 98 L780 96 L856 100 L904 112 L944 134" fill="none" stroke="#FBF8F2" stroke-width="2" opacity=".8"/>
+    <path d="M500 146 C620 132 780 128 950 140 L960 146 C790 136 630 140 500 152 Z" fill="#FBF8F2" opacity=".35"/>
+    <path d="M488 162 C640 150 800 146 976 158 L984 164 C810 154 650 158 488 168 Z" fill="#FBF8F2" opacity=".28"/>
+    <path d="M0 240 V176 C200 150 380 160 560 172 C760 186 900 150 1080 146 C1240 142 1340 160 1440 154 V240 Z" fill="url(#fgC)" opacity=".9"/>
+    <path d="M760 240 V196 C900 168 1060 160 1200 170 C1300 178 1380 172 1440 166 V240 Z" fill="url(#fgT)"/>
+    <path d="M0 240 V204 C240 186 520 196 760 208 C960 218 1180 202 1440 198 V240 Z" fill="url(#fgS)"/>
+    <g transform="translate(1290 240) scale(1.45)" stroke="#61654E" stroke-width="1.6" fill="none" stroke-linecap="round">
+      <path d="M0 0 C-4 -40 -10 -80 -22 -118"/><path d="M4 0 C8 -44 16 -84 30 -112"/><path d="M2 0 C2 -36 0 -70 4 -98"/>
+      <path d="M-8 -30 C-18 -40 -26 -42 -34 -40" stroke="#7D8167"/><path d="M8 -26 C20 -34 30 -34 38 -30" stroke="#7D8167"/>
+    </g>
+    <g transform="translate(1290 240) scale(1.45)" fill="#78658D">
+      <ellipse cx="-22" cy="-120" rx="3.2" ry="5.2"/><ellipse cx="-19" cy="-110" rx="3.4" ry="5.4" transform="rotate(-18 -19 -110)"/><ellipse cx="-25" cy="-104" rx="3.4" ry="5.4" transform="rotate(18 -25 -104)"/><ellipse cx="-16" cy="-96" rx="3.4" ry="5.4" transform="rotate(-18 -16 -96)"/><ellipse cx="-22" cy="-90" rx="3.4" ry="5.4" transform="rotate(18 -22 -90)"/><ellipse cx="-13" cy="-82" rx="3.2" ry="5" transform="rotate(-18 -13 -82)"/>
+      <ellipse cx="30" cy="-114" rx="3.2" ry="5.2"/><ellipse cx="27" cy="-104" rx="3.4" ry="5.4" transform="rotate(18 27 -104)"/><ellipse cx="33" cy="-98" rx="3.4" ry="5.4" transform="rotate(-18 33 -98)"/><ellipse cx="23" cy="-90" rx="3.4" ry="5.4" transform="rotate(18 23 -90)"/><ellipse cx="29" cy="-84" rx="3.2" ry="5" transform="rotate(-18 29 -84)"/>
+      <ellipse cx="4" cy="-100" rx="3" ry="5" fill="#A796BE"/><ellipse cx="1" cy="-91" rx="3.2" ry="5" fill="#A796BE" transform="rotate(-18 1 -91)"/><ellipse cx="6" cy="-84" rx="3.2" ry="5" fill="#A796BE" transform="rotate(18 6 -84)"/>
+    </g>
+  </svg>
+  <p class="ft-copy">© 2026 حنين الزكري · ملف الأعمال</p>
+</footer>
 
 <template id="tpl-en-id">
       <h1 class="latin-h">Haneen Al Zakari</h1>
@@ -1662,7 +1741,7 @@ window.PORTFOLIO_EN={
     ['Artificial intelligence',['Claude','ChatGPT','Gemini','Microsoft Copilot','NotebookLM','n8n']],
     ['Design and work environments',['Figma','Canva','Adobe tools','Google Workspace','Microsoft 365','Blackboard']],
     ['Language and communication',['Arabic: rhetoric and professional and research writing','Poetry, prose, and fiction','Public speaking and persuasion','English: intermediate level']],
-    ['Islamic studies',['Usul al-Din','The Quran and its sciences','Quranic recitation (Iqra\')']]
+    ['Islamic studies',['Usul al-Din','The Quran and its sciences','Tafsir (Quranic exegesis)','Quranic recitation (Iqra\')']]
   ],
   gal:[
     {g:'twin',src:'assets/twin-process-map.jpg',t:'go2top process map: the operational twin',d:'Service delivery flow with coded steps, each with its performer (automated or human), tool, and monthly cost, decision points, and flow simulation across nine domains (Arabic); in development'},
@@ -1815,7 +1894,7 @@ window.PORTFOLIO_EN={
     ['الذكاء الاصطناعي',['Claude','ChatGPT','Gemini','Microsoft Copilot','NotebookLM','n8n']],
     ['التصميم وبيئات العمل',['Figma','Canva','أدوات Adobe','Google Workspace','Microsoft 365','Blackboard']],
     ['اللغة والتواصل',['العربية: بلاغة وصياغة مهنية وبحثية','الشعر والنثر والقصة','الإلقاء والإقناع','الإنجليزية: مستوى متوسط']],
-    ['العلوم الشرعية',['أصول الدين','القرآن وعلومه','الإقراء']]
+    ['العلوم الشرعية',['أصول الدين','القرآن وعلومه','التفسير','الإقراء']]
   ];
   if(EN){certs=P.certs;certGroups=P.certGroups;sys=P.sys;sysGroups=P.sysGroups;series=P.series;skills=P.skills;}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -2242,6 +2321,36 @@ window.PORTFOLIO_EN={
     if(restoring&&restoring.id===p.id){var y=restoring.y;restoring=false;setTimeout(function(){scrollTo({top:y,behavior:'auto'})},60)}
   }
   new MutationObserver(onShow).observe(main,{subtree:true,attributes:true,attributeFilter:['hidden']});
+
+  // first-visit guide, and the ? button to open it again
+  var G=EN?[
+    ['Moving between sections','The numbered bar at the top stays with you on every page. Tap any station to open its section; the gold station is where you are.','<div class="mini"><i>01</i><s></s><i>02</i><s></s><i class="c">03</i><s></s><i>04</i><s></s><i>05</i></div>'],
+    ['Information by field','On the first page, choose a field. You will see the matching experience, evidence, and CV, and related cards are marked in other sections.','<div><span class="pill on">HR</span><span class="pill">Digital transformation</span><span class="pill">Leadership</span></div>'],
+    ['Inside each section','Some sections have tabs under the bar, such as Experience and Skills. Each tab shows one part at a time.','<div><span class="pill on">Experience</span><span class="pill">Skills</span></div>'],
+    ['Going back','After opening a card or a station, a Back button appears at the bottom and returns you to the exact place you left. Arrow keys also move between sections.','<span class="bk">Back to: <b>Profile</b></span>']
+  ]:[
+    ['التنقل بين الأقسام','الشريط المرقم في الأعلى يرافقك في كل صفحة. اضغط أي محطة لفتح قسمها، والمحطة الذهبية هي موضعك الحالي.','<div class="mini"><i>01</i><s></s><i>02</i><s></s><i class="c">03</i><s></s><i>04</i><s></s><i>05</i></div>'],
+    ['المعلومات وفق المجال','في الصفحة الأولى اختر المجال الذي يهمك، فتظهر الخبرة والأدلة والسيرة المناسبة له، وتُميَّز البطاقات المرتبطة به في بقية الأقسام.','<div><span class="pill on">الموارد البشرية</span><span class="pill">التحول الرقمي</span><span class="pill">القيادة</span></div>'],
+    ['داخل كل قسم','بعض الأقسام فيها تبويبات تحت الشريط، مثل الخبرات والمهارات، وكل تبويب يعرض جزءًا واحدًا.','<div><span class="pill on">الخبرات</span><span class="pill">المهارات</span></div>'],
+    ['الرجوع','بعد فتح بطاقة أو محطة يظهر زر «رجوع» أسفل الشاشة، فيعيدك إلى الموضع الذي انتقلت منه. وتعمل أسهم لوحة المفاتيح للتنقل بين الأقسام.','<span class="bk">رجوع إلى: <b>النبذة</b></span>']
+  ];
+  var gd=document.createElement('div'); gd.className='guide'; gd.setAttribute('role','dialog'); gd.setAttribute('aria-modal','true'); gd.setAttribute('aria-labelledby','gtitle');
+  gd.innerHTML='<div class="box"><div class="art" id="gart"></div><h3 id="gtitle"></h3><p id="gtext"></p><div class="dots" id="gdots"></div><div class="acts"><button type="button" id="gskip"></button><button type="button" class="pri" id="gnext"></button></div></div>';
+  document.body.appendChild(gd);
+  var gi=0, lastFocus=null;
+  function gpaint(){var g=G[gi];document.getElementById('gart').innerHTML=g[2];document.getElementById('gtitle').textContent=g[0];document.getElementById('gtext').textContent=g[1];document.getElementById('gdots').innerHTML=G.map(function(_,k){return '<i class="'+(k===gi?'on':'')+'"></i>'}).join('');document.getElementById('gskip').textContent=gi?(EN?'Previous':'السابق'):(EN?'Skip':'تخطي');document.getElementById('gnext').textContent=gi<G.length-1?(EN?'Next':'التالي'):(EN?'Start browsing':'ابدأ التصفح')}
+  function gopen(){gi=0;gpaint();lastFocus=document.activeElement;gd.classList.add('on');document.getElementById('gnext').focus()}
+  function gclose(){gd.classList.remove('on');try{localStorage.setItem('pf.guide','1')}catch(e){} if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  document.getElementById('gnext').addEventListener('click',function(){if(gi<G.length-1){gi++;gpaint()}else gclose()});
+  document.getElementById('gskip').addEventListener('click',function(){if(gi){gi--;gpaint()}else gclose()});
+  gd.addEventListener('click',function(e){if(e.target===gd)gclose()});
+  document.addEventListener('keydown',function(e){if(!gd.classList.contains('on'))return; if(e.key==='Escape'){gclose();} e.stopPropagation()},true);
+  var hb=document.createElement('button'); hb.type='button'; hb.className='helpbtn'; hb.textContent='؟'; hb.setAttribute('aria-label',EN?'How to use this site':'طريقة استخدام الموقع');
+  if(EN)hb.textContent='?';
+  top.firstChild.insertBefore(hb,top.firstChild.querySelector('.lang'));
+  hb.addEventListener('click',gopen);
+  var seenGuide=null; try{seenGuide=localStorage.getItem('pf.guide')}catch(e){}
+  if(!seenGuide)setTimeout(gopen,700);
   onShow(); paintBack();
 })();
 </script>
