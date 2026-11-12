@@ -372,6 +372,135 @@ h4.sub{margin:18px 0 6px;font-size:19px;color:var(--lav-deep)}
   .gtabs::before{display:none}
   .gtabs button{flex:0 0 auto;font-size:15px;padding:9px 14px}
 }
+
+/* ===== v2: recruiter-first design ===== */
+.side,.side.glass{display:none!important}
+.prog{display:none!important}
+.v2top{position:relative;z-index:45;background:rgba(251,248,242,.95);border-bottom:1px solid var(--line)}
+.v2top .in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:12px}
+.v2top .logo{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--lav-d,#4E4173)}
+.v2top .sp{flex:1}
+.v2top .lang{position:static!important;margin:0}
+.v2top .cta{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:14px;font-weight:700;color:#fff;background:var(--lav-deep);padding:9px 16px;border-radius:999px}
+.navwrap{position:sticky;top:0;z-index:40;padding:10px 0 12px;background:linear-gradient(var(--cream) 82%,rgba(243,238,230,0))}
+nav.rail{position:relative;top:auto;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;margin:0;padding:14px 10px 10px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 30px -24px rgba(48,45,42,.5);overflow:visible;counter-reset:sec}
+nav.rail::after{content:"";position:absolute;top:36px;inset-inline:6.25%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--sage),var(--lav),var(--terra));opacity:.55;z-index:0}
+nav.rail button{all:unset;cursor:pointer;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--f-ui);font-size:13px;font-weight:600;color:var(--ink);text-align:center;padding:0 2px;background:none!important;box-shadow:none!important;white-space:normal;line-height:1.35}
+nav.rail button::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--paper);border:2.5px solid var(--lav);color:var(--lav-deep);font-family:Georgia,serif;font-size:15px;opacity:1;transition:all .25s}
+nav.rail button.seen::before{background:var(--lav-tint)}
+nav.rail button[aria-current="true"]::before{background:var(--gold);border-color:var(--gold);color:#fff;transform:scale(1.08);box-shadow:0 8px 16px -8px rgba(200,153,26,.9)}
+nav.rail button[aria-current="true"]{color:var(--lav-deep);font-weight:800}
+nav.rail button:hover::before{border-color:var(--lav-deep)}
+nav.rail button:focus-visible::before{outline:3px solid var(--gold);outline-offset:2px}
+body.compact nav.rail{padding:8px 10px 6px}
+body.compact nav.rail::after{top:21px}
+body.compact nav.rail button::before{width:30px;height:30px;font-size:12px;border-width:2px}
+body.compact nav.rail button:not([aria-current="true"]) span.l{display:none}
+nav.rail button span.l{display:block}
+.fieldtag{display:none;align-items:center;gap:8px;width:fit-content;margin:8px auto 0;font-family:var(--f-ui);font-size:13px;font-weight:700;color:var(--olive);background:var(--sage-tint);border:1px solid #D5DAC4;padding:5px 8px 5px 12px;border-radius:999px}
+.fieldtag.on{display:flex}
+.fieldtag button{all:unset;cursor:pointer;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--olive);font-size:13px}
+.fieldtag .chg{all:unset;cursor:pointer;width:auto;height:auto;background:none;text-decoration:underline;font-weight:600;font-size:12.5px}
+.rel{position:relative;border-color:var(--sage)!important;box-shadow:0 0 0 2px rgba(125,129,103,.25)!important}
+.rel::before{content:attr(data-reltag);position:absolute;top:-10px;inset-inline-end:14px;z-index:2;font-family:var(--f-ui);font-size:11px;font-weight:700;color:#fff;background:var(--sage);padding:2px 9px;border-radius:999px}
+.backbtn{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%) translateY(120px);z-index:60;display:flex;align-items:center;gap:8px;font-family:var(--f-ui);font-size:14.5px;font-weight:700;color:#fff;background:var(--lav-deep);border:0;border-radius:999px;padding:12px 20px;box-shadow:0 16px 30px -14px rgba(48,45,42,.7);cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+html[dir="ltr"] .backbtn{transform:translateX(-50%) translateY(120px)}
+.backbtn.on{transform:translateX(50%) translateY(0)}
+html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
+.backbtn b{color:var(--gold)}
+/* home */
+#home .v2hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:center;margin:-10px -6px 0;padding:26px 24px 34px;border-radius:22px;background:radial-gradient(120% 120% at 10% 0%,#EFE9F0 0%,var(--paper) 60%)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-ui);font-size:13.5px;font-weight:700;color:var(--olive);background:var(--sage-tint);padding:6px 14px;border-radius:999px}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--sage);animation:kp 2s infinite}
+@keyframes kp{70%{box-shadow:0 0 0 10px rgba(125,129,103,0)}0%{box-shadow:0 0 0 0 rgba(125,129,103,.6)}}
+#home h1{font-family:var(--f-display);font-size:clamp(46px,6vw,76px);line-height:1.1;margin:14px 0 4px;color:var(--lav-deep)}
+#home .en{font-family:Georgia,serif;font-size:19px;color:var(--olive);letter-spacing:.04em}
+#home .def{font-size:21px;line-height:1.85;color:var(--ink-soft);margin:16px 0 22px;max-width:56ch}
+.v2btns{display:flex;flex-wrap:wrap;gap:10px}
+.v2btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-ui);font-weight:700;font-size:15.5px;text-decoration:none;padding:13px 22px;border-radius:14px;border:1.5px solid var(--lav-deep);color:var(--lav-deep);background:transparent;cursor:pointer;transition:transform .2s}
+.v2btn.solid{background:var(--lav-deep);color:#fff;box-shadow:0 14px 26px -14px rgba(78,65,115,.8)}
+.v2btn:hover{transform:translateY(-2px)}
+.vis{position:relative;aspect-ratio:1/1;max-width:440px;justify-self:center;width:100%}
+.vis .disc{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fff 0%,#F4ECE4 55%,#EADFD3 100%);box-shadow:inset 0 -30px 60px rgba(177,109,76,.12),0 40px 80px -40px rgba(78,65,115,.5);overflow:hidden}
+.vis .disc svg{position:absolute;inset:0;width:100%;height:100%}
+.vis .layer{transition:transform .2s ease-out}
+.badge{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;background:#fff;border:1px solid var(--line);box-shadow:0 18px 30px -20px rgba(48,45,42,.5);animation:bfl 6s ease-in-out infinite}
+.badge.ph{max-width:210px;padding:12px 16px;border-radius:18px;font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.35;color:var(--lav-deep);transition:opacity .4s,transform .4s}
+.badge.ph.out{opacity:0;transform:translateY(8px) scale(.96)}
+.badge.ph.gold{color:#7A5C10;background:var(--gold-tint);border-color:#E7D4AE}
+.b1{top:4%;right:-4%}.b2{top:40%;left:-8%;animation-delay:-2s}.b3{bottom:8%;right:2%;animation-delay:-4s}
+@keyframes bfl{50%{translate:0 -10px}}
+.fields{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px 26px 26px;box-shadow:0 26px 50px -40px rgba(48,45,42,.55);scroll-margin-top:calc(var(--railh) + 30px)}
+.fields h2{margin:0}
+.fields .sub{font-family:var(--f-ui);font-size:14.5px;color:var(--ink-soft);margin:4px 0 16px}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.fchip{all:unset;cursor:pointer;font-family:var(--f-ui);font-weight:700;font-size:15px;padding:11px 18px;border-radius:14px;background:#fff;border:1.5px solid var(--line);color:var(--ink);transition:all .25s}
+.fchip:hover{border-color:var(--lav)}
+.fchip[aria-pressed="true"]{background:var(--lav-deep);border-color:var(--lav-deep);color:#fff;box-shadow:0 10px 20px -12px rgba(78,65,115,.9)}
+.fchip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.fit{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;transition:opacity .3s}
+.fit.fade{opacity:0}
+.fit .why{font-size:20.5px;line-height:1.9;margin:0 0 14px}
+.fit .why mark{background:linear-gradient(transparent 62%,var(--gold-tint) 62%);color:inherit}
+.ftags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.ftags span{font-family:var(--f-ui);font-size:13px;font-weight:600;color:var(--olive);background:var(--sage-tint);padding:5px 11px;border-radius:999px}
+.fev{display:grid;gap:10px}
+.fev button{all:unset;cursor:pointer;display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;transition:border-color .2s,transform .2s}
+.fev button:hover{border-color:var(--lav);transform:translateX(-4px)}
+.fev .n{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--lav-tint);color:var(--lav-deep);font-family:var(--f-ui);font-weight:800;font-size:15px}
+.fev b{display:block;font-family:var(--f-display);font-size:19px;line-height:1.35}
+.fev small{display:block;font-family:var(--f-ui);font-size:13px;color:var(--ink-soft);line-height:1.5}
+.fev .go{color:var(--gold);font-weight:800}
+/* path */
+.journey2{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 20px;margin:0 0 22px}
+.stops{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.stops::before{content:"";position:absolute;top:27px;inset-inline:6%;height:4px;border-radius:4px;background:var(--line)}
+.stops .bar{position:absolute;top:27px;inset-inline-start:6%;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--sage),var(--lav),var(--terra));width:0;transition:width .6s ease}
+.stop{all:unset;cursor:pointer;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.stop .dot{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:3px solid #A796BE;font-family:var(--f-ui);font-weight:800;font-size:13px;color:var(--lav-deep);transition:all .25s}
+.stop span.t{font-family:var(--f-ui);font-size:13px;font-weight:600;line-height:1.4}
+.stop small{font-family:var(--f-ui);font-size:11.5px;color:var(--ink-soft)}
+.stop[aria-current="true"] .dot{background:var(--lav-deep);border-color:var(--gold);color:#fff;transform:scale(1.1)}
+.sdetail{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--lav-tint);border-radius:18px;padding:16px 22px}
+.sdetail h3{margin:0;font-size:23px}
+.sdetail p{margin:4px 0 0;font-size:18px}
+.sdetail .big{font-family:Georgia,serif;font-size:38px;color:var(--terra);text-align:center;line-height:1}
+.sdetail .big small{display:block;font-family:var(--f-ui);font-size:12.5px;color:var(--ink-soft)}
+/* cases */
+.v2cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.v2case{all:unset;cursor:pointer;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.v2case:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(78,65,115,.7)}
+.v2case:focus-visible{outline:3px solid var(--gold)}
+.v2case .img{display:block;height:150px;background:var(--lav-tint) center/cover no-repeat;position:relative}
+.v2case .img.art{background:linear-gradient(135deg,var(--lav-deep),var(--lav) 55%,var(--terra))}
+.v2case .img.art::after{content:"32 مدرسة";position:absolute;inset:auto 16px 14px auto;font-family:var(--f-ui);font-weight:800;font-size:28px;color:#fff}
+.v2case .st{position:absolute;top:12px;right:12px;font-family:var(--f-ui);font-size:12px;font-weight:700;background:rgba(255,255,255,.95);padding:4px 10px;border-radius:999px;color:var(--olive)}
+.v2case .bd{display:grid;gap:6px;padding:14px 16px 16px}
+.v2case .h{font-family:var(--f-display);font-size:21px;line-height:1.3;color:var(--lav-deep)}
+.v2case .flow{display:grid;gap:4px;font-family:var(--f-ui);font-size:13.5px;line-height:1.55}
+.v2case .flow>span{display:grid;grid-template-columns:58px 1fr;gap:8px}
+.v2case .flow em{font-style:normal;font-weight:700;color:var(--terra)}
+.journey{display:none!important}
+.v2case.rel::before{top:12px;inset-inline-end:auto;inset-inline-start:12px}
+@media (max-width:860px){
+  .v2top .in{height:54px}
+  .navwrap{padding:6px 0 8px}
+  nav.rail{padding:10px 4px 8px;border-radius:0;border-inline:0}
+  nav.rail::after{top:27px}
+  nav.rail button::before{width:32px;height:32px;font-size:12px;border-width:2px}
+  nav.rail button:not([aria-current="true"]) span.l{display:none}
+  nav.rail button span.l{position:absolute;top:40px;white-space:nowrap;font-size:12px}
+  nav.rail{padding-bottom:26px}
+  body.compact nav.rail{padding-bottom:22px}
+  #home .v2hero{grid-template-columns:1fr;margin:0;padding:18px 14px 26px}
+  .vis{max-width:320px}
+  .fit,.v2cases{grid-template-columns:1fr}
+  .fields{padding:18px 14px}
+  .stops{grid-template-columns:repeat(7,86px);overflow-x:auto;padding-bottom:8px}
+  .stops::before,.stops .bar{display:none}
+  .sdetail{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.badge,.kicker i{animation:none!important}}
 </style>
 </head>
 <body>
@@ -394,33 +523,50 @@ h4.sub{margin:18px 0 6px;font-size:19px;color:var(--lav-deep)}
 
   <main id="main">
 
-<section class="panel" id="home" data-group="home" data-glabel="النبذة" data-label="النبذة">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">التعريف القيادي</div>
-      <p class="big">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة <em>go2top</em>.</p>
-      <p>تمتد خبرتي المهنية لأكثر من عشر سنوات في القيادة والإشراف والتعليم الجامعي؛ فقد تولّيت إدارة مدرسة نسائية، ثم رُقّيت إلى قيادة أحد فروع الإشراف السبعة التي كانت تتولى آنذاك الإشراف على المدارس النسائية الخيرية في مدينة الرياض، بنطاق إشرافي شمل نحو 32 مدرسة.</p>
-      <p>جمعت أدواري القيادية بين التخطيط الاستراتيجي والتشغيلي، وإدارة الموارد البشرية والعمليات والموازنات، ومتابعة الأداء وتحسين الإجراءات، وقيادة المبادرات وإدارة التغيير التنظيمي.</p>
+<section class="panel" id="home" data-label="النبذة" data-group="home" data-glabel="النبذة">
+  <div class="v2hero">
+    <div class="v2hero-txt">
+      <span class="kicker"><i></i>متاحة للفرص القيادية</span>
+      <h1>حنين الزكري</h1>
+      <div class="en latin">Haneen Al Zakari</div>
+      <p class="def">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة go2top.</p>
+      <div class="v2btns">
+        <button class="v2btn solid" type="button" data-scroll="fields">المعلومات وفق المجال ←</button>
+        <button class="v2btn" type="button" data-go="contact">التواصل والسير الذاتية</button>
+      </div>
     </div>
-    <dl class="facts">
-      <div><dt>الصفة</dt><dd>مؤسِّسة go2top | إلى القمة</dd></div>
-      <div><dt>أعلى مؤهل</dt><dd>الدبلوم العالي في الموارد البشرية، جامعة الملك سعود (4.85 من 5)</dd></div>
-      <div><dt>الزمالة</dt><dd>زمالة قادة التحول الرقمي، تقدير ممتاز (97%)</dd></div>
-      <div><dt>أعلى معدل</dt><dd>99.33% بتقدير A+ في جميع المقررات، الدبلوم المشارك في التحول الرقمي</dd></div>
-      <div><dt>الجائزة</dt><dd>المركز الأول ضمن الفريق الفائز، هاكاثون «نواة»، وزارة التعليم</dd></div>
-      <div><dt>المدينة</dt><dd>الرياض</dd></div>
-      <div><dt>البريد</dt><dd><span class="latin" id="mail">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">نسخ</button></dd></div>
-      <div><dt>LinkedIn</dt><dd><a class="latin" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">in/haneen-al-zakari</a></dd></div>
-      <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
-    </dl>
+    <div class="vis" id="vis" aria-hidden="true">
+      <div class="disc">
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <circle cx="290" cy="120" r="46" fill="#F4E9D6"/>
+          <g class="layer" data-d="6"><path d="M-20 300 L60 190 L120 250 L190 140 L260 230 L320 170 L420 290 L420 420 L-20 420Z" fill="#CBC1D8"/></g>
+          <g class="layer" data-d="12"><path d="M-20 330 L90 230 L150 290 L230 200 L300 270 L360 230 L420 300 L420 420 L-20 420Z" fill="#A796BE"/><path d="M190 140 L230 200 L210 210 L182 160Z" fill="#fff" opacity=".35"/></g>
+          <g class="layer" data-d="20"><path d="M-20 350 Q100 300 200 330 T420 320 L420 420 L-20 420Z" fill="#C7A16B"/></g>
+          <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
+        </svg>
+      </div>
+      <div class="badge ph b1"></div>
+      <div class="badge ph b2"></div>
+      <div class="badge ph b3"></div>
+    </div>
   </div>
-  <div class="journey" aria-label="أقسام الملف"></div>
-  <div class="sch ev"><b>أبرز الأدلة</b><button type="button" data-go="cases">دراسات الحالة كاملة ←</button></div>
-  <div class="highlights">
-    <button class="hl" data-go="case-leadership" type="button"><span class="go">←</span><div class="k">المسار القيادي</div><div class="t">إدارة مدرسة، ثم قيادة فرع إشراف</div><div class="d">ترقية بعد عام إلى قيادة أحد فروع الإشراف السبعة في الرياض، بنطاق نحو 32 مدرسة.</div></button>
-    <button class="hl" data-go="case-assoc" type="button"><span class="go">←</span><div class="k">مشروع مؤسسي</div><div class="t">التأسيس المؤسسي لجمعية في القطاع غير الربحي</div><div class="d">32 وثيقة ومصنفًا في 14 قسمًا، و107 نماذج تشغيلية، سُلّمت لمجلس الإدارة للمراجعة والاعتماد.</div></button>
-    <button class="hl" data-go="case-ctms" type="button"><span class="go">←</span><div class="k">دراسة حالة</div><div class="t">CTMS لإدارة التدريب التعاوني</div><div class="d">تحليل 83 تحديًا تشغيليًا وتصميم النظام، وبلغت فكرته إجراءات الموافقة على نموذج أولي قابل للاختبار.</div></button>
-    <button class="hl award" data-go="case-nawat" type="button"><span class="go">←</span><div class="k">جائزة</div><div class="t">المركز الأول ضمن الفريق الفائز في هاكاثون «نواة»</div><div class="d">ابتكرت إضافة أداة النموذج الأولي ونفذتها، وقدّمت العرض للمقيّمين.</div></button>
+  <div class="fields" id="fields">
+    <h2>المعلومات وفق المجال</h2>
+    <p class="sub">اختيار المجال يعرض الخبرة المرتبطة به، وأبرز الأدلة، والسيرة المتخصصة، ويبقى المجال مميزًا في بقية الأقسام.</p>
+    <div class="fchips" role="group" aria-label="المجالات">
+      <button class="fchip" type="button" data-field="hr" aria-pressed="false">إدارة وتطوير الموارد البشرية</button>
+      <button class="fchip" type="button" data-field="dt" aria-pressed="false">التخطيط الاستراتيجي والتحول الرقمي</button>
+      <button class="fchip" type="button" data-field="lead" aria-pressed="false">القيادة والتميز المؤسسي</button>
+      <button class="fchip" type="button" data-field="od" aria-pressed="false">تطوير العمليات وتصميم نظم الأعمال</button>
+    </div>
+    <div class="fit" id="fit" aria-live="polite">
+      <div>
+        <p class="why" id="why"></p>
+        <div class="ftags" id="ftags"></div>
+        <a class="v2btn solid" id="fcv" href="#" target="_blank" rel="noopener">السيرة المتخصصة لهذا المجال ←</a>
+      </div>
+      <div class="fev" id="fev"></div>
+    </div>
   </div>
 </section>
 
@@ -428,6 +574,7 @@ h4.sub{margin:18px 0 6px;font-size:19px;color:var(--lav-deep)}
   <div class="eyebrow">الخبرات العملية</div>
   <h2>الخبرات القيادية والمهنية</h2>
   <p class="lede">تسع سنوات في الإشراف والعمل الإداري والقيادة، وثماني سنوات في التدريس الجامعي تداخل بعضها زمنيًا، وخبرة تطبيقية في التقنية والتحول الرقمي تظهر في الأنظمة التي صممتها وبنيتها. الترتيب من الأحدث.</p>
+  <div class="journey2"><div class="stops" id="stops"><i class="bar" id="sbar"></i></div><div class="sdetail" id="sdetail"></div></div>
   <h3 style="margin-top:4px">مجالات الممارسة</h3>
   <div class="grid practice">
     <div class="card"><h4>القيادة الإدارية</h4><p>إدارة مدرسة، ثم قيادة فرع إشراف بنطاق نحو 32 مدرسة: قيادة فرق الإشراف، ومتابعة أداء المدارس وقياداتها، ورفع التقارير والتوصيات للإدارة.</p></div>
@@ -497,13 +644,13 @@ h4.sub{margin:18px 0 6px;font-size:19px;color:var(--lav-deep)}
   <div class="eyebrow">المشروعات ودراسات الحالة</div>
   <h2>من أبرز دراسات الحالة</h2>
   <p class="lede">لكل حالة المشكلة، ودوري فيها، والإجراءات، والمخرجات، وحالة التنفيذ. الصور مختارة، ولا تكشف بيانات جهات أو جوهر منتجات غير منشورة.</p>
-  <div class="highlights cases-grid">
-    <button class="hl" data-go="case-leadership" type="button"><span class="go">←</span><div class="k">القيادة والتخطيط وإدارة التغيير · 1433 ← 1439هـ</div><div class="t">إدارة مدرسة وفرع إشراف</div><div class="d">قيادة فرع بنطاق نحو 32 مدرسة: التخطيط، والموارد البشرية، والموازنات، ومتابعة الأداء.</div><span class="st built">منجزة</span></button>
-    <button class="hl" data-go="case-assoc" type="button"><span class="go">←</span><div class="k">التأسيس المؤسسي · 2025 ← 2026</div><div class="t">مشروع تأسيس جمعية في القطاع غير الربحي</div><div class="d">التشخيص والتخطيط والموارد البشرية والحوكمة والعمليات والتحول الرقمي، في حزمة سُلّمت لمجلس الإدارة.</div><span class="st pub">سُلّمت للمراجعة والاعتماد</span></button>
-    <button class="hl" data-go="case-ctms" type="button"><span class="go">←</span><div class="k">نظام إداري · 1447هـ</div><div class="t">CTMS لإدارة التدريب التعاوني</div><div class="d">83 تحديًا تشغيليًا، وتحليل الاحتياجات، والتصميم الوظيفي، ونموذج أولي مبني.</div><span class="st built">قيد الإتمام والتجربة</span></button>
-    <button class="hl" data-go="case-hr" type="button"><span class="go">←</span><div class="k">أدوات الموارد البشرية</div><div class="t">لوحات المؤشرات وأدوات الموارد البشرية</div><div class="d">تحليل البيانات، وقياس الأداء والاحتياج التدريبي وأثر البرامج، وتحسين إجراءات العمل.</div><span class="st pub">منشورة ومستخدمة</span></button>
-    <button class="hl" data-go="case-isps" type="button"><span class="go">←</span><div class="k">معمارية مؤسسية</div><div class="t">ISPS: منظومة النظم المؤسسية</div><div class="d">هيكلة وأطر 25 نظامًا مترابطًا في خمس طبقات، تمهيدًا لحلول رقمية متكاملة.</div><span class="st design">بنية مفاهيمية قيد التطوير</span></button>
-    <button class="hl award" data-go="case-nawat" type="button"><span class="go">←</span><div class="k">الابتكار · 1447هـ</div><div class="t">هاكاثون «نواة» والنموذج الأولي</div><div class="d">إعداد Mini Jam، ثم المركز الأول ضمن الفريق، وتطوير النموذج إلى تطبيق تفاعلي.</div><span class="st pub">المركز الأول</span></button>
+  <div class="v2cases">
+    <button class="v2case" type="button" data-go="case-leadership" data-fields="lead hr"><span class="img art"><span class="st">منجزة</span></span><span class="bd"><b class="h">قيادة مدرسة ثم فرع إشراف</b><span class="flow"><span><em>المشكلة</em>مدارس تحتاج إدارة وإشرافًا منتظمين</span><span><em>الإجراء</em>التخطيط والموارد البشرية والموازنات وإدارة التغيير</span><span><em>النتيجة</em>ترقية بعد عام، ومواءمة الفرع مع التنظيم الموحد</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-assoc" data-fields="od dt lead"><span class="img" style="background-image:url(assets/shot-association.jpg)"><span class="st">سُلّمت للاعتماد</span></span><span class="bd"><b class="h">التأسيس المؤسسي لجمعية</b><span class="flow"><span><em>المشكلة</em>جهة ناشئة تحتاج منظومة تأسيس متكاملة</span><span><em>الإجراء</em>إدارة المشروع ووضع منهجيته</span><span><em>النتيجة</em>32 وثيقة، و107 نماذج، وخطة بـ33 مبادرة</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-ctms" data-fields="dt od hr"><span class="img" style="background-image:url(assets/ctms-portal.jpg)"><span class="st">قيد الإتمام</span></span><span class="bd"><b class="h">CTMS لإدارة التدريب التعاوني</b><span class="flow"><span><em>المشكلة</em>إدارة يدوية تضعف المتابعة</span><span><em>الإجراء</em>تحليل 83 تحديًا وتصميم النظام وبناؤه</span><span><em>النتيجة</em>بلوغ إجراءات الموافقة على نموذج أولي</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-hr" data-fields="hr dt"><span class="img" style="background-image:url(assets/hr-analytics.jpg)"><span class="st">منشورة</span></span><span class="bd"><b class="h">لوحات وأدوات الموارد البشرية</b><span class="flow"><span><em>المشكلة</em>بيانات متفرقة وقرارات بطيئة</span><span><em>الإجراء</em>بناء لوحة تحليلات ونماذج لقياس الاحتياج والأثر</span><span><em>النتيجة</em>نماذج استُخدمت فعليًا في برامج الإدارة</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-isps" data-fields="dt od"><span class="img" style="background-image:url(assets/isps-hall.jpg)"><span class="st">تصميم مفاهيمي</span></span><span class="bd"><b class="h">ISPS: منظومة النظم المؤسسية</b><span class="flow"><span><em>المشكلة</em>أنظمة منفصلة وبيانات مكررة</span><span><em>الإجراء</em>هيكلة 25 نظامًا في خمس طبقات</span><span><em>النتيجة</em>إطار موحد بُني منه CTMS أولًا</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-nawat" data-fields="dt lead"><span class="img" style="background-image:url(assets/hackathon-first-place.jpg)"><span class="st">المركز الأول</span></span><span class="bd"><b class="h">هاكاثون «نواة» والتطبيق</b><span class="flow"><span><em>المشكلة</em>قلق الأهل على رحلة الطالب</span><span><em>الإجراء</em>إنشاء النموذج الأولي وتقديم العرض، ثم تطوير التطبيق</span><span><em>النتيجة</em>المركز الأول ضمن الفريق</span></span></span></button>
   </div>
 </section>
 
@@ -1971,6 +2118,131 @@ window.PORTFOLIO_EN={
     var forward=(e.key==='ArrowLeft')!==EN;
     var b=forward?kids[kids.length-1]:kids[0]; if(b&&b.dataset&&b.dataset.go){e.preventDefault(); b.click();}
   });
+})();
+</script>
+
+<script>
+(function(){
+  var main=document.getElementById('main'), rail=document.getElementById('rail'), shell=document.querySelector('.shell');
+  if(!main||!rail)return;
+  var EN=/^#en/.test(location.hash);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T=EN?{back:'Back to:',field:'Field:',change:'Change',clear:'Clear field',rel:'Related to field',home:'Profile'}:{back:'رجوع إلى:',field:'المجال:',change:'تغيير',clear:'إلغاء المجال',rel:'مرتبط بالمجال',home:'النبذة'};
+  var FN=EN?{hr:'HR management and development',dt:'Strategic planning and digital transformation',lead:'Leadership and organizational excellence',od:'Process improvement and business systems design'}
+           :{hr:'إدارة وتطوير الموارد البشرية',dt:'التخطيط الاستراتيجي والتحول الرقمي',lead:'القيادة والتميز المؤسسي',od:'تطوير العمليات وتصميم نظم الأعمال'};
+  function store(k,v){try{v===undefined?sessionStorage.removeItem(k):sessionStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+
+  // top bar with name, language, contact
+  var top=document.createElement('header'); top.className='v2top';
+  top.innerHTML='<div class="in"><button class="logo" type="button" data-go="home"><svg width="40" height="30" viewBox="0 0 46 36" aria-hidden="true"><path d="M2 32L16 12l9 20H2z" fill="#78658D" opacity=".85"/><path d="M25 32L33 16l11 16H25z" fill="#B16D4C" opacity=".6"/><path d="M2 32L14 8l7 12 5-9 8 14 8-5" stroke="#4E4173" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'+(EN?'Haneen Al Zakari':'حنين الزكري')+'</button><span class="sp"></span></div>';
+  document.body.insertBefore(top,document.body.firstChild);
+  var lb=document.getElementById('langBtn'); if(lb)top.firstChild.appendChild(lb);
+  var cta=document.createElement('button'); cta.type='button'; cta.className='cta'; cta.dataset.go='contact'; cta.textContent=EN?'Contact':'تواصل'; top.firstChild.appendChild(cta);
+
+  // the station bar, always visible
+  var wrap=document.createElement('div'); wrap.className='navwrap'; shell.insertBefore(wrap,rail); wrap.appendChild(rail);
+  [].forEach.call(rail.querySelectorAll('button'),function(b){var t=b.textContent; b.innerHTML='<span class="l">'+t+'</span>'; b.setAttribute('aria-label',t)});
+  var ftag=document.createElement('div'); ftag.className='fieldtag'; wrap.appendChild(ftag);
+  function railH(){document.documentElement.style.setProperty('--railh',wrap.offsetHeight+'px')} railH(); addEventListener('resize',railH);
+  var seen=JSON.parse(load('pf.seen')||'[]');
+  function markSeen(){[].forEach.call(rail.querySelectorAll('button'),function(b){b.classList.toggle('seen',seen.indexOf(b.dataset.g)>-1)})}
+  addEventListener('scroll',function(){document.body.classList.toggle('compact',scrollY>140)},{passive:true});
+
+  // field context
+  var field=load('pf.field');
+  var REL={'case-leadership':'lead hr','case-assoc':'od dt lead','case-ctms':'dt od hr','case-hr':'hr dt','case-isps':'dt od','case-nawat':'dt lead'};
+  var ACH=['lead','lead','lead hr','lead','od lead','od lead','dt lead','od dt hr','dt od','dt','hr','dt','dt'];
+  [].forEach.call(document.querySelectorAll('#achievements .ach'),function(el,i){if(ACH[i])el.dataset.fields=ACH[i]});
+  [].forEach.call(document.querySelectorAll('#cases .hl[data-go]'),function(el){if(REL[el.dataset.go])el.dataset.fields=REL[el.dataset.go]});
+  function applyField(){
+    [].forEach.call(document.querySelectorAll('[data-fields]'),function(el){var on=!!field&&el.dataset.fields.split(' ').indexOf(field)>-1;el.classList.toggle('rel',on);if(on)el.dataset.reltag=T.rel});
+    [].forEach.call(document.querySelectorAll('.fchip'),function(c){c.setAttribute('aria-pressed',c.dataset.field===field)});
+    if(field){ftag.className='fieldtag on';ftag.innerHTML='<span>'+T.field+' '+FN[field]+'</span><button class="chg" type="button" data-go="home" data-scrollto="fields">'+T.change+'</button><button type="button" data-clear aria-label="'+T.clear+'">✕</button>';}
+    else{ftag.className='fieldtag';ftag.innerHTML='';}
+    railH();
+  }
+
+  // field panel content (Arabic home)
+  var ROLES={
+    hr:{why:'مارستُ في أدواري القيادية <mark>الاستقطاب والمقابلات والتهيئة وتقييم الأداء</mark>، وأحمل الدبلوم العالي في الموارد البشرية <mark>بمعدل 4.85 من 5</mark>، وأعددتُ نماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.',tags:['الاستقطاب والاختيار','التهيئة','إدارة الأداء','الاحتياج التدريبي وقياس الأثر','تحليلات الموارد البشرية'],cv:'hr',ev:['hr','leadership','ctms']},
+    dt:{why:'أعددتُ خطة استراتيجية 2025 ← 2029 <mark>بـ33 مبادرة و25 مؤشر أداء</mark>، وأصمم أنظمة إدارية رقمية وأبنيها على <mark>Power Platform</mark>. وأحمل زمالة قادة التحول الرقمي بتقدير ممتاز (97%).',tags:['التخطيط الاستراتيجي','مؤشرات الأداء','خطط التحول الرقمي','Power Platform','تحليل البيانات'],cv:'dt',ev:['assoc','ctms','nawat']},
+    lead:{why:'أدرتُ مدرسة نسائية عامًا، ثم رُقّيت لقيادة أحد فروع الإشراف السبعة في الرياض <mark>بنطاق نحو 32 مدرسة</mark>، وأدرتُ فيه التخطيط والموارد البشرية والموازنات، وقدتُ <mark>مواءمة الفرع مع التنظيم الموحد الجديد</mark>.',tags:['قيادة الفرق','إدارة التغيير','الحوكمة والسياسات','متابعة الأداء والجودة','الموازنات'],cv:'ol',ev:['leadership','assoc','nawat']},
+    od:{why:'أحلل الإجراءات وأعيد تصميمها في أنظمة عملية: <mark>83 تحديًا تشغيليًا</mark> تحولت إلى تصميم CTMS، و<mark>107 نماذج تشغيلية</mark> لجمعية، وهيكلة 25 نظامًا في منظومة ISPS.',tags:['تحليل العمليات','إعادة تصميم الإجراءات','النماذج التشغيلية','تصميم نظم الأعمال','أتمتة الإجراءات'],cv:'dt',ev:['ctms','assoc','isps']}
+  };
+  var EV={leadership:['قيادة مدرسة ثم فرع إشراف','نحو 32 مدرسة، وترقية بعد عام'],assoc:['التأسيس المؤسسي لجمعية','32 وثيقة، و107 نماذج، و33 مبادرة'],ctms:['CTMS لإدارة التدريب التعاوني','83 تحديًا، ونظام مبني على Power Platform'],hr:['لوحات وأدوات الموارد البشرية','لوحة تحليلات منشورة، ونماذج استُخدمت فعليًا'],isps:['ISPS: منظومة النظم المؤسسية','هيكلة 25 نظامًا في خمس طبقات'],nawat:['هاكاثون «نواة»','المركز الأول ضمن الفريق، والنموذج الأولي والعرض']};
+  var fit=document.getElementById('fit');
+  function showField(k,animate){
+    var r=ROLES[k]; if(!r||!fit)return;
+    function fill(){
+      document.getElementById('why').innerHTML=r.why;
+      document.getElementById('ftags').innerHTML=r.tags.map(function(t){return '<span>'+t+'</span>'}).join('');
+      document.getElementById('fcv').href='https://go2top-sa.github.io/My-CV/'+r.cv+'/';
+      document.getElementById('fev').innerHTML=r.ev.map(function(id,i){var e=EV[id];return '<button type="button" data-go="case-'+id+'"><span class="n">0'+(i+1)+'</span><span><b>'+e[0]+'</b><small>'+e[1]+'</small></span><span class="go">←</span></button>'}).join('');
+      fit.classList.remove('fade');
+    }
+    if(!animate||reduce)fill(); else{fit.classList.add('fade');setTimeout(fill,220)}
+  }
+  if(fit)showField(field||'hr',false);
+  applyField();
+
+  // rotating headline badges
+  var HL=['القيادة والتميز المؤسسي','إدارة وتطوير الموارد البشرية','التخطيط الاستراتيجي والتحول الرقمي','تطوير العمليات وتصميم نظم الأعمال','مؤسِّسة go2top'],hi=0;
+  var slots=[].slice.call(document.querySelectorAll('.badge.ph'));
+  function paint(){slots.forEach(function(el,k){var t=HL[(hi+k)%HL.length];el.textContent=t;el.classList.toggle('gold',t.indexOf('go2top')>-1)})}
+  if(slots.length){paint(); if(!reduce)setInterval(function(){if(document.hidden)return;slots.forEach(function(el){el.classList.add('out')});setTimeout(function(){hi=(hi+1)%HL.length;paint();slots.forEach(function(el){el.classList.remove('out')})},400)},3200);}
+  var vis=document.getElementById('vis');
+  if(vis&&!reduce&&matchMedia('(pointer:fine)').matches){addEventListener('pointermove',function(e){var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;[].forEach.call(vis.querySelectorAll('.layer'),function(l){var d=+l.dataset.d;l.style.transform='translate('+(-x*d)+'px,'+(-y*d*.4)+'px)'})})}
+
+  // leadership path in Experience
+  var STOPS=[['1428هـ','مشرفة تعليمية','الإشراف على الأداء التعليمي ودعم المعلمات، ومتابعة البرامج وتقييمها.','2','سنتان'],['1433هـ','مديرة مدرسة نسائية','القيادة الإدارية والتعليمية للمدرسة، وخطط صارت تنتج نتائج قابلة للقياس.','1','عام ثم ترقية'],['1434هـ','مديرة فرع إشراف','أحد سبعة فروع في الرياض: فرق الإشراف، والموارد البشرية، والموازنات، ومواءمة الفرع مع التنظيم الموحد.','32','مدرسة'],['1433 ← 1441هـ','تدريس جامعي','ثماني سنوات في جامعة الإمام محمد بن سعود الإسلامية، مع إعداد المحتوى والاختبارات والتقارير.','13,000','تسجيل تقديري'],['1447هـ','وزارة التعليم','تحليل التحديات وتصميم CTMS، وإعداد Mini Jam، والمركز الأول ضمن الفريق في «نواة».','83','تحديًا'],['2025 ← 2026','تأسيس جمعية','إدارة مشروع التأسيس المؤسسي: التخطيط والحوكمة والموارد البشرية والتحول الرقمي.','107','نماذج'],['2026','go2top','تأسيس مشروع مؤسسي في الموارد البشرية والتميز المؤسسي والتحول الرقمي، وزمالة قادة التحول الرقمي.','97%','تقدير الزمالة']];
+  var stops=document.getElementById('stops'),cur=2;
+  function setStop(i){cur=i;var s=STOPS[i];[].forEach.call(stops.querySelectorAll('.stop'),function(b){b.setAttribute('aria-current',+b.dataset.stop===i)});document.getElementById('sbar').style.width=(i/(STOPS.length-1)*88)+'%';document.getElementById('sdetail').innerHTML='<div><h3>'+s[1]+' <small style="font-size:14px;color:var(--ink-soft)">'+s[0]+'</small></h3><p>'+s[2]+'</p></div><div class="big">'+s[3]+'<small>'+s[4]+'</small></div>'}
+  if(stops){stops.insertAdjacentHTML('beforeend',STOPS.map(function(s,i){return '<button class="stop" type="button" data-stop="'+i+'"><span class="dot">'+(i+1)+'</span><span class="t">'+s[1]+'</span><small>'+s[0]+'</small></button>'}).join(''));setStop(cur);}
+
+  // count-up for achievement figures
+  function countUp(root){
+    [].forEach.call(root.querySelectorAll('.ach b'),function(b){
+      if(b.dataset.done)return; var raw=b.textContent.trim(), m=raw.match(/^(\+?)([\d,]+)(%?)$/); if(!m||reduce){b.dataset.done=1;return}
+      b.dataset.done=1; var to=+m[2].replace(/,/g,''), comma=m[2].indexOf(',')>-1, t0=null;
+      function f(v){return m[1]+(comma?v.toLocaleString('en-US'):v)+m[3]}
+      b.textContent=f(0);
+      (function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1200,1);b.textContent=f(Math.round(to*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(step)})(performance.now());
+    });
+  }
+
+  // back button: remembers where the reader came from
+  var stack=JSON.parse(load('pf.back')||'[]'), restoring=false, silent=false;
+  var bb=document.createElement('button'); bb.type='button'; bb.className='backbtn'; document.body.appendChild(bb);
+  function curPanel(){return main.querySelector('.panel:not([hidden])')}
+  function label(p){return p.id==='home'?T.home:(p.dataset.label||p.dataset.glabel||'')}
+  function paintBack(){var t=stack[stack.length-1]; if(t){bb.innerHTML=T.back+' <b>'+t.l+'</b>';bb.classList.add('on')}else bb.classList.remove('on'); store('pf.back',JSON.stringify(stack.slice(-20)))}
+  document.addEventListener('click',function(e){
+    var c=e.target.closest('[data-clear]'); if(c){field=null;store('pf.field');applyField();return}
+    var fc=e.target.closest('.fchip'); if(fc){field=fc.dataset.field;store('pf.field',field);showField(field,true);applyField();return}
+    var st=e.target.closest('[data-stop]'); if(st){setStop(+st.dataset.stop);return}
+    var sc=e.target.closest('[data-scroll]'); if(sc){var el=document.getElementById(sc.dataset.scroll); if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth'});return}
+    var g=e.target.closest('[data-go]'); if(!g||silent)return;
+    var p=curPanel(); if(!p)return;
+    if(g.dataset.go===p.id){if(g.dataset.scrollto){var el0=document.getElementById(g.dataset.scrollto);if(el0)el0.scrollIntoView({behavior:'smooth'})}return}
+    stack.push({id:p.id,y:scrollY,l:label(p)}); paintBack();
+    if(g.dataset.scrollto){var to=g.dataset.scrollto;setTimeout(function(){var el=document.getElementById(to);if(el)el.scrollIntoView()},120)}
+  },true);
+  bb.addEventListener('click',function(){
+    var t=stack.pop(); paintBack(); if(!t)return; restoring=t;
+    var target=document.querySelector('[data-go="'+t.id+'"]');
+    if(target){silent=true; target.click(); silent=false;}
+  });
+
+  // after every section change
+  function onShow(){
+    var p=curPanel(); if(!p)return;
+    var g=p.dataset.group; if(seen.indexOf(g)<0){seen.push(g);store('pf.seen',JSON.stringify(seen))} markSeen();
+    if(p.id==='achievements')setTimeout(function(){countUp(p)},250);
+    if(restoring&&restoring.id===p.id){var y=restoring.y;restoring=false;setTimeout(function(){scrollTo({top:y,behavior:'auto'})},60)}
+  }
+  new MutationObserver(onShow).observe(main,{subtree:true,attributes:true,attributeFilter:['hidden']});
+  onShow(); paintBack();
 })();
 </script>
 </body>
