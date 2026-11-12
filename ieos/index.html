@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معرض منظومة ⁦go2top | IEOS⁩ | 25 مشروعًا مؤسسيًا · go2top</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lav:#78658D;--lav-d:#4E4173;--lav-l:#A796BE;--lav-t:#EDE7F1;
+  --sage:#7D8167;--sage-d:#61654E;--sage-t:#E9ECDF;
+  --camel:#C7A16B;--terra:#B16D4C;--terra-t:#F1E1D8;
+  --gold:#C8991A;--gold-d:#8a6a1a;--gold-t:#F4E9D6;
+  --cream:#F3EEE6;--paper:#FBF8F2;--ink:#302D2A;--muted:#726B62;--line:#DED5C6;
+  --serif:'Sakkal Majalla','Cairo','Tajawal',serif;
+  --sans:'Sakkal Majalla','Tajawal','Cairo',sans-serif;
+  --r:18px;--sh:0 14px 34px rgba(78,65,115,.09);
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:17px;line-height:1.75}
+.latin{font-family:'Tajawal','Cairo',sans-serif;direction:ltr;unicode-bidi:isolate}
+button{font:inherit;cursor:pointer;color:inherit}
+h1,h2,h3,h4{font-family:var(--serif);margin:0;line-height:1.3}
+header.top{position:sticky;top:0;z-index:30;background:rgba(251,248,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1240px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 22px}
+.brand{display:flex;align-items:center;gap:10px;border:0;background:none;padding:0;text-align:start}
+.brand b{font-family:var(--serif);font-size:21px}.brand small{display:block;font-size:12px;color:var(--muted);line-height:1.2}
+nav.tabs{display:flex;gap:4px;margin-inline-start:auto}
+nav.tabs button{border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;font-weight:600;font-size:15.5px}
+nav.tabs button[aria-current="true"]{background:var(--lav-d);color:#fff}
+main{max-width:1240px;margin:auto;padding:24px 22px 70px;min-height:calc(100vh - 140px)}
+section.view[hidden]{display:none}
+.eyebrow{display:inline-block;font-size:13px;color:var(--sage-d);background:var(--sage-t);border-radius:999px;padding:4px 12px;font-weight:700}
+.lede{color:var(--muted);font-size:18px;max-width:74ch;margin:8px 0 0}
+.note{background:var(--gold-t);border:1px solid #e5d3ad;border-radius:12px;padding:9px 16px;color:#6d5214;font-size:14.5px;margin:16px 0 0}
+
+/* hall hero */
+.hall{display:grid;grid-template-columns:1fr 520px;gap:26px;align-items:center;background:radial-gradient(120% 100% at 85% 0%,#EFE9F0,#F3EEE6 62%);border:1px solid var(--line);border-radius:26px;padding:34px;position:relative;overflow:hidden}
+.hall h1{font-size:46px;color:var(--lav-d);margin:12px 0 4px}.hall h1 em{font-style:normal;color:var(--gold-d)}
+.counts{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap}
+.counts div b{display:block;font-family:var(--serif);font-size:34px;color:var(--lav-d);line-height:1}
+.counts div span{font-size:14px;color:var(--muted)}
+#net{width:100%;height:auto;display:block}
+#net .edge{stroke:var(--lav-l);stroke-width:1;opacity:.25;transition:opacity .2s}
+#net .edge.on{opacity:1;stroke:var(--lav-d);stroke-width:2}
+#net .node{cursor:pointer}
+#net .node circle{transition:r .2s}
+#net .node text{font-family:'Tajawal';font-size:10px;font-weight:700;fill:#fff;pointer-events:none}
+#net .node:hover circle,#net .node.on circle{stroke:#302D2A;stroke-width:2}
+.netcap{text-align:center;color:var(--muted);font-size:14px;margin-top:4px;min-height:24px}
+
+/* domain legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+.legend button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15px;display:flex;align-items:center;gap:8px}
+.legend button i{width:12px;height:12px;border-radius:4px;display:inline-block;background:var(--c)}
+.legend button[aria-pressed="true"]{background:var(--lav-d);color:#fff;border-color:var(--lav-d)}
+.legend small{opacity:.7}
+
+/* wall */
+.dom-h{display:flex;align-items:center;gap:12px;margin:34px 0 14px}
+.dom-h i{width:8px;height:30px;border-radius:4px;background:var(--c)}
+.dom-h h2{font-size:27px;color:var(--lav-d)}.dom-h span{color:var(--muted);font-size:15px}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px}
+.ex{position:relative;text-align:start;border:1px solid var(--line);background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);padding:0;overflow:hidden;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
+.ex:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(78,65,115,.14)}
+.ex .shot{background:linear-gradient(160deg,var(--t),#fff);padding:16px 18px 12px;border-bottom:1px solid var(--line);position:relative}
+.ex .num{margin-inline-start:auto;align-self:flex-start;font-family:'Tajawal';font-weight:800;font-size:13px;color:var(--c);opacity:.8}
+.ex .top{display:flex;gap:12px;align-items:center}
+.ico{flex:none;width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--c);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.ico svg{width:24px;height:24px}
+.ex .code{font-family:'Tajawal';font-weight:800;color:var(--c);font-size:14px;letter-spacing:.6px}
+.ex h3{font-size:21px;color:var(--ink)}
+.mini{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}
+.mini div{background:rgba(255,255,255,.85);border-radius:9px;padding:6px 7px}
+.mini b{display:block;font-family:'Tajawal';font-weight:800;font-size:15px;color:var(--lav-d);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini span{display:block;font-size:11px;color:var(--muted);line-height:1.3;min-height:2.6em}.ex .top>div:nth-child(2){flex:1}
+.mini em{display:block;height:4px;border-radius:9px;background:#eee;margin-top:4px;overflow:hidden}.mini em i{display:block;height:100%;background:var(--c)}
+.ex .body{padding:14px 18px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ex .prob{color:var(--muted);font-size:15px;margin:0}
+.ex .mods{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--lav-t);color:var(--lav-d);white-space:nowrap}
+.tag.s{background:var(--sage-t);color:var(--sage-d)}.tag.g{background:var(--gold-t);color:var(--gold-d)}
+.ex .foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
+.ex .foot b{color:var(--lav-d)}
+.status{position:absolute;top:12px;right:auto}
+.hubx{grid-column:1/-1}
+
+/* exhibit page */
+.crumbs{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:15px;margin-bottom:12px;flex-wrap:wrap}
+.crumbs button{border:0;background:none;color:var(--lav-d);font-weight:700;padding:0}
+.xhero{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:center;background:linear-gradient(150deg,var(--t),var(--paper) 70%);border:1px solid var(--line);border-radius:26px;padding:28px}
+.xhero .ico{width:64px;height:64px;border-radius:18px}.xhero .ico svg{width:32px;height:32px}
+.xhero h1{font-size:38px;color:var(--lav-d);margin:10px 0 0}
+.xhero .en{color:var(--muted);font-size:15px}
+.xhero .prob{background:#fff;border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin-top:14px}
+.xhero .prob b{display:block;color:var(--c);font-size:14px}
+/* screen mock */
+.screen{background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(48,45,42,.14);overflow:hidden;border:1px solid var(--line)}
+.screen .chrome{display:flex;gap:6px;padding:9px 12px;background:var(--cream);border-bottom:1px solid var(--line);align-items:center}
+.screen .chrome i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.screen .chrome span{margin-inline-start:auto;font-size:11px;color:var(--muted)}
+.screen .inner{display:grid;grid-template-columns:118px 1fr;min-height:300px}
+.screen aside{background:var(--t);padding:12px 8px;display:flex;flex-direction:column;gap:5px}
+.screen aside b{font-family:'Tajawal';font-weight:800;color:var(--c);font-size:14px;padding:0 6px 6px}
+.screen aside span{font-size:11.5px;padding:5px 8px;border-radius:8px;color:var(--ink)}
+.screen aside span.on{background:#fff;color:var(--c);font-weight:700}
+.screen .pane{padding:12px 14px}
+.screen .kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.screen .kp div{border:1px solid var(--line);border-radius:10px;padding:7px 8px;border-top:3px solid var(--c)}
+.screen .kp b{display:block;font-family:'Tajawal';font-weight:800;font-size:16px;color:var(--lav-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen .kp span{font-size:10.5px;color:var(--muted);display:block;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen .row2{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:9px}
+.screen .box{border:1px solid var(--line);border-radius:10px;padding:8px}
+.screen .box h5{margin:0 0 4px;font-size:11.5px;color:var(--muted);font-weight:700}
+.screen table{width:100%;border-collapse:collapse;font-size:11px}
+.screen td{padding:4px 2px;border-bottom:1px solid #f0ebe3}
+.screen td em{font-style:normal;font-size:10px;padding:1px 6px;border-radius:99px;background:var(--sage-t);color:var(--sage-d)}
+.screen td em.w{background:var(--gold-t);color:var(--gold-d)}
+
+.xsec{margin-top:26px}
+.xsec>h2{font-size:26px;color:var(--lav-d);margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--sh)}
+.card h4{font-size:19px;color:var(--lav-d)}.card p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.mod{display:flex;gap:12px;align-items:flex-start}.mod .n{flex:none;width:34px;height:34px;border-radius:10px;background:var(--t);color:var(--c);display:grid;place-items:center;font-family:'Tajawal';font-weight:800}
+.rtabs{display:flex;gap:8px;flex-wrap:wrap}
+.rtabs button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 16px;text-align:start}
+.rtabs button[aria-pressed="true"]{border-color:var(--c);background:var(--t)}
+.rtabs b{display:block;color:var(--lav-d)}.rtabs span{font-size:12.5px;color:var(--muted)}
+.rpanel{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ul.ticks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+ul.ticks li{padding-inline-start:22px;position:relative}
+ul.ticks li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:10px;height:10px;border-radius:3px;background:var(--c,var(--sage))}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.lnk{display:flex;gap:10px;align-items:center;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:10px 14px;text-align:start}
+.lnk .ico{width:36px;height:36px;border-radius:10px}.lnk .ico svg{width:18px;height:18px}
+.lnk b{display:block;font-family:'Tajawal';font-weight:800;color:var(--c);font-size:13px}.lnk span{font-size:14px}
+.frame{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.frame div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:15px}
+.frame div b{display:block;color:var(--c);font-family:'Tajawal';font-size:13px}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:30px}
+.pager button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 16px;text-align:start}
+.pager button:last-child{text-align:end}
+.pager span{display:block;font-size:13px;color:var(--muted)}.pager b{color:var(--lav-d)}
+
+/* arch */
+.layers{display:grid;gap:10px;margin-top:14px}
+.layer{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.layer b{font-family:var(--serif);font-size:19px;color:var(--lav-d)}.layer p{margin:0}
+.layer.h{background:var(--gold-t);border-color:#e5d3ad}.layer.e{background:var(--sage-t)}
+.layer .chips{display:flex;flex-wrap:wrap;gap:6px}
+
+footer{border-top:1px solid var(--line);background:var(--paper)}
+.ft{max-width:1240px;margin:auto;padding:18px 22px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:980px){.hall,.xhero{grid-template-columns:1fr}.rpanel{grid-template-columns:1fr}.frame{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.hall{padding:22px}.hall h1{font-size:32px}.wall{grid-template-columns:1fr}.xhero h1{font-size:28px}
+ .screen .inner{grid-template-columns:1fr}.screen aside{flex-direction:row;overflow-x:auto}.screen aside span,.screen aside b{white-space:nowrap}.screen .kp{grid-template-columns:repeat(2,1fr)}.screen .row2{grid-template-columns:1fr}
+ .layer{grid-template-columns:1fr}.frame{grid-template-columns:1fr}.bar{flex-wrap:wrap}nav.tabs{margin:0}}
+@media print{header.top{display:none}.ex,.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+  <button class="brand" type="button" data-go="hall">
+    <svg width="40" height="32" viewBox="0 0 46 36" fill="none" aria-hidden="true"><path d="M2 32L16 12l9 20H2z" fill="#78658D" opacity=".85"/><path d="M25 32L33 16l11 16H25z" fill="#B16D4C" opacity=".6"/><path d="M2 32L14 8l7 12 5-9 8 14 8-5" stroke="#4E4173" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span><b>معرض ⁦go2top | IEOS⁩</b><small>go2top | إلى القمة</small></span>
+  </button>
+  <nav class="tabs" id="tabs">
+    <button type="button" data-go="hall" aria-current="true">قاعة المشاريع</button>
+    <button type="button" data-go="arch">قاعة المعمارية</button>
+    <a href="../index.html" style="color:var(--muted);padding:8px 14px;font-weight:600;font-size:15.5px;text-decoration:none">ملف الأعمال</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="view" id="v-hall">
+  <div class="hall">
+    <div>
+      <span class="eyebrow">معرض مشاريع | go2top</span>
+      <h1>منظومة ⁦go2top | IEOS⁩: <em>25</em> مشروعًا مؤسسيًا</h1>
+      <p class="lede">منظومة التشغيل المؤسسي المتكاملة <span class="latin">(Integrated Enterprise Operating Suite)</span>. لكل مشروع مشكلة يعالجها، ووحدات، وأدوار ولوحات، وتكاملات مع بقية المنظومة. مرّري على الخريطة لتري الروابط، واضغطي أي مشروع لدخول جناحه.</p>
+      <div class="counts">
+        <div><b>25</b><span>مشروعًا</span></div>
+        <div><b>6</b><span>مجالات</span></div>
+        <div><b>72</b><span>دورًا بلوحته</span></div>
+        <div><b>96</b><span>وحدة وظيفية</span></div>
+      </div>
+      <p class="note"><b>عن الحالة:</b> بُنيت هيكلة المشاريع وأطرها كاملة، وCTMS مبني وبقي القليل لإتمامه. الأرقام في الشاشات محاكاة توضيحية.</p>
+    </div>
+    <div><svg id="net" viewBox="0 0 520 520" role="img" aria-label="خريطة ترابط المشاريع"></svg><div class="netcap" id="netcap">مرّري على أي مشروع</div></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div id="wall"></div>
+</section>
+
+<section class="view" id="v-ex" hidden></section>
+
+<section class="view" id="v-arch" hidden>
+  <span class="eyebrow">قاعة المعمارية</span>
+  <h1 style="font-size:36px;color:var(--lav-d);margin-top:8px">كيف تجتمع المشاريع الخمسة والعشرون</h1>
+  <p class="lede">خمس طبقات، وطبقة تمكين مشتركة، والمظلة IEOS في المنتصف.</p>
+  <div class="layers" id="layers"></div>
+</section>
+</main>
+<footer><div class="ft"><span>معرض منظومة ⁦go2top | IEOS⁩ · go2top | إلى القمة · ممكّن التحول الرقمي والتميّز المؤسسي</span><span class="latin">© 2026 go2top</span></div></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var DOM=[['hc','رأس المال البشري والتعلم','#78658D','#EDE7F1'],['ops','العمليات والموارد','#7D8167','#E9ECDF'],['cx','العملاء والتواصل','#B16D4C','#F1E1D8'],['st','الاستراتيجية والقرار','#4E4173','#E6E1EE'],['dt','التحول الرقمي','#B08414','#F4E9D6'],['gv','الحوكمة والامتثال والاستمرارية','#61654E','#E4E6DA']];
+var S=[
+['CTMS','إدارة التدريب التعاوني والكفاءات','Cooperative Training Management','hc','رحلة المتدرب كاملة: الاستقطاب، والتسكين، والحضور، والمهام، والمشاريع، والتقييم، وقياس أثر التدريب على الكفاءات.',
+ ['بوابة استقبال المتدربين وتسكينهم','الحضور بتحديد الموقع والوقت','المهام والمشاريع والأفكار التطويرية','تقييم المشرف والجهة وقياس الأثر'],['HRMS','ELMS','KPMS'],
+ [['متدربون نشطون','64',64],['نسبة الحضور','96%',96],['إنجاز المهام','78%',78],['أفكار تحولت إلى مشاريع','33%',33]],
+ [['المتدرب','Trainee',['تسجيل الحضور والانصراف','تحديث المهام وتسليم المخرجات','رفع التقرير الأسبوعي']],['المشرف','Supervisor',['متابعة حضور المتدربين وأدائهم','إسناد المهام واعتمادها','تقييم المتدرب نهاية الفترة']],['المنسق','Coordinator',['استقبال الطلبات والتسكين','إدارة الدفعات والجهات','تقارير الإدارة الدورية']]],'gold'],
+['HRMS','إدارة الموارد البشرية','Human Resources Management','hc','دورة حياة الموظف من الاستقطاب حتى المغادرة، مع الخدمة الذاتية والإجازات والأداء والمسار الوظيفي.',
+ ['ملف الموظف الرقمي','الإجازات والحضور بمسار موافقة','إدارة الأداء والأهداف','الخدمة الذاتية وخطابات التعريف'],['EFPMS','ELMS','CTMS'],
+ [['موظفون نشطون','156',100],['طلبات بانتظار الموافقة','9',30],['إنجاز تقييمات الأداء','82%',82],['رضا الموظفين','88%',88]],
+ [['مدير الموارد البشرية','HR Director',['اعتماد السياسات والهيكل','متابعة مؤشرات رأس المال البشري','اعتماد قرارات التوظيف']],['أخصائي الموارد البشرية','HR Specialist',['معالجة طلبات الإجازات والخطابات','تحديث السجلات','متابعة الحضور']],['الموظف','Employee',['طلب إجازة أو خطاب','الاطلاع على الأهداف والتقييم','تحديث البيانات']]]],
+['ELMS','إدارة التعلم الإلكتروني','eLearning Management','hc','مسارات التعلم والتأهيل والاختبارات والشهادات، وربط التعلم بالأداء.',
+ ['مسارات تعلم حسب الدور','اختبارات إلكترونية','شهادات رقمية','قياس أثر التعلم'],['HRMS','KNMS','CTMS'],
+ [['متعلمون نشطون','212',85],['إكمال المسارات','71%',71],['متوسط درجات الاختبارات','84%',84],['شهادات صادرة','138',60]],
+ [['مدير التعلم','Learning Lead',['تصميم المسارات','متابعة نسب الإكمال','ربط المسارات بالفجوات']],['المدرب','Trainer',['رفع المحتوى','بناء الاختبارات','متابعة المتعلمين']],['المتعلم','Learner',['إكمال الدروس','أداء الاختبارات','تنزيل الشهادات']]]],
+['KNMS','إدارة المعرفة المؤسسية','Knowledge Management','hc','توثيق المعرفة والإجراءات والدروس المستفادة ونقل الخبرة داخل الجهة.',
+ ['قاعدة المعرفة','الدروس المستفادة','مجتمعات الممارسة','بحث موحد في المعرفة'],['ELMS','EDRMS','HRMS'],
+ [['مقالات معرفية','420',70],['دروس مستفادة موثقة','58',45],['معدل الاستخدام الشهري','63%',63],['تحديث المحتوى','91%',91]],
+ [['مسؤول المعرفة','Knowledge Lead',['اعتماد المحتوى','تنظيم التصنيفات','قياس الاستخدام']],['الخبير','Expert',['توثيق الخبرة','الرد على الاستفسارات','مراجعة المحتوى']],['الموظف','Employee',['البحث عن إجراء','إضافة درس مستفاد','تقييم المحتوى']]]],
+['POMS','إدارة المشاريع والعمليات','Projects & Operations Management','ops','تخطيط المشاريع وجدولة الموارد ومتابعة الإنجاز والمخاطر، وربط المشاريع بالمبادرات الاستراتيجية.',
+ ['خطط المشاريع ومراحلها','جدولة الموارد','متابعة الإنجاز والمخاطر','لوحة المحفظة'],['SEMS','EFPMS','HRMS'],
+ [['مشاريع نشطة','18',60],['إنجاز في الموعد','74%',74],['استهلاك الميزانية','61%',61],['مخاطر مفتوحة','7',35]],
+ [['مدير المحفظة','PMO Lead',['أولويات المحفظة','مراجعة المشاريع المتعثرة','تقارير القيادة']],['مدير المشروع','Project Manager',['تحديث الخطة','إدارة الفريق','رفع طلبات التغيير']],['عضو الفريق','Team Member',['تحديث المهام','تسجيل الوقت','رفع العوائق']]]],
+['EFPMS','إدارة المالية والمشتريات والعقود','Finance, Procurement & Contracts','ops','الميزانيات والصرف والمشتريات والعقود والالتزامات، مع رقابة مالية وفوترة متوافقة مع ZATCA.',
+ ['إدارة الميزانية','دورة المشتريات','العقود الرقمية','تقارير الإنفاق'],['HRMS','SCMS','POMS'],
+ [['استهلاك الميزانية','58%',58],['طلبات شراء مفتوحة','23',40],['عقود سارية','47',55],['دقة المطابقة','97%',97]],
+ [['المدير المالي','CFO',['اعتماد الميزانيات','مراقبة الإنفاق','تقارير مالية للقيادة']],['أخصائي المشتريات','Procurement',['طلبات العروض','تقييم الموردين','إصدار أوامر الشراء']],['المحاسب','Accountant',['القيود والمطابقة','الفواتير','إقفال الفترة']]]],
+['SCMS','إدارة سلسلة الإمداد','Supply Chain Management','ops','المخزون وطلبات التوريد وتقييم الموردين والاستلام.',
+ ['إدارة المخزون','طلبات التوريد','تقييم الموردين','سجل الاستلام'],['EFPMS','ASMS','POMS'],
+ [['أصناف دون حد الطلب','12',30],['توريد في الموعد','89%',89],['موردون معتمدون','64',65],['دوران المخزون','5.2',52]],
+ [['مدير الإمداد','Supply Lead',['خطط التوريد','تقييم الموردين','مؤشرات المخزون']],['أمين المستودع','Storekeeper',['الاستلام والصرف','الجرد الدوري','تحديث الأرصدة']],['طالب التوريد','Requester',['رفع طلب توريد','متابعة الطلب','تأكيد الاستلام']]]],
+['ASMS','إدارة الأصول والمرافق','Assets & Services Management','ops','سجل الأصول الثابتة والصيانة الوقائية والجرد والإهلاك، وربط الأصل بخطط الاستمرارية.',
+ ['سجل الأصول','جدول الصيانة','الإهلاك الآلي','طلبات المرافق'],['EFPMS','SCMS','BCMS'],
+ [['أصول مسجلة','1,240',80],['صيانة وقائية منجزة','86%',86],['طلبات مرافق مفتوحة','14',35],['جاهزية الأصول','94%',94]],
+ [['مدير المرافق','Facilities Lead',['خطة الصيانة','اعتماد الطلبات','تقارير الجاهزية']],['فني الصيانة','Technician',['تنفيذ أوامر العمل','تحديث الحالة','رفع الملاحظات']],['الموظف','Employee',['طلب خدمة مرافق','حجز قاعة','تقييم الخدمة']]]],
+['ITMS','إدارة خدمات تقنية المعلومات','IT Services Management','ops','التذاكر والحوادث والتغييرات والأصول التقنية والتراخيص واتفاقيات مستوى الخدمة.',
+ ['نظام التذاكر','إدارة التغييرات','الأصول التقنية','متابعة SLA'],['ASMS','BCMS','EDRMS'],
+ [['تذاكر مفتوحة','31',40],['الالتزام بـ SLA','92%',92],['حل من أول تواصل','68%',68],['تغييرات معتمدة','12',45]],
+ [['مدير الخدمات التقنية','IT Lead',['مؤشرات SLA','اعتماد التغييرات','خطة التراخيص']],['فني الدعم','Support Agent',['معالجة التذاكر','تحديث قاعدة الحلول','تصعيد الحوادث']],['المستخدم','User',['فتح تذكرة','متابعة الطلب','تقييم الحل']]]],
+['CRMS','إدارة علاقات العملاء والمستفيدين','Client Relations Management','cx','ملف العميل أو المستفيد والطلبات والشكاوى ومؤشرات الرضا وسير التفاعل الخارجي.',
+ ['ملف العميل الموحد','إدارة الطلبات','الشكاوى والمتابعة','مؤشرات الرضا'],['MKMS','EFPMS','CCMS'],
+ [['طلبات هذا الشهر','186',75],['حل الشكاوى في الموعد','87%',87],['رضا العملاء','4.5 من 5',90],['عملاء نشطون','940',70]],
+ [['مدير علاقات العملاء','CX Lead',['مؤشرات الرضا','تحليل الشكاوى','خطط التحسين']],['موظف خدمة العملاء','Agent',['استقبال الطلبات','المتابعة والإغلاق','توثيق التفاعل']],['العميل','Client',['تقديم طلب','متابعة الحالة','تقييم الخدمة']]]],
+['MKMS','إدارة التسويق والتواصل المؤسسي','Marketing & Communications','cx','الحملات والمحتوى والهوية المؤسسية والأداء التسويقي وعائد الإنفاق.',
+ ['إدارة الحملات','تقويم المحتوى','أصول الهوية','عائد الإنفاق التسويقي'],['CRMS','SEMS','DAIS'],
+ [['حملات نشطة','6',40],['معدل التفاعل','4.8%',48],['محتوى منشور هذا الشهر','42',70],['عائد الإنفاق','3.1 ضعف',62]],
+ [['مدير التسويق','Marketing Lead',['خطة الحملات','الميزانية','تقارير الأداء']],['صانع المحتوى','Content Creator',['إعداد المحتوى','جدولة النشر','متابعة التفاعل']],['المراجع','Reviewer',['مراجعة الهوية','اعتماد المحتوى','ملاحظات التحسين']]]],
+['CCMS','إدارة الاتصالات والمراسلات','Correspondence & Communications','cx','الصادر والوارد والمراسلات الرسمية وتتبعها وأرشفتها.',
+ ['الصادر والوارد','تتبع المعاملات','قوالب الخطابات','الأرشفة الآلية'],['EDRMS','WFMS','CRMS'],
+ [['معاملات هذا الشهر','312',80],['إنجاز في المدة','90%',90],['معاملات متأخرة','8',20],['متوسط زمن الإنجاز','2.4 يوم',60]],
+ [['مدير الاتصالات الإدارية','Admin Comms Lead',['متابعة المعاملات','اعتماد الصادر','تقارير الإنجاز']],['موظف الصادر والوارد','Clerk',['تسجيل الوارد','إحالة المعاملة','إصدار الخطاب']],['المستفيد الداخلي','Staff',['رفع معاملة','متابعة الإحالة','استلام الرد']]]],
+['SEMS','إدارة الاستراتيجية المؤسسية','Strategic Enterprise Management','st','الأهداف الاستراتيجية والمبادرات وبطاقة الأداء، وربط التنفيذ بالتوجه المؤسسي.',
+ ['الأهداف الاستراتيجية','بطاقة الأداء المتوازن','محفظة المبادرات','المراجعة الربعية'],['POMS','KPMS','DAIS'],
+ [['أهداف على المسار','76%',76],['مبادرات نشطة','15',55],['إنجاز الخطة السنوية','62%',62],['مؤشرات مرتبطة','48',70]],
+ [['القيادة العليا','Executive',['مراجعة بطاقة الأداء','اعتماد المبادرات','قرارات إعادة التوجيه']],['مكتب الاستراتيجية','Strategy Office',['تحديث الخطة','متابعة المبادرات','إعداد المراجعة الربعية']],['مالك المبادرة','Initiative Owner',['تحديث الإنجاز','رفع المخاطر','طلب الدعم']]]],
+['ODMS','دعم القرار المؤسسي','Organizational Decision Management','st','توثيق القرارات المؤسسية ومبرراتها وبياناتها ومتابعة تنفيذها وأثرها.',
+ ['سجل القرارات','حزمة بيانات القرار','متابعة التنفيذ','قياس أثر القرار'],['DAIS','SEMS','GRCMS'],
+ [['قرارات هذا الربع','27',55],['قرارات منفذة','81%',81],['قرارات مبنية على بيانات','88%',88],['قيد المتابعة','5',25]],
+ [['متخذ القرار','Decision Maker',['مراجعة حزمة البيانات','اعتماد القرار','متابعة الأثر']],['محلل القرار','Analyst',['إعداد البدائل','تحليل البيانات','توصية مدعومة']],['المنفذ','Implementer',['تنفيذ القرار','تحديث الحالة','رفع النتائج']]]],
+['KPMS','إدارة مؤشرات الأداء المؤسسي','KPI Management','st','قاموس المؤشرات وملكيتها ومستهدفاتها وتحديثها، مصدرًا واحدًا لكل مؤشر في المنظومة.',
+ ['قاموس المؤشرات','ملكية المؤشر','المستهدفات والإنذار','التحديث الدوري'],['SEMS','DAIS','HRMS'],
+ [['مؤشرات معرفة','96',80],['محدثة في موعدها','89%',89],['على المستهدف','71%',71],['مؤشرات بإنذار','9',30]],
+ [['مكتب الأداء','Performance Office',['اعتماد المؤشرات','مراجعة المستهدفات','تقارير الأداء']],['مالك المؤشر','KPI Owner',['تحديث القيم','تفسير الانحراف','خطة التحسين']],['القيادة','Executive',['متابعة الإنذارات','قرارات التصحيح','مقارنة الإدارات']]]],
+['DAIS','الذكاء الاصطناعي والبيانات','Data Analytics & Intelligence','st','تجميع البيانات والنمذجة والتحليلات المتقدمة والتنبؤ ولوحات القيادة، العقل التحليلي للمنظومة.',
+ ['لوحات القيادة','التحليلات المتقدمة','التنبؤ','مساعد ذكي للقرار'],['SEMS','KPMS','ODMS'],
+ [['لوحات منشورة','34',65],['مصادر بيانات مربوطة','23',90],['دقة التنبؤ','87%',87],['جودة البيانات','93%',93]],
+ [['مسؤول البيانات','Data Lead',['حوكمة البيانات','جودة المصادر','أولويات التحليل']],['محلل البيانات','Analyst',['بناء اللوحات','النمذجة','التقارير التحليلية']],['المستخدم القيادي','Executive',['قراءة اللوحات','طلب تحليل','متابعة التنبؤات']]]],
+['DTMS','إدارة التحول الرقمي','Digital Transformation Management','dt','قياس النضج الرقمي وخارطة التحول ومتابعة التبني وإدارة التغيير في الجهات الحكومية والخاصة.',
+ ['قياس النضج الرقمي','خارطة التحول','قياس التبني','إدارة التغيير'],['SEMS','HRMS','ELMS'],
+ [['النضج الرقمي','2.9 من 5',58],['إنجاز الخارطة','46%',46],['معدل التبني','72%',72],['خدمات مرقمنة','38',60]],
+ [['مكتب التحول الرقمي','DT Office',['متابعة الخارطة','قياس النضج','تقارير التحول']],['قائد التغيير','Change Lead',['خطة ADKAR','التواصل والتمكين','قياس المقاومة']],['مالك الخدمة','Service Owner',['رقمنة الخدمة','قياس الاستخدام','رفع التحسينات']]]],
+['NDTMS','التحول الرقمي للقطاع غير الربحي','Nonprofit Digital Transformation','dt','متطلبات الجمعيات: الحوكمة، والإفصاح للمانحين، والتقارير التنظيمية، وقياس الأثر الاجتماعي.',
+ ['إفصاح المانحين','حوكمة الجمعية','التقارير التنظيمية','قياس الأثر الاجتماعي SROI'],['GRCMS','EFPMS','CRMS'],
+ [['مستفيدون مخدومون','2,131',85],['تقارير للمانحين في موعدها','95%',95],['امتثال الحوكمة','91%',91],['العائد الاجتماعي','3.5 : 1',70]],
+ [['مجلس الإدارة','Board',['مراجعة الحوكمة','اعتماد التقارير','متابعة الأثر']],['المدير التنفيذي للجمعية','Executive Director',['تقارير المانحين','خطة البرامج','مؤشرات الأثر']],['منسق البرامج','Program Officer',['تسجيل المستفيدين','متابعة البرامج','توثيق الأثر']]],'gold'],
+['GRCMS','الحوكمة والمخاطر والامتثال','Governance, Risk & Compliance','gv','سجل المخاطر والامتثال والتدقيق الداخلي والسياسات وحوكمة اللجان.',
+ ['سجل المخاطر','التدقيق الداخلي','الامتثال التنظيمي','إدارة السياسات'],['EDRMS','SEMS','LRMS'],
+ [['مخاطر مسجلة','64',65],['مخاطر عالية','6',25],['نسبة الامتثال','93%',93],['توصيات تدقيق منفذة','78%',78]],
+ [['لجنة المخاطر','Risk Committee',['مراجعة المخاطر العالية','اعتماد المعالجات','تقارير المجلس']],['مسؤول الامتثال','Compliance Officer',['متابعة المتطلبات','تحديث السياسات','رفع المخالفات']],['المدقق الداخلي','Internal Auditor',['خطة التدقيق','الملاحظات','متابعة التوصيات']]]],
+['IQMS','إدارة الجودة والتحسين المستمر','Institutional Quality Management','gv','تدقيقات الجودة وعدم المطابقة والإجراءات التصحيحية ومؤشرات الجودة وجاهزية الاعتمادات.',
+ ['تدقيقات الجودة','عدم المطابقة','الإجراءات التصحيحية CAPA','جاهزية الاعتمادات'],['GRCMS','KPMS','BCMS'],
+ [['حالات عدم مطابقة مفتوحة','11',30],['إجراءات تصحيحية مغلقة','84%',84],['جاهزية الاعتماد','76%',76],['تدقيقات منجزة','9 من 12',75]],
+ [['مدير الجودة','Quality Lead',['خطة التدقيق','اعتماد الإجراءات','جاهزية الاعتماد']],['المدقق','Auditor',['تنفيذ التدقيق','تسجيل الملاحظات','التحقق من الإغلاق']],['مالك العملية','Process Owner',['معالجة الملاحظة','تحديث الإجراء','قياس التحسن']]]],
+['BCMS','إدارة استمرارية الأعمال','Business Continuity Management','gv','تحليل أثر الأعمال وخطط الاستمرارية وسيناريوهات الأزمات والتعافي.',
+ ['تحليل أثر الأعمال','خطط الاستمرارية','سيناريوهات الأزمات','تمارين التعافي'],['GRCMS','ITMS','ASMS'],
+ [['عمليات حرجة مغطاة','88%',88],['خطط محدثة','14 من 16',87],['تمارين هذا العام','4',50],['زمن التعافي المستهدف','4 ساعات',70]],
+ [['مدير الاستمرارية','BCM Lead',['تحليل الأثر','اعتماد الخطط','تقارير الجاهزية']],['فريق الأزمات','Crisis Team',['تفعيل الخطة','التنسيق','تقرير ما بعد الحدث']],['مالك العملية','Process Owner',['تحديث الخطة','المشاركة في التمرين','رفع المخاطر']]]],
+['EDRMS','إدارة الوثائق والسجلات','Enterprise Documents & Records','gv','الوثيقة الرسمية والسجل المؤسسي والإصدارات والاحتفاظ والاسترجاع، العمود الوثائقي للمنظومة.',
+ ['الأرشيف الرقمي','إدارة الإصدارات','سياسات الاحتفاظ','البحث الوثائقي'],['GRCMS','CCMS','KNMS'],
+ [['وثائق مؤرشفة','18,400',90],['وثائق بتصنيف سرية','100%',100],['طلبات استرجاع هذا الشهر','96',55],['امتثال الاحتفاظ','95%',95]],
+ [['مدير السجلات','Records Lead',['سياسات الاحتفاظ','التصنيف والسرية','تدقيق الأرشيف']],['أمين الوثائق','Records Officer',['الأرشفة','إدارة الإصدارات','الاسترجاع']],['الموظف','Employee',['رفع وثيقة','البحث','طلب صلاحية']]]],
+['LRMS','إدارة الشؤون القانونية والتنظيمية','Legal & Regulatory Management','gv','العقود والتراخيص والقضايا ومتابعة التشريعات، مع التنبيه قبل الانتهاء والتجديد.',
+ ['إدارة العقود والتراخيص','متابعة التشريعات','القضايا والمطالبات','تنبيهات التجديد'],['GRCMS','EFPMS','EDRMS'],
+ [['عقود سارية','47',60],['تراخيص تنتهي خلال 60 يومًا','3',20],['قضايا مفتوحة','2',15],['مراجعات تشريعية','8',45]],
+ [['المستشار القانوني','Legal Counsel',['مراجعة العقود','الرأي القانوني','إدارة القضايا']],['أخصائي الامتثال التنظيمي','Regulatory Specialist',['متابعة التشريعات','تحديث التراخيص','تنبيهات التجديد']],['طالب الخدمة','Requester',['طلب مراجعة عقد','متابعة الطلب','استلام الرأي']]]],
+['WFMS','إدارة سير العمل والأتمتة','Workflow Management','gv','محرك الموافقات والأتمتة المشترك لكل الأنظمة، ضمن طبقة التمكين.',
+ ['مسارات الموافقات','الأتمتة بين الأنظمة','الإشعارات','قياس زمن الدورة'],['HRMS','EFPMS','CCMS'],
+ [['مسارات مؤتمتة','58',75],['موافقات هذا الشهر','1,320',85],['متوسط زمن الدورة','1.6 يوم',65],['مهام يدوية أُلغيت','41%',41]],
+ [['مصمم المسارات','Workflow Designer',['بناء المسار','اختبار الأتمتة','نشر الإصدار']],['المعتمد','Approver',['مراجعة الطلب','اعتماد أو رفض','التفويض']],['مقدم الطلب','Requester',['رفع طلب','متابعة المسار','استلام النتيجة']]]]
+];
+
+var PROB={CTMS:'إدارة التدريب التعاوني موزعة بين جداول وبريد ومراسلات، فلا يعرف المشرف حضور المتدرب، ولا تقيس الجهة أثر التدريب.',HRMS:'بيانات الموظف موزعة بين أنظمة وأوراق، وطلبات الإجازات والخطابات تدور يدويًا بلا مسار واضح.',ELMS:'التدريب يُقدَّم بلا مسار مرتبط بالدور، ولا يُقاس أثره على الأداء.',KNMS:'الخبرة تغادر مع أصحابها، والإجراء نفسه يُكتشف من جديد مع كل موظف.',POMS:'المشاريع تُتابَع في جداول متفرقة، فلا ترى القيادة المشروع المتعثر إلا متأخرًا.',EFPMS:'الصرف والمشتريات والعقود تُدار كلٌّ بمعزل، فتضعف الرقابة ويتأخر الإقفال.',SCMS:'نفاد المخزون يُكتشف عند الطلب، وتقييم الموردين بالانطباع.',ASMS:'الأصول بلا سجل حي، والصيانة تبدأ بعد العطل.',ITMS:'طلبات الدعم تصل بالهاتف والبريد، بلا تتبع ولا التزام بمستوى خدمة.',CRMS:'تاريخ العميل مبعثر، والشكوى الواحدة تُروى لأكثر من موظف.',MKMS:'الحملات تُطلق بلا قياس للعائد، والهوية تتفاوت بين القنوات.',CCMS:'المعاملات الورقية تضيع بين الإدارات، ولا يُعرف أين توقفت.',SEMS:'الخطة الاستراتيجية وثيقة على الرف، والمبادرات منفصلة عن الأهداف.',ODMS:'القرارات تُتخذ في الاجتماعات، ولا يُوثَّق مبررها ولا يُقاس أثرها.',KPMS:'المؤشر الواحد يُحسب بطريقة مختلفة في كل إدارة.',DAIS:'البيانات كثيرة والرؤية قليلة، والتقارير تُجهَّز يدويًا كل شهر.',DTMS:'التحول الرقمي مشاريع تقنية متفرقة، بلا قياس للنضج ولا إدارة للتغيير.',NDTMS:'الجمعيات تُعد تقارير المانحين والجهات التنظيمية يدويًا، ويصعب عليها إثبات أثرها.',GRCMS:'المخاطر تُرصد مرة في السنة، والمخالفة تُكتشف عند التدقيق.',IQMS:'ملاحظات الجودة تُسجَّل ولا تُغلق، والاستعداد للاعتماد يبدأ في اللحظة الأخيرة.',BCMS:'الجهة لا تعرف كيف تعمل إن توقف نظام أو مبنى.',EDRMS:'الوثائق في البريد والأجهزة الشخصية، والنسخة المعتمدة غير معروفة.',LRMS:'التراخيص تنتهي دون تنبيه، والعقود تُراجع بلا سجل.',WFMS:'كل موافقة تمر بالبريد والتوقيع الورقي، وزمن الدورة غير معروف.'};
+var IC={hc:'<path d="M3 10l9-5 9 5-9 5-9-5z"/><path d="M7 12v4c3 2 7 2 10 0v-4"/>',users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3 3 0 010 6M21 20c0-2.6-1.6-4.8-4-5.6"/>',book:'<path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0z"/><path d="M12 5c2.5-1.5 5-1.5 8 0v14c-3-1.5-5.5-1.5-8 0"/>',brain:'<circle cx="12" cy="12" r="8"/><path d="M12 4v16M8 8c2 1 2 3 0 4M16 8c-2 1-2 3 0 4M8 15h8"/>',kanban:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16M5.5 8h2M11.5 8h2M17.5 8h2M11.5 12h2"/>',wallet:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 14.5h2"/>',truck:'<path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',building:'<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/>',server:'<rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01"/>',hand:'<path d="M3 12l4-4 4 3 3-2 7 6-3 3-4-3-3 2z"/>',mega:'<path d="M4 10v4l11 5V5zM15 9a3 3 0 010 6M7 15l1 5"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/>',compass:'<circle cx="12" cy="12" r="8"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',gauge:'<path d="M4 16a8 8 0 1116 0"/><path d="M12 16l4-5"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/>',rocket:'<path d="M12 3c4 2 6 6 5 11l-3 3h-4l-3-3c-1-5 1-9 5-11z"/><circle cx="12" cy="10" r="1.8"/><path d="M8 17l-2 4M16 17l2 4"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/>',shield:'<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',badge:'<circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/>',life:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M6.3 6.3l3.2 3.2M17.7 6.3l-3.2 3.2M6.3 17.7l3.2-3.2M17.7 17.7l-3.2-3.2"/>',folder:'<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',scale:'<path d="M12 4v16M6 20h12M5 8h14M5 8l-2 6a3 3 0 006 0zM19 8l-2 6a3 3 0 006 0z"/>',flow:'<rect x="3" y="4" width="6" height="5" rx="1"/><rect x="15" y="15" width="6" height="5" rx="1"/><path d="M6 9v4a2 2 0 002 2h7"/>',hub:'<circle cx="12" cy="12" r="3"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="4.5" cy="18" r="1.8"/><circle cx="19.5" cy="18" r="1.8"/><path d="M6 7l4 3.5M18 7l-4 3.5M6 17l4-3.5M18 17l-4-3.5"/>'};
+var ICON={CTMS:'hc',HRMS:'users',ELMS:'book',KNMS:'brain',POMS:'kanban',EFPMS:'wallet',SCMS:'truck',ASMS:'building',ITMS:'server',CRMS:'hand',MKMS:'mega',CCMS:'mail',SEMS:'target',ODMS:'compass',KPMS:'gauge',DAIS:'chart',DTMS:'rocket',NDTMS:'heart',GRCMS:'shield',IQMS:'badge',BCMS:'life',EDRMS:'folder',LRMS:'scale',WFMS:'flow',IEOS:'hub'};
+function svg(k){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+IC[ICON[k]]+'</svg>'}
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var dmap={};DOM.forEach(function(d){dmap[d[0]]=d});
+var smap={};S.forEach(function(s,i){s.idx=i+1;smap[s[0]]=s});
+var ORDER=S.map(function(s){return s[0]});
+function vars(d){return '--c:'+d[2]+';--t:'+d[3]}
+function show(v){$$('section.view').forEach(function(x){x.hidden=x.id!=='v-'+v});$$('#tabs button').forEach(function(b){b.setAttribute('aria-current',b.dataset.go===(v==='ex'?'hall':v))});window.scrollTo({top:0})}
+
+/* network */
+(function(){
+  var cx=260,cy=260,R=200,n=S.length,pos={};
+  S.forEach(function(s,i){var a=-Math.PI/2+i*2*Math.PI/n;pos[s[0]]=[cx+R*Math.cos(a),cy+R*Math.sin(a)]});
+  var h='',seen={};
+  S.forEach(function(s){s[6].forEach(function(r){var k=[s[0],r].sort().join('-');if(seen[k]||!pos[r])return;seen[k]=1;var a=pos[s[0]],b=pos[r];h+='<path class="edge" data-a="'+s[0]+'" data-b="'+r+'" d="M'+a[0]+' '+a[1]+' Q'+cx+' '+cy+' '+b[0]+' '+b[1]+'" fill="none"/>'})});
+  S.forEach(function(s){h+='<line class="edge" data-a="'+s[0]+'" data-b="IEOS" x1="'+cx+'" y1="'+cy+'" x2="'+pos[s[0]][0]+'" y2="'+pos[s[0]][1]+'" style="opacity:.08"/>'});
+  h+='<g class="node" data-ex="IEOS" data-tip="IEOS | المظلة المركزية"><circle cx="'+cx+'" cy="'+cy+'" r="40" fill="#C8991A"/><text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" style="font-size:15px">IEOS</text></g>';
+  S.forEach(function(s){var p=pos[s[0]],d=dmap[s[3]];h+='<g class="node" data-ex="'+s[0]+'" data-tip="'+s[0]+' | '+s[1]+'"><circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(s[0].length>4?24:21)+'" fill="'+d[2]+'"/><text x="'+p[0]+'" y="'+(p[1]+3.5)+'" text-anchor="middle">'+s[0]+'</text></g>'});
+  var net=$('#net');net.innerHTML=h;
+  net.addEventListener('mouseover',function(e){var g=e.target.closest('.node');if(!g)return;var c=g.dataset.ex;$('#netcap').textContent=g.dataset.tip;$$('.edge',net).forEach(function(l){l.classList.toggle('on',l.dataset.a===c||l.dataset.b===c)})});
+  net.addEventListener('mouseleave',function(){$$('.edge',net).forEach(function(l){l.classList.remove('on')});$('#netcap').textContent='مرّري على أي مشروع'});
+})();
+
+/* legend + wall */
+var fsel='all';
+function legend(){var h='<button type="button" data-f="all" aria-pressed="'+(fsel==='all')+'">كل المشاريع <small>25</small></button>';DOM.forEach(function(d){var n=S.filter(function(s){return s[3]===d[0]}).length;h+='<button type="button" data-f="'+d[0]+'" style="--c:'+d[2]+'" aria-pressed="'+(fsel===d[0])+'"><i></i>'+d[1]+' <small>'+n+'</small></button>'});$('#legend').innerHTML=h}
+function exCard(s){var d=dmap[s[3]];
+  var st=s[0]==='CTMS'?'<span class="tag g">مبني، بقي القليل لإتمامه</span>':'<span class="tag s">هيكلة وأطر مكتملة</span>';
+  return '<button type="button" class="ex" data-ex="'+s[0]+'" style="'+vars(d)+'"><div class="shot"><div class="top"><div class="ico">'+svg(s[0])+'</div><div><div class="code latin">'+s[0]+'</div><h3>'+s[1]+'</h3></div><span class="num latin">'+String(s.idx).padStart(2,'0')+'</span></div><div class="mini">'+s[7].map(function(k){return '<div><b>'+k[1]+'</b><span>'+k[0]+'</span><em><i style="width:'+k[2]+'%"></i></em></div>'}).join('')+'</div></div><div class="body"><p class="prob">'+PROB[s[0]]+'</p><div class="mods">'+s[5].map(function(m){return '<span class="tag">'+m+'</span>'}).join('')+'</div><div class="foot"><span>'+st+'</span><span><b>3</b> أدوار · <b>'+s[6].length+'</b> تكاملات</span></div></div></button>'}
+function wall(){var h='';
+  if(fsel==='all'){h+='<div class="dom-h" style="--c:#C8991A"><i></i><h2>المظلة</h2><span>المشروع رقم 25</span></div><div class="wall"><button type="button" class="ex hubx" data-ex="IEOS" style="--c:#C8991A;--t:#F4E9D6"><div class="shot"><div class="top"><div class="ico">'+svg('IEOS')+'</div><div><div class="code latin">IEOS HUB</div><h3>المظلة المركزية للمنظومة</h3></div></div><p class="prob" style="margin-top:10px">لكل نظام بوابته وبياناته، فلا ترى القيادة الصورة كاملة. المظلة تجمع الدخول الموحد، وقاموس البيانات، ومركز القيادة الذي يقرأ مؤشرات المشاريع الأربعة والعشرين في شاشة واحدة.</p></div></button></div>'}
+  DOM.forEach(function(d){if(fsel!=='all'&&fsel!==d[0])return;var L=S.filter(function(s){return s[3]===d[0]});h+='<div class="dom-h" style="--c:'+d[2]+'"><i></i><h2>'+d[1]+'</h2><span>'+L.length+' مشاريع</span></div><div class="wall">'+L.map(exCard).join('')+'</div>'});
+  $('#wall').innerHTML=h}
+
+/* exhibit */
+function bars(seed,c){var v=[],x=seed;for(var i=0;i<7;i++){x=(x*9301+49297)%233280;v.push(30+x/233280*60)}var h='<svg viewBox="0 0 210 80" width="100%" height="80">';v.forEach(function(y,i){h+='<rect x="'+(8+i*29)+'" y="'+(78-y*0.85)+'" width="18" height="'+(y*0.85)+'" rx="4" fill="'+c+'" opacity="'+(i===6?1:.45)+'"/>'});return h+'</svg>'}
+function screen(s,d,role){var sd=0;for(var i=0;i<s[0].length;i++)sd+=s[0].charCodeAt(i)*31;
+  var rows=s[5].map(function(m,i){return '<tr><td>'+m+'</td><td style="text-align:left"><em class="'+(i%3===1?'w':'')+'">'+(i%3===1?'قيد المعالجة':'محدث')+'</em></td></tr>'}).join('');
+  return '<div class="screen" style="'+vars(d)+'"><div class="chrome"><i></i><i></i><i></i><span class="latin">ieos / '+s[0].toLowerCase()+'</span></div><div class="inner"><aside><b class="latin">'+s[0]+'</b><span class="on">لوحة '+(role||s[8][0][0])+'</span>'+s[5].map(function(m){return '<span>'+m+'</span>'}).join('')+'</aside><div class="pane"><div class="kp">'+s[7].map(function(k){return '<div><b>'+k[1]+'</b><span>'+k[0]+'</span></div>'}).join('')+'</div><div class="row2"><div class="box"><h5>الاتجاه خلال 7 أشهر</h5>'+bars(sd,d[2])+'</div><div class="box"><h5>الوحدات</h5><table>'+rows+'</table></div></div></div></div></div>'}
+function hubEx(){var d=['hub','المظلة','#C8991A','#F4E9D6'];
+  var h='<div class="crumbs"><button type="button" data-go="hall">قاعة المشاريع</button><span>/</span><span>IEOS</span></div>';
+  h+='<div class="xhero" style="'+vars(d)+'"><div><div class="ico">'+svg('IEOS')+'</div><span class="eyebrow" style="margin-top:10px">المشروع 25 | المظلة</span><h1>IEOS HUB</h1><div class="en"><span class="latin">Integrated Enterprise Operating Suite</span></div><div class="prob"><b>المشكلة</b>لكل نظام بوابته وبياناته، فلا ترى القيادة الصورة كاملة.</div></div>';
+  h+='<div class="screen" style="'+vars(d)+'"><div class="chrome"><i></i><i></i><i></i><span class="latin">ieos / command-center</span></div><div class="inner"><aside><b class="latin">IEOS</b><span class="on">مركز القيادة</span>'+DOM.map(function(x){return '<span>'+x[1]+'</span>'}).join('')+'</aside><div class="pane"><div class="kp"><div><b>24</b><span>نظامًا مربوطًا</span></div><div><b>72</b><span>دورًا</span></div><div><b>99.4%</b><span>جاهزية المنصة</span></div><div><b>1</b><span>دخول موحد</span></div></div><div class="row2"><div class="box"><h5>نشاط المجالات</h5>'+bars(777,'#C8991A')+'</div><div class="box"><h5>المجالات</h5><table>'+DOM.map(function(x){return '<tr><td>'+x[1]+'</td><td style="text-align:left"><em>'+S.filter(function(s){return s[3]===x[0]}).length+'</em></td></tr>'}).join('')+'</table></div></div></div></div></div></div>';
+  h+='<div class="xsec"><h2>ما تقدمه المظلة</h2><div class="grid">'+[['الدخول الموحد','حساب واحد لكل مستخدم، وصلاحيات حسب الدور في كل نظام.'],['قاموس البيانات','تعريف واحد لكل كيان: الموظف والعميل والمشروع والمؤشر.'],['مركز القيادة','مؤشرات المشاريع الأربعة والعشرين في شاشة واحدة.'],['بوابة الربط','تبادل البيانات بين الأنظمة دون إدخال مكرر.']].map(function(x,i){return '<div class="card mod" style="'+vars(d)+'"><span class="n">'+(i+1)+'</span><div><h4>'+x[0]+'</h4><p>'+x[1]+'</p></div></div>'}).join('')+'</div></div>';
+  h+=pager('IEOS');$('#v-ex').innerHTML=h;show('ex')}
+function pager(code){var i=code==='IEOS'?-1:ORDER.indexOf(code);var prev=i<=0?'IEOS':ORDER[i-1],next=i===-1?ORDER[0]:(ORDER[i+1]||'IEOS');if(i===0)prev='IEOS';
+  function lab(c){return c==='IEOS'?'IEOS | المظلة':c+' | '+smap[c][1]}
+  return '<div class="pager"><button type="button" data-ex="'+prev+'"><span>الجناح السابق</span><b>'+lab(prev)+'</b></button><button type="button" data-ex="'+next+'"><span>الجناح التالي</span><b>'+lab(next)+'</b></button></div>'}
+function exhibit(code,ri){if(code==='IEOS')return hubEx();var s=smap[code];if(!s)return;var d=dmap[s[3]];ri=ri||0;
+  var h='<div class="crumbs"><button type="button" data-go="hall">قاعة المشاريع</button><span>/</span><span>'+d[1]+'</span><span>/</span><span class="latin">'+s[0]+'</span></div>';
+  var st=s[0]==='CTMS'?'مبني، بقي القليل لإتمامه':'هيكلة وأطر مكتملة';
+  h+='<div class="xhero" style="'+vars(d)+'"><div><div class="ico">'+svg(s[0])+'</div><span class="eyebrow" style="margin-top:10px">المشروع '+String(s.idx).padStart(2,'0')+' من 25 | '+d[1]+'</span><h1>'+s[1]+'</h1><div class="en"><span class="latin">'+s[0]+' · '+s[2]+'</span></div><div class="prob"><b>المشكلة التي يعالجها</b>'+PROB[s[0]]+'</div><p style="margin:12px 0 0">'+s[4]+'</p><p style="margin:8px 0 0;font-size:14px;color:var(--muted)">الحالة: '+st+'</p></div><div id="scr">'+screen(s,d,s[8][ri][0])+'</div></div>';
+  h+='<div class="xsec"><h2>الوحدات</h2><div class="grid">'+s[5].map(function(m,i){return '<div class="card mod" style="'+vars(d)+'"><span class="n">'+(i+1)+'</span><div><h4>'+m+'</h4></div></div>'}).join('')+'</div></div>';
+  h+='<div class="xsec" style="'+vars(d)+'"><h2>الأدوار ولوحاتها</h2><div class="rtabs">'+s[8].map(function(r,i){return '<button type="button" data-role="'+s[0]+'|'+i+'" aria-pressed="'+(i===ri)+'"><b>'+r[0]+'</b><span class="latin">'+r[1]+'</span></button>'}).join('')+'</div><div class="rpanel"><div class="card"><h4>مهام '+s[8][ri][0]+'</h4><ul class="ticks">'+s[8][ri][2].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div><div class="card"><h4>ما يراه في لوحته</h4><ul class="ticks">'+s[7].map(function(k){return '<li>'+k[0]+'</li>'}).join('')+'</ul></div></div></div>';
+  h+='<div class="xsec"><h2>يتكامل مع</h2><div class="links">'+s[6].map(function(r){var o=smap[r],od=dmap[o[3]];return '<button type="button" class="lnk" data-ex="'+r+'" style="'+vars(od)+'"><span class="ico">'+svg(r)+'</span><span><b class="latin">'+r+'</b><span>'+o[1]+'</span></span></button>'}).join('')+'<span class="lnk" style="--c:#C8991A;--t:#F4E9D6"><span class="ico">'+svg('IEOS')+'</span><span><b class="latin">IEOS</b><span>عبر بوابة الربط والدخول الموحد</span></span></span></div></div>';
+  h+=pager(s[0]);$('#v-ex').innerHTML=h;show('ex')}
+
+/* arch */
+$('#layers').innerHTML=[['1. المستخدمون','الموظفون والقياديون والعملاء والمستفيدون والشركاء، كلٌّ بدوره.',''],['2. بوابة IEOS','الدخول الموحد، وبوابة الربط، وقاموس البيانات، ومركز القيادة.','h'],['3. المشاريع','__CHIPS__',''],['طبقة التمكين المشتركة','الهوية والصلاحيات IAMS، وسير العمل والأتمتة WFMS، والخدمات المشتركة CSMS.','e'],['4. البيانات','Dataverse وSharePoint وAzure SQL وPower BI، باستضافة داخل المملكة.',''],['5. الامتثال','NCA وPDPL وZATCA وDGA وISO 27001.','']].map(function(l){var c=l[1]==='__CHIPS__'?'<div class="chips">'+S.map(function(s){var d=dmap[s[3]];return '<button type="button" class="tag" data-ex="'+s[0]+'" style="background:'+d[3]+';color:'+d[2]+';border:0">'+s[0]+'</button>'}).join('')+'</div>':'<p>'+l[1]+'</p>';return '<div class="layer '+l[2]+'"><b>'+l[0]+'</b>'+c+'</div>'}).join('');
+
+document.addEventListener('click',function(e){var t=e.target.closest('[data-go],[data-ex],[data-f],[data-role]');if(!t)return;
+  if(t.dataset.go){show(t.dataset.go);return}
+  if(t.dataset.f){fsel=t.dataset.f;legend();wall();return}
+  if(t.dataset.role){var p=t.dataset.role.split('|');exhibit(p[0],+p[1]);document.querySelector('.rtabs').scrollIntoView({block:'center'});return}
+  if(t.dataset.ex){exhibit(t.dataset.ex);return}
+});
+legend();wall();
+});
+</script>
+</body></html>
