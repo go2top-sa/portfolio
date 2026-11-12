@@ -137,7 +137,7 @@ button{font:inherit}
 .case .bd{padding:14px 16px 16px;display:grid;gap:6px}
 .case h3{font-family:var(--f-head);font-size:21px;line-height:1.3;margin:0 0 4px;color:var(--lav-d)}
 .flow{display:grid;gap:4px;font-family:var(--f-ui);font-size:13.5px;line-height:1.55}
-.flow div{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.flow div{display:grid;grid-template-columns:58px 1fr;gap:8px}
 .flow em{font-style:normal;font-weight:700;color:var(--terra)}
 
 /* contact */
@@ -173,7 +173,7 @@ button{font:inherit}
       حنين الزكري
     </a>
     <nav aria-label="أقسام">
-      <a href="#roles">الأدوار</a>
+      <a href="#roles">المجالات</a>
       <a href="#area" data-tab="nums">الأرقام</a>
       <a href="#area" data-tab="path">المسار</a>
       <a href="#area" data-tab="cases">دراسات الحالة</a>
@@ -191,7 +191,7 @@ button{font:inherit}
       <div class="rot">قيادة <b id="rot">التميز المؤسسي</b></div>
       <p class="def">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة go2top.</p>
       <div class="btns">
-        <a class="btn solid" href="#roles">ابدأ بالدور الذي تبحث له ←</a>
+        <a class="btn solid" href="#roles">المعلومات وفق المجال ←</a>
         <a class="btn" href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">السيرة الذاتية</a>
       </div>
     </div>
@@ -205,9 +205,9 @@ button{font:inherit}
           <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
         </svg>
       </div>
-      <div class="badge b1"><b data-count="32">0</b><span>مدرسة في نطاق قيادتي</span></div>
-      <div class="badge b2 g"><b>الأول</b><span>هاكاثون «نواة» ضمن الفريق</span></div>
-      <div class="badge b3 t"><b data-count="107">0</b><span>نموذج تشغيلي سُلّم</span></div>
+      <div class="badge b1"><b>+10</b><span>سنوات في القيادة والإشراف</span></div>
+      <div class="badge b2 g"><b>4.85</b><span>الدبلوم العالي في الموارد البشرية</span></div>
+      <div class="badge b3 t"><b>97%</b><span>زمالة قادة التحول الرقمي</span></div>
     </div>
   </div>
   <div class="hills" aria-hidden="true"><svg viewBox="0 0 1440 170" preserveAspectRatio="none"><path d="M0 170 L0 80 Q150 40 320 70 T640 54 T980 72 T1440 56 L1440 170Z" fill="#CBC1D8" opacity=".45"/><path d="M0 170 L0 104 Q200 70 430 98 T860 86 T1440 100 L1440 170Z" fill="#A796BE" opacity=".45"/><path d="M0 170 L0 130 Q260 104 560 126 T1100 130 T1440 120 L1440 170Z" fill="#7D8167" opacity=".55"/></svg></div>
@@ -215,19 +215,19 @@ button{font:inherit}
 
 <section class="roles wrap" id="roles">
   <div class="panel">
-    <h2>لأي دور تقرأ هذا الملف؟</h2>
-    <p class="sub">اختر الدور، فتظهر لك المناسبة والأدلة والسيرة المتخصصة له.</p>
-    <div class="chips" role="group" aria-label="الأدوار">
-      <button class="chip" type="button" data-role="lead" aria-pressed="true">القيادة والإدارة</button>
-      <button class="chip" type="button" data-role="hr" aria-pressed="false">الموارد البشرية</button>
+    <h2>المعلومات وفق المجال</h2>
+    <p class="sub">اختيار المجال يعرض الخبرة المرتبطة به، وأبرز الأدلة، والسيرة المتخصصة.</p>
+    <div class="chips" role="group" aria-label="المجالات">
+      <button class="chip" type="button" data-role="hr" aria-pressed="true">الموارد البشرية</button>
       <button class="chip" type="button" data-role="dt" aria-pressed="false">التحول الرقمي</button>
-      <button class="chip" type="button" data-role="od" aria-pressed="false">التطوير والتميز المؤسسي</button>
+      <button class="chip" type="button" data-role="lead" aria-pressed="false">القيادة والإدارة</button>
+      <button class="chip" type="button" data-role="od" aria-pressed="false">تطوير الأعمال والتميز المؤسسي</button>
     </div>
     <div class="fit" id="fit" aria-live="polite">
       <div>
         <p class="why" id="why"></p>
         <div class="tags" id="tags"></div>
-        <a class="btn solid" id="cv" href="#" target="_blank" rel="noopener">السيرة المتخصصة لهذا الدور ←</a>
+        <a class="btn solid" id="cv" href="#" target="_blank" rel="noopener">السيرة المتخصصة لهذا المجال ←</a>
       </div>
       <div class="ev" id="ev"></div>
     </div>
@@ -261,19 +261,19 @@ button{font:inherit}
 
   <div class="view" id="v-cases" role="tabpanel">
     <div class="cases">
-      <a class="case" href="../preview/#case-leadership"><div class="img art"><span class="st">منجزة</span></div><div class="bd"><h3>قيادة مدرسة ثم فرع إشراف</h3><div class="flow"><div><em>المشكلة</em>مدارس تحتاج إدارة وإشرافًا منتظمًا</div><div><em>ما فعلته</em>التخطيط والموارد البشرية والموازنات وإدارة التغيير</div><div><em>النتيجة</em>ترقية بعد عام، ومواءمة الفرع مع التنظيم الموحد</div></div></div></a>
-      <a class="case" href="../preview/#case-assoc"><div class="img" style="background-image:url(../assets/shot-association.jpg)"><span class="st">سُلّمت للاعتماد</span></div><div class="bd"><h3>التأسيس المؤسسي لجمعية</h3><div class="flow"><div><em>المشكلة</em>جهة ناشئة بلا منظومة تأسيس</div><div><em>ما فعلته</em>أدرت المشروع ووضعت منهجيته</div><div><em>النتيجة</em>32 وثيقة، و107 نماذج، وخطة بـ33 مبادرة</div></div></div></a>
-      <a class="case" href="../preview/#case-ctms"><div class="img" style="background-image:url(../assets/ctms-portal.jpg)"><span class="st">قيد الإتمام</span></div><div class="bd"><h3>CTMS لإدارة التدريب التعاوني</h3><div class="flow"><div><em>المشكلة</em>إدارة يدوية تضعف المتابعة</div><div><em>ما فعلته</em>حللت 83 تحديًا وصممت النظام وبنيته</div><div><em>النتيجة</em>بلغ إجراءات الموافقة على نموذج أولي</div></div></div></a>
-      <a class="case" href="../preview/#case-hr"><div class="img" style="background-image:url(../assets/hr-analytics.jpg)"><span class="st">منشورة</span></div><div class="bd"><h3>لوحات وأدوات الموارد البشرية</h3><div class="flow"><div><em>المشكلة</em>بيانات متفرقة وقرارات بطيئة</div><div><em>ما فعلته</em>لوحة تحليلات ونماذج قياس الاحتياج والأثر</div><div><em>النتيجة</em>نماذج استُخدمت فعليًا في برامج الإدارة</div></div></div></a>
-      <a class="case" href="../preview/#case-isps"><div class="img" style="background-image:url(../assets/isps-hall.jpg)"><span class="st">تصميم مفاهيمي</span></div><div class="bd"><h3>ISPS: منظومة النظم المؤسسية</h3><div class="flow"><div><em>المشكلة</em>أنظمة منفصلة وبيانات مكررة</div><div><em>ما فعلته</em>هيكلة 25 نظامًا في خمس طبقات</div><div><em>النتيجة</em>إطار موحد بُني منه CTMS أولًا</div></div></div></a>
-      <a class="case" href="../preview/#case-nawat"><div class="img" style="background-image:url(../assets/hackathon-first-place.jpg)"><span class="st">المركز الأول</span></div><div class="bd"><h3>هاكاثون «نواة» والتطبيق</h3><div class="flow"><div><em>المشكلة</em>قلق الأهل على رحلة الطالب</div><div><em>ما فعلته</em>النموذج الأولي والعرض، ثم تطوير التطبيق</div><div><em>النتيجة</em>المركز الأول ضمن الفريق</div></div></div></a>
+      <a class="case" href="../preview/#case-leadership"><div class="img art"><span class="st">منجزة</span></div><div class="bd"><h3>قيادة مدرسة ثم فرع إشراف</h3><div class="flow"><div><em>المشكلة</em>مدارس تحتاج إدارة وإشرافًا منتظمين</div><div><em>الإجراء</em>التخطيط والموارد البشرية والموازنات وإدارة التغيير</div><div><em>النتيجة</em>ترقية بعد عام، ومواءمة الفرع مع التنظيم الموحد</div></div></div></a>
+      <a class="case" href="../preview/#case-assoc"><div class="img" style="background-image:url(../assets/shot-association.jpg)"><span class="st">سُلّمت للاعتماد</span></div><div class="bd"><h3>التأسيس المؤسسي لجمعية</h3><div class="flow"><div><em>المشكلة</em>جهة ناشئة تحتاج منظومة تأسيس متكاملة</div><div><em>الإجراء</em>إدارة المشروع ووضع منهجيته</div><div><em>النتيجة</em>32 وثيقة، و107 نماذج، وخطة بـ33 مبادرة</div></div></div></a>
+      <a class="case" href="../preview/#case-ctms"><div class="img" style="background-image:url(../assets/ctms-portal.jpg)"><span class="st">قيد الإتمام</span></div><div class="bd"><h3>CTMS لإدارة التدريب التعاوني</h3><div class="flow"><div><em>المشكلة</em>إدارة يدوية تضعف المتابعة</div><div><em>الإجراء</em>تحليل 83 تحديًا وتصميم النظام وبناؤه</div><div><em>النتيجة</em>بلغ إجراءات الموافقة على نموذج أولي</div></div></div></a>
+      <a class="case" href="../preview/#case-hr"><div class="img" style="background-image:url(../assets/hr-analytics.jpg)"><span class="st">منشورة</span></div><div class="bd"><h3>لوحات وأدوات الموارد البشرية</h3><div class="flow"><div><em>المشكلة</em>بيانات متفرقة وقرارات بطيئة</div><div><em>الإجراء</em>بناء لوحة تحليلات ونماذج لقياس الاحتياج والأثر</div><div><em>النتيجة</em>نماذج استُخدمت فعليًا في برامج الإدارة</div></div></div></a>
+      <a class="case" href="../preview/#case-isps"><div class="img" style="background-image:url(../assets/isps-hall.jpg)"><span class="st">تصميم مفاهيمي</span></div><div class="bd"><h3>ISPS: منظومة النظم المؤسسية</h3><div class="flow"><div><em>المشكلة</em>أنظمة منفصلة وبيانات مكررة</div><div><em>الإجراء</em>هيكلة 25 نظامًا في خمس طبقات</div><div><em>النتيجة</em>إطار موحد بُني منه CTMS أولًا</div></div></div></a>
+      <a class="case" href="../preview/#case-nawat"><div class="img" style="background-image:url(../assets/hackathon-first-place.jpg)"><span class="st">المركز الأول</span></div><div class="bd"><h3>هاكاثون «نواة» والتطبيق</h3><div class="flow"><div><em>المشكلة</em>قلق الأهل على رحلة الطالب</div><div><em>الإجراء</em>إنشاء النموذج الأولي وتقديم العرض، ثم تطوير التطبيق</div><div><em>النتيجة</em>المركز الأول ضمن الفريق</div></div></div></a>
     </div>
   </div>
 </section>
 
 <section class="end" id="contact">
   <div class="wrap">
-    <h2>لنتحدث عن الدور الذي تبحث له</h2>
+    <h2>لنتحدث عن الدور الذي يهمك أو يفيدك</h2>
     <a class="btn solid" href="mailto:hanin.al.zakari@gmail.com">hanin.al.zakari@gmail.com</a>
     <a class="btn" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">LinkedIn</a>
   </div>
@@ -285,9 +285,9 @@ button{font:inherit}
 (function(){
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ROLES={
-    lead:{why:'قدتُ أحد فروع الإشراف السبعة في الرياض <mark>بنطاق نحو 32 مدرسة</mark> بعد ترقية من إدارة مدرسة خلال عام، وأدرتُ التخطيط والموارد البشرية والموازنات، وقدتُ <mark>مواءمة الفرع مع التنظيم الموحد الجديد</mark>.',tags:['التخطيط الاستراتيجي والتشغيلي','قيادة الفرق','إدارة التغيير','الموازنات','متابعة الأداء'],cv:'ol',ev:['leadership','assoc','nawat']},
+    lead:{why:'أدرتُ مدرسة نسائية عامًا، ثم رُقّيت لقيادة أحد فروع الإشراف السبعة في الرياض <mark>بنطاق نحو 32 مدرسة</mark>، وأدرتُ فيه التخطيط والموارد البشرية والموازنات، وقدتُ <mark>مواءمة الفرع مع التنظيم الموحد الجديد</mark>.',tags:['التخطيط الاستراتيجي والتشغيلي','قيادة الفرق','إدارة التغيير','الموازنات','متابعة الأداء'],cv:'ol',ev:['leadership','assoc','nawat']},
     hr:{why:'مارستُ في أدواري القيادية <mark>الاستقطاب والمقابلات والتهيئة وتقييم الأداء</mark>، وأحمل الدبلوم العالي في الموارد البشرية <mark>بمعدل 4.85 من 5</mark>، وأعددتُ نماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.',tags:['الاستقطاب والاختيار','التهيئة','إدارة الأداء','الاحتياج التدريبي وقياس الأثر','تحليلات الموارد البشرية'],cv:'hr',ev:['hr','leadership','ctms']},
-    dt:{why:'أصمم أنظمة إدارية رقمية وأبنيها: <mark>CTMS على Power Platform</mark>، وهيكلة <mark>25 نظامًا</mark> في منظومة ISPS، ومنصة رقمية لجمعية، مع زمالة قادة التحول الرقمي بتقدير ممتاز (97%).',tags:['Power Platform','تحليل المتطلبات','تصميم النظم','أتمتة الإجراءات','لوحات المؤشرات'],cv:'dt',ev:['ctms','isps','nawat']},
+    dt:{why:'أصمم أنظمة إدارية رقمية وأبنيها: <mark>CTMS على Power Platform</mark>، وهيكلة <mark>25 نظامًا</mark> في منظومة ISPS، ومنصة رقمية لجمعية. وأحمل زمالة قادة التحول الرقمي بتقدير ممتاز (97%).',tags:['Power Platform','تحليل المتطلبات','تصميم النظم','أتمتة الإجراءات','لوحات المؤشرات'],cv:'dt',ev:['ctms','isps','nawat']},
     od:{why:'أدرتُ مشروع تأسيس مؤسسي سلّم <mark>32 وثيقة في 14 قسمًا و107 نماذج تشغيلية</mark>، وخطة استراتيجية 2025 ← 2029 <mark>بـ33 مبادرة و25 مؤشرًا</mark>، مع أطر الحوكمة والموارد البشرية والعمليات.',tags:['التشخيص المؤسسي','الحوكمة والسياسات','الهياكل والأدوار','مؤشرات الأداء','الجودة والتحسين المستمر'],cv:'ol',ev:['assoc','isps','leadership']}
   };
   var EV={
@@ -316,7 +316,7 @@ button{font:inherit}
     var t=e.target.closest('[data-tab]'); if(t){setTab(t.dataset.tab);}
     var s=e.target.closest('[data-stop]'); if(s){setStop(+s.dataset.stop);}
   });
-  setRole('lead',true);
+  setRole('hr',true);
 
   // rotating line
   var words=['التميز المؤسسي','الموارد البشرية','التخطيط الاستراتيجي','التحول الرقمي','تصميم نظم الأعمال'],wi=0,rot=document.getElementById('rot');
