@@ -544,6 +544,15 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 .kicker.upd::before{content:none}
 .v2foot .ft-id span.upd{margin-top:2px;color:var(--olive);font-weight:700}
 #contact .cv-grid{margin-top:8px}
+
+html[dir="ltr"] .v2case .img.art::after{content:"32 schools"}
+html[dir="ltr"] .v2case .st{right:auto;left:12px}
+html[dir="ltr"] .b1{right:auto;left:-4%}
+html[dir="ltr"] .b2{left:auto;right:-8%}
+html[dir="ltr"] .b3{right:auto;left:2%}
+html[dir="ltr"] .fev button:hover{transform:translateX(4px)}
+html[dir="ltr"] #home .en{font-family:var(--f-display);letter-spacing:0;font-size:22px}
+html[dir="ltr"] #home .v2hero{background:radial-gradient(120% 120% at 90% 0%,#EFE9F0 0%,var(--paper) 60%)}
 </style>
 </head>
 <body>
@@ -1127,33 +1136,49 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 </template>
 <template id="tpl-en-foot"><span>Riyadh, Saudi Arabia</span><span class="latin">hanin.al.zakari@gmail.com</span></template>
 <template id="tpl-en-main">
-<section class="panel" id="home" data-group="home" data-glabel="Profile" data-label="Profile">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">Leadership profile</div>
-      <p class="big">Specialist in human resource management, institutional development, digital transformation, and business systems design, building digital administrative solutions and systems, and founder of <em>go2top</em>.</p>
-      <p>My professional experience spans more than ten years across organizational leadership, educational supervision, and university teaching. I served as a school principal before being promoted to lead one of seven supervisory branches that, at the time, oversaw nonprofit girls’ schools across Riyadh. My branch’s supervisory scope covered approximately 32 schools.</p>
-      <p>Throughout my leadership roles, my responsibilities encompassed strategic and operational planning, human resources management, operations and budget management, performance monitoring, process improvement, initiative leadership, and organizational change management.</p>
+<section class="panel" id="home" data-label="Profile" data-group="home" data-glabel="Profile">
+  <div class="v2hero">
+    <div class="v2hero-txt">
+      <span class="kicker"><i></i>Open to leadership roles</span> <span class="kicker upd">Latest work · November 2026</span>
+      <h1>Haneen Al Zakari</h1>
+      <div class="en">حنين الزكري</div>
+      <p class="def">Specialist in human resource management, institutional development, digital transformation, and business systems design, building digital administrative solutions and systems, and founder of go2top.</p>
+      <div class="v2btns">
+        <button class="v2btn solid" type="button" data-scroll="fields">Information by field →</button>
+        <button class="v2btn" type="button" data-go="contact">Contact and CVs</button>
+      </div>
     </div>
-    <dl class="facts">
-      <div><dt>Role</dt><dd>Founder, go2top</dd></div>
-      <div><dt>Highest qualification</dt><dd>Higher Diploma in Human Resource Management, King Saud University (GPA 4.85/5)</dd></div>
-      <div><dt>Fellowship</dt><dd>Digital Transformation Leaders Fellowship, Excellent (97%)</dd></div>
-      <div><dt>Top grade</dt><dd>99.33% with A+ in every course, Associate Diploma in Digital Transformation</dd></div>
-      <div><dt>Award</dt><dd>First place with my team, Nawat Hackathon, Ministry of Education</dd></div>
-      <div><dt>City</dt><dd>Riyadh</dd></div>
-      <div><dt>Email</dt><dd><span class="latin" id="mail">hanin.al.zakari@gmail.com</span><button class="copy" data-copy="hanin.al.zakari@gmail.com" type="button">Copy</button></dd></div>
-      <div><dt>LinkedIn</dt><dd><a class="latin" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">in/haneen-al-zakari</a></dd></div>
-      <div><dt>GitHub</dt><dd><a class="latin" href="https://github.com/go2top-sa" target="_blank" rel="noopener">github.com/go2top-sa</a></dd></div>
-    </dl>
+    <div class="vis" id="vis" aria-hidden="true">
+      <div class="disc">
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <circle cx="290" cy="120" r="46" fill="#F4E9D6"/>
+          <g class="layer" data-d="8"><image href="assets/tuwaiq.webp" x="-10" y="180" width="420" height="128" preserveAspectRatio="xMidYMax meet"/></g>
+          <g class="layer" data-d="20"><path d="M-20 350 Q100 300 200 330 T420 320 L420 420 L-20 420Z" fill="#C7A16B"/></g>
+          <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
+        </svg>
+      </div>
+      <div class="badge ph b1"></div>
+      <div class="badge ph b2"></div>
+      <div class="badge ph b3"></div>
+    </div>
   </div>
-  <div class="journey" aria-label="Portfolio sections"></div>
-  <div class="sch ev"><b>Key evidence</b><button type="button" data-go="cases">All case studies →</button></div>
-  <div class="highlights">
-    <button class="hl" data-go="case-leadership" type="button"><span class="go">→</span><div class="k">Leadership path</div><div class="t">School principal, then supervisory branch lead</div><div class="d">Promoted after one year to lead one of seven supervisory branches in Riyadh, covering about 32 schools.</div></button>
-    <button class="hl" data-go="case-assoc" type="button"><span class="go">→</span><div class="k">Institutional project</div><div class="t">Institutional establishment of a nonprofit association</div><div class="d">32 documents and workbooks across 14 areas and 107 operational templates, submitted to the Board for review and approval.</div></button>
-    <button class="hl" data-go="case-ctms" type="button"><span class="go">→</span><div class="k">Case study</div><div class="t">CTMS for cooperative training</div><div class="d">83 operational challenges analyzed and the system designed; the idea reached the approval process for a testable prototype.</div></button>
-    <button class="hl award" data-go="case-nawat" type="button"><span class="go">→</span><div class="k">Award</div><div class="t">First place with my team, Nawat Hackathon</div><div class="d">I proposed adding the prototype tool, built it, and presented the pitch to the judges.</div></button>
+  <div class="fields" id="fields">
+    <h2>Information by field</h2>
+    <p class="sub">Choosing a field shows the related experience, key evidence, and the specialized CV, and keeps the field highlighted across the other sections.</p>
+    <div class="fchips" role="group" aria-label="Fields">
+      <button class="fchip" type="button" data-field="hr" aria-pressed="false">HR management and development</button>
+      <button class="fchip" type="button" data-field="dt" aria-pressed="false">Strategic planning and digital transformation</button>
+      <button class="fchip" type="button" data-field="lead" aria-pressed="false">Leadership and organizational excellence</button>
+      <button class="fchip" type="button" data-field="od" aria-pressed="false">Process improvement and business systems design</button>
+    </div>
+    <div class="fit" id="fit" aria-live="polite">
+      <div>
+        <p class="why" id="why"></p>
+        <div class="ftags" id="ftags"></div>
+        <a class="v2btn solid" id="fcv" href="#" target="_blank" rel="noopener">Specialized CV for this field (Arabic) →</a>
+      </div>
+      <div class="fev" id="fev"></div>
+    </div>
   </div>
 </section>
 
@@ -1161,6 +1186,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <div class="eyebrow">Work experience</div>
   <h2>Leadership and professional experience</h2>
   <p class="lede">Nine years of supervision, administrative work, and leadership, and eight years of university teaching, partly overlapping, alongside hands-on work in technology and digital transformation seen in the systems I designed and built. Most recent first.</p>
+  <div class="journey2"><div class="stops" id="stops"><i class="bar" id="sbar"></i></div><div class="sdetail" id="sdetail"></div></div>
   <h3 style="margin-top:4px">Areas of practice</h3>
   <div class="grid practice">
     <div class="card"><h4>Organizational leadership</h4><p>School principal, then lead of a supervisory branch covering about 32 schools: leading supervision teams, monitoring schools and their leaders, and reporting recommendations to management.</p></div>
@@ -1230,13 +1256,13 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <div class="eyebrow">Projects and case studies</div>
   <h2>Selected case studies</h2>
   <p class="lede">Each one covers the problem, my role, the actions, the outputs, and the implementation status. Images are selected and reveal no client data or unpublished product details.</p>
-  <div class="highlights cases-grid">
-    <button class="hl" data-go="case-leadership" type="button"><span class="go">→</span><div class="k">Leadership, planning, and change · 1433 → 1439 AH</div><div class="t">Leading a school and a supervisory branch</div><div class="d">A branch covering about 32 schools: planning, human resources, budgets, and performance monitoring.</div><span class="st built">Completed</span></button>
-    <button class="hl" data-go="case-assoc" type="button"><span class="go">→</span><div class="k">Institutional establishment · 2025 → 2026</div><div class="t">Establishing a nonprofit association</div><div class="d">Assessment, planning, HR, governance, operations, and digital transformation in a package submitted to the Board.</div><span class="st pub">Submitted for review and approval</span></button>
-    <button class="hl" data-go="case-ctms" type="button"><span class="go">→</span><div class="k">Management system · 1447 AH</div><div class="t">CTMS for cooperative training</div><div class="d">83 operational challenges, needs analysis, functional design, and a built prototype.</div><span class="st built">Being completed and tested</span></button>
-    <button class="hl" data-go="case-hr" type="button"><span class="go">→</span><div class="k">HR tools</div><div class="t">Dashboards and HR tools</div><div class="d">Data analysis, performance and training needs measurement, program impact, and process improvement.</div><span class="st pub">Published and in use</span></button>
-    <button class="hl" data-go="case-isps" type="button"><span class="go">→</span><div class="k">Enterprise architecture</div><div class="t">ISPS: the enterprise systems suite</div><div class="d">Architecture and frameworks for 25 connected systems in five layers, as groundwork for integrated digital solutions.</div><span class="st design">Conceptual, under development</span></button>
-    <button class="hl award" data-go="case-nawat" type="button"><span class="go">→</span><div class="k">Innovation · 1447 AH</div><div class="t">Nawat Hackathon and the prototype</div><div class="d">Preparing Mini Jam, first place with the team, then developing the prototype into an interactive app.</div><span class="st pub">First place</span></button>
+  <div class="v2cases">
+    <button class="v2case" type="button" data-go="case-leadership" data-fields="lead hr"><span class="img art"><span class="st">Completed</span></span><span class="bd"><b class="h">School principal, then branch lead</b><span class="flow"><span><em>Problem</em>Schools needing steady management and supervision</span><span><em>Action</em>Planning, HR, budgets, and change management</span><span><em>Result</em>Promoted after one year; branch aligned with the unified structure</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-assoc" data-fields="od dt lead"><span class="img" style="background-image:url(assets/shot-association.jpg)"><span class="st">Submitted for approval</span></span><span class="bd"><b class="h">Institutional establishment of an association</b><span class="flow"><span><em>Problem</em>A new organization needing a full establishment framework</span><span><em>Action</em>Managing the project and setting its methodology</span><span><em>Result</em>32 documents, 107 templates, and a plan with 33 initiatives</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-ctms" data-fields="dt od hr"><span class="img" style="background-image:url(assets/ctms-portal.jpg)"><span class="st">Being completed</span></span><span class="bd"><b class="h">CTMS for cooperative training</b><span class="flow"><span><em>Problem</em>Manual work weakening follow-up</span><span><em>Action</em>Analyzing 83 challenges, designing and building the system</span><span><em>Result</em>Reached the approval process for a prototype</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-hr" data-fields="hr dt"><span class="img" style="background-image:url(assets/hr-analytics.jpg)"><span class="st">Published</span></span><span class="bd"><b class="h">Dashboards and HR tools</b><span class="flow"><span><em>Problem</em>Scattered data and slow decisions</span><span><em>Action</em>An analytics dashboard and needs and impact templates</span><span><em>Result</em>Templates put into use in the department’s programs</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-isps" data-fields="dt od"><span class="img" style="background-image:url(assets/isps-hall.jpg)"><span class="st">Conceptual design</span></span><span class="bd"><b class="h">ISPS: the enterprise systems suite</b><span class="flow"><span><em>Problem</em>Separate systems and duplicated data</span><span><em>Action</em>Architecture for 25 systems in five layers</span><span><em>Result</em>A unified framework; CTMS built from it first</span></span></span></button>
+    <button class="v2case" type="button" data-go="case-nawat" data-fields="dt lead"><span class="img" style="background-image:url(assets/hackathon-first-place.jpg)"><span class="st">First place</span></span><span class="bd"><b class="h">Nawat Hackathon and the app</b><span class="flow"><span><em>Problem</em>Parents’ concern about the student’s journey</span><span><em>Action</em>Building the prototype and presenting the pitch, then developing the app</span><span><em>Result</em>First place with the team</span></span></span></button>
   </div>
 </section>
 
@@ -2217,6 +2243,15 @@ window.PORTFOLIO_EN={
     od:{why:'أحلل الإجراءات وأعيد تصميمها في أنظمة عملية: <mark>83 تحديًا تشغيليًا</mark> تحولت إلى تصميم CTMS، و<mark>107 نماذج تشغيلية</mark> لجمعية، وهيكلة 25 نظامًا في منظومة ISPS.',tags:['تحليل العمليات','إعادة تصميم الإجراءات','النماذج التشغيلية','تصميم نظم الأعمال','أتمتة الإجراءات'],cv:'dt',ev:['ctms','assoc','isps']}
   };
   var EV={leadership:['قيادة مدرسة ثم فرع إشراف','نحو 32 مدرسة، وترقية بعد عام'],assoc:['التأسيس المؤسسي لجمعية','32 وثيقة، و107 نماذج، و33 مبادرة'],ctms:['CTMS لإدارة التدريب التعاوني','83 تحديًا، ونظام مبني على Power Platform'],hr:['لوحات وأدوات الموارد البشرية','لوحة تحليلات منشورة، ونماذج استُخدمت فعليًا'],isps:['ISPS: منظومة النظم المؤسسية','هيكلة 25 نظامًا في خمس طبقات'],nawat:['هاكاثون «نواة»','المركز الأول ضمن الفريق، والنموذج الأولي والعرض']};
+  if(EN){
+    ROLES={
+      hr:{why:'In my leadership roles I handled <mark>recruitment, interviews, onboarding, and performance evaluation</mark>. I hold a Higher Diploma in Human Resources <mark>with a GPA of 4.85/5</mark>, and the training needs and program impact templates I prepared were put into use.',tags:['Recruitment and selection','Onboarding','Performance management','Training needs and impact','HR analytics'],cv:'hr',ev:['hr','leadership','ctms']},
+      dt:{why:'I prepared a 2025 → 2029 strategic plan <mark>with 33 initiatives and 25 KPIs</mark>, and I design and build digital management systems on <mark>Power Platform</mark>. I hold the Digital Transformation Leaders Fellowship with Excellent (97%).',tags:['Strategic planning','KPIs','Digital transformation plans','Power Platform','Data analysis'],cv:'dt',ev:['assoc','ctms','nawat']},
+      lead:{why:'I ran a girls’ school for a year, then was promoted to lead one of the seven supervisory branches in Riyadh, <mark>covering about 32 schools</mark>, managing planning, HR, and budgets, and leading <mark>the branch’s alignment with the new unified structure</mark>.',tags:['Team leadership','Change management','Governance and policy','Performance and quality','Budgets'],cv:'ol',ev:['leadership','assoc','nawat']},
+      od:{why:'I analyze procedures and redesign them into working systems: <mark>83 operational challenges</mark> became the CTMS design, <mark>107 operational templates</mark> for an association, and an architecture for 25 systems in ISPS.',tags:['Process analysis','Procedure redesign','Operational templates','Business systems design','Process automation'],cv:'dt',ev:['ctms','assoc','isps']}
+    };
+    EV={leadership:['School principal, then branch lead','About 32 schools, promoted after one year'],assoc:['Institutional establishment of an association','32 documents, 107 templates, 33 initiatives'],ctms:['CTMS for cooperative training','83 challenges, built on Power Platform'],hr:['Dashboards and HR tools','A published analytics dashboard and templates in use'],isps:['ISPS: the enterprise systems suite','Architecture for 25 systems in five layers'],nawat:['Nawat Hackathon','First place with the team; the prototype and the pitch']};
+  }
   var fit=document.getElementById('fit');
   function showField(k,animate){
     var r=ROLES[k]; if(!r||!fit)return;
@@ -2224,7 +2259,7 @@ window.PORTFOLIO_EN={
       document.getElementById('why').innerHTML=r.why;
       document.getElementById('ftags').innerHTML=r.tags.map(function(t){return '<span>'+t+'</span>'}).join('');
       document.getElementById('fcv').href='https://go2top-sa.github.io/My-CV/'+r.cv+'/';
-      document.getElementById('fev').innerHTML=r.ev.map(function(id,i){var e=EV[id];return '<button type="button" data-go="case-'+id+'"><span class="n">0'+(i+1)+'</span><span><b>'+e[0]+'</b><small>'+e[1]+'</small></span><span class="go">←</span></button>'}).join('');
+      document.getElementById('fev').innerHTML=r.ev.map(function(id,i){var e=EV[id];return '<button type="button" data-go="case-'+id+'"><span class="n">0'+(i+1)+'</span><span><b>'+e[0]+'</b><small>'+e[1]+'</small></span><span class="go">'+(EN?'→':'←')+'</span></button>'}).join('');
       fit.classList.remove('fade');
     }
     if(!animate||reduce)fill(); else{fit.classList.add('fade');setTimeout(fill,220)}
@@ -2234,6 +2269,7 @@ window.PORTFOLIO_EN={
 
   // rotating headline badges
   var HL=['القيادة والتميز المؤسسي','إدارة وتطوير الموارد البشرية','التخطيط الاستراتيجي والتحول الرقمي','تطوير العمليات وتصميم نظم الأعمال','مؤسِّسة go2top'],hi=0;
+  if(EN)HL=['Organizational Leadership & Excellence','HR Management & Development','Strategic Planning & Digital Transformation','Process Improvement & Business Systems Design','Founder of go2top'];
   var slots=[].slice.call(document.querySelectorAll('.badge.ph'));
   function paint(){slots.forEach(function(el,k){var t=HL[(hi+k)%HL.length];el.textContent=t;el.classList.toggle('gold',t.indexOf('go2top')>-1)})}
   if(slots.length){paint(); if(!reduce)setInterval(function(){if(document.hidden)return;slots.forEach(function(el){el.classList.add('out')});setTimeout(function(){hi=(hi+1)%HL.length;paint();slots.forEach(function(el){el.classList.remove('out')})},400)},3200);}
@@ -2242,6 +2278,7 @@ window.PORTFOLIO_EN={
 
   // leadership path in Experience
   var STOPS=[['1428هـ','مشرفة تعليمية','الإشراف على الأداء التعليمي ودعم المعلمات، ومتابعة البرامج وتقييمها.','2','سنتان'],['1433هـ','مديرة مدرسة نسائية','القيادة الإدارية والتعليمية للمدرسة، وخطط صارت تنتج نتائج قابلة للقياس.','1','عام ثم ترقية'],['1434هـ','مديرة فرع إشراف','أحد سبعة فروع في الرياض: فرق الإشراف، والموارد البشرية، والموازنات، ومواءمة الفرع مع التنظيم الموحد.','32','مدرسة'],['1433 ← 1441هـ','تدريس جامعي','ثماني سنوات في جامعة الإمام محمد بن سعود الإسلامية، مع إعداد المحتوى والاختبارات والتقارير.','13,000','تسجيل تقديري'],['1447هـ','وزارة التعليم','تحليل التحديات وتصميم CTMS، وإعداد Mini Jam، والمركز الأول ضمن الفريق في «نواة».','83','تحديًا'],['2025 ← 2026','تأسيس جمعية','إدارة مشروع التأسيس المؤسسي: التخطيط والحوكمة والموارد البشرية والتحول الرقمي.','107','نماذج'],['2026','go2top','تأسيس مشروع مؤسسي في الموارد البشرية والتميز المؤسسي والتحول الرقمي، وزمالة قادة التحول الرقمي.','97%','تقدير الزمالة']];
+  if(EN)STOPS=[['1428 AH','Educational supervisor','Supervising teaching performance, supporting teachers, and monitoring programs.','2','years'],['1433 AH','Girls’ school principal','Administrative and educational leadership, with plans that produced measurable results.','1','year, then promotion'],['1434 AH','Supervisory branch manager','One of seven branches in Riyadh: supervision teams, HR, budgets, and alignment with the unified structure.','32','schools'],['1433 → 1441 AH','University teaching','Eight years at Imam Mohammad Ibn Saud Islamic University, with course content, exams, and reports.','13,000','estimated enrollments'],['1447 AH','Ministry of Education','Analyzing challenges and designing CTMS, preparing Mini Jam, and first place with the team at Nawat.','83','challenges'],['2025 → 2026','Association establishment','Managing the institutional establishment project: planning, governance, HR, and digital transformation.','107','templates'],['2026','go2top','Founding a venture in HR, organizational excellence, and digital transformation, and the DT Leaders Fellowship.','97%','fellowship grade']];
   var stops=document.getElementById('stops'),cur=2;
   function setStop(i){cur=i;var s=STOPS[i];[].forEach.call(stops.querySelectorAll('.stop'),function(b){b.setAttribute('aria-current',+b.dataset.stop===i)});document.getElementById('sbar').style.width=(i/(STOPS.length-1)*88)+'%';document.getElementById('sdetail').innerHTML='<div><h3>'+s[1]+' <small style="font-size:14px;color:var(--ink-soft)">'+s[0]+'</small></h3><p>'+s[2]+'</p></div><div class="big">'+s[3]+'<small>'+s[4]+'</small></div>'}
   if(stops){stops.insertAdjacentHTML('beforeend',STOPS.map(function(s,i){return '<button class="stop" type="button" data-stop="'+i+'"><span class="dot">'+(i+1)+'</span><span class="t">'+s[1]+'</span><small>'+s[0]+'</small></button>'}).join(''));setStop(cur);}
@@ -2289,6 +2326,7 @@ window.PORTFOLIO_EN={
   }
   new MutationObserver(onShow).observe(main,{subtree:true,attributes:true,attributeFilter:['hidden']});
 
+  if(EN){var ft=document.querySelector('.v2foot');if(ft){ft.setAttribute('aria-label','Footer');var fb=ft.querySelector('.ft-id b');if(fb)fb.textContent='Haneen Al Zakari';var sp=ft.querySelectorAll('.ft-id span');if(sp[0])sp[0].textContent='Organizational Leadership & Excellence · HR Management & Development · Strategic Planning & Digital Transformation';if(sp[1])sp[1].textContent='This portfolio shows the latest work completed as of November 2026';var fc=ft.querySelector('.ft-copy');if(fc)fc.textContent='© 2026 Haneen Al Zakari · Portfolio'}}
   // first-visit guide, and the ? button to open it again
   var G=EN?[
     ['Moving between sections','The numbered bar at the top stays with you on every page. Tap any station to open its section; the gold station is where you are.','<div class="mini"><i>01</i><s></s><i>02</i><s></s><i class="c">03</i><s></s><i>04</i><s></s><i>05</i></div>'],
