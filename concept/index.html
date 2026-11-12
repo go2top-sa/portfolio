@@ -60,6 +60,9 @@ button{font:inherit}
 .badge span{font-size:12px;color:var(--muted);line-height:1.4}
 .badge.g b{color:var(--gold)}
 .badge.t b{color:var(--terra)}
+.badge.ph{min-width:0;max-width:210px;padding:12px 16px;font-family:var(--f-head);font-size:19px;font-weight:700;line-height:1.35;color:var(--lav-d);transition:opacity .4s,transform .4s}
+.badge.ph.out{opacity:0;transform:translateY(8px) scale(.96)}
+.badge.ph.gold{color:#7A5C10;background:var(--gold-t);border-color:#E7D4AE}
 .b1{top:4%;right:-4%}.b2{top:40%;left:-8%;animation-delay:-2s}.b3{bottom:8%;right:2%;animation-delay:-4s}
 @keyframes float{50%{transform:translateY(-10px)}}
 .hills{position:absolute;bottom:0;inset-inline:0;z-index:1;line-height:0}
@@ -146,6 +149,10 @@ button{font:inherit}
 .end h2{font-family:var(--f-head);font-size:32px;margin:0;flex:1 1 320px}
 .end .btn{border-color:#fff;color:#fff}
 .end .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+.end .cvs{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-family:var(--f-ui);font-size:14.5px}
+.end .cvs span{opacity:.8}
+.end .cvs a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px}
+.end .cvs a:hover{border-color:var(--gold)}
 .end svg{position:absolute;bottom:0;inset-inline:0;width:100%;height:110px;z-index:1}
 .note{font-family:var(--f-ui);font-size:12.5px;color:var(--muted);text-align:center;margin:14px 0 0}
 
@@ -188,7 +195,6 @@ button{font:inherit}
       <span class="kicker"><i></i>متاحة للفرص القيادية</span>
       <h1>حنين الزكري</h1>
       <div class="en">Haneen Al Zakari</div>
-      <div class="rot">قيادة <b id="rot">التميز المؤسسي</b></div>
       <p class="def">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة go2top.</p>
       <div class="btns">
         <a class="btn solid" href="#roles">المعلومات وفق المجال ←</a>
@@ -205,9 +211,9 @@ button{font:inherit}
           <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
         </svg>
       </div>
-      <div class="badge b1"><b>+10</b><span>سنوات في القيادة والإشراف</span></div>
-      <div class="badge b2 g"><b>4.85</b><span>الدبلوم العالي في الموارد البشرية</span></div>
-      <div class="badge b3 t"><b>97%</b><span>زمالة قادة التحول الرقمي</span></div>
+      <div class="badge ph b1"></div>
+      <div class="badge ph b2"></div>
+      <div class="badge ph b3"></div>
     </div>
   </div>
   <div class="hills" aria-hidden="true"><svg viewBox="0 0 1440 170" preserveAspectRatio="none"><path d="M0 170 L0 80 Q150 40 320 70 T640 54 T980 72 T1440 56 L1440 170Z" fill="#CBC1D8" opacity=".45"/><path d="M0 170 L0 104 Q200 70 430 98 T860 86 T1440 100 L1440 170Z" fill="#A796BE" opacity=".45"/><path d="M0 170 L0 130 Q260 104 560 126 T1100 130 T1440 120 L1440 170Z" fill="#7D8167" opacity=".55"/></svg></div>
@@ -218,10 +224,10 @@ button{font:inherit}
     <h2>المعلومات وفق المجال</h2>
     <p class="sub">اختيار المجال يعرض الخبرة المرتبطة به، وأبرز الأدلة، والسيرة المتخصصة.</p>
     <div class="chips" role="group" aria-label="المجالات">
-      <button class="chip" type="button" data-role="hr" aria-pressed="true">الموارد البشرية</button>
-      <button class="chip" type="button" data-role="dt" aria-pressed="false">التحول الرقمي</button>
-      <button class="chip" type="button" data-role="lead" aria-pressed="false">القيادة والإدارة</button>
-      <button class="chip" type="button" data-role="od" aria-pressed="false">تطوير الأعمال والتميز المؤسسي</button>
+      <button class="chip" type="button" data-role="hr" aria-pressed="true">إدارة وتطوير الموارد البشرية</button>
+      <button class="chip" type="button" data-role="dt" aria-pressed="false">التخطيط الاستراتيجي والتحول الرقمي</button>
+      <button class="chip" type="button" data-role="lead" aria-pressed="false">القيادة والتميز المؤسسي</button>
+      <button class="chip" type="button" data-role="od" aria-pressed="false">تطوير العمليات وتصميم نظم الأعمال</button>
     </div>
     <div class="fit" id="fit" aria-live="polite">
       <div>
@@ -276,6 +282,7 @@ button{font:inherit}
     <h2>لنتحدث عن الدور الذي يهمك أو يفيدك</h2>
     <a class="btn solid" href="mailto:hanin.al.zakari@gmail.com">hanin.al.zakari@gmail.com</a>
     <a class="btn" href="https://www.linkedin.com/in/haneen-al-zakari" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="cvs"><span>السير الذاتية:</span><a href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">القيادة والإدارة</a><a href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">الموارد البشرية</a><a href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">التحول الرقمي</a><a href="https://go2top-sa.github.io/My-CV/quran/" target="_blank" rel="noopener">القرآن وعلومه</a></div>
   </div>
   <svg viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 L0 50 Q200 10 430 40 T860 30 T1440 46 L1440 110Z" fill="#78658D" opacity=".6"/><path d="M0 110 L0 74 Q260 44 560 70 T1100 72 T1440 64 L1440 110Z" fill="#7D8167"/><path d="M900 110 Q1100 60 1440 80 L1440 110Z" fill="#B16D4C"/></svg>
 </section>
@@ -285,10 +292,10 @@ button{font:inherit}
 (function(){
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ROLES={
-    lead:{why:'أدرتُ مدرسة نسائية عامًا، ثم رُقّيت لقيادة أحد فروع الإشراف السبعة في الرياض <mark>بنطاق نحو 32 مدرسة</mark>، وأدرتُ فيه التخطيط والموارد البشرية والموازنات، وقدتُ <mark>مواءمة الفرع مع التنظيم الموحد الجديد</mark>.',tags:['التخطيط الاستراتيجي والتشغيلي','قيادة الفرق','إدارة التغيير','الموازنات','متابعة الأداء'],cv:'ol',ev:['leadership','assoc','nawat']},
+    lead:{why:'أدرتُ مدرسة نسائية عامًا، ثم رُقّيت لقيادة أحد فروع الإشراف السبعة في الرياض <mark>بنطاق نحو 32 مدرسة</mark>، وأدرتُ فيه التخطيط والموارد البشرية والموازنات، وقدتُ <mark>مواءمة الفرع مع التنظيم الموحد الجديد</mark>.',tags:['قيادة الفرق','إدارة التغيير','الحوكمة والسياسات','متابعة الأداء والجودة','الموازنات'],cv:'ol',ev:['leadership','assoc','nawat']},
     hr:{why:'مارستُ في أدواري القيادية <mark>الاستقطاب والمقابلات والتهيئة وتقييم الأداء</mark>، وأحمل الدبلوم العالي في الموارد البشرية <mark>بمعدل 4.85 من 5</mark>، وأعددتُ نماذج لقياس الاحتياج التدريبي وأثر البرامج استُخدمت فعليًا.',tags:['الاستقطاب والاختيار','التهيئة','إدارة الأداء','الاحتياج التدريبي وقياس الأثر','تحليلات الموارد البشرية'],cv:'hr',ev:['hr','leadership','ctms']},
-    dt:{why:'أصمم أنظمة إدارية رقمية وأبنيها: <mark>CTMS على Power Platform</mark>، وهيكلة <mark>25 نظامًا</mark> في منظومة ISPS، ومنصة رقمية لجمعية. وأحمل زمالة قادة التحول الرقمي بتقدير ممتاز (97%).',tags:['Power Platform','تحليل المتطلبات','تصميم النظم','أتمتة الإجراءات','لوحات المؤشرات'],cv:'dt',ev:['ctms','isps','nawat']},
-    od:{why:'أدرتُ مشروع تأسيس مؤسسي سلّم <mark>32 وثيقة في 14 قسمًا و107 نماذج تشغيلية</mark>، وخطة استراتيجية 2025 ← 2029 <mark>بـ33 مبادرة و25 مؤشرًا</mark>، مع أطر الحوكمة والموارد البشرية والعمليات.',tags:['التشخيص المؤسسي','الحوكمة والسياسات','الهياكل والأدوار','مؤشرات الأداء','الجودة والتحسين المستمر'],cv:'ol',ev:['assoc','isps','leadership']}
+    dt:{why:'أعددتُ خطة استراتيجية 2025 ← 2029 <mark>بـ33 مبادرة و25 مؤشر أداء</mark>، وأصمم أنظمة إدارية رقمية وأبنيها على <mark>Power Platform</mark>. وأحمل زمالة قادة التحول الرقمي بتقدير ممتاز (97%).',tags:['التخطيط الاستراتيجي','مؤشرات الأداء','خطط التحول الرقمي','Power Platform','تحليل البيانات'],cv:'dt',ev:['assoc','ctms','nawat']},
+    od:{why:'أحلل الإجراءات وأعيد تصميمها في أنظمة عملية: <mark>83 تحديًا تشغيليًا</mark> تحولت إلى تصميم CTMS، و<mark>107 نماذج تشغيلية</mark> لجمعية، وهيكلة 25 نظامًا في منظومة ISPS.',tags:['تحليل العمليات','إعادة تصميم الإجراءات','النماذج التشغيلية','تصميم نظم الأعمال','أتمتة الإجراءات'],cv:'dt',ev:['ctms','assoc','isps']}
   };
   var EV={
     leadership:['قيادة مدرسة ثم فرع إشراف','نحو 32 مدرسة، وترقية بعد عام'],
@@ -319,8 +326,11 @@ button{font:inherit}
   setRole('hr',true);
 
   // rotating line
-  var words=['التميز المؤسسي','الموارد البشرية','التخطيط الاستراتيجي','التحول الرقمي','تصميم نظم الأعمال'],wi=0,rot=document.getElementById('rot');
-  if(!reduce)setInterval(function(){rot.classList.add('out');setTimeout(function(){wi=(wi+1)%words.length;rot.textContent=words[wi];rot.classList.remove('out')},350)},2600);
+  var HL=['القيادة والتميز المؤسسي','إدارة وتطوير الموارد البشرية','التخطيط الاستراتيجي والتحول الرقمي','تطوير العمليات وتصميم نظم الأعمال','مؤسِّسة go2top'],hi=0;
+  var slots=[].slice.call(document.querySelectorAll('.badge.ph'));
+  function paint(){slots.forEach(function(el,k){var t=HL[(hi+k)%HL.length];el.textContent=t;el.classList.toggle('gold',t.indexOf('go2top')>-1)})}
+  paint();
+  if(!reduce)setInterval(function(){slots.forEach(function(el){el.classList.add('out')});setTimeout(function(){hi=(hi+1)%HL.length;paint();slots.forEach(function(el){el.classList.remove('out')})},400)},3200);
 
   // counters
   function count(el){
