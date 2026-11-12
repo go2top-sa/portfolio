@@ -9,7 +9,7 @@
 <meta name="description" content="ملف أعمال حنين الزكري: الخبرات والمؤهلات والأنظمة والمنتجات والمشاريع">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap">
 <style>
 /* Layout: a living 3D landscape (go2top hills + Tuwaiq) fills the window; identity rail and one content panel float above it as frosted glass. Single light look by design. */
 :root{
@@ -539,6 +539,11 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 .guide .bk{font-family:var(--f-ui);font-size:14px;font-weight:700;color:#fff;background:var(--lav-deep);padding:10px 18px;border-radius:999px}
 .guide .bk b{color:var(--gold)}
 @media (prefers-reduced-motion:reduce){.badge,.kicker i{animation:none!important}}
+
+.kicker.upd{background:var(--gold-tint);color:#7A5C10}
+.kicker.upd::before{content:none}
+.v2foot .ft-id span.upd{margin-top:2px;color:var(--olive);font-weight:700}
+#contact .cv-grid{margin-top:8px}
 </style>
 </head>
 <body>
@@ -564,7 +569,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 <section class="panel" id="home" data-label="النبذة" data-group="home" data-glabel="النبذة">
   <div class="v2hero">
     <div class="v2hero-txt">
-      <span class="kicker"><i></i>متاحة للفرص القيادية</span>
+      <span class="kicker"><i></i>متاحة للفرص القيادية</span> <span class="kicker upd">أحدث ما أُنجز · نوفمبر 2026</span>
       <h1>حنين الزكري</h1>
       <div class="en latin">Haneen Al Zakari</div>
       <p class="def">متخصصة في إدارة الموارد البشرية والتطوير المؤسسي والتحول الرقمي وتصميم نظم الأعمال، أبني حلولًا وأنظمة إدارية رقمية، ومؤسِّسة go2top.</p>
@@ -577,7 +582,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
       <div class="disc">
         <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
           <circle cx="290" cy="120" r="46" fill="#F4E9D6"/>
-          <g class="layer" data-d="8"><image href="assets/tuwaiq.png" x="-10" y="180" width="420" height="128" preserveAspectRatio="xMidYMax meet"/></g>
+          <g class="layer" data-d="8"><image href="assets/tuwaiq.webp" x="-10" y="180" width="420" height="128" preserveAspectRatio="xMidYMax meet"/></g>
           <g class="layer" data-d="20"><path d="M-20 350 Q100 300 200 330 T420 320 L420 420 L-20 420Z" fill="#C7A16B"/></g>
           <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
         </svg>
@@ -859,13 +864,13 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="systems" data-group="cases" data-glabel="دراسات الحالة" data-label="الأنظمة والتطبيقات" hidden>
+<section class="panel" id="systems" data-group="proj" data-glabel="المشاريع والتكريم" data-label="الأنظمة والتطبيقات" hidden>
   <div class="eyebrow">الأنظمة والتطبيقات</div>
   <h2>أنظمة بنيتها</h2>
   <p class="lede">أنظمة وتطبيقات وأدوات بين مبني ومنشور ومصمم، تُدار في منظمة go2top-sa على GitHub. لكل عمل حالته الفعلية.</p>
   <div class="filters" id="sysFilters" role="group" aria-label="تصفية حسب الحالة"></div>
   <div class="grid" id="sysGrid"></div>
-  <h3>معايير هندسية أطبقها على كل تطبيق</h3>
+  <h3>ممارسات هندسية وأمنية أطبقها بحسب متطلبات كل تطبيق</h3>
   <ul class="plain">
     <li>معمارية v9: بلا onclick مضمّن، ونوافذ تأكيد بديلة، وتفويض الأحداث.</li>
     <li>أمان RLS في Supabase بربط كل سجل بصاحبه.</li>
@@ -874,7 +879,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="academic" data-group="cases" data-glabel="دراسات الحالة" data-label="المشاريع الأكاديمية" hidden>
+<section class="panel" id="academic" data-group="proj" data-glabel="المشاريع والتكريم" data-label="المشاريع الأكاديمية" hidden>
   <div class="eyebrow">المشاريع الأكاديمية والتطبيقية</div>
   <h2>تطبيقات في التحول الرقمي والذكاء الاصطناعي</h2>
   <p class="lede">ستة مشاريع تطبيقية أُنجزت ضمن متطلبات أكاديمية، أبرزها تصور أولي لاستراتيجية تكامل التحول الرقمي لجمعية البر الأهلية، بنموذج تفاعلي منشور.</p>
@@ -896,7 +901,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="gallery" data-group="cases" data-glabel="دراسات الحالة" data-label="معرض الأعمال" hidden>
+<section class="panel" id="gallery" data-group="proj" data-glabel="المشاريع والتكريم" data-label="معرض الأعمال" hidden>
   <div class="eyebrow">معرض الأعمال</div>
   <h2>نماذج من الأعمال</h2>
   <p class="lede">لقطات من منصات منشورة، وتصاميم، وشهادات موثقة. تُكبَّر أي صورة بالضغط عليها.</p>
@@ -905,7 +910,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <div class="gallery" id="galGrid"></div>
 </section>
 
-<section class="panel" id="education" data-group="qual" data-glabel="المؤهلات والتكريم" data-label="المؤهلات" hidden>
+<section class="panel" id="education" data-group="qual" data-glabel="المؤهلات والشهادات" data-label="المؤهلات" hidden>
   <div class="eyebrow">المؤهلات الأكاديمية</div>
   <h2>مسار أكاديمي يجمع الإدارة والتقنية</h2>
   <p class="lede">المعدلات من 5، إلا ما ذُكر نسبةً مئوية.</p>
@@ -927,7 +932,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="certificates" data-group="qual" data-glabel="المؤهلات والتكريم" data-label="الشهادات والدورات" hidden>
+<section class="panel" id="certificates" data-group="qual" data-glabel="المؤهلات والشهادات" data-label="الشهادات والدورات" hidden>
   <div class="eyebrow">الشهادات والدورات الاحترافية</div>
   <h2>تأهيل في التقنية والإدارة والبيانات</h2>
   <p class="lede">شهادتان موثقتان من Cisco، وتخصص Microsoft عبر Coursera من أربع دورات، وعشر دورات حضورية وورشتان من مركز المسار الاحترافي للتدريب، وبرنامجا إعداد مكتملان بانتظار الاختبار.</p>
@@ -937,7 +942,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <p class="note">الدورات التي تحمل اسم شهادة مهنية (PMP، GRCP، Lean Six Sigma) شهادات إتمام دورة، وتُكتب بعدد ساعاتها. دورة PMP تستوفي شرط 35 ساعة تعليمية لاختبار PMP.</p>
 </section>
 
-<section class="panel" id="awards" data-group="qual" data-glabel="المؤهلات والتكريم" data-label="الجوائز والتكريم" hidden>
+<section class="panel" id="awards" data-group="proj" data-glabel="المشاريع والتكريم" data-label="الجوائز والتكريم" hidden>
   <div class="eyebrow">الجوائز والتكريمات</div>
   <h2>المركز الأول في هاكاثون «نواة»</h2>
   <p class="lede">هاكاثون نظمته الإدارة العامة لتطوير الموارد البشرية في وزارة التعليم (1447هـ)، مع تكريمين منفصلين.</p>
@@ -961,17 +966,6 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="cvs" data-group="cvs" data-glabel="السير الذاتية" data-label="السير الذاتية" hidden>
-  <div class="eyebrow">السير الذاتية المتخصصة</div>
-  <h2>ثلاث نسخ بحسب المسار</h2>
-  <p class="lede">لكل مسار سيرة مستقلة على الويب، وفي كل صفحة زر طباعة يحفظها PDF.</p>
-  <div class="grid cv-grid">
-    <div class="card"><span class="chip latin" style="width:fit-content">ol</span><h4>القيادة والإدارة</h4><p>القيادة الإدارية، والتخطيط، والموارد البشرية، وإدارة التغيير، للمناصب القيادية.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
-    <div class="card"><span class="chip latin" style="width:fit-content">hr</span><h4>الموارد البشرية</h4><p>إدارة الموارد البشرية وتطويرها: الاستقطاب، والتهيئة، والأداء، والتدريب، وأدوات التحليل.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
-    <div class="card"><span class="chip latin" style="width:fit-content">dt</span><h4>التحول الرقمي</h4><p>التحول الرقمي وتصميم نظم الأعمال، والأنظمة والمنتجات الموجودة في ملف الأعمال.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
-  </div>
-</section>
-
 <section class="panel" id="go2top" data-group="g2t" data-glabel="go2top" data-label="go2top" hidden>
   <div class="eyebrow">go2top | إلى القمة</div>
   <h2>ممكّن التحول الرقمي والتميّز المؤسسي</h2>
@@ -983,7 +977,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </dl>
     <div class="split">
     <div class="card"><span class="st pub">طُوّر فعليًا</span><ul class="plain">
-      <li>السلسلة الذهبية: دليل و31 منتجًا بثلاث صيغ، جاهزة للبيع.</li>
+      <li>السلسلة الذهبية: دليل و31 منتجًا بثلاث صيغ، مكتملة.</li>
       <li>خمس أجندات احترافية رقمية.</li>
       <li>لوحة تحليلات الموارد البشرية، وتطبيقات إنتاجية منشورة.</li>
       <li>المقر الرقمي التوأم، قيد التطوير ببيانات تجريبية.</li>
@@ -1030,7 +1024,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
     <div class="grid" style="margin-top:14px">
       <div class="card"><h4>تكامل بين الأنظمة</h4><p>المبادرات الاستراتيجية في SEMS تتحول إلى مشاريع في POMS، ورواتب HRMS تُعالَج في EFPMS، ووثائق السياسات في EDRMS يستهلكها GRCMS للتدقيق والامتثال.</p></div>
       <div class="card"><h4>وثيقة لكل نظام</h4><p>لكل نظام هيكلة وإطار تنفيذي: الملخص التنفيذي، ومحاور الألم، والمخاطر، والقيمة، والنطاق، والتكاملات، وأداة <span class="latin">Power Platform</span> المقابلة.</p></div>
-      <div class="card"><h4>CTMS النواة التشغيلية</h4><p>نظام إدارة التدريب التعاوني والكفاءات، نشأ من 83 تحديًا تشغيليًا رُصدت ميدانيًا، ولا يوجد له منافس عربي. دراسة جدواه: عائد 220% خلال 24 شهرًا، واسترداد خلال 8 إلى 14 شهرًا، وتنفيذ في 16 أسبوعًا.</p></div>
+      <div class="card"><h4>CTMS النواة التشغيلية</h4><p>نظام إدارة التدريب التعاوني والكفاءات، نشأ من 83 تحديًا تشغيليًا رُصدت ميدانيًا. تتوقع دراسة جدواه، وفق افتراضاتها، عائدًا بنسبة 220% خلال 24 شهرًا، واستردادًا خلال 8 إلى 14 شهرًا، وتنفيذًا في 16 أسبوعًا.</p></div>
       <div class="card"><h4>NDTMS للقطاع غير الربحي</h4><p>نظام تحول رقمي مصمم لمتطلبات الجمعيات: الحوكمة، والإفصاح للمانحين، والتقارير التنظيمية، وهي فجوة لا يغطيها حل عربي متخصص.</p></div>
     </div>
     <p class="note">دراسة جدوى وحالة عمل للمنظومة في عرض من 163 شريحة، وعرض استثماري ثنائي اللغة.</p>
@@ -1067,7 +1061,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 
   <div class="eyebrow">المنتجات الرقمية | go2top</div>
   <h2>السلسلة الذهبية</h2>
-  <p class="lede">دليل مجاني و31 منتجًا بثلاث صيغ: Excel وGoogle Sheets والتطبيق التفاعلي، وهي جاهزة للبيع.</p>
+  <p class="lede">دليل مجاني و31 منتجًا بثلاث صيغ: Excel وGoogle Sheets والتطبيق التفاعلي، وهي مكتملة.</p>
     <div class="scg" style="grid-template-columns:repeat(2,minmax(0,1fr));margin:6px 0 18px">
     <button class="sc" type="button" data-go="gallery"><img src="assets/golden-04-performance.jpg" alt="" loading="lazy"><span>مدير الأداء الشخصي: الصفحة الرئيسية</span></button>
     <button class="sc" type="button" data-go="gallery"><img src="assets/golden-student-dashboard.jpg" alt="" loading="lazy"><span>لوحة التفوق الدراسي</span></button>
@@ -1090,7 +1084,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="contact" data-group="contact" data-glabel="التواصل" data-label="التواصل" hidden>
+<section class="panel" id="contact" data-group="contact" data-glabel="التواصل والسير الذاتية" data-label="التواصل" hidden>
   <div class="eyebrow">التواصل</div>
   <h2>للتواصل والتعاون</h2>
   <dl class="facts" style="max-width:640px">
@@ -1100,6 +1094,12 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
     <div><dt>السير الذاتية</dt><dd class="cvlinks"><a href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">القيادة والإدارة</a><a href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">الموارد البشرية</a><a href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">التحول الرقمي</a><a href="https://go2top-sa.github.io/My-CV/quran/" target="_blank" rel="noopener">القرآن وعلومه</a></dd></div>
     <div><dt>المدينة</dt><dd>الرياض، المملكة العربية السعودية</dd></div>
   </dl>
+  <h3>السير الذاتية المتخصصة</h3>
+  <div class="grid cv-grid">
+    <div class="card"><span class="chip latin" style="width:fit-content">ol</span><h4>القيادة والإدارة</h4><p>القيادة الإدارية، والتخطيط، والموارد البشرية، وإدارة التغيير، للمناصب القيادية.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
+    <div class="card"><span class="chip latin" style="width:fit-content">hr</span><h4>الموارد البشرية</h4><p>إدارة الموارد البشرية وتطويرها: الاستقطاب، والتهيئة، والأداء، والتدريب، وأدوات التحليل.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
+    <div class="card"><span class="chip latin" style="width:fit-content">dt</span><h4>التحول الرقمي</h4><p>التحول الرقمي وتصميم نظم الأعمال، والأنظمة والمنتجات الموجودة في ملف الأعمال.</p><div class="bottom"><span class="chip">عربي · طباعة وPDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">عرض السيرة ←</a></div></div>
+  </div>
 </section>
 
   </main>
@@ -1108,7 +1108,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <div class="ft-in">
     <div class="ft-id">
       <svg width="46" height="36" viewBox="0 0 46 36" aria-hidden="true"><path d="M2 32L16 12l9 20H2z" fill="#78658D" opacity=".85"/><path d="M25 32L33 16l11 16H25z" fill="#B16D4C" opacity=".6"/><path d="M2 32L14 8l7 12 5-9 8 14 8-5" stroke="#4E4173" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><b>حنين الزكري</b><span>القيادة والتميز المؤسسي · إدارة وتطوير الموارد البشرية · التخطيط الاستراتيجي والتحول الرقمي</span></div>
+      <div><b>حنين الزكري</b><span>القيادة والتميز المؤسسي · إدارة وتطوير الموارد البشرية · التخطيط الاستراتيجي والتحول الرقمي</span><span class="upd">يعرض الملف أحدث ما أُنجز حتى نوفمبر 2026</span></div>
     </div>
     <div class="ft-links">
       <a href="mailto:hanin.al.zakari@gmail.com" class="latin">hanin.al.zakari@gmail.com</a>
@@ -1408,13 +1408,13 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="systems" data-group="cases" data-glabel="Case studies" data-label="Systems and apps" hidden>
+<section class="panel" id="systems" data-group="proj" data-glabel="Projects and honors" data-label="Systems and apps" hidden>
   <div class="eyebrow">Systems and applications</div>
   <h2>Systems I built</h2>
   <p class="lede">Systems, apps, and tools that are built, published, or designed, managed in the go2top-sa organization on GitHub. Each shows its actual status.</p>
   <div class="filters" id="sysFilters" role="group" aria-label="Filter by status"></div>
   <div class="grid" id="sysGrid"></div>
-  <h3>Engineering standards I apply to every app</h3>
+  <h3>Engineering and security practices I apply as each app requires</h3>
   <ul class="plain">
     <li>The v9 architecture: no inline onclick, custom confirmation dialogs, and event delegation.</li>
     <li>Supabase RLS security, tying every record to its owner.</li>
@@ -1423,7 +1423,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="academic" data-group="cases" data-glabel="Case studies" data-label="Academic projects" hidden>
+<section class="panel" id="academic" data-group="proj" data-glabel="Projects and honors" data-label="Academic projects" hidden>
   <div class="eyebrow">Academic and applied projects</div>
   <h2>Applications in digital transformation and AI</h2>
   <p class="lede">Six applied projects completed as academic requirements, chief among them an initial concept for a digital transformation integration strategy for Al-Birr Charitable Society, with a published interactive model.</p>
@@ -1445,7 +1445,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="gallery" data-group="cases" data-glabel="Case studies" data-label="Work gallery" hidden>
+<section class="panel" id="gallery" data-group="proj" data-glabel="Projects and honors" data-label="Work gallery" hidden>
   <div class="eyebrow">Work gallery</div>
   <h2>Selected work</h2>
   <p class="lede">Screenshots of published platforms, designs, and verified certificates. Click any image to enlarge it.</p>
@@ -1454,7 +1454,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <div class="gallery" id="galGrid"></div>
 </section>
 
-<section class="panel" id="education" data-group="qual" data-glabel="Qualifications and honors" data-label="Education" hidden>
+<section class="panel" id="education" data-group="qual" data-glabel="Qualifications and certificates" data-label="Education" hidden>
   <div class="eyebrow">Academic qualifications</div>
   <h2>An academic path joining management and technology</h2>
   <p class="lede">GPAs are out of 5 unless given as a percentage.</p>
@@ -1476,7 +1476,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </ul>
 </section>
 
-<section class="panel" id="certificates" data-group="qual" data-glabel="Qualifications and honors" data-label="Certificates and courses" hidden>
+<section class="panel" id="certificates" data-group="qual" data-glabel="Qualifications and certificates" data-label="Certificates and courses" hidden>
   <div class="eyebrow">Certificates and professional courses</div>
   <h2>Training in technology, management, and data</h2>
   <p class="lede">Two verified Cisco certificates, a four-course Microsoft specialization on Coursera, ten in-person courses and two workshops at Al-Masar Professional Training Center, and two completed exam-preparation programs awaiting the exam.</p>
@@ -1486,7 +1486,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   <p class="note">Courses named after a professional certification (PMP, GRCP, Lean Six Sigma) are course-completion certificates and are listed with their hours. The PMP course meets the 35 contact-hour requirement for the PMP exam.</p>
 </section>
 
-<section class="panel" id="awards" data-group="qual" data-glabel="Qualifications and honors" data-label="Awards and honors" hidden>
+<section class="panel" id="awards" data-group="proj" data-glabel="Projects and honors" data-label="Awards and honors" hidden>
   <div class="eyebrow">Awards and recognition</div>
   <h2>First place, Nawat Hackathon</h2>
   <p class="lede">A hackathon organized by the General Department of Human Resources Development at the Ministry of Education (1447 AH), with two separate recognitions.</p>
@@ -1510,17 +1510,6 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="cvs" data-group="cvs" data-glabel="CVs" data-label="CVs" hidden>
-  <div class="eyebrow">Specialized CVs</div>
-  <h2>Three versions by career track</h2>
-  <p class="lede">Each track has its own CV page, with a print button that saves it as PDF. The CV pages are in Arabic.</p>
-  <div class="grid cv-grid">
-    <div class="card"><span class="chip latin" style="width:fit-content">ol</span><h4>Leadership and management</h4><p>Organizational leadership, planning, human resources, and change management, for leadership roles.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">View CV →</a></div></div>
-    <div class="card"><span class="chip latin" style="width:fit-content">hr</span><h4>Human resources</h4><p>HR management and development: recruitment, onboarding, performance, training, and analysis tools.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">View CV →</a></div></div>
-    <div class="card"><span class="chip latin" style="width:fit-content">dt</span><h4>Digital transformation</h4><p>Digital transformation and business systems design, with the systems and products shown in this portfolio.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">View CV →</a></div></div>
-  </div>
-</section>
-
 <section class="panel" id="go2top" data-group="g2t" data-glabel="go2top" data-label="go2top" hidden>
   <div class="eyebrow">go2top</div>
   <h2>Enabling digital transformation and institutional excellence</h2>
@@ -1532,7 +1521,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </dl>
     <div class="split">
     <div class="card"><span class="st pub">Developed</span><ul class="plain">
-      <li>The Golden Series: a guide and 31 products in three formats, ready for sale.</li>
+      <li>The Golden Series: a guide and 31 products in three formats, completed.</li>
       <li>Five professional digital agendas.</li>
       <li>The HR analytics dashboard and published productivity apps.</li>
       <li>The digital twin headquarters, in development with sample data.</li>
@@ -1579,7 +1568,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
     <div class="grid" style="margin-top:14px">
       <div class="card"><h4>Integrated systems</h4><p>Strategic initiatives in SEMS become projects in POMS, HRMS payroll is processed in EFPMS, and policy documents in EDRMS feed GRCMS audits and compliance.</p></div>
       <div class="card"><h4>A document for every system</h4><p>Each system has its structure and implementation framework: executive summary, pain areas, risks, value, scope, integrations, and the matching Power Platform tool.</p></div>
-      <div class="card"><h4>CTMS, the operational core</h4><p>A cooperative training and competency management system that grew out of 83 operational challenges observed in the field, with no Arabic competitor. Feasibility: 220% ROI within 24 months, payback in 8 to 14 months, and delivery in 16 weeks.</p></div>
+      <div class="card"><h4>CTMS, the operational core</h4><p>A cooperative training and competency management system that grew out of 83 operational challenges observed in the field. Its feasibility study projects, under its stated assumptions, a 220% return within 24 months, payback in 8 to 14 months, and delivery in 16 weeks.</p></div>
       <div class="card"><h4>NDTMS for the non-profit sector</h4><p>A digital transformation system designed for associations: governance, donor disclosure, and regulatory reporting, a gap no specialized Arabic solution covers.</p></div>
     </div>
     <p class="note">A feasibility study and business case for the suite in a 163-slide deck, and a bilingual investment pitch.</p>
@@ -1616,7 +1605,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 
   <div class="eyebrow">Digital products | go2top</div>
   <h2>The Golden Series</h2>
-  <p class="lede">A free guide and 31 products in three formats: Excel, Google Sheets, and an interactive app, all ready for sale.</p>
+  <p class="lede">A free guide and 31 products in three formats: Excel, Google Sheets, and an interactive app, all completed.</p>
     <div class="scg" style="grid-template-columns:repeat(2,minmax(0,1fr));margin:6px 0 18px">
     <button class="sc" type="button" data-go="gallery"><img src="assets/golden-04-performance.jpg" alt="" loading="lazy"><span>Personal Performance Manager: home page</span></button>
     <button class="sc" type="button" data-go="gallery"><img src="assets/golden-student-dashboard.jpg" alt="" loading="lazy"><span>Study Excellence dashboard</span></button>
@@ -1639,7 +1628,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
   </div>
 </section>
 
-<section class="panel" id="contact" data-group="contact" data-glabel="Contact" data-label="Contact" hidden>
+<section class="panel" id="contact" data-group="contact" data-glabel="Contact and CVs" data-label="Contact" hidden>
   <div class="eyebrow">Contact</div>
   <h2>Get in touch</h2>
   <dl class="facts" style="max-width:640px">
@@ -1649,6 +1638,12 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
     <div><dt>CVs</dt><dd class="cvlinks"><a href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">Leadership and management</a><a href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">Human resources</a><a href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">Digital transformation</a><a href="https://go2top-sa.github.io/My-CV/quran/" target="_blank" rel="noopener">Quranic studies</a></dd></div>
     <div><dt>City</dt><dd>Riyadh, Saudi Arabia</dd></div>
   </dl>
+  <h3>Specialized CVs</h3>
+  <div class="grid cv-grid">
+    <div class="card"><span class="chip latin" style="width:fit-content">ol</span><h4>Leadership and management</h4><p>Organizational leadership, planning, human resources, and change management, for leadership roles.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/ol/" target="_blank" rel="noopener">View CV →</a></div></div>
+    <div class="card"><span class="chip latin" style="width:fit-content">hr</span><h4>Human resources</h4><p>HR management and development: recruitment, onboarding, performance, training, and analysis tools.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/hr/" target="_blank" rel="noopener">View CV →</a></div></div>
+    <div class="card"><span class="chip latin" style="width:fit-content">dt</span><h4>Digital transformation</h4><p>Digital transformation and business systems design, with the systems and products shown in this portfolio.</p><div class="bottom"><span class="chip">Arabic · print and PDF</span><a class="go" href="https://go2top-sa.github.io/My-CV/dt/" target="_blank" rel="noopener">View CV →</a></div></div>
+  </div>
 </section>
 </template>
 <script>
@@ -2006,7 +2001,7 @@ window.PORTFOLIO_EN={
     }
     p.appendChild(nx);
   });
-  var ALIAS={institution:'case-assoc'};
+  var ALIAS={institution:'case-assoc',cvs:'contact'};
   function show(id){
     id=ALIAS[id]||id;
     if(!document.getElementById(id)||!document.getElementById(id).classList.contains('panel'))id='home';
@@ -2316,7 +2311,9 @@ window.PORTFOLIO_EN={
   document.getElementById('gnext').addEventListener('click',function(){if(gi<G.length-1){gi++;gpaint()}else gclose()});
   document.getElementById('gskip').addEventListener('click',function(){if(gi){gi--;gpaint()}else gclose()});
   gd.addEventListener('click',function(e){if(e.target===gd)gclose()});
-  document.addEventListener('keydown',function(e){if(!gd.classList.contains('on'))return; if(e.key==='Escape'){gclose();} e.stopPropagation()},true);
+  document.addEventListener('keydown',function(e){if(!gd.classList.contains('on'))return; if(e.key==='Escape'){gclose();}
+    if(e.key==='Tab'){var f=[].slice.call(gd.querySelectorAll('button'));var i=f.indexOf(document.activeElement);e.preventDefault();var n=e.shiftKey?(i<=0?f.length-1:i-1):(i>=f.length-1?0:i+1);f[n].focus();}
+    e.stopPropagation()},true);
   var hb=document.createElement('button'); hb.type='button'; hb.className='helpbtn'; hb.textContent='؟'; hb.setAttribute('aria-label',EN?'How to use this site':'طريقة استخدام الموقع');
   if(EN)hb.textContent='?';
   top.firstChild.insertBefore(hb,top.firstChild.querySelector('.lang'));
