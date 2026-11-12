@@ -503,7 +503,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 
 /* footer */
 .land{display:none!important}
-.v2foot{position:relative;margin-top:46px;background:linear-gradient(var(--cream),#EFE7DC)}
+.v2foot{position:relative;margin-top:46px;background:#F3EEE6}
 .v2foot .ft-in{max-width:1200px;margin:0 auto;padding:26px 22px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:2}
 .v2foot .ft-id{display:flex;align-items:center;gap:12px}
 .v2foot .ft-id b{display:block;font-family:var(--f-display);font-size:24px;color:var(--lav-deep)}
@@ -511,9 +511,9 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
 .v2foot .ft-links{display:flex;flex-wrap:wrap;gap:8px}
 .v2foot .ft-links a{font-family:var(--f-ui);font-size:13.5px;font-weight:600;color:var(--lav-deep);text-decoration:none;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--line)}
 .v2foot .ft-links a:hover{border-color:var(--lav)}
-.v2foot .ft-art{display:block;width:100%;height:220px;margin-top:-30px}
-.v2foot .ft-copy{position:absolute;bottom:10px;inset-inline:0;margin:0;text-align:center;font-family:var(--f-ui);font-size:12px;color:rgba(255,255,255,.92);letter-spacing:.02em}
-@media (max-width:860px){.v2foot .ft-art{height:150px;margin-top:0}.v2foot .ft-in{padding-top:20px}}
+.v2foot .ft-art{display:block;width:100%;height:auto;max-height:330px;object-fit:cover;object-position:center bottom;margin-top:8px}
+.v2foot .ft-copy{position:absolute;bottom:12px;inset-inline-end:22px;margin:0;font-family:var(--f-ui);font-size:12px;color:rgba(255,255,255,.95);text-shadow:0 1px 2px rgba(0,0,0,.25)}
+@media (max-width:860px){.v2foot .ft-art{height:170px;margin-top:0}.v2foot .ft-in{padding-top:20px}}
 /* guide */
 .helpbtn{all:unset;cursor:pointer;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--lav-deep);color:var(--lav-deep);font-family:var(--f-ui);font-weight:800;font-size:16px}
 .helpbtn:focus-visible{outline:3px solid var(--gold)}
@@ -577,8 +577,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
       <div class="disc">
         <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
           <circle cx="290" cy="120" r="46" fill="#F4E9D6"/>
-          <g class="layer" data-d="6"><path d="M-20 300 L60 190 L120 250 L190 140 L260 230 L320 170 L420 290 L420 420 L-20 420Z" fill="#CBC1D8"/></g>
-          <g class="layer" data-d="12"><path d="M-20 330 L90 230 L150 290 L230 200 L300 270 L360 230 L420 300 L420 420 L-20 420Z" fill="#A796BE"/><path d="M190 140 L230 200 L210 210 L182 160Z" fill="#fff" opacity=".35"/></g>
+          <g class="layer" data-d="8"><image href="assets/tuwaiq.png" x="-10" y="180" width="420" height="128" preserveAspectRatio="xMidYMax meet"/></g>
           <g class="layer" data-d="20"><path d="M-20 350 Q100 300 200 330 T420 320 L420 420 L-20 420Z" fill="#C7A16B"/></g>
           <g class="layer" data-d="30"><path d="M-20 372 Q120 340 240 366 T420 356 L420 420 L-20 420Z" fill="#7D8167"/><path d="M250 420 Q320 360 420 370 L420 420Z" fill="#B16D4C"/></g>
         </svg>
@@ -1117,34 +1116,7 @@ html[dir="ltr"] .backbtn.on{transform:translateX(-50%) translateY(0)}
       <a href="https://github.com/go2top-sa" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
-  <svg class="ft-art" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="fgL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9BEDA"/><stop offset="1" stop-color="#B3A4C8"/></linearGradient>
-      <linearGradient id="fgC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2CBA6"/><stop offset="1" stop-color="#CFAE7E"/></linearGradient>
-      <linearGradient id="fgT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98864"/><stop offset="1" stop-color="#B16D4C"/></linearGradient>
-      <linearGradient id="fgS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A8E73"/><stop offset="1" stop-color="#6E7259"/></linearGradient>
-      <linearGradient id="fgM" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4DCEC"/><stop offset="1" stop-color="#BFB2D2"/></linearGradient>
-      <radialGradient id="fgSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F4E9D6"/><stop offset="1" stop-color="#F4E9D6" stop-opacity="0"/></radialGradient>
-    </defs>
-    <circle cx="420" cy="70" r="80" fill="url(#fgSun)"/>
-    <path d="M0 240 V150 C160 110 300 118 470 140 C640 162 760 120 980 112 C1160 106 1300 128 1440 118 V240 Z" fill="url(#fgL)" opacity=".85"/>
-    <path d="M470 176 L512 130 L548 112 L600 104 L690 98 L780 96 L856 100 L904 112 L944 134 L996 166 L1010 176 Z" fill="url(#fgM)"/>
-    <path d="M512 130 L548 112 L600 104 L690 98 L780 96 L856 100 L904 112 L944 134" fill="none" stroke="#FBF8F2" stroke-width="2" opacity=".8"/>
-    <path d="M500 146 C620 132 780 128 950 140 L960 146 C790 136 630 140 500 152 Z" fill="#FBF8F2" opacity=".35"/>
-    <path d="M488 162 C640 150 800 146 976 158 L984 164 C810 154 650 158 488 168 Z" fill="#FBF8F2" opacity=".28"/>
-    <path d="M0 240 V176 C200 150 380 160 560 172 C760 186 900 150 1080 146 C1240 142 1340 160 1440 154 V240 Z" fill="url(#fgC)" opacity=".9"/>
-    <path d="M760 240 V196 C900 168 1060 160 1200 170 C1300 178 1380 172 1440 166 V240 Z" fill="url(#fgT)"/>
-    <path d="M0 240 V204 C240 186 520 196 760 208 C960 218 1180 202 1440 198 V240 Z" fill="url(#fgS)"/>
-    <g transform="translate(1290 240) scale(1.45)" stroke="#61654E" stroke-width="1.6" fill="none" stroke-linecap="round">
-      <path d="M0 0 C-4 -40 -10 -80 -22 -118"/><path d="M4 0 C8 -44 16 -84 30 -112"/><path d="M2 0 C2 -36 0 -70 4 -98"/>
-      <path d="M-8 -30 C-18 -40 -26 -42 -34 -40" stroke="#7D8167"/><path d="M8 -26 C20 -34 30 -34 38 -30" stroke="#7D8167"/>
-    </g>
-    <g transform="translate(1290 240) scale(1.45)" fill="#78658D">
-      <ellipse cx="-22" cy="-120" rx="3.2" ry="5.2"/><ellipse cx="-19" cy="-110" rx="3.4" ry="5.4" transform="rotate(-18 -19 -110)"/><ellipse cx="-25" cy="-104" rx="3.4" ry="5.4" transform="rotate(18 -25 -104)"/><ellipse cx="-16" cy="-96" rx="3.4" ry="5.4" transform="rotate(-18 -16 -96)"/><ellipse cx="-22" cy="-90" rx="3.4" ry="5.4" transform="rotate(18 -22 -90)"/><ellipse cx="-13" cy="-82" rx="3.2" ry="5" transform="rotate(-18 -13 -82)"/>
-      <ellipse cx="30" cy="-114" rx="3.2" ry="5.2"/><ellipse cx="27" cy="-104" rx="3.4" ry="5.4" transform="rotate(18 27 -104)"/><ellipse cx="33" cy="-98" rx="3.4" ry="5.4" transform="rotate(-18 33 -98)"/><ellipse cx="23" cy="-90" rx="3.4" ry="5.4" transform="rotate(18 23 -90)"/><ellipse cx="29" cy="-84" rx="3.2" ry="5" transform="rotate(-18 29 -84)"/>
-      <ellipse cx="4" cy="-100" rx="3" ry="5" fill="#A796BE"/><ellipse cx="1" cy="-91" rx="3.2" ry="5" fill="#A796BE" transform="rotate(-18 1 -91)"/><ellipse cx="6" cy="-84" rx="3.2" ry="5" fill="#A796BE" transform="rotate(18 6 -84)"/>
-    </g>
-  </svg>
+  <img class="ft-art" src="assets/footer-landscape.jpg" alt="" loading="lazy">
   <p class="ft-copy">© 2026 حنين الزكري · ملف الأعمال</p>
 </footer>
 
